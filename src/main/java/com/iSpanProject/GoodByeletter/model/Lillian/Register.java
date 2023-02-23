@@ -1,14 +1,22 @@
 package com.iSpanProject.GoodByeletter.model.Lillian;
 
-import javax.persistence.Column;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Nationalized;
-import org.springframework.lang.Nullable;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="member")
@@ -17,24 +25,47 @@ public class Register {
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-//		@Nullable
+		//@Column(name = "memberId")
 		private Integer memberId;
 		
-//		@Nationalized
-		@Column(columnDefinition = "nvarchar(50)", nullable = false)
+		//@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
 		private String account;
 		
 		
-		@Column(columnDefinition = "nvarchar(50)", nullable = false)
+		//@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 		private String password;
 		
-		private 
+		@ManyToOne(cascade= {CascadeType.PERSIST })
+		@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
+		private Level FK_Plevel;
+		
+		//@Column(name = "registerTime")
+		@Temporal(TemporalType.TIMESTAMP)
+		@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
+		@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+		private Date registerTime;
 		
 		
 		
+		
+		public Integer getMemberId() {
+			return memberId;
+		}
+
+
+
+
+		public void setMemberId(Integer memberId) {
+			this.memberId = memberId;
+		}
+
+
+
+
 		public String getAccount() {
 			return account;
 		}
+
 
 
 
@@ -44,9 +75,11 @@ public class Register {
 
 
 
+
 		public String getPassword() {
 			return password;
 		}
+
 
 
 
@@ -56,15 +89,32 @@ public class Register {
 
 
 
-		public Integer getMemberId() {
-			return memberId;
+
+		public Level getFK_Plevel() {
+			return FK_Plevel;
 		}
 
 
 
-		public void setMemberId(Integer memberId) {
-			this.memberId = memberId;
+
+		public void setFK_Plevel(Level fK_Plevel) {
+			FK_Plevel = fK_Plevel;
 		}
+
+
+
+
+		public Date getRegisterTime() {
+			return registerTime;
+		}
+
+
+
+
+		public void setRegisterTime(Date registerTime) {
+			this.registerTime = registerTime;
+		}
+
 
 
 

@@ -1,14 +1,15 @@
 package com.iSpanProject.GoodByeletter.model.Lillian;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,84 +19,102 @@ public class MemberDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer memberId;
+	private Integer id;
+	
+	@OneToOne(cascade= {CascadeType.PERSIST })
+	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
+	private Register FK_memberId;
 
-	@OneToOne
-	@JoinColumn(name = "Plevel")
-	private Level Plevel;
-
-//	@Column(name = "Plevel", nullable = true)
-//	private Integer Plevel;
-
-	@Column(name = "name", columnDefinition = "[nvarchar](50)", nullable = true)
+	@ManyToOne(cascade= {CascadeType.PERSIST })
+	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_memberDetail_level"))
+	private Level FK_Plevel;
 	private String name;
-
-	@Column(name = "gender", columnDefinition = "[nvarchar](50)", nullable = true)
 	private String gender;
-
-	@Column(name = "birthday", columnDefinition = "[nvarchar](50)", nullable = true)
-	private String birthday;
-
-	@Column(name = "Email", columnDefinition = "[nvarchar](50)", nullable = true)
+	private Date birthday;
 	private String Email;
-
 	private String address;
 
-	public Integer getMemberId() {
-		return memberId;
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setMemberId(Integer memberId) {
-		this.memberId = memberId;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public Level getPlevel() {
-		return Plevel;
+
+
+	public Register getFK_memberId() {
+		return FK_memberId;
 	}
 
-	public void setPlevel(Level plevel) {
-		Plevel = plevel;
+
+	public void setFK_memberId(Register fK_memberId) {
+		FK_memberId = fK_memberId;
 	}
+
+
+	public Level getFK_Plevel() {
+		return FK_Plevel;
+	}
+
+
+	public void setFK_Plevel(Level fK_Plevel) {
+		FK_Plevel = fK_Plevel;
+	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public String getGender() {
 		return gender;
 	}
 
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-	public String getBirthday() {
+
+	public Date getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(String birthday) {
+
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
+
 
 	public String getEmail() {
 		return Email;
 	}
 
+
 	public void setEmail(String email) {
 		Email = email;
 	}
+
 
 	public String getAddress() {
 		return address;
 	}
 
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 
 	public MemberDetail() {
 //		super();
