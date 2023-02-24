@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>測試</title>
+<title>Insert title here</title>
 </head>
 <body>
-
-<h1>測試</h1>
-
-
-
-
-
 
 </body>
 </html>
