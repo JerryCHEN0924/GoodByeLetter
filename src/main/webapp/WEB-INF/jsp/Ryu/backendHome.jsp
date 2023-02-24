@@ -29,8 +29,7 @@
 
 
 <body class="is-preload">
-<jsp:include page="..."></jsp:include>
-
+<jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
 
 
 
