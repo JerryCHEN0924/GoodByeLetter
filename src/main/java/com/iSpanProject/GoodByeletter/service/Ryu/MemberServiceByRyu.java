@@ -9,7 +9,7 @@ import com.iSpanProject.GoodByeletter.dao.Ryu.MemberRepository;
 import com.iSpanProject.GoodByeletter.model.Ryu.MemberByRyu;
 
 @Service
-public class MemberService {
+public class MemberServiceByRyu {
 	
 	
 	
@@ -17,7 +17,7 @@ public class MemberService {
 	@Autowired
 	private MemberRepository memberDao;
 
-	public MemberService() {
+	public MemberServiceByRyu() {
 		
 	
 	}
