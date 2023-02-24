@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Controller
@@ -16,19 +17,21 @@ public class registerController {
 	@Autowired
 	private RegisterDao registerDao;
 	
-	
-	//@ResponseBody物件序列化成JSON丟出來反序列化變成JAVA物件
-	@ResponseBody
+	@ResponseBody //@ResponseBody物件序列化成JSON丟出來反序列化變成JAVA物件
 	@PostMapping("/register/add")
-	public Register saveRegister(@RequestBody Register register) {
-		return registerDao.save(register);
+	public String saveRegister(@RequestBody Register register,@RequestBody MemberDetail memberDetail) {
+		String acc = register.getAccount();
+		String pwd = register.getPassword();
 		
+		Register existingRegister = registerDao.findRegisterByAcc(acc);
+		if( existingRegister != null ) {
+			return "已有此帳號!";
+		}
+			
+		registerDao.save(register);
+		
+		return "成功!";
 	}
 	
-	
-	
-	public registerController() {
-		
-	}
 
 }
