@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>後臺管理介面</title>
 
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>後臺管理介面</title>
     
     
     
@@ -68,6 +68,11 @@
             font-size: 15px;
         }
 </style>
+
+
+
+
+
 
 </head>
 
@@ -170,7 +175,7 @@
 
 
 
-
+	<div>
         <!-- top1 -->
         <article id="top1">
             <div class="container-fluid article1 " id="topic">
