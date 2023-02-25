@@ -1,11 +1,18 @@
 package com.iSpanProject.GoodByeletter.model.Ryu;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="levelByRyu")
@@ -22,9 +29,9 @@ public class LevelByRyu {
 	private String levelName;
 	
 	
-//	@JsonManagedReference // 主要序列化方 雙向情況才需要使用
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "level", orphanRemoval = true)
-//	private List<MemberByRyu> member = new ArrayList<>();
+	@JsonManagedReference // 主要序列化方 雙向情況才需要使用
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "level", orphanRemoval = true)
+	private List<MemberByRyu> member = new ArrayList<>();
 
 
 	public LevelByRyu() {

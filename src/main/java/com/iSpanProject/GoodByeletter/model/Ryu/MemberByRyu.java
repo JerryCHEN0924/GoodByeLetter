@@ -2,11 +2,14 @@ package com.iSpanProject.GoodByeletter.model.Ryu;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -14,6 +17,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -43,10 +47,10 @@ public class MemberByRyu {
 	private Date registerTime;
 	
 	
-//	@JsonBackReference // 不要進行序列化，由另外一邊進行
-//	@JoinColumn(name="FK_Plevel")
-//	@OneToOne
-//	private LevelByRyu level;
+	@JsonBackReference // 不要進行序列化，由另外一邊進行
+	@JoinColumn(name="FK_Plevel")
+	@ManyToOne(cascade=CascadeType.ALL)
+	private LevelByRyu level;
 
 
 	public MemberByRyu() {
