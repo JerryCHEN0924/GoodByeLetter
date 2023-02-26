@@ -88,8 +88,8 @@
                             <ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
                                 id="dropdown-menu_login">
                                 <li><a class="dropdown-item narbar_text_color" id="nav_login"> 登入 </a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="myregister.html"> 註冊 </a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="mySpace.html"> 個人空間 </a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="register1"> 註冊 </a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="mySpace"> 個人空間 </a></li>
                             </ul>
                         </li>
                         <li class="nav-item ">
