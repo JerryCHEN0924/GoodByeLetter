@@ -19,9 +19,12 @@ public class BackendPageController {
 	@GetMapping("/topGun/template")
 	public String template() {
 		
-		return "/Ryu/ryuzTemplate";
+		return "/Ryu/ryuzSubTemplate";
 		
 	}
+	
+	
+	
 	
 	
 }

@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <link href="${contextRoot}/css/bootstrap.min.css" rel="stylesheet" />
 
-<link href="${contextRoot}/css/style01.css" rel="stylesheet" />
+<link href="${contextRoot}/css/ryuzStyle01.css" rel="stylesheet" />
 
 
 
@@ -33,16 +33,16 @@
           <a class="nav-link active" aria-current="page" href="${contextRoot}/topGun">首頁</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${contextRoot}/topGun">你看不見我</a>
+          <a class="nav-link" href="${contextRoot}/topGun/memberByRyu/add">新增會員</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${contextRoot}/topGun">你看不見我</a>
+          <a class="nav-link" href="${contextRoot}/topGun/levelByRyu/add">新增等級</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${contextRoot}/topGun">你看不見我</a>
+          <a class="nav-link" href="${contextRoot}/topGun/memberByRyu/page">查看會員</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${contextRoot}/topGun">你看不見我</a>
+          <a class="nav-link" href="${contextRoot}/topGun/levelByRyu/page">查看等級</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${contextRoot}/topGun">你看不見我</a>
