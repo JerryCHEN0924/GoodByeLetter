@@ -117,6 +117,14 @@ public class MemberControllerByRyu {
 	@DeleteMapping("/topGun/memberByRyu/delete")
 	public String deleteMember(@RequestParam("memberId") Integer memberId) {
 		
+		System.out.println("================================");
+		System.out.println("================================");
+		System.out.println("================================");
+		System.out.println(memberId);
+		System.out.println("================================");
+		System.out.println("================================");
+		System.out.println("================================");
+		
 		memberServiceByRyu.deleteById(memberId);
 		
 		return "redirect:/topGun/memberByRyu/page";

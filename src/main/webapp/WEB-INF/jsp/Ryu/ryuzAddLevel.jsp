@@ -54,7 +54,7 @@
   
   <div class="card-body">
   	
-	<form:form action="${contextRoot}/topGun/LevelByRyu/post" modelAttribute="levelByRyu" method='POST'>
+	<form:form action="${contextRoot}/topGun/levelByRyu/post" modelAttribute="levelByRyu" method='POST'>
   		
   		<div class="input-group">
   			

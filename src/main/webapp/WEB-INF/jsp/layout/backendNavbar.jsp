@@ -36,13 +36,13 @@
           <a class="nav-link" href="${contextRoot}/topGun/memberByRyu/add">新增會員</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${contextRoot}/topGun/LevelByRyu/add">新增等級</a>
+          <a class="nav-link" href="${contextRoot}/topGun/levelByRyu/add">新增等級</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${contextRoot}/topGun/memberByRyu/page">查看會員</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${contextRoot}/topGun">你看不見我</a>
+          <a class="nav-link" href="${contextRoot}/topGun/levelByRyu/page">查看等級</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="${contextRoot}/topGun">你看不見我</a>

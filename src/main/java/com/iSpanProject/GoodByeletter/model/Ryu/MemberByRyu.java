@@ -2,7 +2,6 @@ package com.iSpanProject.GoodByeletter.model.Ryu;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -49,7 +48,7 @@ public class MemberByRyu {
 	
 	@JsonBackReference // 不要進行序列化，由另外一邊進行
 	@JoinColumn(name="FK_Plevel")
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne // cascade=CascadeType.ALL => 這邊設定這個會把整個 member 刪除掉 ... 乾 ...
 	private LevelByRyu levelByRyu;
 
 

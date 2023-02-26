@@ -36,7 +36,7 @@ public class MemberServiceByRyu {
 	
 	public void insert(MemberByRyu memberByRyu) {
 		
-		Optional<LevelByRyu> levelByRyu = levelRepositoryByRyu.findById(4);
+		Optional<LevelByRyu> levelByRyu = levelRepositoryByRyu.findById(3);
 			
 		LevelByRyu l2 = levelByRyu.get();
 			
@@ -60,9 +60,16 @@ public class MemberServiceByRyu {
 	}
 	
 	@Transactional
-	public void deleteById(Integer id) {
+	public void deleteById(Integer memberId) {
 		
-		memberRepository.deleteById(id);
+		Optional<MemberByRyu> optional = memberRepository.findById(memberId);
+		
+		if(optional.isPresent()) {
+			
+			memberRepository.deleteById(memberId);
+			
+		}
+		
 		
 	}
 	
