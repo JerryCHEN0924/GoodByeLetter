@@ -50,7 +50,7 @@ public class MemberByRyu {
 	@JsonBackReference // 不要進行序列化，由另外一邊進行
 	@JoinColumn(name="FK_Plevel")
 	@ManyToOne(cascade=CascadeType.ALL)
-	private LevelByRyu level;
+	private LevelByRyu levelByRyu;
 
 
 	public MemberByRyu() {
@@ -58,6 +58,27 @@ public class MemberByRyu {
 	}
 	
 	
+	
+	
+
+
+
+
+
+	public MemberByRyu(Integer memberId, String account, String password, Date registerTime, LevelByRyu levelByRyu) {
+		super();
+		this.memberId = memberId;
+		this.account = account;
+		this.password = password;
+		this.registerTime = registerTime;
+		this.levelByRyu = levelByRyu;
+	}
+
+
+
+
+
+
 	@PrePersist
 	public void onCreate() {
 		if(registerTime == null) {
@@ -106,14 +127,24 @@ public class MemberByRyu {
 	}
 
 
-//	public LevelByRyu getLevel() {
-//		return level;
-//	}
-//
-//
-//	public void setLevel(LevelByRyu level) {
-//		this.level = level;
-//	}
+
+
+
+
+	public LevelByRyu getLevelByRyu() {
+		return levelByRyu;
+	}
+
+
+
+
+
+
+	public void setLevelByRyu(LevelByRyu levelByRyu) {
+		this.levelByRyu = levelByRyu;
+	}
+
+
 	
 	
 	

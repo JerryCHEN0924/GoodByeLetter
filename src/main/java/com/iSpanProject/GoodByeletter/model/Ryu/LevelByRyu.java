@@ -30,13 +30,33 @@ public class LevelByRyu {
 	
 	
 	@JsonManagedReference // 主要序列化方 雙向情況才需要使用
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "level", orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "levelByRyu", orphanRemoval = true)
 	private List<MemberByRyu> member = new ArrayList<>();
 
 
 	public LevelByRyu() {
 		super();
 	}
+	
+	
+	
+	
+	
+	
+
+
+	public LevelByRyu(Integer pLevel, String levelName, List<MemberByRyu> member) {
+		super();
+		this.pLevel = pLevel;
+		this.levelName = levelName;
+		this.member = member;
+	}
+
+
+
+
+
+
 
 
 	public Integer getpLevel() {
@@ -59,14 +79,14 @@ public class LevelByRyu {
 	}
 
 
-//	public List<MemberByRyu> getMember() {
-//		return member;
-//	}
-//
-//
-//	public void setMember(List<MemberByRyu> member) {
-//		this.member = member;
-//	}
+	public List<MemberByRyu> getMember() {
+		return member;
+	}
+
+
+	public void setMember(List<MemberByRyu> member) {
+		this.member = member;
+	}
 	
 	
 	
