@@ -1,7 +1,5 @@
 package com.iSpanProject.GoodByeletter.service.Lillian;
 
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +18,17 @@ public class RegisterService {
 	public void insert(Register register) {
 		rDao.save(register);
 	}
-	
-	public Register updateById(Integer id,String account,String password) {
-		Optional<Register> optional = rDao.findById(id);
-		
-		if(optional.isPresent()) {
-			Register register = optional.get();
-			register.setAccount(account);
-			register.setAccount(password);
-			return register;
-		}
-		System.out.println("no update");
-		return null;
-	}
+//	
+//	public Register updateById(Integer id,String account,String password) {
+//		Optional<Register> optional = rDao.findById(id);
+//		
+//		if(optional.isPresent()) {
+//			Register register = optional.get();
+//			register.setAccount(account);
+//			register.setAccount(password);
+//			return register;
+//		}
+//		System.out.println("no update");
+//		return null;
+//	}
 }
