@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>測試</title>
+<title>遺書頁面</title>
 </head>
 <body>
-
-<h1>測試</h1>
-
-
-
-
-
-
+<h1>遺書頁面</h1>
 </body>
 </html>
