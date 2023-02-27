@@ -45,7 +45,7 @@
                     <div class="mb-6 row">
                             <label for="account" class="col-sm-2 col-form-label">帳號</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="account" name="account" value="${} }">
+                                <input type="text" class="form-control" id="account" name="account" value="${##}">
                             </div>
                         </div>
                         <div class="mb-6 row">
