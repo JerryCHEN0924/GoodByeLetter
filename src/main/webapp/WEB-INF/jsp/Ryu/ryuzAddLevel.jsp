@@ -49,17 +49,16 @@
 <div class="card">
 
   <div class="card-header">
-    新增會員資料
+    新增等級資料
   </div>
   
   <div class="card-body">
   	
-	<form:form action="${contextRoot}/topGun/memberByRyu/post" modelAttribute="memberByRyu" method='POST'>
+	<form:form action="${contextRoot}/topGun/levelByRyu/post" modelAttribute="levelByRyu" method='POST'>
   		
   		<div class="input-group">
   			
-  			<form:input path="account" class="form-control" rows="" cols="" />
-  			<form:input path="password" class="form-control" rows="" cols="" />
+  			<form:input path="levelName" class="form-control" rows="" cols="" />
   		</div>
   		
   		<div class="mt-3">
