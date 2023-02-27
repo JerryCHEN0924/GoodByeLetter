@@ -21,29 +21,16 @@ public class RegisterService {
 		rDao.save(register);
 	}
 	
-	public Register findRegisterById(Integer id) {
+	public Register updateById(Integer id,String account,String password) {
 		Optional<Register> optional = rDao.findById(id);
 		
-		if(optional.isEmpty()) {
-			return null;
+		if(optional.isPresent()) {
+			Register register = optional.get();
+			register.setAccount(account);
+			register.setAccount(password);
+			return register;
 		}
-		
-		return optional.get();
+		System.out.println("no update");
+		return null;
 	}
-	
-	
-	
-//	
-//	public Register updateById(Integer id,String account,String password) {
-//		Optional<Register> optional = rDao.findById(id);
-//		
-//		if(optional.isPresent()) {
-//			Register register = optional.get();
-//			register.setAccount(account);
-//			register.setAccount(password);
-//			return register;
-//		}
-//		System.out.println("no update");
-//		return null;
-//	}
 }
