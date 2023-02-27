@@ -3,6 +3,7 @@ package com.iSpanProject.GoodByeletter.model.Lillian;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "memberDetail")
@@ -28,10 +31,24 @@ public class MemberDetail {
 	@ManyToOne(cascade= {CascadeType.PERSIST })
 	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_memberDetail_level"))
 	private Level FK_Plevel;
+	
+	@Column(name = "name",columnDefinition = "nvarchar(50)", nullable = false)
 	private String name;
+	
+	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
 	private String gender;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "birthday", nullable = false)
 	private Date birthday;
+	
+	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
 	private String Email;
+	
+	@Column(name = "County",columnDefinition = "nvarchar(50)", nullable = false)
+	private String County;
+	
+	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
 	private String address;
 
 	
@@ -86,6 +103,9 @@ public class MemberDetail {
 	}
 
 
+	
+
+
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -115,9 +135,23 @@ public class MemberDetail {
 		this.address = address;
 	}
 
+	
+
+	public String getCounty() {
+		return County;
+	}
+
+
+	public void setCounty(String county) {
+		County = county;
+	}
+
 
 	public MemberDetail() {
 //		super();
 	}
+
+
+	
 
 }

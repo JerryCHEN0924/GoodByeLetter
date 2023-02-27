@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.service.Lillian.RegisterService;
 
@@ -34,6 +35,11 @@ public class registerController {
 //					errors.put("password","必填!");
 //			}
 		
+//		Register existingRegister = registerDao.findRegisterByAcc(acc);
+//		if( existingRegister != null ) {
+//			return "已有此帳號!";
+//		}
+		
 		Register newRegister = new Register();
 		newRegister.setAccount(account);
 		newRegister.setPassword(password);
@@ -43,19 +49,15 @@ public class registerController {
 		   model.addAttribute("msg", msg);
 		   msg.put("success", "會員註冊成功!");
 		
-//		Register existingRegister = registerDao.findRegisterByAcc(acc);
-//		if( existingRegister != null ) {
-//			return "已有此帳號!";
-//		}
-		
 	
-			return "example/myregister";
+			return "example/addMemberDetail";
 			
 	}
 	
 	@GetMapping("/register1")
 	public String register1() {
 		return "example/myregister";
+		
 	}
 
 }

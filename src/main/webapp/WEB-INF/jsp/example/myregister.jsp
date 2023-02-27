@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>註冊帳號</title>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +41,8 @@
                 <div class="container" id="form_container">
                     <div id="registerTitle">註冊會員</div>
                     <form id="register_form" action="${contextRoot}/register/add" method="post">
-                    
+<!--                     	<input name="_method" value="put" /> -->
+                    	
                     <div class="mb-6 row">
                             <label for="account" class="col-sm-2 col-form-label">帳號</label>
                             <div class="col-sm-10">
@@ -150,7 +151,7 @@
 <!--                                 <input type="text" class="form-control" id="address" name="address" placeholder="完整地址" > -->
 <!--                             </div> -->
 <!--                         </div> -->
-                        <button type="submit">註冊會員</button><br>
+                        <button type="submit">下一步</button><br>
 
                         <a href="">已有會員</a><br>
                         <a href="myindex.html">回首頁</a>
