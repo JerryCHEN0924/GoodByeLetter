@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,15 +31,36 @@
 </style>
 </head>
 <body>
-
 	<%@ include file="../layout/mynav.jsp"%>
-	<h1>遺書頁面</h1>
+
 	<!-- myspace -->
 	<article id="myspace" class="wrapper style2">
 		<div class="container-fluid " id="register">
 			<div id="space"></div>
-
 		</div>
+		<h1>遺書頁面</h1>
+		<!-- 	表單區	 -->
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">收件人信箱</label> <input type="email" class="form-control"
+				id="exampleFormControlInput1" placeholder="name@example.com">
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">第一驗證人信箱</label> <input type="email" class="form-control"
+				id="exampleFormControlInput1" placeholder="name@example.com">
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label">第二驗證人信箱</label> <input type="email" class="form-control"
+				id="exampleFormControlInput1" placeholder="name@example.com">
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label">信件內容</label>
+			<textarea class="form-control" id="exampleFormControlTextarea1"
+				rows="3"></textarea>
+		</div>
+		<button class="btn btn-success" type="submit">送出</button><br>
+		<button class="btn btn-danger" type="submit">刪掉重寫</button><br>
+		<!-- 	表單區	 -->
+
 	</article>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>

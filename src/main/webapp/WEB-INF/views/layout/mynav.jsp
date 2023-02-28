@@ -50,7 +50,6 @@
 
 <body>
 
-
     <div id="mynavbar"></div>
     
         <!--Nav Bootstrap-->
@@ -95,6 +94,11 @@
                          <li class="nav-item ">
                             <a class="nav-link narbar_text_color" href="#">聊天室</a>
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link narbar_text_color" href='<c:url value="/LastNote" />' tabindex="-1"
+                                aria-disabled="false">GoodBye Letter</a>
+                        </li>
+                        
                         <li class="nav-item ">
                             <a class="nav-link disabled narbar_text_color" href="#" tabindex="-1"
                                 aria-disabled="true">Disabled</a>
