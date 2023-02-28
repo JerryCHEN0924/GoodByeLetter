@@ -1,6 +1,8 @@
-package com.iSpanProject.GoodByeletter.model.Lillian;
+package com.iSpanProject.GoodByeletter.model.Tina;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="member")
-public class Register {
+public class Register01 {
 
 		
 		@Id
@@ -35,9 +38,9 @@ public class Register {
 		//@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 		private String password;
 		
-		@ManyToOne(cascade= {CascadeType.PERSIST })
-		@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
-		private Level FK_Plevel;
+//		@ManyToOne(cascade= {CascadeType.PERSIST })
+//		@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
+//		private Level FK_Plevel;
 		
 		//@Column(name = "registerTime")
 		@Temporal(TemporalType.TIMESTAMP)
@@ -46,8 +49,33 @@ public class Register {
 		private Date registerTime;
 		
 		
+		//連到ParentCommet
+		@OneToMany(mappedBy = "register01", cascade = CascadeType.ALL)
+		Set<Board> boards = new HashSet<>();
+		
+		//連到ChildCommet
+		@OneToMany(mappedBy = "register01", cascade = CascadeType.ALL)
+		Set<Commet> comments = new HashSet<>();
 		
 		
+		
+		
+		
+		
+		public Register01(Integer memberId, String account, String password, Date registerTime, Set<Board> boards,
+				Set<Commet> comments) {
+			super();
+			this.memberId = memberId;
+			this.account = account;
+			this.password = password;
+			this.registerTime = registerTime;
+			this.boards = boards;
+			this.comments = comments;
+		}
+
+
+
+
 		public Integer getMemberId() {
 			return memberId;
 		}
@@ -90,16 +118,16 @@ public class Register {
 
 
 
-		public Level getFK_Plevel() {
-			return FK_Plevel;
-		}
-
-
-
-
-		public void setFK_Plevel(Level fK_Plevel) {
-			FK_Plevel = fK_Plevel;
-		}
+//		public Level getFK_Plevel() {
+//			return FK_Plevel;
+//		}
+//
+//
+//
+//
+//		public void setFK_Plevel(Level fK_Plevel) {
+//			FK_Plevel = fK_Plevel;
+//		}
 
 
 
@@ -118,7 +146,35 @@ public class Register {
 
 
 
-		public Register() {
+		public Set<Board> getBoards() {
+			return boards;
+		}
+
+
+
+
+		public void setBoards(Set<Board> boards) {
+			this.boards = boards;
+		}
+
+
+
+
+		public Set<Commet> getComments() {
+			return comments;
+		}
+
+
+
+
+		public void setComments(Set<Commet> comments) {
+			this.comments = comments;
+		}
+
+
+
+
+		public Register01() {
 		}
 
 }
