@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -27,28 +28,35 @@ public class LastNote implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="noteId")
 	private Integer noteId;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST })
 	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
 	private Register FK_memberId;
 	
+	@Column(name="recipientEmail")
 	private String recipientEmail;
 	
+	@Column(name="notedetail")
 	private String notedetail;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	@Column(name="createTime")
 	private Date createTime;
 	
+	@Column(name="verify1Email")
 	private String verify1;
 	
+	@Column(name="verify2Email")
 	private String verify2;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	@Column(name="verifyTime")
 	private Date verifyTime;
 
 	public LastNote() {
