@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.iSpanProject.GoodByeletter.model.Jerry.MemberBean;
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 
 @Controller
 public class LastNoteController {
 	@GetMapping("/LastNote")
 	public String note(Model model) {
-		MemberBean memberBean = new MemberBean(null, null, null, null, null);
+		//MemberDetail memberdetail = new MemberDetail();
 		return "LastNote";
 	}
 }
