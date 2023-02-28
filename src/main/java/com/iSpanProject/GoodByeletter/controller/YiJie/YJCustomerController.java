@@ -1,12 +1,17 @@
 package com.iSpanProject.GoodByeletter.controller.YiJie;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,18 +21,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomer;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerRepository;
+import com.iSpanProject.GoodByeletter.model.YiJie.YJLevel;
 
-//
 @Controller
 public class YJCustomerController {
-//	
+	
 	@Autowired
 	private YJCustomerRepository customerDao;	
 	
-//	註冊
+	//註冊
 	@ResponseBody //等外面傳入json，接住反序列化成java物件
-	@PostMapping("/register")
-	public String register(@RequestBody YJCustomer customer ,String verificationCode) { 
+	@PostMapping("/customer/register")
+	public String register(@RequestBody YJCustomer customer,
+						   //@RequestBody YJLevel level,
+						   @RequestParam("level") YJLevel level,
+						   String verificationCode) { 
 		
 		// 解析請求中的帳號、密碼和驗證訊息
         String acc = customer.getAcc();
@@ -39,30 +47,27 @@ public class YJCustomerController {
 		}
 		// 驗證訊息為 "123" 時，帳號等級提升至 level=2
         if ("123".equals(verificationCode)) {
-            customer.setLevel(2);
+        	
+        	YJLevel lev1 = new YJLevel();
+        	lev1.setPlevel(2);
+        	customer.setLevel(lev1);
+        	
+            //customer.setLevel(2);
         }
 		customerDao.save(customer);
 		return "成功";//customer.toString();
 	}
 //	
-//	@ResponseBody
-//	@PostMapping("/customer/add3")
-//	public List<YJCustomer> saveAllCustomer(@RequestBody List<YJCustomer> customers) { //存取所有資料
-//		return customerDao.saveAll(customers);
-//	}
-//	
-//	@ResponseBody
-//	@GetMapping("/customer/id")
-//	public YJCustomer findById(@RequestParam("id") Integer id) {
-//		Optional<YJCustomer> optional = customerDao.findById(id);
-//		
-//		if(optional.isPresent()) {
-//			YJCustomer cus = optional.get();
-//			return cus;
-//		}
-//		
-//		return null;
-//	}
+	@ResponseBody
+	@GetMapping("/customer/id")
+	public YJCustomer findById(@RequestParam("id") Integer id) {
+		Optional<YJCustomer> optional = customerDao.findById(id);
+		
+		if(optional.isPresent()) {
+			YJCustomer cus = optional.get();
+			return cus;
+		}return null;	
+	}
 //	
 	@ResponseBody
 	@GetMapping("/customers")

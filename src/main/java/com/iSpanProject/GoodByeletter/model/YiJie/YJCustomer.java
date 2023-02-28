@@ -1,14 +1,23 @@
 package com.iSpanProject.GoodByeletter.model.YiJie;
 
-
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 //用來做映射
 @Entity
 @Table(name = "member")
@@ -19,20 +28,21 @@ public class YJCustomer {
 	@Column(name = "memberId")
 	private Integer id;
 	
-	@Column(name = "account")
+	@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
 	private String acc;
 
-	@Column(name = "password")
+	@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 	private String pass;
 	
-	@Column(name = "FK_Plevel")
-	private Integer level;
+	@ManyToOne(cascade= {CascadeType.PERSIST })
+	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
+	private YJLevel fk_level;
 	
 	@Column(name = "registerTime")
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	private Date rtime;
-	
-	public YJCustomer() {
-	}
 
 	public Integer getId() {
 		return id;
@@ -57,12 +67,12 @@ public class YJCustomer {
 		this.pass = pass;
 	}
 
-	public Integer getLevel() {
-		return level;
+	public YJLevel getLevel() {
+		return fk_level;
 	}
 
-	public void setLevel(Integer level) {
-		this.level = level;
+	public void setLevel(YJLevel YJlevel) {
+		fk_level = YJlevel;
 	}
 
 	public Date getRtime() {
@@ -72,13 +82,8 @@ public class YJCustomer {
 	public void setRtime(Date rtime) {
 		this.rtime = rtime;
 	}
-
-
-//	public YJCustomer(String acc, String pass, int level, LocalDateTime rtime) {
-//        this.acc = acc;
-//        this.pass = pass;
-//        this.level = level;
-//        this.rtime = rtime;
-//    }
+	
+	public YJCustomer() {
+	}
 
 }
