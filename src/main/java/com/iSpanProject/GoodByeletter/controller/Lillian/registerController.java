@@ -3,14 +3,16 @@ package com.iSpanProject.GoodByeletter.controller.Lillian;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.service.Lillian.RegisterService;
 
@@ -44,20 +46,49 @@ public class registerController {
 		newRegister.setAccount(account);
 		newRegister.setPassword(password);
 		
+		
 		registerService.insert(newRegister);
 		   Map<String, String> msg = new HashMap<String, String>();
 		   model.addAttribute("msg", msg);
 		   msg.put("success", "會員註冊成功!");
 		
-	
-			return "example/addMemberDetail";
-			
+			return "Lillian/addMemberDetail";		
 	}
 	
 	@GetMapping("/register1")
 	public String register1() {
+		//newRegister.getMemberId();
 		return "example/myregister";
-		
 	}
+	
+	@PostMapping("/register/login")
+    public String login(@ModelAttribute Register register, HttpSession session) {
+		Register existingRegister = registerService.findByAccAndPwd(register.getAccount(), register.getPassword());
+        if (existingRegister != null && existingRegister.getPassword().equals(existingRegister.getPassword())) {
+        	String acc=existingRegister.getAccount();
+        	String pwd=existingRegister.getPassword();
+
+        	session.setAttribute("acc",acc);
+        	session.setAttribute("pwd",pwd);
+        	
+        	
+            return "redirect:/";
+        } else {
+            return "redirect:/login";
+        }
+    }
+	
+	@GetMapping("/login1")
+	public String login1() {
+		//newRegister.getMemberId();
+		return "Lillian/login";
+	}
+	
+	@GetMapping("/myregister/logout")
+    public String logoutRegister(HttpSession session) {
+        session.removeAttribute("acc");
+        session.removeAttribute("pwd");
+        return "redirect:/";
+    }
 
 }

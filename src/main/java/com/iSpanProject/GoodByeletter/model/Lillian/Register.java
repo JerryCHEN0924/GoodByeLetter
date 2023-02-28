@@ -2,10 +2,8 @@ package com.iSpanProject.GoodByeletter.model.Lillian;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,16 +28,17 @@ public class Register {
 		@Column(name = "memberId")
 		private Integer memberId;
 		
-		@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
+		//@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
 		private String account;
 		
 		
-		@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
+	//	@Column(name = "password",columnDefinition = "f", nullable = false)
 		private String password;
 		
-		@ManyToOne(cascade= {CascadeType.PERSIST })
-		@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
-		private Level FK_Plevel;
+		@ManyToOne
+		@JoinColumn(name = "FK_Plevel")
+	    private Level FK_Plevel;
+		
 		
 		@Column(name = "registerTime")
 		@Temporal(TemporalType.TIMESTAMP)
@@ -95,20 +94,14 @@ public class Register {
 		}
 
 
-
-
 		public Level getFK_Plevel() {
 			return FK_Plevel;
 		}
 
 
-
-
 		public void setFK_Plevel(Level fK_Plevel) {
 			FK_Plevel = fK_Plevel;
 		}
-
-
 
 
 		public Date getRegisterTime() {
