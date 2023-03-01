@@ -2,17 +2,13 @@ package com.iSpanProject.GoodByeletter.model.Lillian;
 
 import java.util.Date;
 
-<<<<<<< HEAD
-import javax.persistence.Column;
-=======
-import javax.persistence.CascadeType;
->>>>>>> cfe05aa490c9edba01a31550bb2e785b03eb97a0
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,13 +29,8 @@ public class Register {
 		
 		//@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
 		private String account;
-		
-		
-<<<<<<< HEAD
-	//	@Column(name = "password",columnDefinition = "f", nullable = false)
-=======
+
 		//@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
->>>>>>> cfe05aa490c9edba01a31550bb2e785b03eb97a0
 		private String password;
 		
 		@ManyToOne
@@ -53,7 +44,12 @@ public class Register {
 		@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 		private Date registerTime;
 		
-		
+		@PrePersist
+		public void onCreate() {
+			if(registerTime == null) {
+				registerTime = new Date();
+			}
+		}
 		
 		
 		public Integer getMemberId() {

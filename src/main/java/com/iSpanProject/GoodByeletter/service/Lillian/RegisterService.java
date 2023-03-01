@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.iSpanProject.GoodByeletter.dao.Lillian.LevelDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
+import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
@@ -16,18 +18,19 @@ public class RegisterService {
 	@Autowired
 	private RegisterDao rDao;
 
+	@Autowired
+	private LevelDao lDao;
 
-//	@Autowired
-//	private LevelDao lDao;
 
 
 	public void insert(Register register) {
 		
-//	        // 查詢權限等級為 2 的 Level 對象
-//	        Level level = lDao.findByLevel(2);
-//	        
-//	        // 設置 Register 對象的權限等級為 2
-//	        register.setFK_Plevel(level);
+		// 查詢權限等級為 1 的 Level 對象
+		Optional<Level> optional = lDao.findById(1);
+		Level l1 = optional.get();
+		 // 設置 Register 對象的權限等級為 1
+		register.setFK_Plevel(l1);
+
 		rDao.save(register);
 
 	}

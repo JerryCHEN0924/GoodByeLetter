@@ -4,18 +4,24 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
-<head>  
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>  
 </head>
 
 <body>
 <%@ include file="../layout/mynav.jsp"%>
-
-        <!--login-->
-        <div class="container login_form_class" id="login_form">
-            <h1>登入</h1>
+${contextRoot}/register/login
+	
+        <!--login  login_form_class-->
+        <div class="container" id="login_form">
+            <h1>登入1</h1>
             <form id="login" action="${contextRoot}/register/login" method="post">
-                <input type="text" placeholder="您的帳號" name="loginAccount"><br>
-                <input type="text" placeholder="您的密碼" name="loginPassword"><br>
+                <input type="text" placeholder="您的帳號" name="account"><br>
+                <input type="text" placeholder="您的密碼" name="password"><br>
                 <button type="submit" id="login_submit">
                     <h6 id="login_h6">登入</h6>
                 </button>
@@ -29,10 +35,17 @@
 
         <!--nav close-->
 
-
+<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/jquery-3.6.3.min.js"></script>
     <script>
 
-
+    
         const nav = document.getElementById('nav');
         const nav_login = document.getElementById("nav_login");
         const login_form = document.getElementById("login_form");

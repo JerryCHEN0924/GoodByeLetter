@@ -36,6 +36,8 @@ public class MemberDetail {
 //	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
 
 	private String gender;
+	
+	
 	private Date birthday;
 
 	
@@ -117,6 +119,16 @@ public class MemberDetail {
 
 	public void setEmail(String email) {
 		Email = email;
+	}
+
+
+	public String getCounty() {
+		return County;
+	}
+
+
+	public void setCounty(String county) {
+		County = county;
 	}
 
 
