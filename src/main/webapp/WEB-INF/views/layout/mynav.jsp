@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-=======
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
->>>>>>> ac17756d18ef3a1e7058f119a9c98ade0bf2e08e
 <!DOCTYPE html>
 <html>
 <head>
