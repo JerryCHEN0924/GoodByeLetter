@@ -3,6 +3,7 @@ package com.iSpanProject.GoodByeletter.controller.YiJie;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iSpanProject.GoodByeletter.dao.YiJie.YJCustomerDetailDao;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
+import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetailRepository;
 
 public class YJCustomerDetailController {
 
-	
-	private YJCustomerDetailDao customerDetailDao;
+	@Autowired
+	private YJCustomerDetailRepository customerDetailDao;
 	
 	@GetMapping("/customerDetail")
 	public List<YJCustomerDetail> findAll(){

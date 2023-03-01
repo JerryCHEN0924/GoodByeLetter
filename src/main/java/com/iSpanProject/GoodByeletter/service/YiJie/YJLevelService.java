@@ -16,8 +16,8 @@ public class YJLevelService {
 	@Autowired
 	private YJLevelDao lDao;
 	
-	public void insert(YJLevel level) {
-		lDao.save(level);
+	public void insert(YJLevel lev) {
+		lDao.save(lev);
 	}
 //	
 //	public Register updateById(Integer id,String account,String password) {

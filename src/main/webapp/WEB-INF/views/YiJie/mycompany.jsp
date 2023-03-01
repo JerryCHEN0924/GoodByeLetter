@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextRoot" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>會員註冊</title>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
 <link rel="stylesheet" href="assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
@@ -22,21 +22,21 @@
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
 <style>
-
 </style>
 
 </head>
 
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
-<article id="" class="wrapper style2">
+
+  <article id="" class="wrapper style2">
             <div class="container-fluid " id="register">
                 <div id="space"></div>
 
 
                 <div class="container" id="form_container">
                     <div id="registerTitle">註冊會員</div>
-                    <form id="register_form">
+                    <form id="register_form" action="${ contextRoot }/customer/register" method="post">
                  
 
 	<!-- regis -->
@@ -62,8 +62,7 @@
                                 <div class="form-check form-check-inline ">
                                     <input type="radio" class="form-check-input" name="gender" id="nonbinaryRadio"
                                         value="nonbinary">
-                                    <label class="form-check-label" for="nonbinaryRadio">
-                                        中性 </label>
+                                    <label class="form-check-label" for="nonbinaryRadio">中性 </label>
                                 </div>
                                 <div class="form-check form-check-inline ">
                                     <input type="radio" class="form-check-input" name="gender" id="secretRadio"
@@ -116,6 +115,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="address" name="address" placeholder="完整地址" >
                             </div>
+                            
                         </div>
                         <button type="submit">註冊會員</button><br>
 
@@ -125,7 +125,6 @@
                 </div>
             </div>
         </article>
-
 
 
 
@@ -146,5 +145,4 @@
 	</script>
 
 </body>
-
 </html>

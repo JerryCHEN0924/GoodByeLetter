@@ -49,11 +49,13 @@ public class YJCustomerDetail {
 	public void setFK_memberId(YJCustomer fK_memberId) {
 		this.FK_memberId = fK_memberId;
 	}
-	public YJLevel getFK_Plevel() {
+	
+	public YJLevel getPlevel() {
 		return plevel;
 	}
-	public void setFK_Plevel(YJLevel plevel) {
-		this.plevel = plevel;
+	public void setPlevel(YJLevel plev) {
+		//this.plevel = plevel;
+		plevel = plev;
 	}
 	public String getName() {
 		return name;

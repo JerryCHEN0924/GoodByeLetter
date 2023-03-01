@@ -57,6 +57,11 @@ public class YJCustomerController {
 		customerDao.save(customer);
 		return "成功";
 	}
+	//登入
+	@PostMapping("customer/login")
+	public String login() {
+		
+	}
 //	
 	@ResponseBody
 	@GetMapping("/customer/id")
