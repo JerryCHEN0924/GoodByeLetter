@@ -1,25 +1,15 @@
 package com.iSpanProject.GoodByeletter.controller.Tina;
 
 
-import java.util.List;
-
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.dao.Tina.BoardDao;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
@@ -64,10 +54,27 @@ public class BoardController {
 		return "Tina/addBoard";
 	}
 	
-//	@GetMapping("board/page")1
-//	public String showBoardByPage(@RequestParam(name="p")) {
-//		Page<Board> page = boardService.findByPage(pageNum);
-//	}
+	@GetMapping("board/page")
+	public String showBoardByPage(@RequestParam(name="p",defaultValue = "1")Integer pageNum, Model model) {
+		Page<Board> page = boardService.findByPage(pageNum);
+		model.addAttribute("page",page);
+		return "Tina/showPageBoard";
+		
+	}
+	
+	@GetMapping("board/edit")
+	public String editById(@RequestParam("boardId") Integer boardId, Model model) {
+		Board board = boardService.findById(boardId);
+		model.addAttribute("board",board);
+		return "Tina/editBoard";
+		
+	}
+//	@PostMapping("board/editpost")
+//	public String postEdit(@ModelAttribute Board board) {
+//		boardService.updateBoardById(board);
+//		return "redirect:/board/page";
+//	}++
+	
 
 	
 	

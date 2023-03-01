@@ -6,13 +6,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,14 +35,14 @@ public class Register {
 		
 		//@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
 		private String account;
-		
-		
+
 		//@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 		private String password;
 		
-		@ManyToOne(cascade= {CascadeType.PERSIST })
-		@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
-		private Level FK_Plevel;
+		@ManyToOne
+		@JoinColumn(name = "FK_Plevel")
+	    private Level FK_Plevel;
+		
 		
 		//@Column(name = "registerTime")
 		@Temporal(TemporalType.TIMESTAMP)
@@ -54,6 +54,12 @@ public class Register {
 		@OneToMany(cascade = CascadeType.ALL,mappedBy = "FK_memberId", orphanRemoval = true)
 		private List<LastNote> lastnote = new ArrayList<>();
 		
+		@PrePersist
+		public void onCreate() {
+			if(registerTime == null) {
+				registerTime = new Date();
+			}
+		}
 		
 		
 		public Integer getMemberId() {
@@ -96,20 +102,14 @@ public class Register {
 		}
 
 
-
-
 		public Level getFK_Plevel() {
 			return FK_Plevel;
 		}
 
 
-
-
 		public void setFK_Plevel(Level fK_Plevel) {
 			FK_Plevel = fK_Plevel;
 		}
-
-
 
 
 		public Date getRegisterTime() {

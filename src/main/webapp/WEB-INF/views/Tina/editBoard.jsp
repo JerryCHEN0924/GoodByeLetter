@@ -23,7 +23,7 @@
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
 	<div class="container">
-		<h1>新增留言板頁面</h1>
+		<h1>修改留言板頁面</h1>
 
 
 		<div class="card">

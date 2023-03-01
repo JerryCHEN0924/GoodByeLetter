@@ -49,26 +49,26 @@
 
 
 /*************** login_form *********************/
-.login_form_class {
-    display: none;
-    position: fixed;
-    background-color: rgb(236, 178, 31, 0.8);
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 40% !important;
-    height: 60% !important;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 20px;
-}
+/* .login_form_class { */
+/*     display: flex; */
+/*     position: fixed; */
+/*     background-color: rgb(236, 178, 31, 0.8); */
+/*     top: 0; */
+/*     left: 0; */
+/*     bottom: 0; */
+/*     right: 0; */
+/*     width: 40% !important; */
+/*     height: 60% !important; */
+/*     margin: auto; */
+/*     justify-content: center; */
+/*     align-items: center; */
+/*     flex-direction: column; */
+/*     font-size: 20px; */
+/* } */
 
-.login_show {
-    display: flex;
-}
+/* .login_show { */
+/*     display: flex; */
+/* } */
 
 #login_submit {
     /* display: flex;
