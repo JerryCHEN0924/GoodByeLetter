@@ -1,9 +1,10 @@
 package com.iSpanProject.GoodByeletter.service.YiJie;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.iSpanProject.GoodByeletter.dao.YiJie.YJLevelDao;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJLevel;

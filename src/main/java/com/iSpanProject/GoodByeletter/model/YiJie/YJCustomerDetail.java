@@ -34,6 +34,8 @@ public class YJCustomerDetail {
 	private Date birthday;
 	private String Email;
 	private String address;
+	private String picPath;
+	private String picValue;
 	
 	public Integer getId() {
 		return id;
@@ -45,7 +47,7 @@ public class YJCustomerDetail {
 		return FK_memberId;
 	}
 	public void setFK_memberId(YJCustomer fK_memberId) {
-		FK_memberId = fK_memberId;
+		this.FK_memberId = fK_memberId;
 	}
 	public YJLevel getFK_Plevel() {
 		return plevel;
@@ -84,6 +86,18 @@ public class YJCustomerDetail {
 		this.address = address;
 	}
 	
+	public String getPicPath() {
+		return picPath;
+	}
+	public void setPicPath(String picPath) {
+		this.picPath = picPath;
+	}
+	public String getPicValue() {
+		return picValue;
+	}
+	public void setPicValue(String picValue) {
+		this.picValue = picValue;
+	}
 	public YJCustomerDetail() {
 		
 	}

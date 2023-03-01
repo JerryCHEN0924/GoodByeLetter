@@ -37,25 +37,25 @@ public class YJCustomerController {
 						   @RequestParam("level") YJLevel level,
 						   String verificationCode) { 
 		
-		// 解析請求中的帳號、密碼和驗證訊息
-        String acc = customer.getAcc();
-        //String pass = customer.getPass();
-        
-        YJCustomer existingCustomer = customerDao.findCustomerByAcc(acc);
-		if( existingCustomer != null ) {
-			return "已經有此帳號了!";
-		}
-		// 驗證訊息為 "123" 時，帳號等級提升至 level=2
-        if ("123".equals(verificationCode)) {
-        	
-        	YJLevel lev1 = new YJLevel();
-        	lev1.setPlevel(2);
-        	customer.setLevel(lev1);
-        	
-            //customer.setLevel(2);
-        }
+//		// 解析請求中的帳號、密碼和驗證訊息
+//        String acc = customer.getAcc();
+//        //String pass = customer.getPass();
+//        
+//        YJCustomer existingCustomer = customerDao.findCustomerByAcc(acc);
+//		if( existingCustomer != null ) {
+//			return "已經有此帳號了!";
+//		}
+//		// 驗證訊息為 "123" 時，帳號等級提升至 level=2
+//        if ("123".equals(verificationCode)) {
+//        	
+//        	YJLevel lev1 = new YJLevel();
+//        	lev1.setPlevel(2);
+//        	customer.setLevel(lev1);	
+//            //customer.setLevel(2);
+//        	
+//        }
 		customerDao.save(customer);
-		return "成功";//customer.toString();
+		return "成功";
 	}
 //	
 	@ResponseBody
