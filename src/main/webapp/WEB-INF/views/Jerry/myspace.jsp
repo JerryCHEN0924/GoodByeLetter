@@ -37,6 +37,7 @@
 </head>
 
 <body>
+<%-- 	<%@ include file="../layout/mynav.jsp"%> --%>
 	<%@ include file="../layout/mynav.jsp"%>
 	<!-- myspace -->
         <article id="myspace" class="wrapper style2">

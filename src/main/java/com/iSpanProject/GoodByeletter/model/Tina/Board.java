@@ -29,7 +29,7 @@ public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name="id")
-	private Integer boradId;
+	private Integer boardId;
 	
 	//@Column(name="title")
 	private String title;
@@ -79,10 +79,12 @@ public class Board {
 		super();
 	}
 
-	public Board(Integer boradId, String title, String boardMessage, Date createTime, Date updateTime,
+	
+
+	public Board(Integer boardId, String title, String boardMessage, Date createTime, Date updateTime,
 			Register01 fK_memberId, Set<Commet> comments) {
 		super();
-		this.boradId = boradId;
+		this.boardId = boardId;
 		this.title = title;
 		this.boardMessage = boardMessage;
 		this.createTime = createTime;
@@ -91,12 +93,14 @@ public class Board {
 		this.comments = comments;
 	}
 
-	public Integer getBoradId() {
-		return boradId;
+	
+	
+	public Integer getBoardId() {
+		return boardId;
 	}
 
-	public void setBoradId(Integer boradId) {
-		this.boradId = boradId;
+	public void setBoardId(Integer boardId) {
+		this.boardId = boardId;
 	}
 
 	public String getTitle() {

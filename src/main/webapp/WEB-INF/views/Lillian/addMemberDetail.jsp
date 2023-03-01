@@ -28,7 +28,8 @@
 </head>
 
 <body>
-	<%@ include file="../layout/mynav.jsp"%>
+<%-- 	<%@ include file="../layout/mynav.jsp"%> --%>
+<%@ inclued file="../layout/mynav.jsp" %>
 <article id="" class="wrapper style2">
             <div class="container-fluid " id="register">
                 <div id="space"></div>

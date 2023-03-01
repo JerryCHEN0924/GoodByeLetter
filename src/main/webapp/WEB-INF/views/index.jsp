@@ -27,7 +27,7 @@
 </head>
 
 <body>
-	<%@ include file="layout/mynav.jsp"%>
+<%-- 	<%@ include file="Tina/layout/mynav.jsp"%> --%>
 
 
 	<div id="outline">

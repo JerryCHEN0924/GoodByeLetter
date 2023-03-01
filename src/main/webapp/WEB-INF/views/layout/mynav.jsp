@@ -93,7 +93,7 @@
                             </ul>
                         </li>
                          <li class="nav-item ">
-                            <a class="nav-link narbar_text_color" href="${contextRoot}/board/add">留言板</a>
+                            <a class="nav-link narbar_text_color" href="${contextRoot}/board/page">留言板</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link narbar_text_color" href='<c:url value="/LastNote" />' tabindex="-1"

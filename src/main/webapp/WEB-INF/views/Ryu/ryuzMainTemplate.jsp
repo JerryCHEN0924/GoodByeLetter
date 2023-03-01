@@ -16,7 +16,7 @@
 <title>新增會員 Page</title>
 </head>
 <body>
-<jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
+<%-- <jsp:include page="../layout/backendNavbar.jsp"></jsp:include> --%>
 
 <div class="container w-75">
 <h1>新增會員 Page</h1>
