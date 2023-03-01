@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +93,7 @@
                             </ul>
                         </li>
                          <li class="nav-item ">
-                            <a class="nav-link narbar_text_color" href="#">聊天室</a>
+                            <a class="nav-link narbar_text_color" href="${contextRoot}/board/add">留言板</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link narbar_text_color" href='<c:url value="/LastNote" />' tabindex="-1"
