@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+=======
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
+>>>>>>> ac17756d18ef3a1e7058f119a9c98ade0bf2e08e
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,6 +72,7 @@ a {
 						href="#">Features</a></li>
 
 
+<<<<<<< HEAD
 					<li class="nav-item dropdown "><a
 						class="nav-link dropdown-toggle narbar_text_color" href="#"
 						id="navbarDropdownMenuLink" role="button"
@@ -115,6 +122,90 @@ a {
 			</div>
 		</div>
 	</nav>
+=======
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle narbar_text_color" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                合作夥伴
+                            </a>
+                            <ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
+                                id="dropdown-menu_company">
+                                <li><a class="dropdown-item narbar_text_color" href="mycompany.html">諮商所</a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="#">律師事務所</a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="#">生命禮儀</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle narbar_text_color" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                登入
+                            </a>
+                            <ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
+                                id="dropdown-menu_login">
+
+                                <li><a class="dropdown-item narbar_text_color" href="login1"> 登入 </a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="register1"> 註冊 </a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="mySpace"> 個人空間 </a></li>
+
+                            </ul>
+                        </li>
+                         <li class="nav-item ">
+                            <a class="nav-link narbar_text_color" href="${contextRoot}/board/page">留言板</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link narbar_text_color" href='<c:url value="/LastNote" />' tabindex="-1"
+                                aria-disabled="false">GoodBye Letter</a>
+                        </li>
+                        
+                        <li class="nav-item ">
+                            <a class="nav-link disabled narbar_text_color" href="#" tabindex="-1"
+                                aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      
+      
+
+        <!--login-->
+<!--         <div class="container login_form_class" id="login_form"> -->
+<!--             <h1>登入</h1> -->
+<!--             <form> -->
+<!--                 <input type="text" placeholder="您的帳號"><br> -->
+<!--                 <input type="text" placeholder="您的密碼"><br> -->
+<!--                 <button type="submit" id="login_submit"> -->
+<!--                     <h6 id="login_h6">登入</h6> -->
+<!--                 </button> -->
+<!--             </form> -->
+<!--             <button type="submit" id="login_submit"> -->
+<!--                 <h6 id="login_cencel">sorry 我沒有要登入</h6> -->
+<!--             </button> -->
+<!--             <a href="">忘記密碼</a> -->
+<!--             <a href="">還沒有帳號，我要申請</a> -->
+<!--         </div> -->
+
+<!--         nav close -->
+
+
+    <script>
+
+
+//         const nav = document.getElementById('nav');
+//         const nav_login = document.getElementById("nav_login");
+//         const login_form = document.getElementById("login_form");
+//         const login_cencel = document.getElementById('login_cencel');
+//         // 按下Navbar登入 顯示login_form
+//         nav_login.addEventListener('click', function () {
+//             login_form.classList.add('login_show');
+//             console.log('顯示login_form')
+//         })
+//         // 關閉login_form
+//         login_cencel.addEventListener('click', function () {
+//             login_form.classList.remove('login_show');
+//             console.log('移除login_form');
+//         })
+>>>>>>> ac17756d18ef3a1e7058f119a9c98ade0bf2e08e
 
 
 

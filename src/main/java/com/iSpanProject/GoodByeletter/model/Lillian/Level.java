@@ -11,13 +11,12 @@ import javax.persistence.Table;
 public class Level {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Integer Plevel;
 
 	//@Column(name = "levelName", columnDefinition = "[nvarchar](20)", nullable = true)
 	private String levelName;
 
-	
 	public Integer getPlevel() {
 		return Plevel;
 	}
@@ -41,5 +40,5 @@ public class Level {
 	public Level() {
 	}
 
-	
+
 }

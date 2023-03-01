@@ -1,19 +1,19 @@
 package com.iSpanProject.GoodByeletter.model.Tina;
 
-import java.sql.Clob;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,18 +22,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity(name ="ParentBoard")
+@Entity
 @Table(name = "parentBoard")
 public class Board {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name="id")
-	private Integer boradId;
+	private Integer boardId;
 	
+	//@Column(name="title")
+	private String title;
 	
 	//@Column(name="boradMessage")
-	private Clob boardMessage;
+	private String boardMessage;
 	
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -53,99 +55,102 @@ public class Board {
 	//連到Register的memberId
 	@ManyToOne
 	@JoinColumn(name ="FK_memberId" )
-	private Register01 register01;
+	private Register01 FK_memberId;
 	
 	//連到ChildCommet
-	@OneToMany(mappedBy = "parentBoard", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "FK_parentId", cascade = CascadeType.ALL)
 	Set<Commet> comments = new HashSet<>();
+
+	//增加創建時間
+	@PrePersist
+	public void onCreate() {
+		if(createTime == null) {
+			createTime = new Date();
+		}
+	}
 	
+	//增加更新時間
+	@PreUpdate
+	public void onUpdate() {
+		updateTime = new Date();
+	}
 	
 	public Board() {
 		super();
 	}
 
-
 	
 
-
-	public Board(Integer boradId, Clob boardMessage, Date createTime, Date updateTime, Register01 register01,
-			Set<Commet> comments) {
+	public Board(Integer boardId, String title, String boardMessage, Date createTime, Date updateTime,
+			Register01 fK_memberId, Set<Commet> comments) {
 		super();
-		this.boradId = boradId;
+		this.boardId = boardId;
+		this.title = title;
 		this.boardMessage = boardMessage;
 		this.createTime = createTime;
 		this.updateTime = updateTime;
-		this.register01 = register01;
+		FK_memberId = fK_memberId;
 		this.comments = comments;
 	}
 
-
-
-
-
-	public Integer getBoradId() {
-		return boradId;
+	
+	
+	public Integer getBoardId() {
+		return boardId;
 	}
 
-
-	public void setBoradId(Integer boradId) {
-		this.boradId = boradId;
+	public void setBoardId(Integer boardId) {
+		this.boardId = boardId;
 	}
 
+	public String getTitle() {
+		return title;
+	}
 
-	public Clob getBoardMessage() {
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getBoardMessage() {
 		return boardMessage;
 	}
 
-
-	public void setBoardMessage(Clob boardMessage) {
+	public void setBoardMessage(String boardMessage) {
 		this.boardMessage = boardMessage;
 	}
-
 
 	public Date getCreateTime() {
 		return createTime;
 	}
 
-
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-
 
 	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 
-
-	
-
-	public Register01 getRegister01() {
-		return register01;
+	public Register01 getFK_memberId() {
+		return FK_memberId;
 	}
 
-
-	public void setRegister01(Register01 register01) {
-		this.register01 = register01;
+	public void setFK_memberId(Register01 fK_memberId) {
+		FK_memberId = fK_memberId;
 	}
-
 
 	public Set<Commet> getComments() {
 		return comments;
 	}
 
-
 	public void setComments(Set<Commet> comments) {
 		this.comments = comments;
 	}
-
-
-
-
-
+	
+	
+	
 }
