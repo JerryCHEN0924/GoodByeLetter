@@ -56,9 +56,7 @@
                             </div>
                         </div>
                     
-                    <div>
-                    <p style="color:red">${msg.success}</p>
-                    </div>
+                   
                     
 
 <!--                         <div class="mb-3 row"> -->

@@ -35,17 +35,18 @@ public class MemberDetailController {
 		newMemberDetail.setCounty(county);
 		newMemberDetail.setAddress(address);
 		
+		
 		memberDetailService.insert(newMemberDetail);
 		   Map<String, String> msg = new HashMap<String, String>();
 		   model.addAttribute("msg", msg);
 		   msg.put("success", "會員註冊成功!");
 		
 	
-			return "example/addMemberDetail";		
+			return "Lillian/addMemberDetail";		
 	}
 	
 	@GetMapping("register/memberDetail")
 	public String MemberDetailDaoPage() {		
-		return "example/addMemberDetail";
+		return "Lillian/addMemberDetail";
 	}
 }

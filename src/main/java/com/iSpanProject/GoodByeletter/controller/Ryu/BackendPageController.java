@@ -24,6 +24,13 @@ public class BackendPageController {
 	}
 	
 	
+	@GetMapping("/topGun/member/add")
+	public String addMember() {
+		
+		return "/Ryu/ryuzAddMember";
+		
+	}
+	
 	
 	
 	
