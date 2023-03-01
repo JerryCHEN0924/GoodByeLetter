@@ -87,9 +87,11 @@
                             </a>
                             <ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
                                 id="dropdown-menu_login">
-                                <li><a class="dropdown-item narbar_text_color" id="nav_login"> 登入 </a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="myregister.html"> 註冊 </a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="mySpace.html"> 個人空間 </a></li>
+
+                                <li><a class="dropdown-item narbar_text_color" href="login1"> 登入 </a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="register1"> 註冊 </a></li>
+                                <li><a class="dropdown-item narbar_text_color" href="mySpace"> 個人空間 </a></li>
+
                             </ul>
                         </li>
                          <li class="nav-item ">
@@ -112,42 +114,42 @@
       
 
         <!--login-->
-        <div class="container login_form_class" id="login_form">
-            <h1>登入</h1>
-            <form>
-                <input type="text" placeholder="您的帳號"><br>
-                <input type="text" placeholder="您的密碼"><br>
-                <button type="submit" id="login_submit">
-                    <h6 id="login_h6">登入</h6>
-                </button>
-            </form>
-            <button type="submit" id="login_submit">
-                <h6 id="login_cencel">sorry 我沒有要登入</h6>
-            </button>
-            <a href="">忘記密碼</a>
-            <a href="">還沒有帳號，我要申請</a>
-        </div>
+<!--         <div class="container login_form_class" id="login_form"> -->
+<!--             <h1>登入</h1> -->
+<!--             <form> -->
+<!--                 <input type="text" placeholder="您的帳號"><br> -->
+<!--                 <input type="text" placeholder="您的密碼"><br> -->
+<!--                 <button type="submit" id="login_submit"> -->
+<!--                     <h6 id="login_h6">登入</h6> -->
+<!--                 </button> -->
+<!--             </form> -->
+<!--             <button type="submit" id="login_submit"> -->
+<!--                 <h6 id="login_cencel">sorry 我沒有要登入</h6> -->
+<!--             </button> -->
+<!--             <a href="">忘記密碼</a> -->
+<!--             <a href="">還沒有帳號，我要申請</a> -->
+<!--         </div> -->
 
-        <!--nav close-->
+<!--         nav close -->
 
 
     <script>
 
 
-        const nav = document.getElementById('nav');
-        const nav_login = document.getElementById("nav_login");
-        const login_form = document.getElementById("login_form");
-        const login_cencel = document.getElementById('login_cencel');
-        // 按下Navbar登入 顯示login_form
-        nav_login.addEventListener('click', function () {
-            login_form.classList.add('login_show');
-            console.log('顯示login_form')
-        })
-        // 關閉login_form
-        login_cencel.addEventListener('click', function () {
-            login_form.classList.remove('login_show');
-            console.log('移除login_form');
-        })
+//         const nav = document.getElementById('nav');
+//         const nav_login = document.getElementById("nav_login");
+//         const login_form = document.getElementById("login_form");
+//         const login_cencel = document.getElementById('login_cencel');
+//         // 按下Navbar登入 顯示login_form
+//         nav_login.addEventListener('click', function () {
+//             login_form.classList.add('login_show');
+//             console.log('顯示login_form')
+//         })
+//         // 關閉login_form
+//         login_cencel.addEventListener('click', function () {
+//             login_form.classList.remove('login_show');
+//             console.log('移除login_form');
+//         })
 
 
 
