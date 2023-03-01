@@ -1,9 +1,7 @@
 package com.iSpanProject.GoodByeletter.model.Tina;
 
-import java.sql.Clob;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +15,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-@Entity(name ="ChildCommet")
-@Table(name="childCommet")
+@Entity
+@Table(name="childComment")
 public class Commet {
 	
 	@Id
@@ -27,7 +25,7 @@ public class Commet {
 	private Integer commetId;
 	
 	//@Column(name="reply")
-	private Clob reply;
+	private String reply;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
@@ -45,31 +43,27 @@ public class Commet {
 	//連到ParentBoard的id
 	@ManyToOne
 	@JoinColumn(name = "FK_parentId" )
-	private Board parentBoard; 
+	private Board FK_parentId; 
 	
 	//連到Register的id
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId" )
-	private Register01 register01;
+	private Register01 FK_memberId;
 
 	public Commet() {
 		super();
 	}
 
-	
-
-	public Commet(Integer commetId, Clob reply, Date createTime, Date updateTime, Board parentBoard,
-			Register01 register01) {
+	public Commet(Integer commetId, String reply, Date createTime, Date updateTime, Board fK_parentId,
+			Register01 fK_memberId) {
 		super();
 		this.commetId = commetId;
 		this.reply = reply;
 		this.createTime = createTime;
 		this.updateTime = updateTime;
-		this.parentBoard = parentBoard;
-		this.register01 = register01;
+		FK_parentId = fK_parentId;
+		FK_memberId = fK_memberId;
 	}
-
-
 
 	public Integer getCommetId() {
 		return commetId;
@@ -79,11 +73,11 @@ public class Commet {
 		this.commetId = commetId;
 	}
 
-	public Clob getReply() {
+	public String getReply() {
 		return reply;
 	}
 
-	public void setReply(Clob reply) {
+	public void setReply(String reply) {
 		this.reply = reply;
 	}
 
@@ -103,24 +97,21 @@ public class Commet {
 		this.updateTime = updateTime;
 	}
 
-	public Board getParentBoard() {
-		return parentBoard;
+	public Board getFK_parentId() {
+		return FK_parentId;
 	}
 
-	public void setParentBoard(Board parentBoard) {
-		this.parentBoard = parentBoard;
+	public void setFK_parentId(Board fK_parentId) {
+		FK_parentId = fK_parentId;
 	}
 
-	public Register01 getRegister01() {
-		return register01;
+	public Register01 getFK_memberId() {
+		return FK_memberId;
 	}
 
-	public void setRegister01(Register01 register01) {
-		this.register01 = register01;
+	public void setFK_memberId(Register01 fK_memberId) {
+		FK_memberId = fK_memberId;
 	}
 
 	
-	
-	
-
 }

@@ -12,11 +12,11 @@ public class PageControllerByRyu {
 	}
 	@GetMapping("/mynav")
 	public String myNav() {
-		return "mynav";
+		return "/mynav";
 	}
 	@GetMapping("/myregister")
 	public String myregister() {
-		return "myregister";
+		return "example/myregister";
 	}
 	@GetMapping("/mycompany")
 	public String mycompany() {
