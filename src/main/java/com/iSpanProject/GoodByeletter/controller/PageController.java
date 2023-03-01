@@ -11,28 +11,24 @@ public class PageController {
 		return "index";
 	}
 
-	@GetMapping("/mynav")
+	@GetMapping("/newwebsite")
 	public String myNav() {
-		return "mynav";
+		return "example/newwebsite";
 	}
 
 	@GetMapping("/myregister")
 	public String myregister() {
-		return "myregister";
+		return "example/myregister";
 	}
 
 	@GetMapping("/mycompany")
 	public String mycompany() {
-		return "mycompany";
+		return "example/mycompany";
 	}
 
 	@GetMapping("/myspace")
 	public String myspace() {
-		return "myspace";
+		return "example/myspace";
 	}
 	
-	@GetMapping("/LastNote")
-	public String lastNote() {
-		return "Jerry/LastNote";
-	}
 }

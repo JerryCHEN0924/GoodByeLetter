@@ -10,19 +10,34 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.iSpanProject.GoodByeletter.dao.Jerry.LastNoteDao;
+import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
 public class LastnoteService {
 
 	@Autowired
 	private LastNoteDao lDao;
+	@Autowired
+	private RegisterDao registerDao;
 
+	@Transactional
+	public void SaveLastNote(LastNote lastNote) {
+		//外鍵的會員ID欄位待補
+		Optional<Register> member = registerDao.findById(2);
+		Register m1 = member.get();
+		lastNote.setFK_memberId(m1);
+		lDao.save(lastNote);
+	}
+	
 	@Transactional
 	public void insert(LastNote lastNote) {
 		lDao.save(lastNote);
+		
 	}
 
 	@Transactional
