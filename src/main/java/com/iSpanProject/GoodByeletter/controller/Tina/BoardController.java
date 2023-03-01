@@ -64,7 +64,7 @@ public class BoardController {
 		return "Tina/addBoard";
 	}
 	
-//	@GetMapping("board/page")
+//	@GetMapping("board/page")1
 //	public String showBoardByPage(@RequestParam(name="p")) {
 //		Page<Board> page = boardService.findByPage(pageNum);
 //	}
