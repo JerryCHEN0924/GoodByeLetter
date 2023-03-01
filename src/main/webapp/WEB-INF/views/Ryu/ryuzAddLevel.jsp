@@ -13,13 +13,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新增會員 Page</title>
+<title>新增等級 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
-
-
-
 
 <div class="container w-75 text-center">
 
@@ -31,7 +28,7 @@
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
-<h1>新增會員 Page</h1>
+<h1>新增等級 Page</h1>
 
 </div>
 
@@ -50,43 +47,37 @@
 
 
 <div class="card">
+
   <div class="card-header">
-    新增訊息
+    新增等級資料
   </div>
+  
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/memberByRyu/post" modelAttribute="memberByRyu" method='POST'>
+	<form:form action="${contextRoot}/topGun/levelByRyu/post" modelAttribute="levelByRyu" method='POST'>
   		
   		
   		
-  		 <div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+  		<div class="mb-3 row">
+		    <label for="inputLevelName" class="col-sm-2 col-form-label">LevelName</label>
 		    <div class="col-sm-10">
-		    	<form:input path="account" class="form-control" id="inputAccount" />
+		    	<form:input path="levelName" class="form-control" id="inputLevelName" />
 		    </div>
 		  </div>
-		  
-		  
-		  
-  		 <div class="mb-3 row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-		    <div class="col-sm-10">
-		    	<form:input path="password" class="form-control" id="inputPassword" />
-		    </div>
-		  </div>
+  		
+  		
+  		
   		
   		<div class="mt-3">
-  		
 	  		<button type="submit" class="btn btn-primary">送出</button>
-	  		
   		</div>
-  		
   		
   	</form:form>
   	
   	
-  	
   </div>
+  
+  
 </div>
 
 
@@ -95,8 +86,6 @@
 
 </div>
 </div>
-
-
 
 
 
