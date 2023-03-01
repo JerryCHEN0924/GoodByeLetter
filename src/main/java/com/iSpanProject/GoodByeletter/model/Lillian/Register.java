@@ -1,6 +1,8 @@
 package com.iSpanProject.GoodByeletter.model.Lillian;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,6 +20,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 
 @Entity
 @Table(name="member")
@@ -45,6 +50,9 @@ public class Register {
 		@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 		private Date registerTime;
 		
+		@JsonManagedReference
+		@OneToMany(cascade = CascadeType.ALL,mappedBy = "FK_memberId", orphanRemoval = true)
+		private List<LastNote> lastnote = new ArrayList<>();
 		
 		
 		
@@ -113,6 +121,20 @@ public class Register {
 
 		public void setRegisterTime(Date registerTime) {
 			this.registerTime = registerTime;
+		}
+
+
+
+
+		public List<LastNote> getLastnote() {
+			return lastnote;
+		}
+
+
+
+
+		public void setLastnote(List<LastNote> lastnote) {
+			this.lastnote = lastnote;
 		}
 
 
