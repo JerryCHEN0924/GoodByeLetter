@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>editBoard</title>
+<title>ajaxBoard</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -22,38 +22,29 @@
 </head>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
-	
-	<article id="myspace" class="wrapper style2" style="height:100vh">
 	<div class="container">
-		<h1>修改留言板頁面</h1>
+		<h1>Ajax留言板頁面</h1>
 
-
-		<div class="card">
-			<form:form action="${contextRoot}/board/editpost"  method="put"
-				modelAttribute="newboard"><%--透過model newboard把資料傳給controller --%>
-				
-				<%--需要把boardId, createTime 加到model newboard裡 --%>
-				<form:input path="boardId" type="hidden"/>
-				<form:input path="createTime" type="hidden"/>
-				
-				<h5 class="card-header">
-					<form:input path="title" class="form-control" placeholder="新增留言板" />
-				</h5>
-				<div class="card-body">
-					<div class="input-group">
-						<form:textarea path="boardMessage" class="form-control" />
-					</div>
-					<br>
-					<button type="submit" class="btn btn-info">送出</button>
-				</div>
-			</form:form>
-		</div>
-		
+	<form id="ajaxForm" action="#">
+		<input id="ajaxTitle"/>
+		<input id="ajaxMessage"/>
+		<button id="submitBtn">送出</button>
+	</form>
 	
+	<div>
+	<table>
+	<thead>
+		<tr>
+			<th>留言板Title</th>
+			<th>留言板Message</th>
+		</tr>
+	</thead>
+	
+	</table>
 	</div>
-	</article>
-		
 
+		
+	</div>
 
 
 

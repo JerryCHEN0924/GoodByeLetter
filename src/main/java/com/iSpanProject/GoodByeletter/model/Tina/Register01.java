@@ -53,14 +53,14 @@ public class Register01 {
 		
 		//連到Commet
 		@OneToMany(mappedBy = "FK_memberId", cascade = CascadeType.ALL)
-		Set<Commet> comments = new HashSet<>();
+		Set<Comment> comments = new HashSet<>();
 
 		public Register01() {
 			super();
 		}
 
 		public Register01(Integer memberId, String account, String password, Date registerTime, Set<Board> boards,
-				Set<Commet> comments) {
+				Set<Comment> comments) {
 			super();
 			this.memberId = memberId;
 			this.account = account;
@@ -110,11 +110,11 @@ public class Register01 {
 			this.boards = boards;
 		}
 
-		public Set<Commet> getComments() {
+		public Set<Comment> getComments() {
 			return comments;
 		}
 
-		public void setComments(Set<Commet> comments) {
+		public void setComments(Set<Comment> comments) {
 			this.comments = comments;
 		}
 

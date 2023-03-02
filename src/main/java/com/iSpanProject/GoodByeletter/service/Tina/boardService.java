@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.service.Tina;
 
 import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -33,9 +34,9 @@ public class boardService {
 	//addBoard
 	@Transient
 	public Board addBoard(Board board) {
-		Optional<Register01> optional = register01Dao.findById(1);
-		Register01 r01 = optional.get();
-		board.setFK_memberId(r01);
+//		Optional<Register01> optional = register01Dao.findById(2);
+//		Register01 r01 = optional.get();
+//		board.setFK_memberId(r01);
 		return boardDao.save(board);
 	}
 	
@@ -83,15 +84,12 @@ public class boardService {
 	}
 	
 	//updateBoardById
-	@Transient
-	public Board updateBoardById(Board board) {
-		
-		board.setTitle(null);
-		board.setBoardMessage(null);
-		board.setBoardId(null);
-		return boardDao.updateBoardById(null, null, null);
-		
-	}
+//	@Transient
+//	public Board updateBoardById(Board board) {
+//		Optional<Register01> register01 = Register01Dao.findById(null); 
+//		
+//		
+//	}
 	
 	
 	//updateBoardById

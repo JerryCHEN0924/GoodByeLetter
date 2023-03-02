@@ -1,10 +1,9 @@
 package com.iSpanProject.GoodByeletter.controller.YiJie;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+//import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,60 +14,86 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomer;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerRepository;
-import com.iSpanProject.GoodByeletter.model.YiJie.YJLevel;
+//import com.iSpanProject.GoodByeletter.model.YiJie.YJLevel;
+import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerService;
 
 @Controller
 public class YJCustomerController {
 	
 	@Autowired
-	private YJCustomerRepository customerDao;	
+	private YJCustomerRepository customerDao;
+	@Autowired
+	private YJCustomerService customerService;
+	
+	private static final String Code = "123";//預設驗證碼
 	
 	//註冊
-	@ResponseBody //等外面傳入json，接住反序列化成java物件
-	@PostMapping("/customer/register")
-	public String register(@RequestBody YJCustomer customer,
-						   //@RequestBody YJLevel level,
-						   @RequestParam("level") YJLevel level,
-						   String verificationCode) { 
+	
+	@GetMapping("/customer/add")
+	public String registerCusPage() {
+		return "YiJie/mycompany";
+	}
+	
+	@PostMapping("/customer/registeradd")
+	public String registerCus(@RequestParam(value = "account") String acc,
+							@RequestParam(value = "password") String pass,
+							@RequestParam("rCode") String rCode,
+						   Model model) { 
 		
-		// 解析請求中的帳號、密碼和驗證訊息
-        String acc = customer.getAcc();
-        //String pass = customer.getPass();
-        
-        YJCustomer existingCustomer = customerDao.findCustomerByAcc(acc);
-		if( existingCustomer != null ) {
-			return "已經有此帳號了!";
+		if(Code.equals(rCode)) {
+			YJCustomer cus1 = new YJCustomer();
+			cus1.setAcc(acc);
+			cus1.setPass(pass);
+		
+			customerService.insert(cus1);
+			Map<String, String> msg = new HashMap<String, String>();
+			model.addAttribute("msg", msg);
+			msg.put("success", "會員註冊成功!");
+			return "YiJie/customerDetail";
+		}else {
+			return null;
 		}
-		// 驗證訊息為 "123" 時，帳號等級提升至 level=2
-        if ("123".equals(verificationCode)) {
-        	
-        	YJLevel lev1 = new YJLevel();
-        	lev1.setPlevel(2);
-        	customer.setLevel(lev1);
-        	
-            //customer.setLevel(2);
-        }
-		customerDao.save(customer);
-		return "成功";//customer.toString();
 	}
-//	
-	@ResponseBody
-	@GetMapping("/customer/id")
-	public YJCustomer findById(@RequestParam("id") Integer id) {
-		Optional<YJCustomer> optional = customerDao.findById(id);
+	//登入
+	
+	@GetMapping("/customer/page")
+	public String loginCus1Page1() {
+		return "YiJie/cuslogin";
+	}
+	
+	@PostMapping("/customer/login")
+	public String loginCus(@RequestParam(value="account") String acc, 
+						@RequestParam(value="password") String pass, 
+						HttpSession session) {
 		
-		if(optional.isPresent()) {
-			YJCustomer cus = optional.get();
-			return cus;
-		}return null;	
+		//Register existing = registerService.findByAccAndPwd(account, password);
+		YJCustomer exis = customerService.findByAccAndPass(acc, pass);
+
+		String acc1 = exis.getAcc();
+		String pwd = exis.getPass();
+		
+		if (acc.equals(acc1) && pass.equals(pwd)) {
+			session.setAttribute("acc", acc1);
+			session.setAttribute("pwd", pwd);
+			
+			return "redirect:/";//如果有帳號回主頁面
+		} else {
+			return "redirect:/login01";//失敗重新輸入
+		}
 	}
-//	
+
+	@GetMapping("/login01")
+	public String loginCus1Page() {
+		return "YiJie/cuslogin";
+	}
+	
+//////////////////////////////////////////////////////////////////////	
+//
 	@ResponseBody
 	@GetMapping("/customers")
 	public List<YJCustomer> findAll(){
@@ -86,6 +111,37 @@ public class YJCustomerController {
 		}
 		
 	}
+	
+	
+//	//註冊1.0
+//	@ResponseBody //等外面傳入json，接住反序列化成java物件
+//	@PostMapping("/customer/register")
+//	public String register(@RequestBody YJCustomer customer,
+//						   //@RequestBody YJLevel level,
+//						   @RequestParam("level") YJLevel level,
+//						   String verificationCode,
+//						   Model model) { 
+//		
+////		// 解析請求中的帳號、密碼和驗證訊息
+////        String acc = customer.getAcc();
+////        //String pass = customer.getPass();
+////        
+////        YJCustomer existingCustomer = customerDao.findCustomerByAcc(acc);
+////		if( existingCustomer != null ) {
+////			return "已經有此帳號了!";
+////		}
+////		// 驗證訊息為 "123" 時，帳號等級提升至 level=2
+////        if ("123".equals(verificationCode)) {
+////        	
+////        	YJLevel lev1 = new YJLevel();
+////        	lev1.setPlevel(2);
+////        	customer.setLevel(lev1);	
+////            //customer.setLevel(2);
+////        	
+////        }
+//		customerDao.save(customer);
+//		return "成功";
+//	}
 //	
 //	@ResponseBody
 //	@GetMapping("/customer/page")
@@ -102,11 +158,7 @@ public class YJCustomerController {
 //		return customerDao.findCustomerByAcc(acc);
 //	}
 
-//	@ResponseBody
-//	@GetMapping("/customer/AccAndLevel")
-//	public YJCustomer findByAccAndLevel(@RequestParam String acc,@RequestParam Integer level) {
-//		return customerDao.findCustomerByAccAndLevel(acc, level);
-//	}
+
 	
 	//findByLevelOrderByIdASC
 //	@ResponseBody

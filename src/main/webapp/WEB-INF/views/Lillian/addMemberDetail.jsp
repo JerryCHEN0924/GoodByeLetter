@@ -43,7 +43,6 @@
 				<div id="registerTitle">註冊會員</div>
 				<form id="register_form" class="form-control" action="${contextRoot}/MemberDetail/add2" method="post">
 
-
 					<!-- regis -->
 					<div class="mb-3 row">
 						<label for="name" class="col-sm-2 col-form-label">名字</label>
@@ -125,7 +124,7 @@
 						</div>
 					</div>
 					 <div>
-                    <p style="color:red">${msg.success}</p>
+<%--                     <p style="color:red">${msg.success}</p> --%>
                     </div>
 					<button type="submit">註冊會員</button>
 					<br> <a href="">已有會員</a><br> <a href="myindex.html">回首頁</a>

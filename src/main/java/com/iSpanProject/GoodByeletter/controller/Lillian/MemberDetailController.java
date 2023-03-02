@@ -23,9 +23,13 @@ public class MemberDetailController {
 	
 	
 	@PostMapping("/MemberDetail/add2")
-	public String saveMemberDetail(@RequestParam(value="name") String name,@RequestParam(value="gender") 
-	String gender,@RequestParam(value="birthday") @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthday,@RequestParam(value="email") String email,@RequestParam(value="county")
-	String county,@RequestParam(value="address") String address, Model model) {
+	public String saveMemberDetail(@RequestParam(value="name") String name,
+									@RequestParam(value="gender") String gender,
+									@RequestParam(value="birthday") @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthday,
+									@RequestParam(value="email") String email,
+									@RequestParam(value="county") String county,
+									@RequestParam(value="address") String address, 
+									Model model) {
 		
 		MemberDetail newMemberDetail = new MemberDetail();
 		newMemberDetail.setName(name);
@@ -42,7 +46,7 @@ public class MemberDetailController {
 		   msg.put("success", "會員註冊成功!");
 		
 	
-			return "Lillian/addMemberDetail";		
+			return "/";		
 	}
 	
 	@GetMapping("register/memberDetail")

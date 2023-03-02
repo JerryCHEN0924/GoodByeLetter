@@ -21,7 +21,10 @@
 
 </head>
 <body>
+
 	<%@ include file="../layout/mynav.jsp"%>
+	
+	<article id="myspace" class="wrapper style2" style="height:100vh">
 	<div class="container">
 		<h1>新增留言板頁面</h1>
 
@@ -56,6 +59,7 @@
 	</div>
 		
 	</div>
+	</article>
 
 
 

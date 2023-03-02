@@ -6,4 +6,5 @@ import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 
 public interface YJCustomerDetailDao extends JpaRepository<YJCustomerDetail, Integer>{
 
+//	@Query(value="from YJCustomerDetail where ")
 }

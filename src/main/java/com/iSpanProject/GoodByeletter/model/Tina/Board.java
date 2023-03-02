@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "parentBoard")
@@ -38,28 +39,32 @@ public class Board {
 	private String boardMessage;
 	
 	
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")
+	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	//@Column(name="createTime")
 	private Date createTime;
 	
 	
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")	
+	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE" , timezone = "GMT+8")	
 	//@Column(name="updateTime")
 	private Date updateTime;
 	
 	
 	//連到Register的memberId
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name ="FK_memberId" )
 	private Register01 FK_memberId;
 	
 	//連到ChildCommet
+	@JsonIgnore
 	@OneToMany(mappedBy = "FK_parentId", cascade = CascadeType.ALL)
-	Set<Commet> comments = new HashSet<>();
+	Set<Comment> comments = new HashSet<>();
 
 	//增加創建時間
 	@PrePersist
@@ -82,7 +87,7 @@ public class Board {
 	
 
 	public Board(Integer boardId, String title, String boardMessage, Date createTime, Date updateTime,
-			Register01 fK_memberId, Set<Commet> comments) {
+			Register01 fK_memberId, Set<Comment> comments) {
 		super();
 		this.boardId = boardId;
 		this.title = title;
@@ -143,11 +148,11 @@ public class Board {
 		FK_memberId = fK_memberId;
 	}
 
-	public Set<Commet> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(Set<Commet> comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 	

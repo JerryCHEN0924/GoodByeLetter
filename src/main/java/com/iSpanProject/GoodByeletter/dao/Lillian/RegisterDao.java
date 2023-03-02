@@ -13,6 +13,13 @@ public interface RegisterDao extends JpaRepository<Register, Integer>{
 	@Query("from Register where account = :acc and password = :pwd")
 	public Register findRegisterByAccAndPwd(@Param(value="acc")String account,@Param(value="pwd")String password);
 	
+	
+
+//	@Query("update Register set account = :acc, password = :pwd WHERE memberId = :mId")
+//	public Register updateUsernameAndPassword(int mId , String acc, String pwd);
+	
 
 
-}
+}	
+
+

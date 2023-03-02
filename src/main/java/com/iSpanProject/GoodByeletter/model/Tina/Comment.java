@@ -17,12 +17,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name="childComment")
-public class Commet {
+public class Comment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name="id")
-	private Integer commetId;
+	private Integer commentId;
 	
 	//@Column(name="reply")
 	private String reply;
@@ -50,14 +50,16 @@ public class Commet {
 	@JoinColumn(name = "FK_memberId" )
 	private Register01 FK_memberId;
 
-	public Commet() {
+	public Comment() {
 		super();
 	}
 
-	public Commet(Integer commetId, String reply, Date createTime, Date updateTime, Board fK_parentId,
+	
+
+	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
 			Register01 fK_memberId) {
 		super();
-		this.commetId = commetId;
+		this.commentId = commentId;
 		this.reply = reply;
 		this.createTime = createTime;
 		this.updateTime = updateTime;
@@ -65,13 +67,19 @@ public class Commet {
 		FK_memberId = fK_memberId;
 	}
 
-	public Integer getCommetId() {
-		return commetId;
+
+
+	public Integer getCommentId() {
+		return commentId;
 	}
 
-	public void setCommetId(Integer commetId) {
-		this.commetId = commetId;
+
+
+	public void setCommentId(Integer commentId) {
+		this.commentId = commentId;
 	}
+
+
 
 	public String getReply() {
 		return reply;

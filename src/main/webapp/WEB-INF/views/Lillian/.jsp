@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" /> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>註冊帳號</title>
+<title>Insert title here</title>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 <link rel="stylesheet" href="assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
@@ -22,45 +24,31 @@
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
 <style>
+   #myspace {
+            width: 100%;
+            height: 100vh;
+        }
+
+        #space {
+            height: 20vh;
+        }
 </style>
 
 </head>
 
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
+	<!-- myspace -->
+        <article id="myspace" class="wrapper style2">
+            <div class="container-fluid " id="register">
+                <div id="space"></div>
 
-	<!-- regis -->
-	<article id="" class="wrapper style2">
-		<div class="container-fluid " id="register">
-			<div id="space"></div>
+            </div>
+        </article>
 
 
-			<div class="container" id="form_container">
-				<div id="registerTitle">註冊會員</div>
-				<form id="register_form" action="${contextRoot}/register/add" method="post">
-					<!--                     	<input name="_method" value="put" /> -->
 
-					<div class="mb-6 row">
-						<label for="account" class="col-sm-2 col-form-label">帳號</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="account"
-								name="account">
-						</div>
-					</div>
-					<div class="mb-6 row">
-						<label for="password" class="col-sm-2 col-form-label">密碼</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="password"
-								name="password">
-						</div>
-					</div>
-					<button type="submit">下一步</button>
-					<br> <a href="">已有會員</a><br>
 
-				</form>
-			</div>
-		</div>
-	</article>
 
 
 
