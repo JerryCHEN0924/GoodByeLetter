@@ -34,8 +34,8 @@
 </head>
 
 <body>
-	<article id="myspace" class="wrapper style2">
 	<%@ include file="../layout/mynav.jsp"%>
+	<article id="myspace" class="wrapper style2">
 		<div class="container">
 			<!-- RYU -->
 			<div class="row ">

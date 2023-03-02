@@ -54,7 +54,7 @@
 								id="noteId" value="" />
 
 							<form:input type="hidden" class="form-control" path="mId" id="mId"
-								value="5" />
+								value="1" />
 
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>

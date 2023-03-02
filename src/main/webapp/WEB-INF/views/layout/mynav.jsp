@@ -131,7 +131,7 @@
 									<li><a class="dropdown-item narbar_text_color"
 											href="<c:url value='/LastNote' />">撰寫</a></li>
 									<li><a class="dropdown-item narbar_text_color"
-											href="<c:url value='/LastNoteCRUD' />">編輯</a></li>
+											href="<c:url value='/LastNote/edit' />">編輯</a></li>
 									<li><a class="dropdown-item narbar_text_color  disabled" href="#">XXX</a></li>
 								</ul>
 							</li>
