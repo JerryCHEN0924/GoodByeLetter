@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../assets/css/mymain.css" />
     <style>
         .login_form_class {
             display: none;
@@ -85,11 +86,26 @@
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 登入
                             </a>
+                           
+                            
+                           
                             <ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
                                 id="dropdown-menu_login">
-
+                                
+                                 <c:choose> 
+                            <c:when test= "${acc != null}">
+                          
+                            <li><a class="dropdown-item narbar_text_color" href="register/logout"> ${acc}登出 </a></li>
+                            <li><a class="dropdown-item narbar_text_color" href="register/page">編輯會員</a></li>
+                            </c:when>
+                            <c:otherwise>
                                 <li><a class="dropdown-item narbar_text_color" href="login1"> 登入 </a></li>
                                 <li><a class="dropdown-item narbar_text_color" href="register1"> 註冊 </a></li>
+                            
+                            </c:otherwise>
+                            
+                            </c:choose>
+
                                 <li><a class="dropdown-item narbar_text_color" href="mySpace"> 個人空間 </a></li>
 
                             </ul>
@@ -133,8 +149,8 @@
 <!--         nav close -->
 
 
+    <script src="assets/js/jquery-3.6.3.min.js"></script>
     <script>
-
 
 //         const nav = document.getElementById('nav');
 //         const nav_login = document.getElementById("nav_login");

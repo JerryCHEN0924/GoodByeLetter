@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.Lillian;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,33 +50,37 @@ public class RegisterService {
 		Register findByAccAndPwd =rDao.findRegisterByAccAndPwd(account,password);
 		return findByAccAndPwd;
 	}
+	
+	public Register findById(Integer memberId) {
+		Optional<Register> optional = rDao.findById(memberId);
+		
+		if(optional.isEmpty()) { 
+			return null;
+		}
+		return optional.get();		
+	}
 
+	public Register updateRegister(Register reg) {
+		return rDao.save(reg);
+	}	
 
-//	
-//	public Register updateById(Integer id,String account,String password) {
-//		Optional<Register> optional = rDao.findById(id);
-//		
-//		if(optional.isPresent()) {
-//			Register register = optional.get();
-//			register.setAccount(account);
-//			register.setAccount(password);
-//			return register;
-//		}
-//		System.out.println("no update");
-//		return null;
-//	}
-
-	public Register updateById(Integer id, String account, String password) {
-		Optional<Register> optional = rDao.findById(id);
+	public String updateById(Integer memberId, String account, String password) {
+		Optional<Register> optional = rDao.findById(memberId);
 
 		if (optional.isPresent()) {
 			Register register = optional.get();
 			register.setAccount(account);
 			register.setAccount(password);
-			return register;
+			//return register;
 		}
 		System.out.println("no update");
 		return null;
 	}
 
+	public List<Register> findAll() {
+		return rDao.findAll();	
+	}
+
+
+	
 }

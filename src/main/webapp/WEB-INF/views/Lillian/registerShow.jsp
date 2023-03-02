@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>註冊帳號</title>
+<title>查看帳號</title>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,38 +29,44 @@
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
 
-	<!-- regis -->
-	<article id="" class="wrapper style2">
-		<div class="container-fluid " id="register">
-			<div id="space"></div>
+
+	<div class="container" id="form_container">
+		<div id="registerShowTitle">查看帳號</div>
 
 
-			<div class="container" id="form_container">
-				<div id="registerTitle">註冊會員</div>
-				<form id="register_form" action="${contextRoot}/register/add" method="post">
-					<!--                     	<input name="_method" value="put" /> -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">帳號</th>
+					<th scope="col">密碼</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="accAndPwd" items="${register}">
+					<tr>
 
-					<div class="mb-6 row">
-						<label for="account" class="col-sm-2 col-form-label">帳號</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="account"
-								name="account">
-						</div>
-					</div>
-					<div class="mb-6 row">
-						<label for="password" class="col-sm-2 col-form-label">密碼</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="password"
-								name="password">
-						</div>
-					</div>
-					<button type="submit">下一步</button>
-					<br> <a href="">已有會員</a><br>
+						<td>${accAndPwd.account}</td>
+						<td>${accAndPwd.password}</td>
+						<td>
+							<div class="edit-place">
+								<form id="register_form" action="${contextRoot}/register/edit"
+									method="get">
+									<input type="hidden" name="memberId" value="${accAndPwd.memberId}" /> 
+									<input type="submit" class="btn btn-outline-danger btn-sm" value="編輯">
+								</form>
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
-				</form>
-			</div>
-		</div>
-	</article>
+</div>
+
+		
+
+
+
 
 
 
