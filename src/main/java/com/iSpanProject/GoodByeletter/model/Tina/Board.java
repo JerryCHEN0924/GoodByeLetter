@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "parentBoard")
@@ -29,7 +30,7 @@ public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name="id")
-	private Integer boradId;
+	private Integer boardId;
 	
 	//@Column(name="title")
 	private String title;
@@ -38,26 +39,30 @@ public class Board {
 	private String boardMessage;
 	
 	
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")
+	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	//@Column(name="createTime")
 	private Date createTime;
 	
 	
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")	
+	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE" , timezone = "GMT+8")	
 	//@Column(name="updateTime")
 	private Date updateTime;
 	
 	
 	//連到Register的memberId
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name ="FK_memberId" )
 	private Register01 FK_memberId;
 	
 	//連到ChildCommet
+	@JsonIgnore
 	@OneToMany(mappedBy = "FK_parentId", cascade = CascadeType.ALL)
 	Set<Commet> comments = new HashSet<>();
 
@@ -79,10 +84,12 @@ public class Board {
 		super();
 	}
 
-	public Board(Integer boradId, String title, String boardMessage, Date createTime, Date updateTime,
+	
+
+	public Board(Integer boardId, String title, String boardMessage, Date createTime, Date updateTime,
 			Register01 fK_memberId, Set<Commet> comments) {
 		super();
-		this.boradId = boradId;
+		this.boardId = boardId;
 		this.title = title;
 		this.boardMessage = boardMessage;
 		this.createTime = createTime;
@@ -91,12 +98,14 @@ public class Board {
 		this.comments = comments;
 	}
 
-	public Integer getBoradId() {
-		return boradId;
+	
+	
+	public Integer getBoardId() {
+		return boardId;
 	}
 
-	public void setBoradId(Integer boradId) {
-		this.boradId = boradId;
+	public void setBoardId(Integer boardId) {
+		this.boardId = boardId;
 	}
 
 	public String getTitle() {

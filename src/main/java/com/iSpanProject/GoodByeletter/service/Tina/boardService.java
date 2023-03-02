@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.service.Tina;
 
 import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,20 +16,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iSpanProject.GoodByeletter.dao.Tina.BoardDao;
+import com.iSpanProject.GoodByeletter.dao.Tina.Register01Dao;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
+import com.iSpanProject.GoodByeletter.model.Tina.Register01;
 
 @Service
 public class boardService {
 	
 	@Autowired
 	private BoardDao boardDao; 
+	@Autowired
+	private Register01Dao register01Dao; 
 	
 	
 	
 	
 	//addBoard
 	@Transient
-	public Board addBoard(Board board) {			
+	public Board addBoard(Board board) {
+		Optional<Register01> optional = register01Dao.findById(1);
+		Register01 r01 = optional.get();
+		board.setFK_memberId(r01);
 		return boardDao.save(board);
 	}
 	
@@ -44,7 +52,7 @@ public class boardService {
 	
 	//findByPage
 	public Page<Board> findByPage (Integer PageNum){
-		Pageable pgb = PageRequest.of(PageNum-1, 2, Sort.Direction.ASC,"boardId");
+		Pageable pgb = PageRequest.of(PageNum-1, 5, Sort.Direction.DESC,"boardId");
 		Page<Board> boardPage = boardDao.findAll(pgb);
 		return boardPage;
 	}
@@ -76,16 +84,25 @@ public class boardService {
 	}
 	
 	//updateBoardById
-	@Transient
-	public Board updateBoardById(Integer boardId, String newMsg) {
-		Optional<Board> optional= boardDao.findById(boardId);
-		if(optional.isPresent()) {
-			Board board = optional.get();
-			board.setBoardMessage(newMsg);
-			//board.setUpdateTime(new Date());//增加更新時間	
-			return board;
-		}
-		System.out.println("沒有這筆資料");
-		return null;
-	}
+//	@Transient
+//	public Board updateBoardById(Board board) {
+//		Optional<Register01> register01 = Register01Dao.findById(null); 
+//		
+//		
+//	}
+	
+	
+	//updateBoardById
+//	@Transient
+//	public Board updateBoardById(Integer boardId, String msg) {
+//		Optional<Board> optional= boardDao.findById(boardId);
+//		if(optional.isPresent()) {
+//			Board board = optional.get();
+//			board.setBoardMessage(msg);
+//			//board.setUpdateTime(new Date());//增加更新時間	
+//			return board;
+//		}
+//		System.out.println("沒有這筆資料");
+//		return null;
+//	}
 }

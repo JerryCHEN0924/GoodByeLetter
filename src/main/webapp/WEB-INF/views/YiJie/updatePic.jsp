@@ -4,11 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>首頁</title>
+<title>圖片上傳</title>
 </head>
 <body>
 
-<jsp:include page="layout/navbar.jsp"></jsp:include> <!-- 把navbar.jsp塞進來 -->
-<h1>首頁</h1>
+<%@ include file="../layout/mynav.jsp"%>
+
+<h1>上傳</h1>
+
+
+
+
+
+
 </body>
 </html>

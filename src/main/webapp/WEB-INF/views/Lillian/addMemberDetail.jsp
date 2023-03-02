@@ -30,6 +30,7 @@
 </head>
 
 <body>
+
 	<%@ include file="../layout/mynav.jsp"%>
 
 	<article id="" class="wrapper style2">
@@ -37,10 +38,10 @@
 			<div id="space"></div>
 
 
+
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
 				<form id="register_form" class="form-control" action="${contextRoot}/MemberDetail/add2" method="post">
-
 
 					<!-- regis -->
 					<div class="mb-3 row">

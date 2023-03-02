@@ -5,12 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<head>
-<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>首頁</title>
 <link rel="stylesheet" href="assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
@@ -27,7 +24,8 @@
 </head>
 
 <body>
-	<%@ include file="layout/mynav.jsp"%>
+
+<%@ include file="layout/mynav.jsp"%>
 
 
 	<div id="outline">

@@ -2,7 +2,10 @@ package com.iSpanProject.GoodByeletter.dao.Tina;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -19,4 +22,9 @@ public interface BoardDao extends JpaRepository<Board, Integer> {
 	
 	//找最新貼文
 	public Board findFirstBoardByOrderByCreateTimeDesc();
+	
+	//更新貼文
+	@Modifying
+	@Query("update Board b set b.title = :title, b.boardMessage = :boardMessage where b.boardId = :boardId")
+	public Board updateBoardById(@Param(value = "title") String title, @Param(value = "boardMessage") String boardMessage, @Param(value = "boardId") Integer boardId);
 }
