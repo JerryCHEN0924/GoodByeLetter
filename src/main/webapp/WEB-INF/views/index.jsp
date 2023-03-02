@@ -24,9 +24,9 @@
 </head>
 
 <body>
-<%-- <%@ include file="layout/mynav.jsp"%> --%>
-<jsp:include page="layout/mynav.jsp"/>
-	
+
+<%@ include file="layout/mynav.jsp"%>
+
 
 	<div id="outline">
 		<!-- top1 -->

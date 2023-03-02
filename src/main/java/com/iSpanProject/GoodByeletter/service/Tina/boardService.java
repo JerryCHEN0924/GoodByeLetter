@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.service.Tina;
 
 import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -83,15 +84,12 @@ public class boardService {
 	}
 	
 	//updateBoardById
-	@Transient
-	public Board updateBoardById(Board board) {
-		
-		board.setTitle(null);
-		board.setBoardMessage(null);
-		board.setBoardId(null);
-		return boardDao.updateBoardById(null, null, null);
-		
-	}
+//	@Transient
+//	public Board updateBoardById(Board board) {
+//		Optional<Register01> register01 = Register01Dao.findById(null); 
+//		
+//		
+//	}
 	
 	
 	//updateBoardById

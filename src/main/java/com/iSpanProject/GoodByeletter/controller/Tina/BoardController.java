@@ -5,13 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.iSpanProject.GoodByeletter.dao.Tina.BoardDao;
+import com.iSpanProject.GoodByeletter.dto.Tina.BoardDto;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Register01;
 import com.iSpanProject.GoodByeletter.service.Tina.boardService;
@@ -64,19 +70,49 @@ public class BoardController {
 	
 	@GetMapping("board/edit")
 	public String editById(@RequestParam("boardId") Integer boardId, Model model) {
-		Board board = boardService.findById(boardId);
-		model.addAttribute("board",board);
+		Board newboard = boardService.findById(boardId);
+		model.addAttribute("newboard",newboard);
 		return "Tina/editBoard";
 		
 	}
-//	@PostMapping("board/editpost")
-//	public String postEdit(@ModelAttribute Board board) {
-//		boardService.updateBoardById(board);
-//		return "redirect:/board/page";
-//	}++
+	
+	@PutMapping("board/editpost")
+	public String editBoard(@ModelAttribute("newboard") Board board) {
+		boardService.addBoard(board);
+		return "redirect:/board/page";
+	}
 	
 
+	@DeleteMapping("/board/delete")
+	public String deleteBoard(@RequestParam Integer boardId) {
+		boardService.deleteBoardById(boardId);
+		return "redirect:/board/page";
+	}
 	
+	
+	@GetMapping("/board/ajax")
+	public String ajax(@ModelAttribute Board board) {
+		return "Tina/ajaxBoard";
+		
+	}
+	
+	//用boardDto遮罩的controller
+//	@ResponseBody
+//	@PostMapping("/board/ajaxPost")
+//	public Page<Board> ajaxPost(@RequestBody BoardDto dto, Board board1) {
+//		String inputTitle = dto.getInputTitle();
+//		String inputMessString = dto.getInputMessage();
+//		
+//		Board board = new Board();
+//		board.setTitle(inputTitle);
+//		board.setBoardMessage(inputMessString);
+//		
+//		boardService.addBoard(board);
+//		Page<Board> page = boardService.findByPage(1);
+//	
+//		return page;
+//		
+//	}
 	
 //	public Board addBoard(@RequestBody Board board) {
 //		return boardDao.save(board);
@@ -110,13 +146,25 @@ public class BoardController {
 //	}
 	
 	
-	//查詢所有留言板
+//	查詢所有留言板
 //	@ResponseBody
-//	@GetMapping("boards")
+//	@PostMapping("boards")
 //	public List<Board> findAll(){
-//		return boardDao.findAll();
+//		return boardService.findAll();
 //	}
+//	
 	
+//	測試?
+//		@ResponseBody
+//		@GetMapping("/str")
+//		public List<String> Str(){
+//			List<String> list = new ArrayList<String>();
+//			list.add("1");
+//			list.add("1");
+//			list.add("1");
+//			list.add("1");
+//			return list;
+//		}
 	
 	//刪除留言板
 //	@ResponseBody
