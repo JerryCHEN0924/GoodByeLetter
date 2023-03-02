@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>addBoard</title>
+<title>editBoard</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -27,8 +27,13 @@
 
 
 		<div class="card">
-			<form:form action="${contextRoot}/board/post"
-				modelAttribute="newboard">
+			<form:form action="${contextRoot}/board/editpost"  method="put"
+				modelAttribute="newboard"><%--透過model newboard把資料傳給controller --%>
+				
+				<%--需要把boardId, createTime 加到model newboard裡 --%>
+				<form:input path="boardId" type="hidden"/>
+				<form:input path="createTime" type="hidden"/>
+				
 				<h5 class="card-header">
 					<form:input path="title" class="form-control" placeholder="新增留言板" />
 				</h5>
@@ -42,20 +47,10 @@
 			</form:form>
 		</div>
 		
-		<br>
-		<div class="card">
-		<div class="card-header">
-		<h5>${lastestBoard.title} </h5>
-	<h6>上傳時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.createTime}"/><br>
-		更時時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.updateTime}"/></h6>
-		
-		
-		
-		</div>
-		<div class="card-body">${lastestBoard.boardMessage}</div>
+	
 	</div>
 		
-	</div>
+
 
 
 

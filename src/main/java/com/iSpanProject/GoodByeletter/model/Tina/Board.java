@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "parentBoard")
@@ -38,26 +39,30 @@ public class Board {
 	private String boardMessage;
 	
 	
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")
+	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	//@Column(name="createTime")
 	private Date createTime;
 	
 	
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")	
+	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE" , timezone = "GMT+8")	
 	//@Column(name="updateTime")
 	private Date updateTime;
 	
 	
 	//連到Register的memberId
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name ="FK_memberId" )
 	private Register01 FK_memberId;
 	
 	//連到ChildCommet
+	@JsonIgnore
 	@OneToMany(mappedBy = "FK_parentId", cascade = CascadeType.ALL)
 	Set<Commet> comments = new HashSet<>();
 

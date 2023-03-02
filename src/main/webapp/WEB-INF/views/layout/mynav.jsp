@@ -62,12 +62,11 @@ a {
 				<ul class="navbar-nav">
 					<li class="nav-item"><a
 						class="nav-link active narbar_text_color" aria-current="page"
-						href="myindex.html">首頁</a></li>
+						href="${contextRoot}">首頁</a></li>
 					<li class="nav-item "><a class="nav-link narbar_text_color"
 						href="#">Features</a></li>
 
 
-<<<<<<< HEAD
 					<li class="nav-item dropdown "><a
 						class="nav-link dropdown-toggle narbar_text_color" href="#"
 						id="navbarDropdownMenuLink" role="button"
@@ -93,8 +92,21 @@ a {
 							<li><a class="dropdown-item narbar_text_color"
 								href="mySpace.html"> 個人空間 </a></li>
 						</ul></li>
-					<li class="nav-item "><a class="nav-link narbar_text_color"
-						href="#">聊天室</a></li>
+						
+					<li class="nav-item dropdown "><a
+						class="nav-link dropdown-toggle narbar_text_color" href="#"
+						id="navbarDropdownMenuLink" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> 留言板 </a>
+						<ul class="dropdown-menu  "
+							aria-labelledby="navbarDropdownMenuLink" id="dropdown-menu_login">
+							<li><a href="<c:url value='/board/page' />" class="dropdown-item narbar_text_color"> 
+							查看留言板 </a></li>
+							<li><a href="<c:url value='/board/add' />" class="dropdown-item narbar_text_color"
+								> 增加留言板 </a></li>
+							<li><a href="" class="dropdown-item narbar_text_color"
+								href="mySpace.html"> 個人空間 </a></li>
+						</ul></li>	
+					
 						
 					<li class="nav-item  dropdown ">
 					<a class="nav-link dropdown-toggle narbar_text_color"
@@ -117,49 +129,8 @@ a {
 			</div>
 		</div>
 	</nav>
-=======
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle narbar_text_color" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                合作夥伴
-                            </a>
-                            <ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
-                                id="dropdown-menu_company">
-                                <li><a class="dropdown-item narbar_text_color" href="mycompany.html">諮商所</a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="#">律師事務所</a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="#">生命禮儀</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle narbar_text_color" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                登入
-                            </a>
-                            <ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
-                                id="dropdown-menu_login">
 
-                                <li><a class="dropdown-item narbar_text_color" href="login1"> 登入 </a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="register1"> 註冊 </a></li>
-                                <li><a class="dropdown-item narbar_text_color" href="mySpace"> 個人空間 </a></li>
 
-                            </ul>
-                        </li>
-                         <li class="nav-item ">
-                            <a class="nav-link narbar_text_color" href="${contextRoot}/board/page">留言板</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link narbar_text_color" href='<c:url value="/LastNote" />' tabindex="-1"
-                                aria-disabled="false">GoodBye Letter</a>
-                        </li>
-                        
-                        <li class="nav-item ">
-                            <a class="nav-link disabled narbar_text_color" href="#" tabindex="-1"
-                                aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
       
       
 
