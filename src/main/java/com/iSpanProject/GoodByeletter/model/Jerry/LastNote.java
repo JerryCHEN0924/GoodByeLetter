@@ -17,6 +17,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -60,6 +61,32 @@ public class LastNote implements Serializable {
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	@Column(name="verifyTime")
 	private Date verifyTime;
+	
+	@Transient
+	private Integer mId;
+
+	public LastNote(Integer noteId, Register fK_memberId, String recipientEmail, String notedetail, Date createTime,
+			String verify1, String verify2, Date verifyTime, Integer mId) {
+		super();
+		this.noteId = noteId;
+		FK_memberId = fK_memberId;
+		this.recipientEmail = recipientEmail;
+		this.notedetail = notedetail;
+		this.createTime = createTime;
+		this.verify1 = verify1;
+		this.verify2 = verify2;
+		this.verifyTime = verifyTime;
+		this.mId = mId;
+	}
+	
+
+	public Integer getmId() {
+		return mId;
+	}
+
+	public void setmId(Integer mId) {
+		this.mId = mId;
+	}
 
 	@PrePersist
 	public void onCreate() {
@@ -74,19 +101,6 @@ public class LastNote implements Serializable {
 	}
 	public LastNote() {
 		super();
-	}
-
-	public LastNote(Integer noteId, Register fK_memberId, String recipientEmail, String notedetail, Date createTime,
-			String verify1, String verify2, Date verifyTime) {
-		super();
-		this.noteId = noteId;
-		FK_memberId = fK_memberId;
-		this.recipientEmail = recipientEmail;
-		this.notedetail = notedetail;
-		this.createTime = createTime;
-		this.verify1 = verify1;
-		this.verify2 = verify2;
-		this.verifyTime = verifyTime;
 	}
 
 	public Integer getNoteId() {

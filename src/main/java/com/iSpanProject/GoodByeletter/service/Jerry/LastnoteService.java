@@ -28,7 +28,9 @@ public class LastnoteService {
 	@Transactional
 	public void SaveLastNote(LastNote lastNote) {
 		//外鍵的會員ID欄位待補
-		Optional<Register> member = registerDao.findById(2);
+		
+		Integer mId = lastNote.getmId();
+		Optional<Register> member = registerDao.findById(mId);
 		Register m1 = member.get();
 		lastNote.setFK_memberId(m1);
 		lDao.save(lastNote);

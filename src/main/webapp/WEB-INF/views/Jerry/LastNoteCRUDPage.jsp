@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -35,50 +37,66 @@
 
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
+
 	<!-- myspace -->
 	<article id="myspace" class="wrapper style2">
 		<div class="container-fluid " id="register">
-			<h1>GoodBye Letter CRUD</h1>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">收件人</th>
-						<th scope="col">內容</th>
-						<th scope="col">操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>陳冠宇</td>
-						<td>感冒用斯斯</td>
-						<td>
-						<button type="button" id="edit" class="btn btn-success">修改</button>
-						<button type="button" id="delete" class="btn btn-danger">刪除</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">1</th>
-						<td>周升</td>
-						<td>咳嗽用斯斯</td>
-						<td>
-						<button type="button" class="btn btn-success">修改</button>
-						<button type="button" class="btn btn-danger">刪除</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">1</th>
-						<td>速霸陸</td>
-						<td>鼻塞屁炎用斯斯</td>
-						<td>
-						<button type="button" class="btn btn-success">修改</button>
-						<button type="button" class="btn btn-danger">刪除</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="container">
+				<h1>GoodBye Letter</h1>
+				<!-- 	表單區	 -->
+				<div class="card">
+					<div class="card-header">更新遺囑</div>
+					<div class="card-body">
+						<form:form action="${contextRoot}/LastNote/CRUD/put"
+							modelAttribute="nId" method="put">
+
+							<form:input type="hidden" class="form-control" path="noteId"
+								id="noteId" value="" />
+
+							<form:input type="hidden" class="form-control" path="mId" id="mId"
+								value="5" />
+
+							<div class="mb-3">
+								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>
+								<form:input type="email" class="form-control"
+									path="recipientEmail" id="recipientEmail"
+									placeholder="name@example.com" />
+							</div>
+							<div class="mb-3">
+								<label for="exampleFormControlInput1" class="form-label">第一驗證人信箱</label>
+								<form:input type="email" class="form-control" path="verify1"
+									id="verify1" placeholder="name@example.com" />
+							</div>
+							<div class="mb-3">
+								<label for="exampleFormControlInput1" class="form-label">第二驗證人信箱</label>
+								<form:input type="email" class="form-control" path="verify2"
+									id="verify2" placeholder="name@example.com" />
+							</div>
+							<div class="mb-3">
+								<label for="exampleFormControlTextarea1" class="form-label">信件內容</label>
+								<form:textarea class="form-control" id="notedetail"
+									path="notedetail" rows="3" />
+							</div>
+							<button class="btn btn-success" type="submit">送出</button>
+							</form:form>
+							
+							<form action="${contextRoot}/LastNote/CRUD/delete" method="post">
+							<input value="${LastNote.noteId}" type="hidden" name="lastNoteId">
+							<input type="hidden" name="_method" value="delete" /> 
+							<button class="btn btn-danger disabled" aria-disabled="true" type="submit">刪除</button>
+							</form>
+							
+							<br>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- 	表單區	 -->
 		</div>
+
+
+
 	</article>
 
 

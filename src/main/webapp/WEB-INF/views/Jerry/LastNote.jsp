@@ -41,10 +41,14 @@
 				<h1>GoodBye Letter</h1>
 				<!-- 	表單區	 -->
 				<div class="card">
-					<div class="card-header">新增遺書</div>
+					<div class="card-header">新增遺囑</div>
 					<div class="card-body">
 						<form:form action="${contextRoot}/LastNote/post"
 							modelAttribute="lastNote" method="POST">
+							
+								<form:input type="hidden" class="form-control"
+									path="mId" id="mId" value="5" />
+							
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>
 								<form:input type="email" class="form-control"
@@ -67,7 +71,7 @@
 									path="notedetail" rows="3" />
 							</div>
 							<button class="btn btn-success" type="submit">送出</button>
-							<button class="btn btn-danger" type="submit">刪掉重寫</button>
+							<button class="btn btn-danger" type="Reset">刪掉重寫</button>
 							<br>
 						</form:form>
 					</div>
