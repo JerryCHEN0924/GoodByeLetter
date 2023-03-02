@@ -67,7 +67,6 @@ a {
 						href="#">Features</a></li>
 
 
-<<<<<<< HEAD
 					<li class="nav-item dropdown "><a
 						class="nav-link dropdown-toggle narbar_text_color" href="#"
 						id="navbarDropdownMenuLink" role="button"
@@ -105,7 +104,7 @@ a {
 							id="dropdown-menu_GL">
 							<li><a class="dropdown-item narbar_text_color" href="<c:url value='/LastNote' />">撰寫</a></li>
 							<li><a class="dropdown-item narbar_text_color"
-								href="<c:url value='/LastNoteCRUD' />">編輯</a></li>
+								href="<c:url value='/LastNote/edit' />">編輯</a></li>
 							<li><a class="dropdown-item narbar_text_color" href="#">XXX</a></li>
 						</ul>
 						</li>
@@ -117,7 +116,6 @@ a {
 			</div>
 		</div>
 	</nav>
-=======
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle narbar_text_color" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">

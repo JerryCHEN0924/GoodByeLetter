@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -31,17 +32,27 @@ public class LastNoteController {
 		return "Jerry/LastNote";
 	}
 	
-	//Post方法，存入遺囑
+	//Post方法，存入遺囑後重新導向到寫新的畫面(要改為轉向到CRUD畫面)
 	@PostMapping("/LastNote/post")
 	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote) {
 		lastnoteService.SaveLastNote(lastNote);
-		return "redirect:/LastNote";
+		return "redirect:/LastNote/edit";
 	}
 	
-	//遺囑編輯頁面
-	@GetMapping("/LastNoteCRUD")
-	public String LastNoteCRUD() {
-		return "Jerry/LastNoteCRUD";
+	//遺囑CRUD頁面
+	@GetMapping("/LastNote/edit")
+	public String LastNoteEdit(@RequestParam Integer id,Model model) {
+		LastNote lastNoteId = lastnoteService.findById(id);
+		model.addAttribute("lastNoteId",lastNoteId);
+		return "Jerry/LastNoteCRUDPage";
+	}
+	
+	//遺囑編輯
+	@PostMapping("/LastNote/CRUD")
+	public String LastNoteCRUD(@ModelAttribute("lastNoteId") LastNote lastnote) {
+		lastnoteService.insert(lastnote); //沒id就insert，有id就update
+		return "redirect:/LastNote/edit";
+		
 	}
 	
 	//JSON方式存入遺囑頁面

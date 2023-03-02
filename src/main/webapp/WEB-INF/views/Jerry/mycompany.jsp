@@ -28,7 +28,6 @@
 </head>
 
 <body>
-<%-- 	<%@ include file="../layout/mynav.jsp"%> --%>
 	<%@ include file="../layout/mynav.jsp"%>
 
 
