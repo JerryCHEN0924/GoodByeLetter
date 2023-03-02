@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>測試</title>
+<title>圖片上傳</title>
 </head>
 <body>
 
-<h1>測試</h1>
+<%@ include file="../layout/mynav.jsp"%>
+
+<h1>上傳</h1>
 
 
 

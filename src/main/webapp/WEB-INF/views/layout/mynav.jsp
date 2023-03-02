@@ -51,6 +51,7 @@
 
 <body>
 
+	
     <div id="mynavbar"></div>
     
         <!--Nav Bootstrap-->
