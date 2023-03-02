@@ -6,4 +6,5 @@ import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 
 public interface LastNoteDao extends JpaRepository<LastNote, Integer> {
 
+
 }

@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -59,6 +61,17 @@ public class LastNote implements Serializable {
 	@Column(name="verifyTime")
 	private Date verifyTime;
 
+	@PrePersist
+	public void onCreate() {
+		if(createTime == null) {
+			createTime = new Date();
+		}
+	}
+	
+	@PreUpdate
+	public void onUpdate() {
+		createTime = new Date();
+	}
 	public LastNote() {
 		super();
 	}
