@@ -12,32 +12,35 @@ public class Level {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private Integer Plevel;
+	private Integer plevel;
 
 	//@Column(name = "levelName", columnDefinition = "[nvarchar](20)", nullable = true)
 	private String levelName;
 
 	public Integer getPlevel() {
-		return Plevel;
+		return plevel;
 	}
-
 
 	public void setPlevel(Integer plevel) {
-		Plevel = plevel;
+		this.plevel = plevel;
 	}
-
 
 	public String getLevelName() {
 		return levelName;
 	}
 
-
 	public void setLevelName(String levelName) {
 		this.levelName = levelName;
 	}
 
+	public Level(Integer plevel, String levelName) {
+		super();
+		this.plevel = plevel;
+		this.levelName = levelName;
+	}
 
 	public Level() {
+		super();
 	}
 
 

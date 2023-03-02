@@ -35,7 +35,7 @@ public class LastNote implements Serializable {
 	private Integer noteId;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST })
-	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
+	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_lastnote_member"))
 	private Register FK_memberId;
 	
 	@Column(name="recipientEmail")

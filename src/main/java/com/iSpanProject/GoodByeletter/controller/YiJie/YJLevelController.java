@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.iSpanProject.GoodByeletter.model.YiJie.YJLevel;
+import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJLevelRespository;
 
 @Controller
@@ -16,22 +16,22 @@ public class YJLevelController {
 	
 	@ResponseBody
 	@PostMapping("/levelname1")
-	public YJLevel savelevel1() {
-		YJLevel level1 = new YJLevel();
+	public Level savelevel1() {
+		Level level1 = new Level();
 		level1.setPlevel(1);
 		level1.setLevelName("一般會員");
 		
-		YJLevel retLevel = levelDao.save(level1);
+		Level retLevel = levelDao.save(level1);
 		return retLevel;
 	}
 	
 	@ResponseBody
 	@PostMapping("/levelname2")
-	public YJLevel saveleve2() {
-		YJLevel level2 = new YJLevel();		
+	public Level saveleve2() {
+		Level level2 = new Level();		
 		level2.setPlevel(2);
 		level2.setLevelName("廠商會員");
-		YJLevel retLeve2 = levelDao.save(level2);
+		Level retLeve2 = levelDao.save(level2);
 		return retLeve2;
 	}
 	

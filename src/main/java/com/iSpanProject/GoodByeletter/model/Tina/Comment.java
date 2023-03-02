@@ -15,71 +15,49 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
+
 @Entity
-@Table(name="childComment")
+@Table(name = "childComment")
 public class Comment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name="id")
+	// @Column(name="id")
 	private Integer commentId;
-	
-	//@Column(name="reply")
+
+	// @Column(name="reply")
 	private String reply;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")
-	//@Column(name="createTime")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE")
+	// @Column(name="createTime")
 	private Date createTime;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE")	
-	//@Column(name="updateTime")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE")
+	// @Column(name="updateTime")
 	private Date updateTime;
-	
-	
-	//連到ParentBoard的id
+
+	// 連到ParentBoard的id
 	@ManyToOne
-	@JoinColumn(name = "FK_parentId" )
-	private Board FK_parentId; 
-	
-	//連到Register的id
+	@JoinColumn(name = "FK_parentId")
+	private Board FK_parentId;
+
+	// 連到Register的id
 	@ManyToOne
-	@JoinColumn(name = "FK_memberId" )
-	private Register01 FK_memberId;
-
-	public Comment() {
-		super();
-	}
-
-	
-
-	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
-			Register01 fK_memberId) {
-		super();
-		this.commentId = commentId;
-		this.reply = reply;
-		this.createTime = createTime;
-		this.updateTime = updateTime;
-		FK_parentId = fK_parentId;
-		FK_memberId = fK_memberId;
-	}
-
-
+	@JoinColumn(name = "FK_memberId")
+	private Register FK_memberId;
 
 	public Integer getCommentId() {
 		return commentId;
 	}
 
-
-
 	public void setCommentId(Integer commentId) {
 		this.commentId = commentId;
 	}
-
-
 
 	public String getReply() {
 		return reply;
@@ -113,13 +91,27 @@ public class Comment {
 		FK_parentId = fK_parentId;
 	}
 
-	public Register01 getFK_memberId() {
+	public Register getFK_memberId() {
 		return FK_memberId;
 	}
 
-	public void setFK_memberId(Register01 fK_memberId) {
+	public void setFK_memberId(Register fK_memberId) {
 		FK_memberId = fK_memberId;
 	}
 
-	
+	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
+			Register fK_memberId) {
+		super();
+		this.commentId = commentId;
+		this.reply = reply;
+		this.createTime = createTime;
+		this.updateTime = updateTime;
+		FK_parentId = fK_parentId;
+		FK_memberId = fK_memberId;
+	}
+
+	public Comment() {
+		super();
+	}
+
 }

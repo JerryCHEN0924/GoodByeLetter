@@ -22,84 +22,62 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Entity
 @Table(name = "parentBoard")
 public class Board {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name="id")
+	// @Column(name="id")
 	private Integer boardId;
-	
-	//@Column(name="title")
+
+	// @Column(name="title")
 	private String title;
-	
-	//@Column(name="boradMessage")
+
+	// @Column(name="boradMessage")
 	private String boardMessage;
-	
-	
+
 	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
-	//@Column(name="createTime")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	// @Column(name="createTime")
 	private Date createTime;
-	
-	
+
 	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern="yyyy/MM/dd HH:mm:ss EEEE" , timezone = "GMT+8")	
-	//@Column(name="updateTime")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	// @Column(name="updateTime")
 	private Date updateTime;
-	
-	
-	//連到Register的memberId
+
+	// 連到Register的memberId
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name ="FK_memberId" )
-	private Register01 FK_memberId;
-	
-	//連到ChildCommet
+	@JoinColumn(name = "FK_memberId")
+	private Register FK_memberId;
+
+	// 連到ChildCommet
 	@JsonIgnore
 	@OneToMany(mappedBy = "FK_parentId", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
 
-	//增加創建時間
+	// 增加創建時間
 	@PrePersist
 	public void onCreate() {
-		if(createTime == null) {
+		if (createTime == null) {
 			createTime = new Date();
 		}
 	}
-	
-	//增加更新時間
+
+	// 增加更新時間
 	@PreUpdate
 	public void onUpdate() {
 		updateTime = new Date();
 	}
-	
-	public Board() {
-		super();
-	}
 
-	
-
-	public Board(Integer boardId, String title, String boardMessage, Date createTime, Date updateTime,
-			Register01 fK_memberId, Set<Comment> comments) {
-		super();
-		this.boardId = boardId;
-		this.title = title;
-		this.boardMessage = boardMessage;
-		this.createTime = createTime;
-		this.updateTime = updateTime;
-		FK_memberId = fK_memberId;
-		this.comments = comments;
-	}
-
-	
-	
 	public Integer getBoardId() {
 		return boardId;
 	}
@@ -140,11 +118,11 @@ public class Board {
 		this.updateTime = updateTime;
 	}
 
-	public Register01 getFK_memberId() {
+	public Register getFK_memberId() {
 		return FK_memberId;
 	}
 
-	public void setFK_memberId(Register01 fK_memberId) {
+	public void setFK_memberId(Register fK_memberId) {
 		FK_memberId = fK_memberId;
 	}
 
@@ -155,7 +133,21 @@ public class Board {
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
-	
-	
-	
+
+	public Board(Integer boardId, String title, String boardMessage, Date createTime, Date updateTime,
+			Register fK_memberId, Set<Comment> comments) {
+		super();
+		this.boardId = boardId;
+		this.title = title;
+		this.boardMessage = boardMessage;
+		this.createTime = createTime;
+		this.updateTime = updateTime;
+		FK_memberId = fK_memberId;
+		this.comments = comments;
+	}
+
+	public Board() {
+		super();
+	}
+
 }

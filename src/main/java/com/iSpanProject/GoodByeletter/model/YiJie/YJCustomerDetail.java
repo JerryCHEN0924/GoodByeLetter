@@ -12,23 +12,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.iSpanProject.GoodByeletter.model.Lillian.Level;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Entity
-@Table(name = "memberDetail")
+@Table(name = "companydetail")
 public class YJCustomerDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@OneToOne(cascade= {CascadeType.PERSIST })
-	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
-	private YJCustomer FK_memberId;
-	
-	@ManyToOne(cascade= {CascadeType.PERSIST })
-	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_memberDetail_level"))
-	private YJLevel plevel;
-	
+
+	@OneToOne(cascade = { CascadeType.PERSIST })
+	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_companydetail_member"))
+	private Register FK_memberId;
+
+	@ManyToOne(cascade = { CascadeType.PERSIST })
+	@JoinColumn(name = "FK_Plevel", foreignKey = @ForeignKey(name = "FK_companydetail_level"))
+	private Level plevel;
+
 	@Column(name = "companyName")
 	private String name;
 	@Column(name = "companyType")
@@ -41,7 +43,7 @@ public class YJCustomerDetail {
 	private String picPath;
 	@Column(name = "picValue")
 	private String picValue;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -50,19 +52,19 @@ public class YJCustomerDetail {
 		this.id = id;
 	}
 
-	public YJCustomer getFK_memberId() {
+	public Register getFK_memberId() {
 		return FK_memberId;
 	}
 
-	public void setFK_memberId(YJCustomer fK_memberId) {
+	public void setFK_memberId(Register fK_memberId) {
 		FK_memberId = fK_memberId;
 	}
 
-	public YJLevel getPlevel() {
+	public Level getPlevel() {
 		return plevel;
 	}
 
-	public void setPlevel(YJLevel plevel) {
+	public void setPlevel(Level plevel) {
 		this.plevel = plevel;
 	}
 
@@ -115,7 +117,7 @@ public class YJCustomerDetail {
 	}
 
 	public YJCustomerDetail() {
-		
+
 	}
-	
+
 }

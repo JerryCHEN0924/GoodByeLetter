@@ -1,7 +1,5 @@
 package com.iSpanProject.GoodByeletter.service.Tina;
 
-import java.util.Date;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -15,10 +13,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.dao.Tina.BoardDao;
-import com.iSpanProject.GoodByeletter.dao.Tina.Register01Dao;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
-import com.iSpanProject.GoodByeletter.model.Tina.Register01;
 
 @Service
 public class boardService {
@@ -26,7 +23,7 @@ public class boardService {
 	@Autowired
 	private BoardDao boardDao; 
 	@Autowired
-	private Register01Dao register01Dao; 
+	private RegisterDao registerDao; 
 	
 	
 	

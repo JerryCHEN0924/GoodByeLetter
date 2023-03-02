@@ -10,16 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.iSpanProject.GoodByeletter.dao.Tina.BoardDao;
-import com.iSpanProject.GoodByeletter.dto.Tina.BoardDto;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
-import com.iSpanProject.GoodByeletter.model.Tina.Register01;
 import com.iSpanProject.GoodByeletter.service.Tina.boardService;
 
 @Controller
@@ -35,9 +28,9 @@ public class BoardController {
 	//增加留言板
 	@GetMapping("/board/add")
 	public String addBoardPage(Model model) {
-		Register01 register01 = new Register01();
-		register01.getMemberId();
-		
+//		Register01 register01 = new Register01();
+//		register01.getMemberId();
+//		
 		Board newboard= new Board();
 		model.addAttribute("newboard",newboard);
 		

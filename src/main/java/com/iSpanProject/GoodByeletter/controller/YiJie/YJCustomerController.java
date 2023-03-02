@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomer;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerRepository;
 //import com.iSpanProject.GoodByeletter.model.YiJie.YJLevel;
 import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerService;
@@ -46,9 +46,9 @@ public class YJCustomerController {
 						   Model model) { 
 		
 		if(Code.equals(rCode)) {
-			YJCustomer cus1 = new YJCustomer();
-			cus1.setAcc(acc);
-			cus1.setPass(pass);
+			Register cus1 = new Register();
+			cus1.setAccount(acc);
+			cus1.setPassword(pass);
 		
 			customerService.insert(cus1);
 			Map<String, String> msg = new HashMap<String, String>();
@@ -72,10 +72,10 @@ public class YJCustomerController {
 						HttpSession session) {
 		
 		//Register existing = registerService.findByAccAndPwd(account, password);
-		YJCustomer exis = customerService.findByAccAndPass(acc, pass);
+		Register exis = customerService.findByAccAndPass(acc, pass);
 
-		String acc1 = exis.getAcc();
-		String pwd = exis.getPass();
+		String acc1 = exis.getAccount();
+		String pwd = exis.getPassword();
 		
 		if (acc.equals(acc1) && pass.equals(pwd)) {
 			session.setAttribute("acc", acc1);
@@ -96,7 +96,7 @@ public class YJCustomerController {
 //
 	@ResponseBody
 	@GetMapping("/customers")
-	public List<YJCustomer> findAll(){
+	public List<Register> findAll(){
 		return customerDao.findAll();
 	}
 //	
