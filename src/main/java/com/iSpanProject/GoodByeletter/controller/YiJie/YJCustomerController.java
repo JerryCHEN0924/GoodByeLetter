@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
+import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerRepository;
 //import com.iSpanProject.GoodByeletter.model.YiJie.YJLevel;
 import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerService;
@@ -31,7 +32,7 @@ public class YJCustomerController {
 	private YJCustomerService customerService;
 	
 	private static final String Code = "123";//預設驗證碼
-	
+///////////////////////////////////////////////////////////////	
 	//註冊
 	
 	@GetMapping("/customer/add")
@@ -41,9 +42,10 @@ public class YJCustomerController {
 	
 	@PostMapping("/customer/registeradd")
 	public String registerCus(@RequestParam(value = "account") String acc,
-							@RequestParam(value = "password") String pass,
-							@RequestParam("rCode") String rCode,
-						   Model model) { 
+							  @RequestParam(value = "password") String pass,
+							  @RequestParam("rCode") String rCode,
+							  //HttpSession session,
+						      Model model) { 
 		
 		if(Code.equals(rCode)) {
 			Register cus1 = new Register();
@@ -51,12 +53,9 @@ public class YJCustomerController {
 			cus1.setPassword(pass);
 		
 			customerService.insert(cus1);
-			Map<String, String> msg = new HashMap<String, String>();
-			model.addAttribute("msg", msg);
-			msg.put("success", "會員註冊成功!");
-			return "YiJie/customerDetail";
+			return "redirect:/";
 		}else {
-			return null;
+			return "/customer/add";
 		}
 	}
 	//登入
@@ -68,14 +67,20 @@ public class YJCustomerController {
 	
 	@PostMapping("/customer/login")
 	public String loginCus(@RequestParam(value="account") String acc, 
-						@RequestParam(value="password") String pass, 
-						HttpSession session) {
+						   @RequestParam(value="password") String pass, 
+						   HttpSession session) {
 		
-		//Register existing = registerService.findByAccAndPwd(account, password);
 		Register exis = customerService.findByAccAndPass(acc, pass);
-
 		String acc1 = exis.getAccount();
 		String pwd = exis.getPassword();
+		
+//		YJCustomerDetail cdetail;
+//		
+//		exis.getFK_Plevel().getLevelName();
+		
+		
+		
+		
 		
 		if (acc.equals(acc1) && pass.equals(pwd)) {
 			session.setAttribute("acc", acc1);
@@ -94,23 +99,23 @@ public class YJCustomerController {
 	
 //////////////////////////////////////////////////////////////////////	
 //
-	@ResponseBody
-	@GetMapping("/customers")
-	public List<Register> findAll(){
-		return customerDao.findAll();
-	}
-//	
-	@ResponseBody
-	@DeleteMapping("/customer/delete")
-	public String deleteById(@RequestParam Integer id) {
-		try {
-			customerDao.deleteById(id);
-			return "刪除成功";
-		}catch(EmptyResultDataAccessException e) {
-			return "沒有這筆資料";
-		}
-		
-	}
+//	@ResponseBody
+//	@GetMapping("/customers")
+//	public List<Register> findAll(){
+//		return customerDao.findAll();
+//	}
+////	
+//	@ResponseBody
+//	@DeleteMapping("/customer/delete")
+//	public String deleteById(@RequestParam Integer id) {
+//		try {
+//			customerDao.deleteById(id);
+//			return "刪除成功";
+//		}catch(EmptyResultDataAccessException e) {
+//			return "沒有這筆資料";
+//		}
+//		
+//	}
 	
 	
 //	//註冊1.0
