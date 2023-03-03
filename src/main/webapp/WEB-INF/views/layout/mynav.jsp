@@ -79,15 +79,18 @@
 								<ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
 									id="dropdown-menu_login">
 									<c:choose>
-										<c:when test="${acc != null}">
-											<li><a class="dropdown-item narbar_text_color" href="register/logout">
-													${acc}登出 </a></li>
-											<li><a class="dropdown-item narbar_text_color" href="register/page">編輯會員</a>
+										<c:when test="${existing.memberId != null}">
+											<li><a class="dropdown-item narbar_text_color" href="<c:url value='register/logout' />">
+													${existing.account}登出 </a></li>
+											<li><a class="dropdown-item narbar_text_color" href="<c:url value='register/edit?memberId=${existing.memberId}' />">編輯帳號</a>
+											<li><a class="dropdown-item narbar_text_color" href="<c:url value='register/memberDetail' />">編輯會員資料</a>
+<%-- 											memberDetail/edit?memberId=${existing.memberId} --%>
+											
 											</li>
 										</c:when>
 										<c:otherwise>
-											<li><a class="dropdown-item narbar_text_color" href="login1"> 會員登入 </a></li>
-											<li><a class="dropdown-item narbar_text_color" href="register1"> 會員註冊 </a>
+											<li><a class="dropdown-item narbar_text_color" href="<c:url value='login1' />"> 登入 </a></li>
+											<li><a class="dropdown-item narbar_text_color" href="<c:url value='register1' />"> 註冊 </a>
 											</li>
 										</c:otherwise>
 									</c:choose>

@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>編輯帳號密碼</title>
+<title>編輯帳號</title>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,41 +28,43 @@
 </head>
 
 <body>
-<%-- 	<%@ include file="../layout/mynav.jsp"%> --%>
+	<%@ include file="../layout/mynav.jsp"%>
 
-<!-- 	<!-- regis --> -->
-<!-- 	<article id="" class="wrapper style2"> -->
-<!-- 		<div class="container-fluid " id="register"> -->
-<!-- 			<div id="space"></div> -->
+	<article id="" class="wrapper style2">
+		<div class="container-fluid " id="register">
+			<div id="space"></div>
 
 
-<!-- 			<div class="container" id="form_container"> -->
-<!-- 				<div id="registerTitle">編輯帳號</div> -->
-<%-- 				<form id="register_form" action="${contextRoot}/register/edit" method="get"> --%>
-<%-- 				<input type="hidden" name="memberId" value="${Register.memberId}" /> --%>
-			
+			<div class="container" id="form_container">
+				<div id="registerShowTitle">編輯帳號</div>
+				<form:form id="register_form"
+					action="${contextRoot}/register/putRegister"
+					modelAttribute="registers" method="put">
+					<form:input path="memberId" type="hidden" />
+					<form:input path="registerTime" type="hidden" />
+					<div class="mb-6 row">
+						<label for="account" class="col-sm-2 col-form-label">帳號</label>
+						<div class="col-sm-10">
+							<form:input path="account" type="text" class="form-control"
+								id="account" name="account" />
+						</div>
+					</div>
+					<div class="mb-6 row">
+						<label for="password" class="col-sm-2 col-form-label">密碼</label>
+						<div class="col-sm-10">
+							<form:input path="password" type="password" class="form-control"
+								id="password" name="password" />
+						</div>
+					</div>
+					<button type="submit">送出</button>
+				</form:form>
+			</div>
+		</div>
+	</article>
 
-<!-- 					<div class="mb-6 row"> -->
-<!-- 						<label for="account" class="col-sm-2 col-form-label">帳號</label> -->
-<!-- 						<div class="col-sm-10"> -->
-<!-- 							<input type="text" class="form-control" id="account" -->
-<!-- 								name="account"> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="mb-6 row"> -->
-<!-- 						<label for="password" class="col-sm-2 col-form-label">密碼</label> -->
-<!-- 						<div class="col-sm-10"> -->
-<!-- 							<input type="password" class="form-control" id="password" -->
-<!-- 								name="password"> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<button type="submit">送出</button> -->
-				
 
-<!-- 				</form> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</article> -->
+
+
 
 
 
@@ -81,4 +84,4 @@
 	</script>
 
 </body>
-</html>>
+</html>

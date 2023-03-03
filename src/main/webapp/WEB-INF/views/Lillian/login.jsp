@@ -29,7 +29,7 @@
             <h1>登入</h1>
             <form id="login" action="${contextRoot}/register/login" method="post">
                 <input type="text" placeholder="您的帳號" name="account"><br>
-                <input type="text" placeholder="您的密碼" name="password"><br>
+                <input type="password" placeholder="您的密碼" name="password"><br>
                 <button type="submit" id="login_submit">
                     <h6 id="login_h6">登入</h6>
                 </button>

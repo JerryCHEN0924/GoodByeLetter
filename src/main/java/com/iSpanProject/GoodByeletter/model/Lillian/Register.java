@@ -44,16 +44,16 @@ public class Register {
 	// false)
 	private String password;
 
-	@ManyToOne
-	@JoinColumn(name = "FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
-	private Level FK_Plevel;
-
 	// @Column(name = "registerTime")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	private Date registerTime;
 
+	@ManyToOne
+	@JoinColumn(name = "FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
+	private Level FK_Plevel;
+	
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FK_memberId", orphanRemoval = true)
 	private List<LastNote> lastnote = new ArrayList<>();

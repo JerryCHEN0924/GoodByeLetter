@@ -32,9 +32,23 @@ public class MemberDetailService {
 
 	}
 	
+	public MemberDetail updateMemberDetail(MemberDetail md) {
+		return mDao.save(md);
+	}	
+	
+	public MemberDetail findById(Integer memberId) {
+		Optional<MemberDetail> optional = mDao.findById(memberId);
+		
+		if(optional.isEmpty()) { 
+			return null;
+		}
+		return optional.get();		
+	}
+	
 	
 		
 		
 
 
 }
+

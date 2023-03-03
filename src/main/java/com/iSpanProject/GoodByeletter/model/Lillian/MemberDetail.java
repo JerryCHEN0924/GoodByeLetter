@@ -21,36 +21,30 @@ public class MemberDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne(cascade= {CascadeType.PERSIST })
-	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
-    private Register FK_memberId;
+//	@Column(name = "County",columnDefinition = "nvarchar(50)", nullable = false)
+	private String County;
 
-	@ManyToOne(cascade= {CascadeType.PERSIST })
-	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_memberDetail_level"))
-	private Level FK_Plevel;
+//	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
+	private String Email;
 
+//	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
+	private String address;
+	
+	private Date birthday;
+	
+//	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
+	private String gender;
 	
 //	@Column(name = "name",columnDefinition = "nvarchar(50)", nullable = false)
 	private String name;
 	
-//	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
+	@ManyToOne(cascade= {CascadeType.PERSIST })
+	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_memberDetail_level"))
+	private Level FK_Plevel;
 
-	private String gender;
-	
-	
-	private Date birthday;
-
-	
-//	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
-	private String Email;
-	
-//	@Column(name = "County",columnDefinition = "nvarchar(50)", nullable = false)
-	private String County;
-	
-//	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
-
-	private String address;
-
+	@OneToOne(cascade= {CascadeType.PERSIST })
+	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
+	private Register FK_memberId;
 	
 	public Integer getId() {
 		return id;

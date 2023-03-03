@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iSpanProject.GoodByeletter.dao.Lillian.LevelDao;
+import com.iSpanProject.GoodByeletter.dao.Lillian.MemberDetailDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
@@ -22,6 +24,8 @@ public class RegisterService {
 	@Autowired
 	private LevelDao lDao;
 
+	@Autowired
+	private MemberDetailDao mDao;
 
 
 	public void insert(Register register) {
@@ -61,6 +65,13 @@ public class RegisterService {
 	}
 
 	public Register updateRegister(Register reg) {
+		
+		// 查詢權限等級為 1 的 Level 對象
+				Optional<Level> optional = lDao.findById(1);
+				Level l1 = optional.get();
+				 // 設置 Register 對象的權限等級為 1
+				reg.setFK_Plevel(l1);
+		
 		return rDao.save(reg);
 	}	
 
@@ -80,6 +91,18 @@ public class RegisterService {
 	public List<Register> findAll() {
 		return rDao.findAll();	
 	}
+	
+//	public MemberDetail getRegisterById(Integer id) {
+//        Optional<Register> register = rDao.findById(id);
+//        if (register.isPresent()) {
+//        	Register re = register.get();
+//        	MemberDetail MD =new MemberDetail();
+//        	MD.setFK_memberId(re); 
+//        	return mDao.save(MD);
+//
+//        }
+//		return null;
+//    }
 
 
 	
