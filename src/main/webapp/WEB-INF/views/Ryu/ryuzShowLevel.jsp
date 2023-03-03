@@ -243,66 +243,6 @@
 
 
 
-<div class="row ">
-
-<div class="offset-sm-2 col-sm-8 ">
-
-
-
-<c:forEach var="levelByRyu" items="${page.content}">
-
-
-
-<div class="card mt-3">
-  <div class="card-header">
-    部門階級建立時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${levelByRyu.createTime}" /></span>
-  </div>
-  <div class="card-body">
-  	
-	${levelByRyu.levelName}
-  	
-  </div>
-  
-  <div class="edit-place m-2" style="display:flex">
-  
-	<form action="${contextRoot}/topGun/levelByRyu/edit" method="get" >
-		<input type="hidden" name="pLevel" value="${levelByRyu.pLevel}" />
-		<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
-	</form>
-	
-	<form action="${contextRoot}/topGun/levelByRyu/delete" method="post" >
-		<input type="hidden" name="_method" value="delete" />
-		<input type="hidden" name="pLevel" value="${levelByRyu.pLevel}" />
-		<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
-	</form>
-	
-  </div>
-  
-  
-</div>
-
-
-
-</c:forEach>
-
-
-
-
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
 
 
 
