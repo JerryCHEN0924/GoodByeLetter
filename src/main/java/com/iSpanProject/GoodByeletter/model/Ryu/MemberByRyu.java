@@ -13,6 +13,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -46,6 +47,11 @@ public class MemberByRyu {
 	private Date registerTime;
 	
 	
+	@Transient
+	private Integer pId;
+	
+	
+	
 	@JsonBackReference // 不要進行序列化，由另外一邊進行
 	@JoinColumn(name="FK_Plevel")
 	@ManyToOne // cascade=CascadeType.ALL => 這邊設定這個會把整個 member 刪除掉 ... 乾 ...
@@ -64,14 +70,25 @@ public class MemberByRyu {
 
 
 
-	public MemberByRyu(Integer memberId, String account, String password, Date registerTime, LevelByRyu levelByRyu) {
+	public MemberByRyu(Integer memberId, String account, String password, Date registerTime, Integer pId,
+			LevelByRyu levelByRyu) {
 		super();
 		this.memberId = memberId;
 		this.account = account;
 		this.password = password;
 		this.registerTime = registerTime;
+		this.pId = pId;
 		this.levelByRyu = levelByRyu;
 	}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -141,6 +158,23 @@ public class MemberByRyu {
 
 	public void setLevelByRyu(LevelByRyu levelByRyu) {
 		this.levelByRyu = levelByRyu;
+	}
+
+
+
+
+
+
+
+	public Integer getpId() {
+		return pId;
+	}
+
+
+
+
+	public void setpId(Integer pId) {
+		this.pId = pId;
 	}
 
 

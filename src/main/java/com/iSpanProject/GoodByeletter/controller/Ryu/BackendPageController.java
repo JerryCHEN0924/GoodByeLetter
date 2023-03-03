@@ -10,12 +10,7 @@ import com.iSpanProject.GoodByeletter.model.Ryu.MemberByRyu;
 public class BackendPageController {
 	
 	
-	@GetMapping("/topGun")
-	public String backendHome() {
-		
-		return "/Ryu/backendHome";
-		
-	}
+
 	
 	
 	

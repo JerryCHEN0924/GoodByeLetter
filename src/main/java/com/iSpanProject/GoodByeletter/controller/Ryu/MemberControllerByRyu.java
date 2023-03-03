@@ -1,5 +1,11 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -11,19 +17,51 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
-import com.iSpanProject.GoodByeletter.dao.Ryu.MemberRepository;
+import com.iSpanProject.GoodByeletter.dao.Ryu.MemberRepositoryByRyu;
+import com.iSpanProject.GoodByeletter.model.Ryu.LevelByRyu;
 import com.iSpanProject.GoodByeletter.model.Ryu.MemberByRyu;
+import com.iSpanProject.GoodByeletter.service.Ryu.LevelServiceByRyu;
 import com.iSpanProject.GoodByeletter.service.Ryu.MemberServiceByRyu;
 
 @Controller
+@SessionAttributes({"authenticated"})
 public class MemberControllerByRyu {
 	
 	@Autowired
-	private MemberRepository memberRepository;
+	private MemberRepositoryByRyu memberRepository;
 	
 	@Autowired
 	private MemberServiceByRyu memberServiceByRyu;
+	
+	@Autowired
+	private LevelServiceByRyu levelServiceByRyu;
+	
+	
+	
+	@GetMapping("/topGun/backendHome")
+	public String backendHome() {
+		
+		return "/Ryu/backendHome";
+		
+	}
+	
+	
+	@GetMapping("/topGun")
+	public String loginProcess(Model model) {
+		
+		return "Ryu/ryuzLoginForm";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@ResponseBody
 	@PostMapping("/memberByRyu/addTest")
@@ -63,7 +101,7 @@ public class MemberControllerByRyu {
 		//...
 		//...
 		
-		memberServiceByRyu.insert(memberByRyu);
+		memberServiceByRyu.insertMember(memberByRyu);
 		
 		MemberByRyu m2 = new MemberByRyu();
 		model.addAttribute("memberByRyu", m2);
@@ -104,7 +142,7 @@ public class MemberControllerByRyu {
 	@PutMapping("/topGun/memberByRyu/editPost")
 	public String editPostMember(@ModelAttribute("memberByRyu") MemberByRyu memberByRyu) {
 		
-		memberServiceByRyu.insert(memberByRyu);
+		memberServiceByRyu.updateMember(memberByRyu);
 		
 		return "redirect:/topGun/memberByRyu/page";
 	}
@@ -133,13 +171,133 @@ public class MemberControllerByRyu {
 	
 	
 	
+	@ModelAttribute("pLevelList")
+	public Map<Integer, String> getPLevelList(){
+		
+		
+		Map<Integer, String> levelMap = new HashMap<>();
+		List<LevelByRyu> list = levelServiceByRyu.getLevelList();
+		
+		for(LevelByRyu l1: list) {
+			
+			levelMap.put(l1.getpLevel(), l1.getLevelName());
+			
+		}
+		
+		System.out.println("-------------------------");
+		System.out.println(levelMap);
+		System.out.println("-------------------------");
+		
+		return levelMap;
+		
+	}
+	
+	
+//	@GetMapping("/topGun/memberByRyu/login")
+//	public String loginProcess(Model model) {
+//		
+//		
+//		return "Ryu/ryuzLoginForm";
+//		
+//		
+//	}
+	
+	
+	
+	
+	
+//	@GetMapping("/topGun/memberByRyu/goLogin")
+//	public String loginProcess(@RequestParam("account") String account,@RequestParam("password") String password, Model model) {
+//		
+//		boolean checkAccountAndPassword = memberServiceByRyu.checkAccountAndPassword(account, password);
+//		
+//		if(checkAccountAndPassword) {
+//			
+//			
+//			
+//		}
+//		
+//		
+//	}
+	
+	@PostMapping("/topGun/memberByRyu/LoginProcess")
+	public String loginProcess(@RequestParam("account") String account,@RequestParam("password") String password,
+								HttpServletRequest request, Model model) {
+		
+		MemberByRyu memberByRyu = memberServiceByRyu.login(account, password);
+		
+		  if (memberByRyu != null) {
+			  
+			  model.addAttribute("authenticated", memberByRyu);
+	            return "redirect:/topGun/backendHome";
+		  }
+		  
+		  else {
+	            // 登入失敗，返回登入表單
+	            return "Ryu/ryuzLoginForm";
+	        }
+		  
+		  
+	}
+	
+	@GetMapping("/topGun/memberByRyu/LogoutProcess")
+	public String logoutProcess(SessionStatus status) {
+		
+		status.setComplete();
+		
+		return "redirect:/topGun";
+	}
+	
+	
+	
+	
+//	@PostMapping("/topGun/memberByRyu/goLogin2")
+//	public String loginProcess(@ModelAttribute("memberByRyu") MemberByRyu memberByRyu, HttpServletRequest request, Model model) {
+//		
+//		String account = memberByRyu.getAccount();
+//		String password = memberByRyu.getPassword();
+//		
+//		MemberByRyu m1 = memberServiceByRyu.login(account, password);
+//		
+//		
+//		System.out.println("-------------------------");
+//		System.out.println("-------------------------");
+//		System.out.println("-------------------------");
+//		System.out.println(m1);
+//		System.out.println("-------------------------");
+//		System.out.println("-------------------------");
+//		System.out.println("-------------------------");
+//		
+//		
+//		
+//		if (m1 != null) {
+//			
+//			model.addAttribute("authenticated", m1);
+//			return "redirect:/topGun";
+//			
+//		}
+//		
+//		else {
+//			// 登入失敗，返回登入表單
+//			return "Ryu/ryuzLoginForm2";
+//		}
+//		
+//		
+//	}
 	
 	
 	
 	
 	
 	
-	
+//	@ModelAttribute("authenticated")
+//	public MemberByRyu test98(HttpServletRequest request, Model model) {
+//		
+//		MemberByRyu memberByRyu = new MemberByRyu();
+//			
+//		return memberByRyu;
+//		
+//	}
 	
 	
 

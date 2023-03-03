@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.Ryu;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.LevelRepositoryByRyu;
-import com.iSpanProject.GoodByeletter.dao.Ryu.MemberRepository;
+import com.iSpanProject.GoodByeletter.dao.Ryu.MemberRepositoryByRyu;
 import com.iSpanProject.GoodByeletter.model.Ryu.LevelByRyu;
 import com.iSpanProject.GoodByeletter.model.Ryu.MemberByRyu;
 
@@ -22,10 +23,13 @@ public class MemberServiceByRyu {
 	
 	
 	@Autowired
-	private MemberRepository memberRepository;
+	private MemberRepositoryByRyu memberRepository;
 	
 	@Autowired
 	private LevelRepositoryByRyu levelRepositoryByRyu;
+	
+//	@Autowired
+//	private MemberValidator memberValidator;
 	
 
 	public MemberServiceByRyu() {
@@ -34,12 +38,28 @@ public class MemberServiceByRyu {
 	
 	
 	
-	public void insert(MemberByRyu memberByRyu) {
+	public void insertMember(MemberByRyu memberByRyu) {
 		
-		Optional<LevelByRyu> levelByRyu = levelRepositoryByRyu.findById(2);
+		Integer pId = memberByRyu.getpId();
+		
+		Optional<LevelByRyu> levelByRyu = levelRepositoryByRyu.findById(pId);
 			
 		LevelByRyu l2 = levelByRyu.get();
 			
+		memberByRyu.setLevelByRyu(l2);
+		
+		memberRepository.save(memberByRyu);
+		
+	}
+	
+	public void updateMember(MemberByRyu memberByRyu) {
+		
+		Integer pId = memberByRyu.getLevelByRyu().getpLevel();
+		
+		Optional<LevelByRyu> levelByRyu = levelRepositoryByRyu.findById(pId);
+		
+		LevelByRyu l2 = levelByRyu.get();
+		
 		memberByRyu.setLevelByRyu(l2);
 		
 		memberRepository.save(memberByRyu);
@@ -84,7 +104,7 @@ public class MemberServiceByRyu {
 	
 	public Page<MemberByRyu> findByPage(Integer pageNumber){
 		
-		Pageable pgb = PageRequest.of(pageNumber-1, 3, Sort.Direction.DESC, "memberId");
+		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "memberId");
 		
 		Page<MemberByRyu> page = memberRepository.findAll(pgb);
 		
@@ -95,10 +115,66 @@ public class MemberServiceByRyu {
 	
 	
 	
+	public boolean checkAccountAndPassword(String account, String password) {
+		
+		boolean caap = false;
+		
+		List<MemberByRyu> list = memberRepository.findMemberByRyuByAccountAndPassword(account, password);
+		
+		if(!list.isEmpty()) {
+			caap = true;
+		}
+		
+		return caap;
+	}
+	
+	
+	
+	public MemberByRyu login(String account, String password) {
+		
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		System.out.println(account);
+		System.out.println(password);
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		
+		MemberByRyu m1 = memberRepository.findMemberByAccount(account);
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		System.out.println(m1);
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		System.out.println("-------------------");
+		
+		if(m1.getPassword().equals(password)) {
+			
+			return m1;
+			
+		}
+		
+		return null;
+		
+	}
 	
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+//	 public void checkValidWithMember(MemberByRyu memberByRyu) {
+//		 
+//		 memberValidator.accountValid(memberByRyu, null, null);
+//		 
+//	 }
 	
 	
 	

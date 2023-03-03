@@ -38,12 +38,23 @@
   <div class="container-fluid">
   
   
+    <div>
+    	<c:choose>
+		    <c:when test="${not empty authenticated}">
+		        <!-- member 物件存在，顯示登出按鈕 -->
+		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/memberByRyu/LogoutProcess">${authenticated.account} 登出</a>
+		    </c:when>
+		    <c:otherwise>
+		        <!-- member 物件不存在，顯示登入按鈕 -->
+		        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun">${authenticated.account} 登入</a>
+		    </c:otherwise>
+		</c:choose>
+    </div>
   
-    <a class="navbar-brand" href="${contextRoot}/topGun">後臺管理介面</a>
+    <a class="navbar-brand" href="${contextRoot}/topGun/backendHome">後臺管理介面</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    
     
     
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
@@ -58,7 +69,7 @@
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${contextRoot}/topGun">Home</a>
+            <a class="nav-link active" aria-current="page" href="${contextRoot}/topGun/backendHome">Home</a>
           </li>
           
           <li class="nav-item">
@@ -78,6 +89,14 @@
           </li>
           
           <li class="nav-item">
+            <a class="nav-link" href="${contextRoot}/topGun/memberDetailByRyu/add">新增會員細項資料</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          
+          <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
           
@@ -94,7 +113,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              一般會員
+              Link
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -116,7 +135,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              廣告商
+              Link
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -152,7 +171,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              超級管理員
+              Link
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -171,7 +190,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              超級管理員
+              Link
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -190,7 +209,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              超級管理員
+              Link
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -231,7 +250,7 @@
         
         
         <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="目前沒作用" aria-label="Search">
           <button class="btn btn-success" type="submit">Search</button>
         </form>
         

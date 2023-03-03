@@ -142,6 +142,10 @@
 
 
 
+
+
+
+
 <div class="row mt-3">
 
 <div class="offset-sm-1 col-sm-10 ">
@@ -222,6 +226,86 @@
 
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row ">
+
+<div class="offset-sm-2 col-sm-8 ">
+
+
+
+<c:forEach var="memberByRyu" items="${page.content}">
+
+
+
+<div class="card mt-3">
+  <div class="card-header">
+    帳號註冊時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${memberByRyu.registerTime}" /></span>
+  </div>
+  <div class="card-body">
+  	
+	${memberByRyu.account}
+  	
+  </div>
+  
+  <div class="edit-place m-2" style="display:flex">
+  
+	<form action="${contextRoot}/topGun/memberByRyu/edit" method="get" >
+		<input type="hidden" name="memberId" value="${memberByRyu.memberId}" />
+		<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
+	</form>
+	
+	<form action="${contextRoot}/topGun/memberByRyu/delete" method="post" >
+		<input type="hidden" name="_method" value="delete" />
+		<input type="hidden" name="memberId" value="${memberByRyu.memberId}" />
+		<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
+	</form>
+	
+  </div>
+  
+  
+</div>
+
+
+
+</c:forEach>
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

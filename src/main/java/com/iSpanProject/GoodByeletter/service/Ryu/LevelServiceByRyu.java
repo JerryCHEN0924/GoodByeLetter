@@ -82,7 +82,7 @@ public class LevelServiceByRyu {
 	
 	public Page<LevelByRyu> findByPage(Integer pageNumber){
 		
-		Pageable pgb = PageRequest.of(pageNumber-1, 3, Sort.Direction.DESC, "pLevel");
+		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "pLevel");
 		
 		Page<LevelByRyu> page = levelRepositoryByRyu.findAll(pgb);
 		
@@ -107,6 +107,12 @@ public class LevelServiceByRyu {
 		}
 		
 		return l1;
+	}
+	
+	
+	
+	public List<LevelByRyu> getLevelList(){
+		return levelRepositoryByRyu.findAll();
 	}
 	
 	
