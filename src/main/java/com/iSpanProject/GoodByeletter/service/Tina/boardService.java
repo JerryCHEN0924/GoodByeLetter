@@ -55,10 +55,10 @@ public class boardService {
 	}
 	
 	//findBoardByTitleContaining
-	public Page<Board> findByTitleContaining(@RequestParam("title")String title){
-		return boardDao.findByTitleContaining(title);		
-	}
-	
+//	public Page<Board> findByTitleContaining(@RequestParam("title")String title){
+//		return boardDao.findByTitleContaining(title);		
+//	}
+//	
 	//findAll
 	public List<Board> findAll(){
 		return boardDao.findAll();		
