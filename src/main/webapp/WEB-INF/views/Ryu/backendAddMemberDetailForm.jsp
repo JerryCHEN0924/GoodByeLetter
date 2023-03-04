@@ -56,18 +56,27 @@
   </div>
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/memberDetailByRyu/post" modelAttribute="memberDetailByRyu" method='POST'>
+  	<form:form action="${contextRoot}/topGun/memberDetail/post" modelAttribute="memberDetail" method='POST'>
   		
   		
-  		<c:if test='${memberDetailByRyu.memberDetailId != null}'>
+  		<c:if test='${memberDetail.id != null}'>
   		 <div class="mb-3 row">
 		    <label for="inputMemberDetailId" class="col-sm-2 col-form-label">MemberDetailId</label>
 		    <div class="col-sm-10">
-		    	<form:input path="memberDetailId" class="form-control" id="inputMemberDetailId" />
+		    	<form:input path="id" class="form-control" id="inputMemberDetailId" />
 		    </div>
 		  </div>
 		 </c:if>
 		  
+		  
+		  
+  		 <div class="mb-3 row">
+		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+		    <div class="col-sm-10">
+		    	<form:input path="account" class="form-control" id="inputAccount" />
+		    	<form:errors path="account" class="form-control" id="inputAccount" cssClass="error" />
+		    </div>
+		  </div>
 		  
 		  
   		 <div class="mb-3 row">
@@ -105,8 +114,18 @@
   		 <div class="mb-3 row">
 		    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 		    <div class="col-sm-10">
-		    	<form:input path="email" class="form-control" id="inputEmail" />
-		    	<form:errors path="email" class="form-control" id="inputEmail" cssClass="error" />
+		    	<form:input path="Email" class="form-control" id="inputEmail" />
+		    	<form:errors path="Email" class="form-control" id="inputEmail" cssClass="error" />
+		    </div>
+		  </div>
+		  
+		  
+		  
+  		 <div class="mb-3 row">
+		    <label for="inputCounty" class="col-sm-2 col-form-label">County</label>
+		    <div class="col-sm-10">
+		    	<form:input path="County" class="form-control" id="inputCounty" />
+		    	<form:errors path="County" class="form-control" id="inputCounty" cssClass="error" />
 		    </div>
 		  </div>
 		  

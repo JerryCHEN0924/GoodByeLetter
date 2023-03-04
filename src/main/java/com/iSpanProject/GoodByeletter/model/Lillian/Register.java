@@ -45,6 +45,8 @@ public class Register {
 	// false)
 	private String password;
 	
+	
+	
 //	####################### Ryuz divider start #######################
 	
 	// 暫時性欄位，後台建置Register使用，不會增加表格欄位
@@ -54,7 +56,19 @@ public class Register {
 	@Transient
 	private Integer pId;
 	
+//	======================= Block =======================
+	
+	public Integer getpId() {
+		return pId;
+	}
+
+	public void setpId(Integer pId) {
+		this.pId = pId;
+	}
+	
 //	####################### Ryuz divider end #######################
+	
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
@@ -165,30 +179,6 @@ public class Register {
 	public Register() {
 		super();
 	}
-	
-	
-	
-	
-//	####################### Ryuz divider start #######################
-
-	public Integer getpId() {
-		return pId;
-	}
-
-	public void setpId(Integer pId) {
-		this.pId = pId;
-	}
-	
-//	####################### Ryuz divider end #######################
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

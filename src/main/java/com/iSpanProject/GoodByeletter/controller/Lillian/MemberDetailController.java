@@ -1,6 +1,6 @@
 package com.iSpanProject.GoodByeletter.controller.Lillian;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 

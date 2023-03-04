@@ -6,10 +6,10 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.iSpanProject.GoodByeletter.model.Ryu.MemberDetailByRyu;
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 
 
-public class MemberValidator implements Validator {
+public class MemberDetailValidator implements Validator {
 	
 	
 	private static final Pattern EMAIL_REGEX = Pattern.compile("^[\\w\\d._-]+@[\\w\\d.-]+\\.[\\w\\d]{2,6}$");
@@ -19,7 +19,7 @@ public class MemberValidator implements Validator {
 	@Override
 	public boolean supports(Class<?> clazz) {
 		
-		return MemberDetailByRyu.class.isAssignableFrom(clazz);
+		return MemberDetail.class.isAssignableFrom(clazz);
 		
 	}
 
@@ -33,8 +33,10 @@ public class MemberValidator implements Validator {
 //		ValidationUtils.rejectIfEmpty(errors, "email", "", "email欄不能空白");
 		
 		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account", "", "帳號欄位不正確");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "姓名欄位不正確");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "", "性別欄位不正確");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "County", "", "County欄位不正確");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "", "地址欄位不正確");
 		
 		
@@ -43,7 +45,7 @@ public class MemberValidator implements Validator {
 //		ValidationUtils.rejectIfEmpty(errors, "email", "", "email欄不能空白");
 		
 		
-		MemberDetailByRyu memberDetailByRyu = (MemberDetailByRyu) target;
+		MemberDetail memberDetail = (MemberDetail) target;
 		
 //		String name = memberDetailByRyu.getName();
 //		if (name == null || name.trim().length() == 0) {
@@ -94,9 +96,9 @@ public class MemberValidator implements Validator {
 //			errors.rejectValue("password", "customerBean.password.mustEqual");
 //		}
 		
-		if ( !errors.hasFieldErrors("email") && memberDetailByRyu.getEmail() != null 
-						&& !EMAIL_REGEX.matcher(memberDetailByRyu.getEmail()).matches()) {
-			errors.rejectValue("email", "", "email格式不正確");
+		if ( !errors.hasFieldErrors("Email") && memberDetail.getEmail() != null 
+						&& !EMAIL_REGEX.matcher(memberDetail.getEmail()).matches()) {
+			errors.rejectValue("Email", "", "email格式不正確");
 		}
 		
 		
