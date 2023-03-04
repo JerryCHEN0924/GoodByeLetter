@@ -92,17 +92,13 @@ public class RegisterService {
 		return rDao.findAll();	
 	}
 	
-//	public MemberDetail getRegisterById(Integer id) {
-//        Optional<Register> register = rDao.findById(id);
-//        if (register.isPresent()) {
-//        	Register re = register.get();
-//        	MemberDetail MD =new MemberDetail();
-//        	MD.setFK_memberId(re); 
-//        	return mDao.save(MD);
-//
-//        }
-//		return null;
-//    }
+	public Register getRegisterById(Integer id) {
+        Optional<Register> register = rDao.findById(id);
+        if (register.isPresent()) {
+        	return null;
+        }
+		return register.get();
+    }
 
 
 	

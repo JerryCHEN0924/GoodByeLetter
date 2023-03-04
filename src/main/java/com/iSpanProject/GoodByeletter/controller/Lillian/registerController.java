@@ -57,16 +57,15 @@ public class registerController {
 		newRegister.setPassword(password);
 
 		registerService.insert(newRegister);
-		
-		
-		
+		///////////
+		Register registerNew=registerService.findByAccAndPwd(account, password);
+		Integer memberId=registerNew.getMemberId();
+		model.addAttribute("memberId", memberId);
+		////////////
 		Map<String, String> msg = new HashMap<String, String>();
 		model.addAttribute("msg", msg);
 		msg.put("success", "會員註冊成功!");
 		
-		
-		
-
 		return "Lillian/addMemberDetail";
 	}
 

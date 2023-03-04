@@ -43,18 +43,20 @@ public class MemberDetailController {
 									@RequestParam(value="email") String email,
 									@RequestParam(value="county") String county,
 									@RequestParam(value="address") String address, 
-									@ModelAttribute("register") Register register, Model model,HttpSession session) {
+									@RequestParam(value="memberId") Integer memberId,
+									Model model) {
 		
 		MemberDetail newMemberDetail = new MemberDetail();		
-		newMemberDetail.setFK_memberId(register);
 		newMemberDetail.setName(name);
 		newMemberDetail.setGender(gender);
 		newMemberDetail.setBirthday(birthday);
 		newMemberDetail.setEmail(email);
 		newMemberDetail.setCounty(county);
 		newMemberDetail.setAddress(address);
-		
-		
+		/////////////////////
+		Register register=registerService.findById(memberId);
+		newMemberDetail.setFK_memberId(register);
+		///////////////////////	
 		memberDetailService.insert(newMemberDetail);
 		   Map<String, String> msg = new HashMap<String, String>();
 		   model.addAttribute("msg", msg);
