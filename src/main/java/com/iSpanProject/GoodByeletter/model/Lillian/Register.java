@@ -19,6 +19,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -43,7 +44,18 @@ public class Register {
 	// @Column(name = "password",columnDefinition = "nvarchar(50)", nullable =
 	// false)
 	private String password;
-
+	
+//	####################### Ryuz divider start #######################
+	
+	// 暫時性欄位，後台建置Register使用，不會增加表格欄位
+	// 於此類別中，有增加對應之getter/setter
+	// 經判斷為操作上必要屬性，由後臺選單選擇之權限而定，與FK_Plevel之getter/setter無關
+	// 勿刪、勿刪、勿刪
+	@Transient
+	private Integer pId;
+	
+//	####################### Ryuz divider end #######################
+	
 	@ManyToOne
 	@JoinColumn(name = "FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
 	private Level FK_Plevel;
@@ -153,5 +165,38 @@ public class Register {
 	public Register() {
 		super();
 	}
+	
+	
+	
+	
+//	####################### Ryuz divider start #######################
+
+	public Integer getpId() {
+		return pId;
+	}
+
+	public void setpId(Integer pId) {
+		this.pId = pId;
+	}
+	
+//	####################### Ryuz divider end #######################
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

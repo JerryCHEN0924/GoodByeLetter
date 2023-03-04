@@ -30,7 +30,6 @@
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
-<h1>查看會員 Page</h1>
 
 
 
@@ -39,13 +38,12 @@
   
     
     
-    <li class="page-item">
     	<c:choose>
     	
 			<c:when test="${page.number > 0}">
 			
 				<li class="page-item">
-				<a class="page-link" href="${contextRoot }/topGun/memberByRyu/page?p=${page.number - 0}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+				<a class="page-link" href="${contextRoot }/topGun/register/page?p=${page.number - 0}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
 				</li>
 				
 			</c:when>
@@ -53,13 +51,12 @@
 			<c:otherwise>
 			
 			<li class="page-item disabled">
-				<a class="page-link" href="${contextRoot }/topGun/memberByRyu/page?p=${page.number - 0}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+				<a class="page-link" href="${contextRoot }/topGun/register/page?p=${page.number - 0}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
 			</li>
 			
 			</c:otherwise>
 		
 		</c:choose>
-    </li>
     
     
 		
@@ -72,7 +69,7 @@
 			<c:when test="${page.number+1 != pageNumber }">
 			
 				<li class="page-item">
-				<a class="page-link" href="${contextRoot }/topGun/memberByRyu/page?p=${pageNumber }">${pageNumber }</a>
+				<a class="page-link" href="${contextRoot }/topGun/register/page?p=${pageNumber }">${pageNumber }</a>
 				</li>
 				
 			</c:when>
@@ -100,7 +97,7 @@
 			<c:when test="${page.number+1 < page.totalPages}">
 			
 				<li class="page-item">
-					<a class="page-link" href="${contextRoot }/topGun/memberByRyu/page?p=${page.number + 2}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+					<a class="page-link" href="${contextRoot }/topGun/register/page?p=${page.number + 2}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 				</li>
 				
 			</c:when>
@@ -108,7 +105,7 @@
 			<c:otherwise>
 			
 			<li class="page-item disabled">
-				<a class="page-link" href="${contextRoot }/topGun/memberByRyu/page?p=${page.number + 2}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+				<a class="page-link" href="${contextRoot }/topGun/register/page?p=${page.number + 2}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 			</li>
 			
 			</c:otherwise>
@@ -135,7 +132,7 @@
 
 
 
-
+<hr>
 
 
 
@@ -155,19 +152,19 @@
 <div class="card">
   <div class="card-header">
   
-  查看會員 Page
+  查看註冊會員資料 Page
   
   </div>
   <div class="card-body">
   	
-  	<c:forEach var="memberByRyu" items="${page.content}">
+  	<c:forEach var="register" items="${page.content}">
   	
-  	<table class="table">
+  	<table class="table table table-dark table-striped-columns table-hover">
   	
 	  <thead>
 	  
 	  
-	    <tr>
+	    <tr class="table-primary table-active">
 	      <th scope="col">memberId</th>
 	      <th scope="col">account</th>
 	      <th scope="col">password</th>
@@ -187,23 +184,23 @@
 	  
 	  
 	    <tr>
-	      <td>${memberByRyu.memberId}</td>
-	      <td>${memberByRyu.account}</td>
-	      <td>${memberByRyu.password}</td>
-	      <td>${memberByRyu.registerTime}</td>
-	      <td>${memberByRyu.levelByRyu.pLevel}</td>
+	      <td>${register.memberId}</td>
+	      <td>${register.account}</td>
+	      <td>${register.password}</td>
+	      <td>${register.registerTime}</td>
+	      <td>${register.FK_Plevel.plevel}</td>
 	      <td>
 	      	<div class="d-flex justify-content-center">
 	      		<div class="mx-1">
-		  	<form action="${contextRoot}/topGun/memberByRyu/edit" method="get" >
-				<input type="hidden" name="memberId" value="${memberByRyu.memberId}" />
+		  	<form action="${contextRoot}/topGun/register/edit" method="get" >
+				<input type="hidden" name="memberId" value="${register.memberId}" />
 				<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
 			</form>
 				</div>
 				<div>
-			<form action="${contextRoot}/topGun/memberByRyu/delete" method="post" >
+			<form action="${contextRoot}/topGun/register/delete" method="post" >
 				<input type="hidden" name="_method" value="delete" />
-				<input type="hidden" name="memberId" value="${memberByRyu.memberId}" />
+				<input type="hidden" name="memberId" value="${register.memberId}" />
 				<input type="submit" class="btn btn-outline-danger btn-sm" value="刪除" />
 			</form>
 				</div>

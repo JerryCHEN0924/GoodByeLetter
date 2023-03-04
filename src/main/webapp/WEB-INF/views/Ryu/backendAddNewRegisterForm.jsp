@@ -14,26 +14,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>編輯會員 Page</title>
+<title>新增會員 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
 
+
+
+
 <div class="container w-75 text-center">
+
+
+
 
 
 <div class="row ">
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
-<h1>編輯會員 Page</h1>
-
-
-
+<h1>新增會員 Page</h1>
 
 </div>
-</div>
 
+</div>
 
 
 
@@ -46,34 +49,42 @@
 <div class="offset-sm-2 col-sm-8 ">
 
 
+
 <div class="card">
   <div class="card-header">
-    編輯會員 Page
+    新增會員
   </div>
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/memberByRyu/editPost" modelAttribute="memberByRyu" method="put">
-  		
-  		<form:input path="memberId" type="hidden" />
-  		<form:input path="registerTime" type="hidden" />
-  		<form:input path="levelByRyu" type="hidden" />
+  	<form:form action="${contextRoot}/topGun/register/post" modelAttribute="register" method='POST'>
   		
   		
   		
-  		
-  		<div class="mb-3 row">
-		    <label for="inputMemberId" class="col-sm-2 col-form-label">MemberId</label>
-		    <div class="col-sm-10">
-		    	<input name="memberId" class="form-control" id="inputMemberId" value="${memberByRyu.memberId}" disabled />
-		    </div>
-		  </div>
+		  
+		  
+		
+			
+			<div class="mb-3 row">
+			
+				<div class="offset-sm-1 col-sm-10 ">
+			
+					<form:select path="pId" class="form-select form-select-lg mb-1 text-center"  aria-label=".form-select-lg example" >
+						<form:option value="2" >請選部門</form:option>
+						<form:options items="${plevelList}" />
+					</form:select>
+				
+				</div>			
+			 </div>	
+			 
+			 
+			 
+		
+		
 		  
 		  
 		  
-  		
-  		
-  		
-  		<div class="mb-3 row">
+		  
+  		 <div class="mb-3 row">
 		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
 		    <div class="col-sm-10">
 		    	<form:input path="account" class="form-control" id="inputAccount" />
@@ -88,28 +99,13 @@
 		    	<form:input path="password" class="form-control" id="inputPassword" />
 		    </div>
 		  </div>
-		  
-		  
-		  <div class="mb-3 row">
-		    <label for="inputRegisterTime" class="col-sm-2 col-form-label">RegisterTime</label>
-		    <div class="col-sm-10">
-		    	<input name="registerTime" class="form-control" id="inputRegisterTime" value="${memberByRyu.registerTime}" disabled />
-		    </div>
-		  </div>
-		  
-  		<div class="mb-3 row">
-		    <label for="inputLevelByRyu" class="col-sm-2 col-form-label">Level</label>
-		    <div class="col-sm-10">
-		    	<input name="levelByRyu" class="form-control" id="inputLevelByRyu" value="${memberByRyu.levelByRyu.pLevel}" disabled />
-		    </div>
-		  </div>
-		  
   		
   		<div class="mt-3">
   		
 	  		<button type="submit" class="btn btn-primary">送出</button>
 	  		
   		</div>
+  		
   		
   	</form:form>
   	
@@ -120,8 +116,19 @@
 
 
 
+
+
 </div>
 </div>
+
+
+
+
+
+
+
+
+
 
 
 
