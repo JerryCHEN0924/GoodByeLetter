@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -31,22 +29,20 @@ public class MemberDetailController {
 	private MemberDetailService memberDetailService;
 	@Autowired
 	private RegisterDao registerDao;
-	
+
 	@Autowired
 	private RegisterService registerService;
-	
-	
+
+//註冊會員資料
 	@PostMapping("/MemberDetail/add2")
-	public String saveMemberDetail(@RequestParam(value="name") String name,
-									@RequestParam(value="gender") String gender,
-									@RequestParam(value="birthday") @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthday,
-									@RequestParam(value="email") String email,
-									@RequestParam(value="county") String county,
-									@RequestParam(value="address") String address, 
-									@RequestParam(value="memberId") Integer memberId,
-									Model model) {
-		
-		MemberDetail newMemberDetail = new MemberDetail();		
+	public String saveMemberDetail(@RequestParam(value = "name") String name,
+			@RequestParam(value = "gender") String gender,
+			@RequestParam(value = "birthday") @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthday,
+			@RequestParam(value = "email") String email, @RequestParam(value = "county") String county,
+			@RequestParam(value = "address") String address, @RequestParam(value = "memberId") Integer memberId,
+			Model model) {
+
+		MemberDetail newMemberDetail = new MemberDetail();
 		newMemberDetail.setName(name);
 		newMemberDetail.setGender(gender);
 		newMemberDetail.setBirthday(birthday);
@@ -54,19 +50,17 @@ public class MemberDetailController {
 		newMemberDetail.setCounty(county);
 		newMemberDetail.setAddress(address);
 		/////////////////////
-		Register register=registerService.findById(memberId);
+		Register register = registerService.findById(memberId);
 		newMemberDetail.setFK_memberId(register);
-		///////////////////////	
+		///////////////////////
 		memberDetailService.insert(newMemberDetail);
-		   Map<String, String> msg = new HashMap<String, String>();
-		   model.addAttribute("msg", msg);
-		   msg.put("success", "會員註冊成功!");
-		
-	
-			return "redirect:/";		
+		Map<String, String> msg = new HashMap<String, String>();
+		model.addAttribute("msg", msg);
+		msg.put("success", "會員註冊成功!");
+
+		return "redirect:/";
 	}
 
-	
 //	@PostMapping("/addRegister")
 //	public String addRegister(@ModelAttribute("memberDetails") MemberDetail memberDetail,  Model model,HttpSession sessions) {		
 //		Register op = (Register)model.getAttribute("existing");
@@ -77,35 +71,32 @@ public class MemberDetailController {
 //	}
 //	
 //	@GetMapping("/register/memberDetail")
-//	public String MemberDetailDaoPage(Model model) {
-//		
-//		MemberDetail m1 = new MemberDetail();
-//		
+//	public String MemberDetailDaoPage(Model model) {		
+//		MemberDetail m1 = new MemberDetail();	
 //		model.addAttribute("memberDetails", m1);
-//		
 //		return "Lillian/addMemberDetail";
 //	}
-//	
-	
+
+//編輯會員資料
 	@GetMapping("/memberDetail/edit")
-	public String editMemberDetailPage(@RequestParam Integer memberId,Model model) {//model儲存送過去
-		MemberDetail memberDetail=memberDetailService.findById(memberId);
-		model.addAttribute("memberDetails",memberDetail);
+	public String editMemberDetailPage(@RequestParam Integer memberId, Model model) {// model儲存送過去
+		//MemberDetail memberDetails = memberDetailService.findById(memberId);
+//		MemberDetail memberDetails =new MemberDetail();
+		MemberDetail memberDetails=memberDetailService.findByMemberId(memberId);
 		
-		Register reg = (Register)model.getAttribute("existing");
-		reg.getMemberId();
-		return "Lillian/memberDetailEdit";
-		
+		model.addAttribute("memberDetails", memberDetails);
+
+
+		return "Lillian/MemberDetailEdit";
+
 	}
-	
+
 	@PutMapping("/memberDetail/putMemberDetail")
-	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail){
+	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail) {
 
 		memberDetailService.updateMemberDetail(memberDetail);
-        
-	    return "redirect:/";
-	}
-	
 
-	
+		return "redirect:/";
+	}
+
 }

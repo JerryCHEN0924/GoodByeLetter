@@ -64,14 +64,7 @@ public class RegisterService {
 		return optional.get();		
 	}
 
-	public Register updateRegister(Register reg) {
-		
-		// 查詢權限等級為 1 的 Level 對象
-				Optional<Level> optional = lDao.findById(1);
-				Level l1 = optional.get();
-				 // 設置 Register 對象的權限等級為 1
-				reg.setFK_Plevel(l1);
-		
+	public Register updateRegister(Register reg) {	
 		return rDao.save(reg);
 	}	
 

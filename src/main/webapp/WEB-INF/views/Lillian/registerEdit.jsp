@@ -42,6 +42,8 @@
 					modelAttribute="registers" method="put">
 					<form:input path="memberId" type="hidden" />
 					<form:input path="registerTime" type="hidden" />
+					<form:input path="FK_Plevel" type="hidden" />
+					
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">

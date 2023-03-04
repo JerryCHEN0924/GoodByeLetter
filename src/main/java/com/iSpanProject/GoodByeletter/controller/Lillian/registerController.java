@@ -29,12 +29,12 @@ public class registerController {
 	private RegisterDao registerDao;
 	@Autowired
 	private MemberDetailService memberDetailService;
-
+//註冊帳號
 	@PostMapping("/register/add")
 	public String saveRegister(@RequestParam(value = "account") String account,
 								@RequestParam(value = "password") String password, 
 								Model model) {
-
+//
 //		Map<String,String> errors = new HashMap <String,String>();
 //		model.addAttribute("errors",errors);
 //		
@@ -45,7 +45,7 @@ public class registerController {
 //		if(password == null || password.length() == 0) {
 //			errors.put("password", "必填");			
 //		}
-//		
+		
 
 //		Register existingRegister = registerDao.findRegisterByAcc(acc);
 //		if( existingRegister != null ) {
@@ -72,9 +72,9 @@ public class registerController {
 	@GetMapping("/register1")
 	public String register1() {
 		return "Lillian/myregister";
-
 	}
 
+//登入
 	@PostMapping("/register/login")
 	public String login(@RequestParam(value="account") String account,
 						@RequestParam(value="password") String password,
@@ -93,8 +93,7 @@ public class registerController {
 			
 			return "redirect:/";
 		} else {
-			return "redirect:/login1";
-			
+			return "redirect:/login1";		
 		}
 }
 
@@ -102,7 +101,7 @@ public class registerController {
 	public String login1() {
 		return "Lillian/login";
 	}
-
+//登出
 	@GetMapping("/register/logout")
 	public String logoutRegister(HttpSession session) {
 //		session.removeAttribute("acc");
@@ -111,7 +110,7 @@ public class registerController {
 		return "redirect:/";
 	}
 	
-
+//編輯帳號
 	@GetMapping("/register/edit")
 	public String editRegisterPage(@RequestParam Integer memberId,Model model) {//model儲存送過去
 		Register register=registerService.findById(memberId);

@@ -39,8 +39,7 @@
 
 						<div class="container" id="form_container">
 							<div id="registerTitle">註冊會員</div>
-							<form id="register_form" class="form-control" action="${contextRoot}/MemberDetail/add2"
-								modelAttribute="memberDetails" method="post">
+							<form id="register_form" class="form-control" action="${contextRoot}/MemberDetail/add2" method="post">
 								<input type="hidden" name="memberId" value="${memberId}">
 								<!-- regis -->
 								<div class="mb-3 row">
@@ -79,7 +78,9 @@
 								<div class="mb-3 row">
 									<label for="birthday" class="col-sm-2 col-form-label">生日</label>
 									<div class="col-sm-10">
-										<input type="date" class="form-control" id="birthday" name="birthday">
+									<input type="text" name="birthday" id="birthday" value="birthday">
+									
+<!-- 										<input type="date" class="form-control" id="birthday" name="birthday"value="birthday"> -->
 									</div>
 								</div>
 
@@ -147,6 +148,9 @@
 
 
 				<script>
+				$(function() {
+				    $("#birthday").datepicker();
+				});
 
 				</script>
 
