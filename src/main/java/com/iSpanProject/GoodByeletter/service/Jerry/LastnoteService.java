@@ -3,6 +3,8 @@ package com.iSpanProject.GoodByeletter.service.Jerry;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,9 +28,11 @@ public class LastnoteService {
 	private RegisterDao registerDao;
 
 	@Transactional
-	public void SaveLastNote(LastNote lastNote) {
-		//外鍵的會員ID欄位待補
+	public void SaveLastNote(LastNote lastNote,HttpSession session) {
 		
+//		Register memberid = (Register) session.getAttribute("帶有會員資料的物件屬性名");
+//		lastNote.setFK_memberId(memberid);
+//		待亮竹會員登入系統完成，有會員物件的session後才可改為上面方式，以下方法獲得會員ID外鍵為暫時性作法。
 		Integer mId = lastNote.getmId();
 		Optional<Register> member = registerDao.findById(mId);
 		Register m1 = member.get();

@@ -1,5 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.Jerry;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -9,20 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.iSpanProject.GoodByeletter.dao.Jerry.LastNoteDao;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.service.Jerry.LastnoteService;
 
 @Controller
 public class LastNoteController {
-	
-	@Autowired
-	private LastNoteDao lastNoteDao;
 
 	@Autowired
 	private LastnoteService lastnoteService;
@@ -37,8 +32,8 @@ public class LastNoteController {
 	
 	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面
 	@PostMapping("/LastNote/post")
-	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote) {
-		lastnoteService.SaveLastNote(lastNote);
+	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote,HttpSession session) {
+		lastnoteService.SaveLastNote(lastNote, null);
 		return "redirect:/LastNote/edit";
 	}
 	
@@ -61,7 +56,7 @@ public class LastNoteController {
 //	遺囑編輯Put請求更新資料後，跳轉回LastNoteEditPage
 	@PutMapping("/LastNote/CRUD/put")
 	public String LastNoteCRUDPut(@ModelAttribute("nId")LastNote lastnote) {
-		lastnoteService.SaveLastNote(lastnote);
+		lastnoteService.SaveLastNote(lastnote, null);
 		return "redirect:/LastNote/edit";
 		
 	}

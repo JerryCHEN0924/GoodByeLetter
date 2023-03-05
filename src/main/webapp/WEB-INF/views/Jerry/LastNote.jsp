@@ -45,10 +45,11 @@
 					<div class="card-body">
 						<form:form action="${contextRoot}/LastNote/post"
 							modelAttribute="lastNote" method="POST">
-							
+<!-- 							以下這段，之後抓到session中的會員ID後要刪除 -->
 								<form:input type="hidden" class="form-control"
 									path="mId" id="mId" value="1" />
-							
+<!-- 							以上這段，之後抓到session中的會員ID後要刪除 -->
+
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>
 								<form:input type="email" class="form-control"
