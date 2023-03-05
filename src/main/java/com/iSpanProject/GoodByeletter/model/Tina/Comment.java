@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,7 +25,7 @@ public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	// @Column(name="id")
+	// @Column(name="commentId")
 	private Integer commentId;
 
 	// @Column(name="reply")
@@ -51,6 +53,21 @@ public class Comment {
 	@JoinColumn(name = "FK_memberId")
 	private Register FK_memberId;
 
+	
+	// 增加創建時間
+	@PrePersist
+	public void onCreateComment() {
+		if(createTime == null) {
+			createTime = new Date();
+		}
+	}
+	// 增加更新時間
+	@PreUpdate
+	public void onUpdateComment() {
+		updateTime = new Date();
+	}
+	
+	
 	public Integer getCommentId() {
 		return commentId;
 	}
@@ -98,6 +115,7 @@ public class Comment {
 	public void setFK_memberId(Register fK_memberId) {
 		FK_memberId = fK_memberId;
 	}
+	
 
 	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
 			Register fK_memberId) {

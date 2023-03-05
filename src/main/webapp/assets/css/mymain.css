@@ -131,7 +131,7 @@
 #index_letter_container,
 #index_letter_submit {
     margin: 25px auto;
-    text-align: center;
+    text-align: centercenter;
 
 }
 
@@ -318,6 +318,7 @@ button.alt:active,
     background-image: url("images/bg.png");
     box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.05), inset 0px 2px 3px 0px rgba(0, 0, 0, 0.1);
     padding: 8em 0 8em 0;
+/*     置中元凶 */
     text-align: center;
 }
 

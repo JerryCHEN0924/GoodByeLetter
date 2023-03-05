@@ -3,12 +3,8 @@ package com.iSpanProject.GoodByeletter.controller.Tina;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,24 +12,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.dao.Tina.BoardDao;
-import com.iSpanProject.GoodByeletter.dto.Tina.BoardDto;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
-import com.iSpanProject.GoodByeletter.service.Tina.boardService;
+import com.iSpanProject.GoodByeletter.service.Tina.BoardService;
 
 
 @Controller
 public class BoardController {
+
 	
 	@Autowired
-	private BoardDao boardDao; 
-	
-	@Autowired
-	private boardService boardService; 
+	private BoardService boardService; 
 	
 	
 	//增加留言板
@@ -96,15 +88,14 @@ public class BoardController {
 
 	//模糊查詢Title
 //	@ResponseBody
-//	@GetMapping("board/like")
-//	public String findCustomerByNameContaining(@RequestParam("title") String title, Integer pageNum, Model model){
-//		Page<Board> page = boardService.findByTitleContaining(title);
-//		Pageable pgb = PageRequest.of(pageNum-1, 5, Sort.Direction.DESC,"boardId");
-//		
-//		
-//
-//		return "redirect:/board/page";
-//	}
+	@GetMapping("board/like")
+	public String findCustomerByNameContaining(@RequestParam("title") String title, Integer pageNum, Model model){	
+		List<Board> like = boardService.findByTitleContaining(title);	
+		model.addAttribute("like",like);
+//		跳轉好像有問題
+//		return "redirect:/board/page";	
+		return "Tina/showPageBoard";
+	}
 	
 //	public List<Board> findByPage(@RequestParam Integer pageNumber){
 //		Pageable pgb = PageRequest.of(pageNumber-1, 2, Sort.Direction.ASC,"boardId");

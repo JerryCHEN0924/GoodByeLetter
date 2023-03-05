@@ -39,14 +39,14 @@ public class Board {
 	// @Column(name="boradMessage")
 	private String boardMessage;
 
-	@JsonIgnore
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	// @Column(name="createTime")
 	private Date createTime;
 
-	@JsonIgnore
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
@@ -54,13 +54,11 @@ public class Board {
 	private Date updateTime;
 
 	// 連到Register的memberId
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId")
 	private Register FK_memberId;
 
 	// 連到ChildCommet
-	@JsonIgnore
 	@OneToMany(mappedBy = "FK_parentId", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
 
