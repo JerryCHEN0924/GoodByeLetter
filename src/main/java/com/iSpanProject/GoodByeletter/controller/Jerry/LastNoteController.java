@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.controller.Jerry;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.service.Jerry.LastnoteService;
+import com.iSpanProject.GoodByeletter.service.Jerry.SendMail;
 
 @Controller
 public class LastNoteController {
 
 	@Autowired
 	private LastnoteService lastnoteService;
+	@Autowired
+	private SendMail sm;
 	
 	//跳頁，進入撰寫遺囑頁面
 	@GetMapping("/LastNote")
@@ -70,6 +74,13 @@ public class LastNoteController {
 		
 	}
 	
+//	寄信功能成功
+//	try {
+//		sm.sendEmail("jk2455892@gmail.com", "test", "testemail");
+//	} catch (MessagingException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
 	
 	//JSON方式存入遺囑頁面
 //	@ResponseBody
