@@ -90,7 +90,7 @@ public class MemberDetailController {
 		Date memberBirthday=memberDetails.getBirthday();
 		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
 		String memberBirthdayString=format.format(memberBirthday);
-		Date memberBirthdayNewType=format.parse(memberBirthdayString);
+		Date memberBirthdayNewType=(Date) format.parse(memberBirthdayString);
 		memberDetails.setBirthday(memberBirthdayNewType);
 		
 		model.addAttribute("memberDetails", memberDetails);
