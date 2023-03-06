@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -39,9 +41,12 @@ public class LastNote implements Serializable {
 	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_lastnote_member"), nullable = false)
 	private Register FK_memberId;
 	
+	@Email(message = "信箱格式錯誤")
+	@NotBlank(message = "信箱不可為空")
 	@Column(name="recipientEmail", nullable = false)
 	private String recipientEmail;
 	
+	@NotBlank(message = "內容不可為空")
 	@Column(name="notedetail",columnDefinition = "nvarchar(500)", nullable = false)
 	private String notedetail;
 	

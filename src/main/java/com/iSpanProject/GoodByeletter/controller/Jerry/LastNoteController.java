@@ -26,30 +26,14 @@ public class LastNoteController {
 	@Autowired
 	private SendMail sm;
 	
-	//跳頁，進入撰寫遺囑頁面
-	@GetMapping("/LastNote")
-	public String addNote(Model model) {
-		LastNote lastnote = new LastNote();
-		model.addAttribute("lastNote",lastnote);
-		return "Jerry/LastNote";
-	}
-	
 	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面
 	@PostMapping("/LastNote/post")
-	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote,HttpSession session) {
-		lastnoteService.SaveLastNote(lastNote, null);
+	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote) {
+		lastnoteService.SaveLastNote(lastNote);
 		return "redirect:/LastNote/edit";
 	}
 	
-	//跳頁，進入編輯遺囑頁面
-	@GetMapping("/LastNote/edit")
-	public String LastNoteEdit(@RequestParam(name="p",defaultValue = "1") Integer pageNumber, Model model) {
-		Page<LastNote> page = lastnoteService.findByPage(pageNumber);
-		model.addAttribute("page",page);
-		return "Jerry/LastNoteEditPage";
-	}
-	
-//	跳頁按鈕，進入遺囑更新與刪除頁面
+//	按鈕，跳頁進入遺囑更新與刪除頁面
 	@GetMapping("/LastNote/CRUD")
 	public String LastNoteCRUD(@RequestParam("noteId")Integer id,Model model) {
 		LastNote nId = lastnoteService.findById(id);
@@ -60,7 +44,7 @@ public class LastNoteController {
 //	遺囑編輯Put請求更新資料後，跳轉回LastNoteEditPage
 	@PutMapping("/LastNote/CRUD/put")
 	public String LastNoteCRUDPut(@ModelAttribute("nId")LastNote lastnote) {
-		lastnoteService.SaveLastNote(lastnote, null);
+		lastnoteService.SaveLastNote(lastnote);
 		return "redirect:/LastNote/edit";
 		
 	}
