@@ -46,13 +46,11 @@ public class Comment {
 	private Date updateTime;
 
 	// 連到ParentBoard的id
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "FK_parentId")
 	private Board board;
 
 	// 連到Register的id
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId")
 	private Register register;
