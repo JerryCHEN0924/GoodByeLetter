@@ -20,11 +20,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import javax.persistence.UniqueConstraint;
-
 import javax.persistence.Transient;
-
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -44,11 +42,10 @@ public class Register {
 	//@Column(name = "memberId")
 	private Integer memberId;
 
-	@Column(name = "account")
+	@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
 	private String account;
 
-	// @Column(name = "password",columnDefinition = "nvarchar(50)", nullable =
-	// false)
+	@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 	private String password;
 	
 	

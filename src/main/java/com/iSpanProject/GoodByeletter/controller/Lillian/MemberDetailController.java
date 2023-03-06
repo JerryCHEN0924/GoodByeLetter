@@ -64,27 +64,18 @@ public class MemberDetailController {
 		return "redirect:/";
 	}
 
-//	@PostMapping("/addRegister")
-//	public String addRegister(@ModelAttribute("memberDetails") MemberDetail memberDetail,  Model model,HttpSession sessions) {		
-//		Register op = (Register)model.getAttribute("existing");
-//		registerService.getRegisterById(op.getMemberId());
-//		
-//		
-//		return "redirect:/";
-//	}
-//	
-//	@GetMapping("/register/memberDetail")
-//	public String MemberDetailDaoPage(Model model) {		
-//		MemberDetail m1 = new MemberDetail();	
-//		model.addAttribute("memberDetails", m1);
-//		return "Lillian/addMemberDetail";
-//	}
 
 //編輯會員資料
 	@GetMapping("/memberDetail/edit")
 	public String editMemberDetailPage(@RequestParam Integer memberId, Model model) throws ParseException {// model儲存送過去
-//		MemberDetail memberDetails =new MemberDetail();
+
 		MemberDetail memberDetails=memberDetailService.findByMemberId(memberId);
+		
+		/////測試
+		System.out.println(memberDetails.getGender());
+		System.out.println(memberDetails.getBirthday());
+		System.out.println(memberDetails.getCounty());
+		
 		//////時間轉換///////////
 		Date memberBirthday=memberDetails.getBirthday();
 		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
@@ -101,10 +92,38 @@ public class MemberDetailController {
 
 	@PutMapping("/memberDetail/putMemberDetail")
 	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail) {
-
 		memberDetailService.updateMemberDetail(memberDetail);
 
 		return "redirect:/";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	@PostMapping("/addRegister")
+//	public String addRegister(@ModelAttribute("memberDetails") MemberDetail memberDetail,  Model model,HttpSession sessions) {		
+//		Register op = (Register)model.getAttribute("existing");
+//		registerService.getRegisterById(op.getMemberId());
+//		
+//		
+//		return "redirect:/";
+//	}
+//	
+//	@GetMapping("/register/memberDetail")
+//	public String MemberDetailDaoPage(Model model) {		
+//		MemberDetail m1 = new MemberDetail();	
+//		model.addAttribute("memberDetails", m1);
+//		return "Lillian/addMemberDetail";
+//	}
 }

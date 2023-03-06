@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -37,20 +38,20 @@
 
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
-				<form id="register_form" action="${contextRoot}/register/add" method="post">
+				<form:form id="register_form" action="${contextRoot}/register/add" modelAttribute="errors" method="post">
 					
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<input type="text" placeholder="account" class="form-control"
-								id="account" name="account">
+							<form:input type="text" path="account" placeholder="account" class="form-control"
+								id="account" name="account" value="${errors.account}" />
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<input type="password" placeholder="password(密碼長度需大於 5 小於 12)"
-								class="form-control" id="password" name="password">
+							<form:input type="password" path="password" placeholder="password(密碼長度需大於 5 小於 12)"
+								class="form-control" id="password" name="password" value="${errors.password}"/>
 								<div class="messages"></div>
       					
 						</div>
@@ -58,15 +59,15 @@
 					<div class="mb-6 row">
 						<label for="confirm-password" class="col-sm-2 col-form-label">確認密碼</label>
 						<div class="col-sm-10">
-							<input id="confirm-password" class="form-control" type="password"
-								placeholder="Confirm password" name="confirmPassword">
+							<form:input id="confirm-password" path="password" class="form-control" type="password"
+								placeholder="Confirm password" name="confirmPassword" value="${errors.password}"/>
 							<div class="messages"></div>
 						</div>
 					</div>
 					<button type="submit">下一步</button>
 					<br> <a href="">已有會員</a><br>
 
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</article>
@@ -85,7 +86,20 @@
 
 
 	<script>
-	
+	var passwordInput = document.getElementById('password');
+	var confirmPasswordInput = document.getElementById('confirm-password');
+
+	confirmPasswordInput.addEventListener('input', function () {
+	    var password = passwordInput.value;
+	    var confirmPassword = confirmPasswordInput.value;
+
+	    if (password !== confirmPassword) {
+	        confirmPasswordInput.setCustomValidity('確認密碼不一致');
+	    } else {
+	        confirmPasswordInput.setCustomValidity('');
+	    }
+	});
+
 	
 	</script>
 

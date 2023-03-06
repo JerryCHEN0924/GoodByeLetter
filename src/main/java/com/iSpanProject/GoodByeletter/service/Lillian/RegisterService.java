@@ -55,6 +55,11 @@ public class RegisterService {
 		return findByAccAndPwd;
 	}
 	
+	public Register findByAcc(String account) {
+		Register findByAcc =rDao.findRegisterByAcc(account);
+		return findByAcc;
+	}
+	
 	public Register findById(Integer memberId) {
 		Optional<Register> optional = rDao.findById(memberId);
 		

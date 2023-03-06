@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.controller.Lillian;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,54 +22,66 @@ import com.iSpanProject.GoodByeletter.service.Lillian.RegisterService;
 
 @Controller
 public class registerController {
-	
-	
+
 	@Autowired
 	private RegisterService registerService;
 	@Autowired
 	private RegisterDao registerDao;
 	@Autowired
 	private MemberDetailService memberDetailService;
+
 //註冊帳號
 	@PostMapping("/register/add")
 	public String saveRegister(@RequestParam(value = "account") String account,
-								@RequestParam(value = "password") String password, 
-								Model model) {
+			@RequestParam(value = "password") String password, Model model) {
+		
+//		這個錯誤可能發生的原因有幾種。以下是一些可能的原因：
 //
-//		Map<String,String> errors = new HashMap <String,String>();
-//		model.addAttribute("errors",errors);
-//		
-//		if(account == null || account.length() == 0) {
-//			errors.put("account", "必填");			
-//		}
-//		
-//		if(password == null || password.length() == 0) {
-//			errors.put("password", "必填");			
-//		}
-		
+//		1.表單物件或控制器方法上的驗證註釋未正確配置。
+//		2.表單物件未正確綁定到 HTTP 請求。
+//		3.驗證錯誤訊息未正確添加到綁定結果物件中。
+//		4.視圖未正確配置以顯示驗證錯誤。	
+		try {
+			// 創建一個空的HashMap對象"errors"，將"errors"對象存儲到Model對象中
+			Map<String, String> errors = new HashMap<String, String>();
+			model.addAttribute("errors", errors);
 
-//		Register existingRegister = registerDao.findRegisterByAcc(acc);
-//		if( existingRegister != null ) {
-//			return "已有此帳號!";
-//		}
+			if (account == null || account.length() == 0) {
+				errors.put("account", "請輸入您的帳號!");
+			}
 
-		Register newRegister = new Register();
-		newRegister.setAccount(account);
-		newRegister.setPassword(password);
+			if (password == null || password.length() == 0) {
+				errors.put("password", "請輸入您的密碼!");
+			}
+			if (registerService.findByAcc(account) != null) {
+				errors.put("account", "該帳號已被註冊!");
+			}
+			if (errors != null && !errors.isEmpty()) {
+				return "redirect:/";
+			}
 
-		registerService.insert(newRegister);
-		///////////
-		Register registerNew=registerService.findByAccAndPwd(account, password);
-		Integer memberId=registerNew.getMemberId();
-		model.addAttribute("memberId", memberId);
-		////////////
-		Map<String, String> msg = new HashMap<String, String>();
-		model.addAttribute("msg", msg);
-		msg.put("success", "會員註冊成功!");
-		
-		return "Lillian/addMemberDetail";
+			Register newRegister = new Register();
+			newRegister.setAccount(account);
+			newRegister.setPassword(password);
+
+			registerService.insert(newRegister);
+			///////////
+			Register registerNew = registerService.findByAccAndPwd(account, password);
+			Integer memberId = registerNew.getMemberId();
+			model.addAttribute("memberId", memberId);
+			////////////
+			Map<String, String> msg = new HashMap<String, String>();
+			model.addAttribute("msg", msg);
+			msg.put("success", "會員註冊成功!");
+
+			return "Lillian/addMemberDetail";
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Lillian/myregister";
+		}
 	}
-
+	
 	@GetMapping("/register1")
 	public String register1() {
 		return "Lillian/myregister";
@@ -76,31 +89,32 @@ public class registerController {
 
 //登入
 	@PostMapping("/register/login")
-	public String login(@RequestParam(value="account") String account,
-						@RequestParam(value="password") String password,
-						//@RequestParam(value="memberId") Integer memberId,
-						HttpSession session,Model model) {
-	
+	public String login(@RequestParam(value = "account") String account,
+			@RequestParam(value = "password") String password,
+			// @RequestParam(value="memberId") Integer memberId,
+			HttpSession session, Model model) {
+
 		Register existing = registerService.findByAccAndPwd(account, password);
 //		Register re = registerService.getRegisterById(memberId);
-		model.addAttribute("register",existing);
+		model.addAttribute("register", existing);
 		String acc = existing.getAccount();
 		String pwd = existing.getPassword();
-		
-		if (account.equals(acc) && password.equals(pwd)) {			
-			session.setAttribute("existing",existing);
-			//session.setAttribute("pwd", pwd);
-			
+
+		if (account.equals(acc) && password.equals(pwd)) {
+			session.setAttribute("existing", existing);
+			// session.setAttribute("pwd", pwd);
+
 			return "redirect:/";
 		} else {
-			return "redirect:/login1";		
+			return "redirect:/login1";
 		}
-}
+	}
 
 	@GetMapping("/login1")
 	public String login1() {
 		return "Lillian/login";
 	}
+
 //登出
 	@GetMapping("/register/logout")
 	public String logoutRegister(HttpSession session) {
@@ -109,21 +123,21 @@ public class registerController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 //編輯帳號
 	@GetMapping("/register/edit")
-	public String editRegisterPage(@RequestParam Integer memberId,Model model) {//model儲存送過去
-		Register register=registerService.findById(memberId);
-		model.addAttribute("registers",register);		
-		return "Lillian/registerEdit";	
+	public String editRegisterPage(@RequestParam Integer memberId, Model model) {// model儲存送過去
+		Register register = registerService.findById(memberId);
+		model.addAttribute("registers", register);
+		return "Lillian/registerEdit";
 	}
-	
-	@PutMapping("/register/putRegister")
-	public String updateEdit(@ModelAttribute("register") Register register){
 
-        registerService.updateRegister(register);
-        
-	    return "redirect:/";
+	@PutMapping("/register/putRegister")
+	public String updateEdit(@ModelAttribute("register") Register register) {
+
+		registerService.updateRegister(register);
+
+		return "redirect:/";
 	}
-	
+
 }

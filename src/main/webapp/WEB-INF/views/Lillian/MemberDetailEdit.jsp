@@ -81,7 +81,7 @@
 					<label for="birthday" class="col-sm-2 col-form-label">生日</label>
 					<div class="col-sm-10">
 						<input type="date" class="form-control" id="birthday"
-							name="birthday" value=""/>
+							name="birthday" value="${memberDetails.birthday}"/>
 					</div>
 				</div>
 
@@ -159,6 +159,13 @@
 			console.log(timeBirthdateFormat)
 			var birthday = document.getElementById('birthday').valueAsDate= new Date(timeBirthdateFormat);
 			console.log(birthday)
+			
+			
+			console.log("${memberDetails.gender}")
+			
+		
+			console.log("${memberDetails.county}")
+			
 		}
 	</script>
 
