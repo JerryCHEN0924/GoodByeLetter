@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,6 +18,7 @@ import javax.persistence.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Entity
@@ -25,7 +27,7 @@ public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	// @Column(name="id")
+	// @Column(name="commentId")
 	private Integer commentId;
 
 	// @Column(name="reply")
@@ -44,16 +46,16 @@ public class Comment {
 	private Date updateTime;
 
 	// 連到ParentBoard的id
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "FK_parentId")
-	private Board FK_parentId;
+	private Board board;
 
 	// 連到Register的id
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId")
-	private Register FK_memberId;
-	
-	
+	private Register register;
 //	####################### Ryuz divider start #######################
 	
 	// 暫時性欄位，後台建置Comment使用，不會增加表格欄位
@@ -77,35 +79,47 @@ public class Comment {
 	
 	
 	
-	public Comment() {
-		super();
-	}
-	
-	
+
 	
 
-	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
-			Register fK_memberId, Integer bId) {
-		super();
-		this.commentId = commentId;
-		this.reply = reply;
-		this.createTime = createTime;
-		this.updateTime = updateTime;
-		FK_parentId = fK_parentId;
-		FK_memberId = fK_memberId;
-		this.bId = bId;
-	}
+
 	
-	
-	
+	// 增加創建時間
 	@PrePersist
-	public void onCreate() {
-		if (createTime == null) {
+	public void onCreateComment() {
+		if(createTime == null) {
 			createTime = new Date();
 		}
 	}
 	
 	
+	
+	
+	// 增加更新時間
+	@PreUpdate
+	public void onUpdateComment() {
+		updateTime = new Date();
+	}
+	
+	
+	
+	
+	
+	public Comment() {
+		super();
+	}
+
+	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board board, Register register,
+			Integer bId) {
+		super();
+		this.commentId = commentId;
+		this.reply = reply;
+		this.createTime = createTime;
+		this.updateTime = updateTime;
+		this.board = board;
+		this.register = register;
+		this.bId = bId;
+	}
 
 	public Integer getCommentId() {
 		return commentId;
@@ -139,22 +153,22 @@ public class Comment {
 		this.updateTime = updateTime;
 	}
 
-	public Board getFK_parentId() {
-		return FK_parentId;
-	}
-
-	public void setFK_parentId(Board fK_parentId) {
-		FK_parentId = fK_parentId;
-	}
-
-	public Register getFK_memberId() {
-		return FK_memberId;
-	}
-
-	public void setFK_memberId(Register fK_memberId) {
-		FK_memberId = fK_memberId;
-	}
 	
 
+	public Board getBoard() {
+		return board;
+	}
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+	public Register getRegister() {
+		return register;
+	}
+
+	public void setRegister(Register register) {
+		this.register = register;
+	}
+	
+	
 
 }

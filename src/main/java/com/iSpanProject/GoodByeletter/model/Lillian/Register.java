@@ -85,11 +85,11 @@ public class Register {
 	private List<LastNote> lastnote = new ArrayList<>();
 
 	// 阿戴:連到Board
-	@OneToMany(mappedBy = "FK_memberId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
 	Set<Board> boards = new HashSet<>();
 
 	// 阿戴:連到Commet
-	@OneToMany(mappedBy = "FK_memberId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
 
 	@PrePersist

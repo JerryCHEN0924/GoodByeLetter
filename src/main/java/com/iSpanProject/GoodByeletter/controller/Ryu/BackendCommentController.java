@@ -77,9 +77,9 @@ public class BackendCommentController {
 		
 		Register register = (Register) model.getAttribute("authenticated");
 		
-		comment.setFK_memberId(register);
+		comment.setRegister(register);
 		
-		comment.setFK_parentId(board);
+		comment.setBoard(board);
 		
 		backendCommentService.insertComment(comment);
 		

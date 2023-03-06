@@ -18,7 +18,7 @@ import com.iSpanProject.GoodByeletter.dao.Tina.BoardDao;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 
 @Service
-public class boardService {
+public class BoardService {
 	
 	@Autowired
 	private BoardDao boardDao; 
@@ -47,6 +47,13 @@ public class boardService {
 		return null;
 	}
 	
+//	要做可查詢單一用戶的所有留言板
+	//findAllById
+	public List<Board> findAllById(Integer memberId){
+		return findAllById(memberId);
+	}
+	
+	
 	//findByPage
 	public Page<Board> findByPage (Integer PageNum){
 		Pageable pgb = PageRequest.of(PageNum-1, 5, Sort.Direction.DESC,"boardId");
@@ -55,10 +62,10 @@ public class boardService {
 	}
 	
 	//findBoardByTitleContaining
-//	public Page<Board> findByTitleContaining(@RequestParam("title")String title){
-//		return boardDao.findByTitleContaining(title);		
-//	}
-//	
+	public List<Board> findByTitleContaining(@RequestParam("title")String title){
+		return boardDao.findByTitleContaining(title);		
+	}
+	
 	//findAll
 	public List<Board> findAll(){
 		return boardDao.findAll();		
