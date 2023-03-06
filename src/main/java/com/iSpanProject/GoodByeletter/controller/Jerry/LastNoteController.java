@@ -26,7 +26,7 @@ public class LastNoteController {
 	@Autowired
 	private SendMail sm;
 	
-	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面 //test for tina
+	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面 //test for tina again
 	@PostMapping("/LastNote/post")
 	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote) {
 		lastnoteService.SaveLastNote(lastNote);
