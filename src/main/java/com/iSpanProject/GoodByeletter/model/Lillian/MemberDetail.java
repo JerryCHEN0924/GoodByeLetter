@@ -1,5 +1,7 @@
 package com.iSpanProject.GoodByeletter.model.Lillian;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -31,7 +33,7 @@ public class MemberDetail {
 	private String address;
 	
 
-	private java.sql.Date birthday;
+	private Date birthday;
 	
 //	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
 	private String gender;
@@ -124,15 +126,14 @@ public class MemberDetail {
 	}
 
 
-	public java.sql.Date getBirthday() {
+	
+	public Date getBirthday() {
 		return birthday;
 	}
 
-
-	public void setBirthday(java.sql.Date birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-
 
 	public String getEmail() {
 		return Email;
