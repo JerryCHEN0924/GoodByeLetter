@@ -55,24 +55,25 @@
   
   <div class="card-body">
   	
-	<form:form action="${contextRoot}/topGun/board/editPost" modelAttribute="board" method='put'>
+	<form:form action="${contextRoot}/topGun/comment/editPost" modelAttribute="comment" method='put'>
   		
   		
-  		<form:input path="boardId" type="hidden" />
+  		<form:input path="commentId" type="hidden" />
   		<form:input path="createTime" type="hidden" />
+  		<form:input path="board" type="hidden" />
   		<form:input path="register" type="hidden" />
   		
-  		<div class="mb-3 row">
-		    <label for="inputTitleName" class="col-sm-2 col-form-label">Title</label>
-		    <div class="col-sm-10">
-		    	<form:input path="title" class="form-control" id="inputTitleName" />
-		    </div>
-		  </div>
+<!--   		<div class="mb-3 row"> -->
+<!-- 		    <label for="inputTitleName" class="col-sm-2 col-form-label">Title</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="title" class="form-control" id="inputTitleName" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
 		  
   		<div class="mb-3 row">
-		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">BoardMessage</label>
+		    <label for="inputReply" class="col-sm-2 col-form-label">Reply</label>
 		    <div class="col-sm-10">
-		    	<form:textarea path="boardMessage" class="form-control" id="inputBoardMessage" rows="" cols="" />
+		    	<form:textarea path="reply" class="form-control" id="inputReply" rows="" cols="" />
 		    </div>
 		  </div>
   		

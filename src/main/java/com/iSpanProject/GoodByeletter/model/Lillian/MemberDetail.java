@@ -39,7 +39,7 @@ public class MemberDetail {
 	private String gender;
 	
 	
-	private java.sql.Date birthday;
+	private Date birthday;
 
 	
 //	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
@@ -127,12 +127,12 @@ public class MemberDetail {
 	}
 
 
-	public java.sql.Date getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
 
-	public void setBirthday(java.sql.Date birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 

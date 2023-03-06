@@ -69,7 +69,7 @@
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${contextRoot}/topGun/backendHome">Home</a>
+            <a class="nav-link active" aria-current="page" href="${contextRoot}/">Home</a>
           </li>
           
           
@@ -142,6 +142,7 @@
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">新增留言</a></li>
               <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯回復留言</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

@@ -69,7 +69,7 @@ public class BackendBoardController {
 	
 	// 分頁查詢留言
 	@GetMapping("/topGun/board/page")
-	public String showRegisterByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
+	public String showBoardByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
 		
 		Page<Board> page = backendBoardService.findBoardByPage(pageNumber);
 		
