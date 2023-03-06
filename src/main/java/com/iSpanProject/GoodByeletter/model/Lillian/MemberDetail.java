@@ -12,12 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.Transient;
+
 
 @Entity
 @Table(name = "memberDetail")
@@ -44,7 +48,7 @@ public class MemberDetail {
 	
 //	@Column(name = "name",columnDefinition = "nvarchar(50)", nullable = false)
 	private String name;
-	
+
 	@ManyToOne(cascade= {CascadeType.PERSIST })
 	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_memberDetail_level"))
 	private Level FK_Plevel;
@@ -52,7 +56,51 @@ public class MemberDetail {
 	@OneToOne(cascade= {CascadeType.PERSIST })
 	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
 	private Register FK_memberId;
+
+//	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
+
+	private String gender;
 	
+	
+	private java.sql.Date birthday;
+
+	
+//	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
+	private String Email;
+	
+//	@Column(name = "County",columnDefinition = "nvarchar(50)", nullable = false)
+	private String County;
+	
+//	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
+
+	private String address;
+
+	
+	
+//	####################### Ryuz divider start #######################
+	
+	// 暫時性欄位，後台建置MemberDetail使用，不會增加表格欄位
+	// 於此類別中，有增加對應之getter/setter
+	// 勿刪、勿刪、勿刪
+	@Transient
+	private String account;
+	
+//	======================= Block =======================
+	
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	
+//	####################### Ryuz divider end #######################
+	
+	
+	
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -103,12 +151,12 @@ public class MemberDetail {
 	}
 
 
-	public Date getBirthday() {
+	public java.sql.Date getBirthday() {
 		return birthday;
 	}
 
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(java.sql.Date birthday) {
 		this.birthday = birthday;
 	}
 

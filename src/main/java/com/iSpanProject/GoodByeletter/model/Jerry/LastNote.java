@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,25 +31,29 @@ import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 public class LastNote implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="noteId")
 	private Integer noteId;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST })
-	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_lastnote_member"))
+	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_lastnote_member"), nullable = false)
 	private Register FK_memberId;
 	
-	@Column(name="recipientEmail")
+	@Email(message = "信箱格式錯誤")
+	@NotBlank(message = "信箱不可為空")
+	@Column(name="recipientEmail", nullable = false)
 	private String recipientEmail;
 	
-	@Column(name="notedetail")
+	@NotBlank(message = "內容不可為空")
+	@Column(name="notedetail",columnDefinition = "nvarchar(500)", nullable = false)
 	private String notedetail;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
-	@Column(name="createTime")
+	@Column(name="createTime", nullable = false)
 	private Date createTime;
 	
 	@Column(name="verify1Email")

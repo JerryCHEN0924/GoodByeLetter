@@ -42,22 +42,22 @@
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="acc"
-								name="acc">
+							<input type="text" class="form-control" id="account"
+								name="account">
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="pass"
-								name="pass">
+							<input type="password" class="form-control" id="password"
+								name="password">
 						</div>
 					</div>
 <!-- 	驗證			 -->
 					<div class="mb-6 row">
 						<label for="verificationCode" class="col-sm-2 col-form-label">驗證碼</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="verificationCode"
+							<input type="text" class="form-control" id="rCode"
 								name="rCode">
 						</div>
 					</div>
