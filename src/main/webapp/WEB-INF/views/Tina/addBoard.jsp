@@ -37,7 +37,7 @@
 				</h5>
 				<div class="card-body">
 					<div class="input-group">
-						<form:textarea path="boardMessage" class="form-control" />
+						<form:textarea path="boardMessage" class="form-control" placeholder="新增留言板內容"/>
 					</div>
 					<br>
 					<button type="submit" class="btn btn-info">送出</button>

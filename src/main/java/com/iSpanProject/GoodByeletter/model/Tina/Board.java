@@ -56,10 +56,10 @@ public class Board {
 	// 連到Register的memberId
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId")
-	private Register FK_memberId;
+	private Register register;
 
 	// 連到ChildCommet
-	@OneToMany(mappedBy = "FK_parentId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
 
 	// 增加創建時間
@@ -116,12 +116,14 @@ public class Board {
 		this.updateTime = updateTime;
 	}
 
-	public Register getFK_memberId() {
-		return FK_memberId;
+	
+
+	public Register getRegister() {
+		return register;
 	}
 
-	public void setFK_memberId(Register fK_memberId) {
-		FK_memberId = fK_memberId;
+	public void setRegister(Register register) {
+		this.register = register;
 	}
 
 	public Set<Comment> getComments() {
@@ -132,15 +134,17 @@ public class Board {
 		this.comments = comments;
 	}
 
+	
+
 	public Board(Integer boardId, String title, String boardMessage, Date createTime, Date updateTime,
-			Register fK_memberId, Set<Comment> comments) {
+			Register register, Set<Comment> comments) {
 		super();
 		this.boardId = boardId;
 		this.title = title;
 		this.boardMessage = boardMessage;
 		this.createTime = createTime;
 		this.updateTime = updateTime;
-		FK_memberId = fK_memberId;
+		this.register = register;
 		this.comments = comments;
 	}
 

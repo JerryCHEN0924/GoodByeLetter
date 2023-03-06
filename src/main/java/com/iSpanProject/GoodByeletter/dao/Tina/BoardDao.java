@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 
 public interface BoardDao extends JpaRepository<Board, Integer> {
@@ -23,8 +24,6 @@ public interface BoardDao extends JpaRepository<Board, Integer> {
 	//找最新貼文
 	public Board findFirstBoardByOrderByCreateTimeDesc();
 	
-	//更新貼文
-	@Modifying
-	@Query("update Board b set b.title = :title, b.boardMessage = :boardMessage where b.boardId = :boardId")
-	public Board updateBoardById(@Param(value = "title") String title, @Param(value = "boardMessage") String boardMessage, @Param(value = "boardId") Integer boardId);
+	//找同Id的人的留言板
+	//public  List<Board> findByFK_memberId();
 }

@@ -43,6 +43,23 @@ public class BoardController {
 		return "Tina/addBoard";	
 	}
 	
+	@GetMapping("/board/add1")
+	public String addBoardPage1(Model model) {
+//		Register01 register01 = new Register01();
+//		register01.getMemberId();
+//		
+		Board newboard= new Board();
+		model.addAttribute("newboard",newboard);
+		
+//		Board lastestBoard = boardService.findLastest();
+//		model.addAttribute("lastestBoard",lastestBoard);
+		
+		return "Tina/addComment";	
+	}
+	
+	
+	
+	//送出留言 //看到最新留言
 	@PostMapping("board/post")
 	public String addBoardPost(@ModelAttribute Board board, Model model) {
 		boardService.addBoard(board);	
@@ -56,6 +73,10 @@ public class BoardController {
 		return "Tina/addBoard";
 	}
 	
+	
+	
+	
+	//跳頁
 	@GetMapping("board/page")
 	public String showBoardByPage(@RequestParam(name="p",defaultValue = "1")Integer pageNum, Model model) {
 		Page<Board> page = boardService.findByPage(pageNum);
@@ -64,11 +85,11 @@ public class BoardController {
 		
 	}
 	
-	@GetMapping("board/edit")
+	@GetMapping("board/show")
 	public String editById(@RequestParam("boardId") Integer boardId, Model model) {
 		Board newboard = boardService.findById(boardId);
 		model.addAttribute("newboard",newboard);
-		return "Tina/editBoard";
+		return "Tina/showEachBoard";
 		
 	}
 	

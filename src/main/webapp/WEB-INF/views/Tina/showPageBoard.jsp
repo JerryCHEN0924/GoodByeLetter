@@ -90,15 +90,15 @@
 
 						<%--送出修改/刪除按鈕 --%>
 						<div class="editbutton" style="display: flex">
-							<form:form action="${contextRoot}/board/edit" method="get">
+							<form:form action="${contextRoot}/board/show" method="get">
 								<input type="hidden" name="boardId" value="${boardPage.boardId}" />
-								<input type="submit" class="btn btn-outline-success" value="修改" />
+								<input type="submit" class="btn btn-outline-success" value="查看" />
 							</form:form>
 
-							<form:form action="${contextRoot}/board/delete" method="delete">
-								<input type="hidden" name="boardId" value="${boardPage.boardId}" />
-								<input type="submit" class="btn btn-outline-danger" value="刪除" />
-							</form:form>
+<%-- 							<form:form action="${contextRoot}/board/delete" method="delete"> --%>
+<%-- 								<input type="hidden" name="boardId" value="${boardPage.boardId}" /> --%>
+<%-- 								<input type="submit" class="btn btn-outline-danger" value="刪除" /> -->
+<%-- 							</form:form> --%>
 						</div>
 					</div>
 				</c:forEach>

@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Entity
@@ -44,14 +45,16 @@ public class Comment {
 	private Date updateTime;
 
 	// 連到ParentBoard的id
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "FK_parentId")
-	private Board FK_parentId;
+	private Board board;
 
 	// 連到Register的id
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId")
-	private Register FK_memberId;
+	private Register register;
 
 	
 	// 增加創建時間
@@ -100,34 +103,31 @@ public class Comment {
 		this.updateTime = updateTime;
 	}
 
-	public Board getFK_parentId() {
-		return FK_parentId;
-	}
-
-	public void setFK_parentId(Board fK_parentId) {
-		FK_parentId = fK_parentId;
-	}
-
-	public Register getFK_memberId() {
-		return FK_memberId;
-	}
-
-	public void setFK_memberId(Register fK_memberId) {
-		FK_memberId = fK_memberId;
-	}
 	
 
-	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
-			Register fK_memberId) {
+	public Board getBoard() {
+		return board;
+	}
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+	public Register getRegister() {
+		return register;
+	}
+	public void setRegister(Register register) {
+		this.register = register;
+	}
+	
+	
+	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board board, Register register) {
 		super();
 		this.commentId = commentId;
 		this.reply = reply;
 		this.createTime = createTime;
 		this.updateTime = updateTime;
-		FK_parentId = fK_parentId;
-		FK_memberId = fK_memberId;
+		this.board = board;
+		this.register = register;
 	}
-
 	public Comment() {
 		super();
 	}
