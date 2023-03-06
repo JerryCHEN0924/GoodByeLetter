@@ -197,6 +197,12 @@
 				<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
 			</form>
 				</div>
+				<div>
+			<form action="${contextRoot}/topGun/comment/add" method="get" >
+				<input type="hidden" name="boardId" value="${board.boardId}" />
+				<input type="submit" class="btn btn-outline-info btn-sm" value="回覆" />
+			</form>
+				</div>
 			</div>
 	      </td>
 	    </tr>
@@ -226,7 +232,11 @@
 
 
 
+<div>
 
+<hr>
+
+</div>
 
 
 
@@ -248,7 +258,7 @@
 
 <div class="card mt-3">
   <div class="card-header">
-    部門階級建立時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${board.createTime}" /></span>
+    留言發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${board.createTime}" /></span>
   </div>
   <div class="card-body">
   	
@@ -268,6 +278,12 @@
 		<input type="hidden" name="boardId" value="${board.boardId}" />
 		<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
 	</form>
+	<div>
+			<form action="${contextRoot}/topGun/comment/add" method="get" >
+				<input type="hidden" name="boardId" value="${board.boardId}" />
+				<input type="submit" class="btn btn-outline-info btn-sm" value="回覆" />
+			</form>
+	</div>
 	
   </div>
   

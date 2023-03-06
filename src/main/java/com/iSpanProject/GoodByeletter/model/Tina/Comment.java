@@ -8,9 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -50,6 +52,60 @@ public class Comment {
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId")
 	private Register FK_memberId;
+	
+	
+//	####################### Ryuz divider start #######################
+	
+	// 暫時性欄位，後台建置Comment使用，不會增加表格欄位
+	// 於此類別中，有增加對應之getter/setter
+	// 經判斷為操作上必要屬性，由後臺選單選擇之權限而定，與FK_Plevel之getter/setter無關
+	// 勿刪、勿刪、勿刪
+	@Transient
+	private Integer bId;
+	
+//	======================= Block =======================
+	
+	public Integer getbId() {
+		return bId;
+	}
+
+	public void setbId(Integer bId) {
+		this.bId = bId;
+	}
+	
+//	####################### Ryuz divider end #######################
+	
+	
+	
+	public Comment() {
+		super();
+	}
+	
+	
+	
+
+	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
+			Register fK_memberId, Integer bId) {
+		super();
+		this.commentId = commentId;
+		this.reply = reply;
+		this.createTime = createTime;
+		this.updateTime = updateTime;
+		FK_parentId = fK_parentId;
+		FK_memberId = fK_memberId;
+		this.bId = bId;
+	}
+	
+	
+	
+	@PrePersist
+	public void onCreate() {
+		if (createTime == null) {
+			createTime = new Date();
+		}
+	}
+	
+	
 
 	public Integer getCommentId() {
 		return commentId;
@@ -98,20 +154,7 @@ public class Comment {
 	public void setFK_memberId(Register fK_memberId) {
 		FK_memberId = fK_memberId;
 	}
+	
 
-	public Comment(Integer commentId, String reply, Date createTime, Date updateTime, Board fK_parentId,
-			Register fK_memberId) {
-		super();
-		this.commentId = commentId;
-		this.reply = reply;
-		this.createTime = createTime;
-		this.updateTime = updateTime;
-		FK_parentId = fK_parentId;
-		FK_memberId = fK_memberId;
-	}
-
-	public Comment() {
-		super();
-	}
 
 }
