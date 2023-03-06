@@ -53,7 +53,7 @@ public class BackendBoardController {
 		
 		Register register = (Register) model.getAttribute("authenticated");
 		
-		board.setFK_memberId(register);
+		board.setRegister(register);
 		
 		backendBoardService.insertBoard(board);
 		
