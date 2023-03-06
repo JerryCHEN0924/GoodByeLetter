@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iSpanProject.GoodByeletter.dao.Lillian.LevelDao;
+import com.iSpanProject.GoodByeletter.dao.Lillian.MemberDetailDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
@@ -22,6 +24,8 @@ public class RegisterService {
 	@Autowired
 	private LevelDao lDao;
 
+	@Autowired
+	private MemberDetailDao mDao;
 
 
 	public void insert(Register register) {
@@ -60,7 +64,7 @@ public class RegisterService {
 		return optional.get();		
 	}
 
-	public Register updateRegister(Register reg) {
+	public Register updateRegister(Register reg) {	
 		return rDao.save(reg);
 	}	
 
@@ -80,6 +84,14 @@ public class RegisterService {
 	public List<Register> findAll() {
 		return rDao.findAll();	
 	}
+	
+	public Register getRegisterById(Integer id) {
+        Optional<Register> register = rDao.findById(id);
+        if (register.isPresent()) {
+        	return null;
+        }
+		return register.get();
+    }
 
 
 	

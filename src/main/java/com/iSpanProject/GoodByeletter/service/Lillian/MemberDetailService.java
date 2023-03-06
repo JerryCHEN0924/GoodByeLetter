@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.iSpanProject.GoodByeletter.dao.Lillian.LevelDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.MemberDetailDao;
+import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
@@ -21,6 +22,9 @@ public class MemberDetailService {
 
 	@Autowired
 	private LevelDao lDao;
+	
+	@Autowired
+	private RegisterDao rDao;
 
 	public void insert(MemberDetail memberDetail) {
 
@@ -32,9 +36,28 @@ public class MemberDetailService {
 
 	}
 	
+	public MemberDetail updateMemberDetail(MemberDetail md) {
+		return mDao.save(md);
+	}	
+	
+	public MemberDetail findById(Integer memberId) {
+		Optional<MemberDetail> optional = mDao.findById(memberId);
+		
+		if(optional.isEmpty()) { 
+			return null;
+		}
+		return optional.get();		
+	}
+	
+	public MemberDetail findByMemberId(Integer memberId) {
+		MemberDetail findByMemberId = mDao.findMemberDetailByMemberId(memberId);
+		return findByMemberId;
+	}
+	
 	
 		
 		
 
 
 }
+
