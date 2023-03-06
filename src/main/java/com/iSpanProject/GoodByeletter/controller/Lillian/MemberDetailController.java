@@ -1,8 +1,8 @@
 package com.iSpanProject.GoodByeletter.controller.Lillian;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
