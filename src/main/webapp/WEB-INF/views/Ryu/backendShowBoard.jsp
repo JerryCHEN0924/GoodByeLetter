@@ -181,7 +181,7 @@
 	      <td>${board.boardMessage}</td>
 	      <td>${board.createTime}</td>
 	      <td>${board.updateTime}</td>
-	      <td>${board.FK_memberId.memberId}</td>
+	      <td>${board.register.memberId}</td>
 	      <td>
 	      	<div class="d-flex justify-content-center">
 	      		<div class="mx-1">

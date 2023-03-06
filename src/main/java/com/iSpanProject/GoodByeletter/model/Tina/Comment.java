@@ -56,6 +56,8 @@ public class Comment {
 	@ManyToOne
 	@JoinColumn(name = "FK_memberId")
 	private Register register;
+	
+	
 //	####################### Ryuz divider start #######################
 	
 	// 暫時性欄位，後台建置Comment使用，不會增加表格欄位
