@@ -78,9 +78,7 @@
 								<div class="mb-3 row">
 									<label for="birthday" class="col-sm-2 col-form-label">生日</label>
 									<div class="col-sm-10">
-									<input type="text" name="birthday" id="birthday" value="birthday">
-									
-<!-- 										<input type="date" class="form-control" id="birthday" name="birthday"value="birthday"> -->
+										<input type="date" class="form-control" id="birthday" name="birthday"value="birthday">
 									</div>
 								</div>
 
@@ -148,9 +146,7 @@
 
 
 				<script>
-				$(function() {
-				    $("#birthday").datepicker();
-				});
+				
 
 				</script>
 

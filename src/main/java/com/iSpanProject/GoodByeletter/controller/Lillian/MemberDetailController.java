@@ -1,5 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.Lillian;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -79,10 +81,15 @@ public class MemberDetailController {
 
 //編輯會員資料
 	@GetMapping("/memberDetail/edit")
-	public String editMemberDetailPage(@RequestParam Integer memberId, Model model) {// model儲存送過去
-		//MemberDetail memberDetails = memberDetailService.findById(memberId);
+	public String editMemberDetailPage(@RequestParam Integer memberId, Model model) throws ParseException {// model儲存送過去
 //		MemberDetail memberDetails =new MemberDetail();
 		MemberDetail memberDetails=memberDetailService.findByMemberId(memberId);
+		//////時間轉換///////////
+		Date memberBirthday=memberDetails.getBirthday();
+		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
+		String memberBirthdayString=format.format(memberBirthday);
+		Date memberBirthdayNewType=format.parse(memberBirthdayString);
+		memberDetails.setBirthday(memberBirthdayNewType);
 		
 		model.addAttribute("memberDetails", memberDetails);
 
