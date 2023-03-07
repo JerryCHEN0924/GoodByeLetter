@@ -27,9 +27,9 @@ public class LastNoteController {
 	
 	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面
 	@PostMapping("/LastNote/post")
-	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote,Model model) {
-//		Register memberid = (Register) model.getAttribute("existing");
-//		lastNote.setFK_memberId(memberid);
+	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote,Model model) {		
+		Register memberid = (Register) model.getAttribute("existing");
+		lastNote.setFK_memberId(memberid);
 		lastnoteService.SaveLastNote(lastNote);
 		return "redirect:/LastNote/edit";
 	}

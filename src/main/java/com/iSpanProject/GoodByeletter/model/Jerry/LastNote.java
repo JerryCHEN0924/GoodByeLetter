@@ -26,8 +26,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="lastnote")
+//@Getter 0307測試好像沒有自動生成，在Controller呼叫沒得到get/set方法
+//@Setter 0307測試好像沒有自動生成，在Controller呼叫沒得到get/set方法
 public class LastNote implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -37,16 +42,16 @@ public class LastNote implements Serializable {
 	@Column(name="noteId")
 	private Integer noteId;
 	
-	@ManyToOne
+	@ManyToOne //(cascade= CascadeType.PERSIST) 加了此段，後端拿會員物件時會變成分離物件
 	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_lastnote_member"), nullable = false)
 	private Register FK_memberId;
 	
-	@Email(message = "信箱格式錯誤")
-	@NotBlank(message = "信箱不可為空")
+//	@Email(message = "信箱格式錯誤")
+//	@NotBlank(message = "信箱不可為空")
 	@Column(name="recipientEmail", nullable = false)
 	private String recipientEmail;
 	
-	@NotBlank(message = "內容不可為空")
+//	@NotBlank(message = "內容不可為空")
 	@Column(name="notedetail",columnDefinition = "nvarchar(500)", nullable = false)
 	private String notedetail;
 	
@@ -68,9 +73,30 @@ public class LastNote implements Serializable {
 	@Column(name="verifyTime")
 	private Date verifyTime;
 	
+//	########以下是測試驗證專區勿動########
+	
+//	@Column(name="enabled")
+//	private Boolean enabled;
+	
+//	@Column(name="verificationCode",updatable = false)
+//	private String verificationCode;
+	
+//	########以上是測試驗證專區勿動########
 	@Transient
 	private Integer mId;
 
+	@PrePersist
+	public void onCreate() {
+		if(createTime == null) {
+			createTime = new Date();
+		}
+	}
+	
+	@PreUpdate
+	public void onUpdate() {
+		createTime = new Date();
+	}
+	
 	public LastNote(Integer noteId, Register fK_memberId, String recipientEmail, String notedetail, Date createTime,
 			String verify1, String verify2, Date verifyTime, Integer mId) {
 		super();
@@ -94,17 +120,6 @@ public class LastNote implements Serializable {
 		this.mId = mId;
 	}
 
-	@PrePersist
-	public void onCreate() {
-		if(createTime == null) {
-			createTime = new Date();
-		}
-	}
-	
-	@PreUpdate
-	public void onUpdate() {
-		createTime = new Date();
-	}
 	public LastNote() {
 		super();
 	}
@@ -172,5 +187,13 @@ public class LastNote implements Serializable {
 	public void setVerifyTime(Date verifyTime) {
 		this.verifyTime = verifyTime;
 	}
+
+//	public String getVerificationCode() {
+//		return verificationCode;
+//	}
+//
+//	public void setVerificationCode(String verificationCode) {
+//		this.verificationCode = verificationCode;
+//	}
 	
 }

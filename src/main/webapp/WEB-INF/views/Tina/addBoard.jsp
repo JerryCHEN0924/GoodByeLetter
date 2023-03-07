@@ -49,8 +49,9 @@
 		<div class="card">
 		<div class="card-header">
 		<h5>${lastestBoard.title} </h5>
-	<h6>上傳時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.createTime}"/><br>
-		更時時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.updateTime}"/></h6>
+	<h6>會員:${lastestBoard.register}<br>
+		上傳時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.createTime}"/><br>
+		更新時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.updateTime}"/></h6>
 		
 		
 		
