@@ -42,7 +42,7 @@ public class LastNote implements Serializable {
 	@Column(name="noteId")
 	private Integer noteId;
 	
-	@ManyToOne(cascade= {CascadeType.PERSIST })
+	@ManyToOne //(cascade= CascadeType.PERSIST) 加了此段，後端拿會員物件時會變成分離物件
 	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_lastnote_member"), nullable = false)
 	private Register FK_memberId;
 	
@@ -78,8 +78,8 @@ public class LastNote implements Serializable {
 //	@Column(name="enabled")
 //	private Boolean enabled;
 	
-	@Column(name="verificationCode",updatable = false)
-	private String verificationCode;
+//	@Column(name="verificationCode",updatable = false)
+//	private String verificationCode;
 	
 //	########以上是測試驗證專區勿動########
 	@Transient
@@ -188,12 +188,12 @@ public class LastNote implements Serializable {
 		this.verifyTime = verifyTime;
 	}
 
-	public String getVerificationCode() {
-		return verificationCode;
-	}
-
-	public void setVerificationCode(String verificationCode) {
-		this.verificationCode = verificationCode;
-	}
+//	public String getVerificationCode() {
+//		return verificationCode;
+//	}
+//
+//	public void setVerificationCode(String verificationCode) {
+//		this.verificationCode = verificationCode;
+//	}
 	
 }

@@ -45,8 +45,8 @@
 					<div class="card-body">
 						<form:form action="${contextRoot}/LastNote/post"
 							modelAttribute="lastNote" method="POST">
-								<form:input type="hidden" class="form-control"
- 									path="FK_memberId" id="FK_memberId" value="${existing.memberId}" /> 
+<%-- 								<form:input type="hidden" class="form-control" --%>
+<%--  									path="FK_memberId" id="FK_memberId" value="${existing.memberId}" />  --%>
 
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>

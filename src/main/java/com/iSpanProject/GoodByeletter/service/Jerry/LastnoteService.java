@@ -33,8 +33,8 @@ public class LastnoteService {
 	@Transactional
 	public void SaveLastNote(LastNote lastNote) {
 //		####以下是驗證####
-		String token = RandomString.make(64);
-		lastNote.setVerificationCode(token);
+//		String token = RandomString.make(64);
+//		lastNote.setVerificationCode(token);
 //		####以上是驗證####
 		lDao.save(lastNote);
 //		Set<ConstraintViolation<LastNote>> violations = validator.validate(lastNote);
