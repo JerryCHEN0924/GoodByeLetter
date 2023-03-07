@@ -1,6 +1,5 @@
 package com.iSpanProject.GoodByeletter.controller.Lillian;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,16 +34,9 @@ public class registerController {
 	public String saveRegister(@RequestParam(value = "account") String account,
 			@RequestParam(value = "password") String password, Model model) {
 		
-//		這個錯誤可能發生的原因有幾種。以下是一些可能的原因：
-//
-//		1.表單物件或控制器方法上的驗證註釋未正確配置。
-//		2.表單物件未正確綁定到 HTTP 請求。
-//		3.驗證錯誤訊息未正確添加到綁定結果物件中。
-//		4.視圖未正確配置以顯示驗證錯誤。	
 		try {
 			// 創建一個空的HashMap對象"errors"，將"errors"對象存儲到Model對象中
 			Map<String, String> errors = new HashMap<String, String>();
-			model.addAttribute("errors", errors);
 
 			if (account == null || account.length() == 0) {
 				errors.put("account", "請輸入您的帳號!");
@@ -56,6 +48,7 @@ public class registerController {
 			if (registerService.findByAcc(account) != null) {
 				errors.put("account", "該帳號已被註冊!");
 			}
+			model.addAttribute("errors", errors);
 			if (errors != null && !errors.isEmpty()) {
 				return "redirect:/";
 			}
@@ -95,14 +88,12 @@ public class registerController {
 			HttpSession session, Model model) {
 
 		Register existing = registerService.findByAccAndPwd(account, password);
-//		Register re = registerService.getRegisterById(memberId);
 		model.addAttribute("register", existing);
 		String acc = existing.getAccount();
 		String pwd = existing.getPassword();
 
 		if (account.equals(acc) && password.equals(pwd)) {
 			session.setAttribute("existing", existing);
-			// session.setAttribute("pwd", pwd);
 
 			return "redirect:/";
 		} else {

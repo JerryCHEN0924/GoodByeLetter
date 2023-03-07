@@ -39,7 +39,7 @@
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
 				<form:form id="register_form" action="${contextRoot}/register/add" modelAttribute="errors" method="post">
-					
+					<form:input type="hidden" path="errors" />
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">

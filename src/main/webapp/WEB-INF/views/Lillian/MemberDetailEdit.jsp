@@ -39,96 +39,121 @@
 
 			<div class="container" id="form_container">
 				<div id="memberDetailEdit">編輯會員資料</div>
-				<form id="memberDetailEdit_form" action="${contextRoot}/memberDetail/putMemberDetail"
+				<form id="memberDetailEdit_form"
+					action="${contextRoot}/memberDetail/putMemberDetail"
 					modelAttribute="memberDetails" method="post">
-				<input type="hidden" name="_method" value="put" /> 
-				<input type="hidden" path="id" />
-				<div class="mb-3 row">
-					<label for="name" class="col-sm-2 col-form-label">名字</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="name" name="name"
-							value="${memberDetails.name}" />
-					</div>
-				</div>
-
-				<div class="mb-3 row">
-					<label for="gender" class="col-sm-2 col-form-label">性別</label>
-					<div class="col-sm-10">
-						<div class="form-check form-check-inline ">
-							<input type="radio" class="form-check-input" name="gender"
-								id="maleRadio" value="${memberDetails.gender}" /> <label
-								class="form-check-label" for="maleRadio"> 男性 </label>
-						</div>
-						<div class="form-check form-check-inline ">
-							<input type="radio" class="form-check-input" name="gender"
-								id="femaleRadio" value="${memberDetails.gender}" /> <label
-								class="form-check-label" for="femaleRadio"> 女性 </label>
-						</div>
-						<div class="form-check form-check-inline ">
-							<input type="radio" class="form-check-input" name="gender"
-								id="nonbinaryRadio" value="${memberDetails.gender}" /> <label
-								class="form-check-label" for="nonbinaryRadio"> 中性 </label>
-						</div>
-						<div class="form-check form-check-inline ">
-							<input type="radio" class="form-check-input" name="gender"
-								id="secretRadio" value="${memberDetails.gender}" /> <label
-								class="form-check-label" for="secretRadio"> 保密 </label>
+					<input type="hidden" name="_method" value="put" /> <input
+						type="hidden" path="id" />
+					<div class="mb-3 row">
+						<label for="name" class="col-sm-2 col-form-label">名字</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="name" name="name"
+								value="${memberDetails.name}" />
 						</div>
 					</div>
-				</div>
-
-				<div class="mb-3 row">
-					<label for="birthday" class="col-sm-2 col-form-label">生日</label>
-					<div class="col-sm-10">
-						<input type="date" class="form-control" id="birthday"
-							name="birthday" value="${memberDetails.birthday}"/>
+					<div class="mb-3 row">
+						<label for="gender" class="col-sm-2 col-form-label">性別</label>
+						<div class="col-sm-10">
+							<div class="form-check form-check-inline ">
+								<input type="radio" class="form-check-input" name="gender"
+									id="maleRadio"
+									<c:if test="${memberDetails.gender == 'male'}">checked</c:if> />
+								<label class="form-check-label" for="maleRadio"> 男性 </label>
+							</div>
+							<div class="form-check form-check-inline ">
+								<input type="radio" class="form-check-input" name="gender"
+									id="femaleRadio"
+									<c:if test="${memberDetails.gender == 'female'}">checked</c:if> />
+								<label class="form-check-label" for="femaleRadio"> 女性 </label>
+							</div>
+							<div class="form-check form-check-inline ">
+								<input type="radio" class="form-check-input" name="gender"
+									id="nonbinaryRadio"
+									<c:if test="${memberDetails.gender == 'nonbinary'}">checked</c:if> />
+								<label class="form-check-label" for="nonbinaryRadio"> 中性
+								</label>
+							</div>
+							<div class="form-check form-check-inline ">
+								<input type="radio" class="form-check-input" name="gender"
+									id="secretRadio"
+									<c:if test="${memberDetails.gender == 'secret'}">checked</c:if> />
+								<label class="form-check-label" for="secretRadio"> 保密 </label>
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<div class="mb-3 row">
-					<label for="email" class="col-sm-2 col-form-label">Email</label>
-					<div class="col-sm-10">
-						<input type="email" class="form-control" id="email" name="email"
-							value="${memberDetails.email}" />
+					<div class="mb-3 row">
+						<label for="birthday" class="col-sm-2 col-form-label">生日</label>
+						<div class="col-sm-10">
+							<input type="date" class="form-control" id="birthday"
+								name="birthday" value="${memberDetails.birthday}" />
+						</div>
 					</div>
-				</div>
 
-				<div class="mb-3 row">
-					<label for="county" class="col-sm-2 col-form-label">住址</label>
-					<div class="col-sm-2">
-						<select id="county" class="col-sm-2 form-control" name="county"
-							value="${memberDetails.county}">
-							<option value="TaipeiC">臺北市</option>
-							<option value="newTaipeiC">新北市</option>
-							<option value="taoyuanC">桃園市</option>
-							<option value="taichungC">臺中市</option>
-							<option value="tainanC">臺南市</option>
-							<option value="kaohsiungC">高雄市</option>
-							<option value="keelungC">基隆市</option>
-							<option value="hsinchuC">新竹市</option>
-							<option value="chiayiC">嘉義市</option>
-							<option value="yilanT">宜蘭縣</option>
-							<option value="hsinchuT">新竹縣</option>
-							<option value="miaoliT">苗栗縣</option>
-							<option value="changhuaT">彰化縣</option>
-							<option value="nantouT">南投縣</option>
-							<option value="yunlinT">雲林縣</option>
-							<option value="chiayiT">嘉義縣</option>
-							<option value="pingtungT">屏東縣</option>
-							<option value="hualienT">花蓮縣</option>
-							<option value="taitungT">台東縣</option>
-							<option value="penghuT">澎湖縣</option>
-						</select>
+					<div class="mb-3 row">
+						<label for="email" class="col-sm-2 col-form-label">Email</label>
+						<div class="col-sm-10">
+							<input type="email" class="form-control" id="email" name="email"
+								value="${memberDetails.email}" />
+						</div>
 					</div>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="address"
-							name="address" value="${memberDetails.address}"
-							placeholder="完整地址" />
+
+					<div class="mb-3 row">
+						<label for="county" class="col-sm-2 col-form-label">住址</label>
+						<div class="col-sm-2">
+							<select id="county" class="col-sm-2 form-control" name="county"
+								value="${memberDetails.county}">
+								<option value="TaipeiC"
+									${memberDetails.county == 'TaipeiC' ? 'selected' : ''}>臺北市</option>
+								<option value="newTaipeiC"
+									${memberDetails.county == 'newTaipeiC' ? 'selected' : ''}>新北市</option>
+								<option value="taoyuanC"
+									${memberDetails.county == 'taoyuanC' ? 'selected' : ''}>桃園市</option>
+								<option value="taichungC"
+									${memberDetails.county == 'taichungC' ? 'selected' : ''}>臺中市</option>
+								<option value="tainanC"
+									${memberDetails.county == 'tainanC' ? 'selected' : ''}>臺南市</option>
+								<option value="kaohsiungC"
+									${memberDetails.county == 'kaohsiungC' ? 'selected' : ''}>高雄市</option>
+								<option value="keelungC"
+									${memberDetails.county == 'keelungC' ? 'selected' : ''}>基隆市</option>
+								<option value="hsinchuC"
+									${memberDetails.county == 'hsinchuC' ? 'selected' : ''}>新竹市</option>
+								<option value="chiayiC"
+									${memberDetails.county == 'chiayiC' ? 'selected' : ''}>嘉義市</option>
+								<option value="yilanT"
+									${memberDetails.county == 'yilanT' ? 'selected' : ''}>宜蘭縣</option>
+								<option value="hsinchuT"
+									${memberDetails.county == 'hsinchuT' ? 'selected' : ''}>新竹縣</option>
+								<option value="miaoliT"
+									${memberDetails.county == 'miaoliT' ? 'selected' : ''}>苗栗縣</option>
+								<option value="changhuaT"
+									${memberDetails.county == 'changhuaT' ? 'selected' : ''}>彰化縣</option>
+								<option value="nantouT"
+									${memberDetails.county == 'nantouT' ? 'selected' : ''}>南投縣</option>
+								<option value="yunlinT"
+									${memberDetails.county == 'yunlinT' ? 'selected' : ''}>雲林縣</option>
+								<option value="chiayiT"
+									${memberDetails.county == 'chiayiT' ? 'selected' : ''}>嘉義縣</option>
+								<option value="pingtungT"
+									${memberDetails.county == 'pingtungT' ? 'selected' : ''}>屏東縣</option>
+								<option value="hualienT"
+									${memberDetails.county == 'hualienT' ? 'selected' : ''}>花蓮縣</option>
+								<option value="taitungT"
+									${memberDetails.county == 'hualienT' ? 'selected' : ''}>台東縣</option>
+								<option value="penghuT"
+									${memberDetails.county == 'penghuT' ? 'selected' : ''}>澎湖縣</option>
+							</select>
+						</div>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="address"
+								name="address" value="${memberDetails.address}"
+								placeholder="完整地址" />
+						</div>
 					</div>
-				</div>
 
 
-				<button type="submit">送出</button>
+					<button type="submit">送出</button>
 				</form>
 			</div>
 		</div>
@@ -152,20 +177,19 @@
 
 
 	<script>
-		window.onload = function () {
+		window.onload = function() {
 			var time = "${memberDetails.birthday}"
 			var timeBirthdate = moment(time, "ddd MMM DD HH:mm:ss zzz YYYY");
 			var timeBirthdateFormat = timeBirthdate.format("YYYY-MM-DD");
 			console.log(timeBirthdateFormat)
-			var birthday = document.getElementById('birthday').valueAsDate= new Date(timeBirthdateFormat);
+			var birthday = document.getElementById('birthday').valueAsDate = new Date(
+					timeBirthdateFormat);
 			console.log(birthday)
-			
-			
+
 			console.log("${memberDetails.gender}")
-			
-		
+
 			console.log("${memberDetails.county}")
-			
+
 		}
 	</script>
 
