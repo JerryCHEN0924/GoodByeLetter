@@ -160,6 +160,7 @@
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/add' />">新增LastNote</a></li>
               <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/page' />">查詢和編輯LastNote</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/queryLikeAccount' />">模糊查詢和編輯LastNote</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

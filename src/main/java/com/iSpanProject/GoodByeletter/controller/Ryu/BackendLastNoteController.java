@@ -131,6 +131,11 @@ public class BackendLastNoteController {
 	
 	
 	
+	
+	
+	
+	
+	
 	// 修改LastNote跳頁
 	@GetMapping("/topGun/lastNote/edit")
 	public String editLastNotePage(@RequestParam("noteId") Integer noteId, Model model) {
@@ -174,17 +179,28 @@ public class BackendLastNoteController {
 	@GetMapping("/topGun/lastNote/queryLikeAccount")
 	public String getLastNoteByAccountForm(Model model) {
 		
-		Register register = new Register();
-		model.addAttribute("register", register);
+//		Register register = new Register();
+//		model.addAttribute("register", register);
 		
 		return "/Ryu/backendShowLastNoteByAccount";
 	}
 	
 	
 	// 依帳號查詢LastNote
+	@GetMapping("/topGun/lastNote/queryLikeAccountPost")
 	public String getLastNoteByAccount(@RequestParam("account") String account, Model model) {
 		
 		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
+		
+		
+		System.out.println("=====================");
+		System.out.println("=====================");
+		System.out.println(register);
+		System.out.println("=====================");
+		System.out.println("=====================");
+		
+		
+		
 		
 		model.addAttribute("register", register);
 		
@@ -192,9 +208,13 @@ public class BackendLastNoteController {
 		
 	}
 	
-	
-	
-	
+	// 依帳號查詢LastNote的Detail
+//	@GetMapping("/topGun/lastNote/queryLikeAccountDetail")
+//	public String getLastNoteByAccountDetail(@RequestParam("lId") String account, Model model) {
+//		
+//		
+//		
+//	}
 	
 	
 	
