@@ -47,7 +47,7 @@ public class BackendCommentController {
 		
 		model.addAttribute("board", board);
 		
-		Comment latestComment = backendCommentService.findLatest();
+		Comment latestComment = backendCommentService.findLatestComment();
 		
 		System.out.println("=====================");
 		System.out.println("=====================");
@@ -86,7 +86,7 @@ public class BackendCommentController {
 		
 		backendCommentService.insertComment(comment);
 		
-		Comment latestComment = backendCommentService.findLatest();
+		Comment latestComment = backendCommentService.findLatestComment();
 		
 		System.out.println("=====================");
 		System.out.println("=====================");

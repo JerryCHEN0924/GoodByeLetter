@@ -104,6 +104,56 @@
 
 
 
+<div class="row ">
+
+<div class="offset-sm-2 col-sm-8 ">
+
+
+
+
+<div class="card mt-3">
+
+  <div class="card-header">
+    <span>（最新留言）留言主題： </span><span>${latestBoard.title}</span>
+    <hr>
+   <span> 留言發布時間： </span><span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${latestBoard.createTime}" /></span>
+  </div>
+  
+  <div class="card-body">
+  	
+	${latestBoard.boardMessage}
+  	
+  </div>
+  
+  
+  
+	</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

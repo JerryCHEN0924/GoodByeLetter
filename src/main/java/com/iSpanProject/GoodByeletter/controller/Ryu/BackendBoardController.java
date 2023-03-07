@@ -17,7 +17,7 @@ import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendBoardService;
 
 @Controller
-@SessionAttributes({"authenticated"})
+@SessionAttributes({"authenticated","existing"})
 public class BackendBoardController {
 	
 	
@@ -41,6 +41,17 @@ public class BackendBoardController {
 		
 		model.addAttribute("board", board);
 		
+		Board latestBoard = backendBoardService.findLatestBoard();
+		
+		System.out.println("=====================");
+		System.out.println("=====================");
+		System.out.println(latestBoard);
+		System.out.println("=====================");
+		System.out.println("=====================");
+		
+		model.addAttribute("latestBoard", latestBoard);
+		
+		
 		return "/Ryu/backendAddNewBoardForm";
 		
 	}
@@ -52,14 +63,33 @@ public class BackendBoardController {
 	public String addNewRegisterPost(@ModelAttribute("board") Board board, Model model) {
 		
 		Register register = (Register) model.getAttribute("authenticated");
+//		Register register = (Register) model.getAttribute("existing");
 		
 		board.setRegister(register);
+		
+		System.out.println("=====================");
+		System.out.println("=====================");
+		System.out.println(register);
+		System.out.println("=====================");
+		System.out.println("=====================");
+		
 		
 		backendBoardService.insertBoard(board);
 		
 		Board newboard = new Board();
 		
 		model.addAttribute("board", newboard);
+		
+		Board latestBoard = backendBoardService.findLatestBoard();
+		
+		System.out.println("=====================");
+		System.out.println("=====================");
+		System.out.println(latestBoard);
+		System.out.println("=====================");
+		System.out.println("=====================");
+		
+		model.addAttribute("latestBoard", latestBoard);
+		
 		
 		return "/Ryu/backendAddNewBoardForm";
 		

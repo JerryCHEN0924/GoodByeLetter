@@ -197,12 +197,6 @@
 				<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
 			</form>
 				</div>
-				<div>
-			<form action="${contextRoot}/topGun/comment/add" method="get" >
-				<input type="hidden" name="commentId" value="${comment.commentId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
-			</form>
-				</div>
 			</div>
 	      </td>
 	    </tr>
@@ -280,12 +274,6 @@
 		<input type="hidden" name="commentId" value="${comment.commentId}" />
 		<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
 	</form>
-	<div>
-			<form action="${contextRoot}/topGun/comment/add" method="get" >
-				<input type="hidden" name="commentId" value="${comment.commentId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
-			</form>
-	</div>
 	
   </div>
   

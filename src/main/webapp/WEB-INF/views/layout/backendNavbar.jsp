@@ -140,9 +140,9 @@
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">新增留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">登入會員帳號後新增留言</a></li>
               <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯留言</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯回復留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯全部回復留言</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

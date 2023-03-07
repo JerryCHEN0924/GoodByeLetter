@@ -112,7 +112,7 @@ public class BackendCommentService {
 	
 	
 	// 查詢最新回覆留言
-	public Comment findLatest() {
+	public Comment findLatestComment() {
 		
 		return backendCommentRepository.findFirstByOrderByCreateTimeDesc();
 		
