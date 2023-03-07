@@ -124,9 +124,7 @@
 			<!-- RYU -->
 
 			<!-- myspace -->
-
-
-			<div class="card" id="register">
+			<div class="card" id="">
 				<h1>GoodBye Letter CRUD</h1>
 
 				<c:forEach var="lastNote" items="${page.content}">

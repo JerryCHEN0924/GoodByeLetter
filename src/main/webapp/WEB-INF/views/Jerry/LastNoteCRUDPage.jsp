@@ -47,14 +47,15 @@
 				<div class="card">
 					<div class="card-header">更新遺囑</div>
 					<div class="card-body">
+
 						<form:form action="${contextRoot}/LastNote/CRUD/put"
 							modelAttribute="nId" method="put">
 
 							<form:input type="hidden" class="form-control" path="noteId"
-								id="noteId" value="" />
+								id="noteId" value="${nId.noteId}" />
 
-							<form:input type="hidden" class="form-control" path="mId" id="mId"
-								value="1" />
+							<form:input type="hidden" class="form-control" path="FK_memberId"
+								id="FK_memberId" value="${existing.memberId}" />
 
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>
@@ -78,15 +79,15 @@
 									path="notedetail" rows="3" />
 							</div>
 							<button class="btn btn-success" type="submit">送出</button>
-							</form:form>
-							
-							<form action="${contextRoot}/LastNote/CRUD/delete" method="post">
-							<input value="${LastNote.noteId}" type="hidden" name="lastNoteId">
-							<input type="hidden" name="_method" value="delete" /> 
-							<button class="btn btn-danger disabled" aria-disabled="true" type="submit">刪除</button>
-							</form>
-							
-							<br>
+						</form:form>
+
+						<form action="${contextRoot}/LastNote/CRUD/delete" method="post">
+							<input type="hidden" name="_method" value="delete" />
+							<input type="hidden" name="noteId" value="${nId.noteId}">
+							<button type="submit" class="btn btn-danger" aria-disabled="true">刪除</button>
+						</form>
+
+						<br>
 
 					</div>
 				</div>
