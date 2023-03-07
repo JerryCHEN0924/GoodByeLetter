@@ -26,56 +26,99 @@
 	<article id="myspace" class="wrapper style2" style="height: 100vh">
 		<div class="container">
 			<h1>查看留言板</h1>
-			<c:forEach var="boardPage" items="${page.content}">
-				<br>
-				<div class="card">
-					<div class="card-header">
-						<h5>${boardPage.title}</h5>
-						<h6>
-							上傳時間:
-							<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
-								value="${boardPage.createTime}" />
-							<br> 更時時間:
-							<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
-								value="${boardPage.updateTime}" />
-						</h6>
+
+
+			<%--查詢表單 --%>
+			<form action="${contextRoot}/board/like" method="get">
+				<input type="text" name="title" placeholder="查詢關鍵字"
+					class="form-control" />
+					<input type="submit" class="btn btn-outline-info">	
+			</form>
+
+
+				<%--回傳找到符合關鍵字的留言板 --%>
+				<c:forEach var="like" items="${like}">
+					<div class="card">
+						<div class="card-header">
+							<h5>${like.title}</h5>
+							<h6>
+								上傳時間:
+								<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${like.createTime}" />
+								<br> 更新時間:
+								<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${like.updateTime}" />
+							</h6>
+						</div>
+
+						<div class="card-body">${like.boardMessage}</div>
+
+						<%--送出修改/刪除按鈕 --%>
+						<div class="showEachbutton" style="display: flex">
+							<form:form action="${contextRoot}/board/show" method="get">
+								<input type="hidden" name="boardId" value="${like.boardId}" />
+								<input type="submit" class="btn btn-outline-success" value="查看" />
+							</form:form>
+
+<%-- 							<form:form action="${contextRoot}/board/delete" method="delete"> --%>
+<%-- 								<input type="hidden" name="boardId" value="${like.boardId}" /> --%>
+<!-- 								<input type="submit" class="btn btn-outline-danger" value="刪除" /> -->
+<%-- 							</form:form> --%>
+						</div>
 					</div>
+				</c:forEach>
 
-					<div class="card-body">${boardPage.boardMessage}</div>
 
-					<%--送出修改/刪除按鈕 --%>
-					<div class="editbutton" style="display: flex">
-						<form:form action="${contextRoot}/board/edit" method="get">
-							<input type="hidden" name="boardId" value="${boardPage.boardId}" />
-							<input type="submit" class="btn btn-outline-success" value="修改" />
-						</form:form>
 
-						<form:form action="${contextRoot}/board/delete" method="delete">
-							<input type="hidden" name="boardId" value="${boardPage.boardId}" />
-							<input type="submit" class="btn btn-outline-danger" value="刪除" />
-						</form:form>
+				<%--一開始進入這個網頁後，會回傳所有的留言 --%>
+				<c:forEach var="boardPage" items="${page.content}">
+					<br>
+					<div class="card">
+						<div class="card-header">
+							<h5>${boardPage.title}</h5>
+							<h6>
+								上傳時間:
+								<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${boardPage.createTime}" />
+								<br> 更新時間:
+								<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${boardPage.updateTime}" />
+							</h6>
+						</div>
+
+						<div class="card-body">${boardPage.boardMessage}</div>
+
+						<%--送出修改/刪除按鈕 --%>
+						<div class="showEachbutton" style="display: flex">
+							<form:form action="${contextRoot}/board/show" method="get">
+								<input type="hidden" name="boardId" value="${boardPage.boardId}" />
+								<input type="submit" class="btn btn-outline-success" value="查看" />
+							</form:form>
+
+<%-- 							<form:form action="${contextRoot}/board/delete" method="delete"> --%>
+<%-- 								<input type="hidden" name="boardId" value="${boardPage.boardId}" /> --%>
+<%-- 								<input type="submit" class="btn btn-outline-danger" value="刪除" /> -->
+<%-- 							</form:form> --%>
+						</div>
 					</div>
-				</div>
-
-
-			</c:forEach>
+				</c:forEach>
 
 
 
 
-			<%--頁碼 --%>
-			<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
-				<c:choose>
-					<c:when test="${page.number+1 != pageNumber}">
-						<a href="${contextRoot}/board/page?p=${pageNumber}">${pageNumber}</a>
-					</c:when>
-					<c:otherwise>
-	${pageNumber}
-	</c:otherwise>
-				</c:choose>
+				<%--頁碼 --%>
+				<c:forEach var="pageNumber" begin="1" end="${page.totalPages}">
+					<c:choose>
+						<c:when test="${page.number+1 != pageNumber}">
+							<a href="${contextRoot}/board/page?p=${pageNumber}">${pageNumber}</a>
+						</c:when>
+						<c:otherwise>
+							${pageNumber}
+						</c:otherwise>
+					</c:choose>
 
-			</c:forEach>
-		</div>
+				</c:forEach>
+			</div>
 	</article>
 
 

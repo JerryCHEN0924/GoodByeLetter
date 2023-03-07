@@ -42,7 +42,7 @@
     	<c:choose>
 		    <c:when test="${not empty authenticated}">
 		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/memberByRyu/LogoutProcess">${authenticated.account} 登出</a>
+		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/register/LogoutProcess">${authenticated.account} 登出</a>
 		    </c:when>
 		    <c:otherwise>
 		        <!-- member 物件不存在，顯示登入按鈕 -->
@@ -69,27 +69,170 @@
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${contextRoot}/topGun/backendHome">Home</a>
+            <a class="nav-link active" aria-current="page" href="${contextRoot}/">Home</a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              管理權限等級
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="<c:url value='/topGun/level/add' />">新增權限等級</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/level/page' />">查詢和編輯權限等級</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              管理註冊會員
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="<c:url value='/topGun/register/add' />">新增註冊會員</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/register/page' />">查詢和編輯權限等級</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              管理會員細項資料
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/add' />">新增會員細項資料</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/page' />">查詢和編輯會員細項資料</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              模擬會員新增留言
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">登入會員帳號後新增留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯全部回復留言</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Link
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Link
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Link
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Link
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/topGun/memberByRyu/add">新增會員</a>
+            <a class="nav-link" href="#">Link</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/topGun/levelByRyu/add">新增等級</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/topGun/memberByRyu/page">查看會員</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/topGun/levelByRyu/page">查看等級</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="${contextRoot}/topGun/memberDetailByRyu/add">新增會員細項資料</a>
+            <a class="nav-link" href="#">Link</a>
           </li>
           
           <li class="nav-item">
@@ -110,118 +253,8 @@
           
           
           
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            
-          </li>
           
           
-          
-          
-          
-          
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            
-          </li>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            
-          </li>
-          
-          
-          
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            
-          </li>
-          
-          
-          
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            
-          </li>
           
           
           

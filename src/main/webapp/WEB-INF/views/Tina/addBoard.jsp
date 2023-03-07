@@ -37,7 +37,7 @@
 				</h5>
 				<div class="card-body">
 					<div class="input-group">
-						<form:textarea path="boardMessage" class="form-control" />
+						<form:textarea path="boardMessage" class="form-control" placeholder="新增留言板內容"/>
 					</div>
 					<br>
 					<button type="submit" class="btn btn-info">送出</button>
@@ -49,8 +49,9 @@
 		<div class="card">
 		<div class="card-header">
 		<h5>${lastestBoard.title} </h5>
-	<h6>上傳時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.createTime}"/><br>
-		更時時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.updateTime}"/></h6>
+	<h6>會員:${lastestBoard.register}<br>
+		上傳時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.createTime}"/><br>
+		更新時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE" value="${lastestBoard.updateTime}"/></h6>
 		
 		
 		
