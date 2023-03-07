@@ -111,7 +111,7 @@ public class BackendBoardService {
 	
 	
 	
-	// 查詢最新回覆留言
+	// 查詢最新留言
 	public Board findLatestBoard() {
 		
 		return backendBoardRepository.findFirstByOrderByCreateTimeDesc();
