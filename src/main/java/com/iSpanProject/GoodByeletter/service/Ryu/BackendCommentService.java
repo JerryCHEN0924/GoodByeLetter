@@ -89,7 +89,7 @@ public class BackendCommentService {
 	// 分頁功能
 	public Page<Comment> findCommentByPage(Integer pageNumber){
 		
-		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "boardId");
+		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "commentId");
 		
 		Page<Comment> page = backendCommentRepository.findAll(pgb);
 		
@@ -112,7 +112,7 @@ public class BackendCommentService {
 	
 	
 	// 查詢最新回覆留言
-	public Comment findLatest() {
+	public Comment findLatestComment() {
 		
 		return backendCommentRepository.findFirstByOrderByCreateTimeDesc();
 		

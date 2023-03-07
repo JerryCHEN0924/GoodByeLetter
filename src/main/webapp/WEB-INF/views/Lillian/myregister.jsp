@@ -38,20 +38,29 @@
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
 				<form id="register_form" action="${contextRoot}/register/add" method="post">
-					<!--                     	<input name="_method" value="put" /> -->
-
+					
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="account"
-								name="account">
+							<input type="text" placeholder="account" class="form-control"
+								id="account" name="account">
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="password"
-								name="password">
+							<input type="password" placeholder="password(密碼長度需大於 5 小於 12)"
+								class="form-control" id="password" name="password">
+								<div class="messages"></div>
+      					
+						</div>
+					</div>
+					<div class="mb-6 row">
+						<label for="confirm-password" class="col-sm-2 col-form-label">確認密碼</label>
+						<div class="col-sm-10">
+							<input id="confirm-password" class="form-control" type="password"
+								placeholder="Confirm password" name="confirmPassword">
+							<div class="messages"></div>
 						</div>
 					</div>
 					<button type="submit">下一步</button>
@@ -76,7 +85,8 @@
 
 
 	<script>
-		
+	
+	
 	</script>
 
 </body>

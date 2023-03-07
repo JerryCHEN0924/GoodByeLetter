@@ -1,11 +1,7 @@
 package com.iSpanProject.GoodByeletter.service.Jerry;
 
 import java.util.Optional;
-import java.util.Set;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +19,6 @@ import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
-@Validated
 public class LastnoteService {
 
 	@Autowired
@@ -37,7 +32,7 @@ public class LastnoteService {
 
 	@Transactional
 	public void SaveLastNote(LastNote lastNote) {
-		
+
 //		Set<ConstraintViolation<LastNote>> violations = validator.validate(lastNote);
 //		if (!violations.isEmpty()) {
 //			StringBuilder sb = new StringBuilder();
@@ -51,18 +46,10 @@ public class LastnoteService {
 
 //		我是分隔線，以上是資料驗證，只完成40%，先丟一旁，優先研究驗證。		以下是會員的session抓取
 
-//		Register memberid = (Register) model.getAttribute("帶有會員資料的物件屬性名");
-//		lastNote.setFK_memberId(memberid);
+
 //		待亮竹會員登入系統完成，有會員物件的session後才可改為上面方式，以下方法獲得會員ID外鍵為暫時性作法。
-	Integer mId = lastNote.getmId();
-	Optional<Register> member = registerDao.findById(mId);
-	Register m1 = member.get();lastNote.setFK_memberId(m1);lDao.save(lastNote);
-	}
-
-	@Transactional
-	public void insert(LastNote lastNote) {
+		
 		lDao.save(lastNote);
-
 	}
 
 	@Transactional
@@ -76,7 +63,10 @@ public class LastnoteService {
 
 	@Transactional
 	public void deleteById(Integer id) {
-		lDao.deleteById(id);
+		Optional<LastNote> optional = lDao.findById(id);
+		if (optional.isPresent()) {
+			lDao.deleteById(id);
+		}
 	}
 
 	@Transactional

@@ -1,11 +1,14 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -44,7 +47,7 @@ public class BackendCommentController {
 		
 		model.addAttribute("board", board);
 		
-		Comment latestComment = backendCommentService.findLatest();
+		Comment latestComment = backendCommentService.findLatestComment();
 		
 		System.out.println("=====================");
 		System.out.println("=====================");
@@ -83,7 +86,7 @@ public class BackendCommentController {
 		
 		backendCommentService.insertComment(comment);
 		
-		Comment latestComment = backendCommentService.findLatest();
+		Comment latestComment = backendCommentService.findLatestComment();
 		
 		System.out.println("=====================");
 		System.out.println("=====================");
@@ -104,6 +107,60 @@ public class BackendCommentController {
 		
 	}
 	
+	
+	
+	// 分頁查詢回復留言
+	@GetMapping("/topGun/comment/page")
+	public String showCommentByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
+		
+		Page<Comment> page = backendCommentService.findCommentByPage(pageNumber);
+		
+		model.addAttribute("page", page);
+		
+		return "/Ryu/backendShowComment";
+		
+	}
+	
+	
+	
+	// 修改回復留言跳頁
+	@GetMapping("/topGun/comment/edit")
+	public String editCommentPage(@RequestParam("commentId") Integer commentId, Model model) {
+		
+		Comment comment = backendCommentService.findCommentById(commentId);
+		
+		model.addAttribute("comment", comment);
+		
+		return "/Ryu/backendEditCommentForm";
+		
+		
+		
+	}
+	
+	
+	
+	// 修改回復留言
+	@PutMapping("/topGun/comment/editPost")
+	public String editPostComment(@ModelAttribute("comment") Comment comment) {
+		
+		backendCommentService.updateComment(comment);
+		
+		return "redirect:/topGun/comment/page";
+		
+		
+	}
+	
+	
+	
+	// 刪除回復留言
+	@DeleteMapping("/topGun/comment/delete")
+	public String deleteComment(@RequestParam("commentId") Integer commentId) {
+		
+		backendCommentService.deleteCommentById(commentId);
+		
+		return "redirect:/topGun/comment/page";
+		
+	}
 	
 	
 	

@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+
 @Entity
 @Table(name = "memberDetail")
 public class MemberDetail {
@@ -22,36 +23,34 @@ public class MemberDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne(cascade= {CascadeType.PERSIST })
-	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
-    private Register FK_memberId;
+//	@Column(name = "County",columnDefinition = "nvarchar(50)", nullable = false)
+	private String County;
+
+//	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
+	private String Email;
+
+//	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
+	private String address;
+	
+
+	private Date birthday;
+	
+//	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
+	private String gender;
+	
+//	@Column(name = "name",columnDefinition = "nvarchar(50)", nullable = false)
+	private String name;
 
 	@ManyToOne(cascade= {CascadeType.PERSIST })
 	@JoinColumn(name="FK_Plevel", foreignKey=@ForeignKey(name = "FK_memberDetail_level"))
 	private Level FK_Plevel;
 
+	@OneToOne(cascade= {CascadeType.PERSIST })
+	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
+	private Register FK_memberId;
 	
-//	@Column(name = "name",columnDefinition = "nvarchar(50)", nullable = false)
-	private String name;
-	
-//	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)
 
-	private String gender;
-	
-	
-	private java.sql.Date birthday;
 
-	
-//	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
-	private String Email;
-	
-//	@Column(name = "County",columnDefinition = "nvarchar(50)", nullable = false)
-	private String County;
-	
-//	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
-
-	private String address;
-	
 	
 //	####################### Ryuz divider start #######################
 	
@@ -127,15 +126,13 @@ public class MemberDetail {
 	}
 
 
-	public java.sql.Date getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 
-
-	public void setBirthday(java.sql.Date birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-
 
 	public String getEmail() {
 		return Email;

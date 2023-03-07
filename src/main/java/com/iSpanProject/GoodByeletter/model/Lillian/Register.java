@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import javax.persistence.UniqueConstraint;
+
 import javax.persistence.Transient;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,7 +35,8 @@ import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
 
 @Entity
-@Table(name = "member")
+@Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = {"account"})})
+//竹 把account設成唯一
 public class Register {
 
 	@Id
@@ -38,7 +44,7 @@ public class Register {
 	//@Column(name = "memberId")
 	private Integer memberId;
 
-	// @Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
+	@Column(name = "account")
 	private String account;
 
 	// @Column(name = "password",columnDefinition = "nvarchar(50)", nullable =
@@ -62,6 +68,7 @@ public class Register {
 		return pId;
 	}
 
+
 	public void setpId(Integer pId) {
 		this.pId = pId;
 	}
@@ -79,6 +86,7 @@ public class Register {
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	private Date registerTime;
+
 
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FK_memberId", orphanRemoval = true)

@@ -200,7 +200,7 @@
 				<div>
 			<form action="${contextRoot}/topGun/comment/add" method="get" >
 				<input type="hidden" name="boardId" value="${board.boardId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm" value="回覆" />
+				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
 			</form>
 				</div>
 			</div>
@@ -259,6 +259,7 @@
 <div class="card mt-3">
   <div class="card-header">
     留言發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${board.createTime}" /></span>
+    <br>
   </div>
   <div class="card-body">
   	
@@ -281,7 +282,7 @@
 	<div>
 			<form action="${contextRoot}/topGun/comment/add" method="get" >
 				<input type="hidden" name="boardId" value="${board.boardId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm" value="回覆" />
+				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
 			</form>
 	</div>
 	

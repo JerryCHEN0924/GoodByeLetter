@@ -58,9 +58,9 @@
 		<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
 	</form>
 	<div>
-			<form action="${contextRoot}/topGun/Comment/add" method="get" >
+			<form action="${contextRoot}/topGun/comment/add" method="get" >
 				<input type="hidden" name="boardId" value="${board.boardId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm" value="回覆" />
+				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
 			</form>
 	</div>
 	

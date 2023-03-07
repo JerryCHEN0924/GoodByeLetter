@@ -29,6 +29,7 @@ public class BackendBoardService {
 	
 	
 	// 新增留言
+//	@Transactional
 	public void insertBoard(Board board) {
 		
 		backendBoardRepository.save(board);
@@ -109,6 +110,13 @@ public class BackendBoardService {
 	}
 	
 	
+	
+	// 查詢最新回覆留言
+	public Board findLatestBoard() {
+		
+		return backendBoardRepository.findFirstByOrderByCreateTimeDesc();
+		
+	}
 	
 	
 	
