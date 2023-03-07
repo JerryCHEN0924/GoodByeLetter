@@ -43,19 +43,21 @@
 					<form:input path="memberId" type="hidden" />
 					<form:input path="registerTime" type="hidden" />
 					<form:input path="FK_Plevel" type="hidden" />
-					
+
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
 							<form:input path="account" type="text" class="form-control"
-								id="account" name="account" />
+								placeholder="account(請輸入6~12碼)" id="account" maxlength="12"
+								minlength="6" name="account" />
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
 							<form:input path="password" type="password" class="form-control"
-								id="password" name="password" />
+								placeholder="password(請輸入6~12碼)" id="password" maxlength="12"
+								minlength="6" name="password" />
 						</div>
 					</div>
 					<button type="submit">送出</button>

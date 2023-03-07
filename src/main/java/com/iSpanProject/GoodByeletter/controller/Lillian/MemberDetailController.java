@@ -2,10 +2,11 @@ package com.iSpanProject.GoodByeletter.controller.Lillian;
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -77,11 +78,11 @@ public class MemberDetailController {
 		System.out.println(memberDetails.getCounty());
 		
 		//////時間轉換///////////
-		Date memberBirthday=memberDetails.getBirthday();
-		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
-		String memberBirthdayString=format.format(memberBirthday);
-		Date memberBirthdayNewType=format.parse(memberBirthdayString);
-		memberDetails.setBirthday(memberBirthdayNewType);
+//		Date memberBirthday=memberDetails.getBirthday();
+//		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
+//		String memberBirthdayString=format.format(memberBirthday);
+//		Date memberBirthdayNewType=format.parse(memberBirthdayString);
+//		memberDetails.setBirthday(memberBirthdayNewType);
 		
 		model.addAttribute("memberDetails", memberDetails);
 
@@ -91,7 +92,10 @@ public class MemberDetailController {
 	}
 
 	@PutMapping("/memberDetail/putMemberDetail")
-	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail) {
+	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail,HttpSession session) {
+		Register registerNew=(Register)session.getAttribute("existing");
+		memberDetail.setFK_memberId(registerNew);
+		
 		memberDetailService.updateMemberDetail(memberDetail);
 
 		return "redirect:/";

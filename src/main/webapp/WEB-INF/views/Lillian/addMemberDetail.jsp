@@ -48,7 +48,7 @@
 					<div class="mb-3 row">
 						<label for="name" class="col-sm-2 col-form-label">名字</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="name" name="name">
+							<input required type="text" class="form-control" id="name" name="name">
 						</div>
 					</div>
 
@@ -56,7 +56,7 @@
 						<label for="gender" class="col-sm-2 col-form-label">性別</label>
 						<div class="col-sm-10">
 							<div class="form-check form-check-inline ">
-								<input type="radio" class="form-check-input" name="gender"
+								<input checked type="radio" class="form-check-input" name="gender"
 									id="maleRadio" value="male" /> <label class="form-check-label"
 									for="maleRadio"> 男性 </label>
 							</div>
@@ -82,17 +82,16 @@
 						<label for="birthday" class="col-sm-2 col-form-label">生日</label>
 						<div class="col-sm-10">
 							<input type="date" class="form-control" id="birthday"
-								name="birthday" value="birthday">
+								name="birthday" value="2023-03-30">
 						</div>
 					</div>
 
 					<div class="mb-3 row">
 						<label for="email" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" name="email">
+							<input required type="email" class="form-control" id="email" name="email">
 						</div>
 					</div>
-
 					<div class="mb-3 row">
 						<label for="county" class="col-sm-2 col-form-label">住址</label>
 						<div class="col-sm-2">
@@ -120,7 +119,7 @@
 							</select>
 						</div>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="address"
+							<input required type="text" class="form-control" id="address"
 								name="address" placeholder="完整地址">
 						</div>
 					</div>

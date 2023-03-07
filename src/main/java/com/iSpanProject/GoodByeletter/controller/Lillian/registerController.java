@@ -31,35 +31,34 @@ public class registerController {
 
 //註冊帳號
 	@PostMapping("/register/add")
-	public String saveRegister(@RequestParam(value = "account") String account,
-			@RequestParam(value = "password") String password, Model model) {
+	public String saveRegister(@ModelAttribute("newRegister") Register register
+			, Model model) {
 		
 		try {
 			// 創建一個空的HashMap對象"errors"，將"errors"對象存儲到Model對象中
 			Map<String, String> errors = new HashMap<String, String>();
-
-			if (account == null || account.length() == 0) {
+			model.addAttribute("errors", errors);
+			
+			if (register.getAccount() == "") {
 				errors.put("account", "請輸入您的帳號!");
 			}
 
-			if (password == null || password.length() == 0) {
+			if (register.getPassword() == "") {
 				errors.put("password", "請輸入您的密碼!");
 			}
-			if (registerService.findByAcc(account) != null) {
-				errors.put("account", "該帳號已被註冊!");
+			if (registerService.findByAcc(register.getAccount()) != null) {
+				errors.put("account1", "該帳號已被註冊!");
 			}
-			model.addAttribute("errors", errors);
-			if (errors != null && !errors.isEmpty()) {
-				return "redirect:/";
+			
+//			model.addAttribute("errors", errors);
+			if (!errors.isEmpty()) {
+				return "Lillian/myregister";
 			}
 
-			Register newRegister = new Register();
-			newRegister.setAccount(account);
-			newRegister.setPassword(password);
 
-			registerService.insert(newRegister);
+			registerService.insert(register);
 			///////////
-			Register registerNew = registerService.findByAccAndPwd(account, password);
+			Register registerNew = registerService.findByAccAndPwd(register.getAccount(), register.getPassword());
 			Integer memberId = registerNew.getMemberId();
 			model.addAttribute("memberId", memberId);
 			////////////
@@ -76,7 +75,9 @@ public class registerController {
 	}
 	
 	@GetMapping("/register1")
-	public String register1() {
+	public String register1(Model model) {
+		Register newRegister = new Register();
+		model.addAttribute("newRegister",newRegister);
 		return "Lillian/myregister";
 	}
 
