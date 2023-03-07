@@ -28,6 +28,7 @@ public class LastNoteController {
 	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面
 	@PostMapping("/LastNote/post")
 	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote,Model model) {
+//		目前只能從前端送會員外鍵進來，無法使用32-33行程式碼，從後端寫入會員外鍵，報錯原因說是分離物件無法存入永續物件中，待解。		
 //		Register memberid = (Register) model.getAttribute("existing");
 //		lastNote.setFK_memberId(memberid);
 		lastnoteService.SaveLastNote(lastNote);
