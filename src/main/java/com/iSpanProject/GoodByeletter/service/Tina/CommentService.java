@@ -1,12 +1,12 @@
 package com.iSpanProject.GoodByeletter.service.Tina;
 
 import java.util.List;
-
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iSpanProject.GoodByeletter.dao.Tina.CommentDao;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
@@ -32,8 +32,23 @@ public class CommentService {
 		 commentDao.deleteById(commentId);
 	}
 	
+	//findAll
 	public List<Comment> findAll(){
 		return commentDao.findAll();
+	}
+	
+	//findById
+	public Comment findById(@RequestParam Integer commentId) {
+		Optional<Comment> optional=commentDao.findById(commentId);
+		if(optional.isPresent()) {
+			Comment findComment = optional.get();
+			return findComment;
+		}
+		return null;
+	}
+	
+	public List<Comment> findByCommentBoardId(Integer boardId){		
+		return commentDao.findByCommentBoardId(boardId);
 	}
 	
 	//找同個留言板回覆的留言
