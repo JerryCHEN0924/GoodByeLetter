@@ -1,7 +1,6 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,10 +16,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendLastNoteService;
+import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 import com.iSpanProject.GoodByeletter.validate.LastNoteValidator;
 
 @Controller
@@ -32,7 +31,7 @@ public class BackendLastNoteController {
 	private BackendLastNoteService backendLastNoteService;
 	
 	@Autowired
-	private BackendRegisterRepository backendRegisterRepository;
+	private BackendRegisterService backendRegisterService;
 	
 	
 	
@@ -159,7 +158,7 @@ public class BackendLastNoteController {
 	
 	
 	
-	// 刪除留言
+	// 刪除LastNote
 	@DeleteMapping("/topGun/lastNote/delete")
 	public String deleteBoard(@RequestParam("noteId") Integer noteId) {
 		
@@ -171,6 +170,27 @@ public class BackendLastNoteController {
 	
 	
 	
+	// 依帳號查詢LastNote跳頁
+	@GetMapping("/topGun/lastNote/queryLikeAccount")
+	public String getLastNoteByAccountForm(Model model) {
+		
+		Register register = new Register();
+		model.addAttribute("register", register);
+		
+		return "/Ryu/backendShowLastNoteByAccount";
+	}
+	
+	
+	// 依帳號查詢LastNote
+	public String getLastNoteByAccount(@RequestParam("account") String account, Model model) {
+		
+		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
+		
+		model.addAttribute("register", register);
+		
+		return "/Ryu/backendShowLastNoteByAccount";
+		
+	}
 	
 	
 	
