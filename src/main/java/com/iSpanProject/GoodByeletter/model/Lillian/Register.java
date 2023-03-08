@@ -22,7 +22,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -88,6 +87,9 @@ public class Register {
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FK_memberId", orphanRemoval = true)
 	private List<LastNote> lastnote = new ArrayList<>();
+	
+	@Column(name = "enabled" , nullable = false )
+	private boolean enabled;
 
 	// 阿戴:連到Board
 	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
@@ -143,6 +145,18 @@ public class Register {
 	public void setRegisterTime(Date registerTime) {
 		this.registerTime = registerTime;
 	}
+	
+
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 
 	public List<LastNote> getLastnote() {
 		return lastnote;

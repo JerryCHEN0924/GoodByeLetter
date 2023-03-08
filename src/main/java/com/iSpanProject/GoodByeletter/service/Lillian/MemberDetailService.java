@@ -35,10 +35,10 @@ public class MemberDetailService {
 	}
 	
 	public MemberDetail updateMemberDetail(MemberDetail md) {
-		Optional<Level> optional = lDao.findById(1);
-		Level l1 = optional.get();
-		md.setFK_Plevel(l1);
-		
+//		Optional<Level> optional = lDao.findById(1);
+//		Level l1 = optional.get();
+//		md.setFK_Plevel(l1);
+//		
 		return mDao.save(md);
 	}	
 	
