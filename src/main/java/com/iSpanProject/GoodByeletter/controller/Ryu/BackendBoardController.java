@@ -1,5 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendBoardService;
+import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 
 @Controller
 @SessionAttributes({"authenticated","existing"})
@@ -25,6 +28,8 @@ public class BackendBoardController {
 	@Autowired
 	private BackendBoardService backendBoardService;
 	
+	@Autowired
+	private BackendRegisterService backendRegisterService;
 	
 	
 //	####################### Ryuz divider #######################
@@ -146,6 +151,53 @@ public class BackendBoardController {
 		return "redirect:/topGun/board/page";
 		
 	}
+	
+	
+	
+	// 依帳號查詢Board跳頁
+	@GetMapping("/topGun/board/queryLikeAccount")
+	public String getBoardByAccountForm(Model model) {
+		
+		return "/Ryu/backendShowBoardByAccount";
+		
+	}
+	
+	
+	
+	// 依帳號查詢Board
+	@GetMapping("/topGun/board/queryLikeAccountPost")
+	public String getBoardByAccount(@RequestParam("account") String account, Model model) {
+		
+		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
+		
+		
+		model.addAttribute("register", register);
+		
+		return "/Ryu/backendShowBoardByAccount";
+		
+	}
+	
+	
+	
+	// 依帳號查詢Board的Detail
+	@GetMapping("/topGun/board/queryLikeAccountDetail")
+	public String getBoardByAccountDetail(@RequestParam("r") Register register, Model model) {
+		
+		List<Board> boardDetail = backendBoardService.findBoardByAccountGroupByR(register);
+		
+		model.addAttribute("boardDetail", boardDetail);
+		
+		return "/Ryu/backendShowBoardDetailByAccount";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
