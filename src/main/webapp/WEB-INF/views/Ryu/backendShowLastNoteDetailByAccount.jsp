@@ -24,7 +24,16 @@
 
 <div class="container w-75 text-center">
 
+<div class="row mt-5">
 
+<div class="offset-sm-2 col-sm-8 ">
+
+<div>
+	<a class="btn btn-danger" type="button" href="<c:url value='/topGun/lastNote/queryLikeAccount'  />">返回上一頁</a>
+</div>
+
+</div>
+</div>
 
 
 <div class="row my-3">

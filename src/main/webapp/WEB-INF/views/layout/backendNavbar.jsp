@@ -136,7 +136,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              模擬會員新增留言
+              模擬會員新增留言(登入帳號)
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -154,7 +154,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              模擬新增LastNote
+              模擬新增LastNote(登入帳號)
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -171,7 +171,7 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              查詢
+              依帳號查詢系列
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">

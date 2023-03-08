@@ -32,7 +32,7 @@
 <div class="offset-sm-2 col-sm-8 ">
 
 <div>
-	<a class="btn btn-danger" type="button" href="<c:url value='/topGun/board/queryLikeAccount'  />">返回上一頁</a>
+	<a class="btn btn-danger" type="button" href="<c:url value='/topGun/board/queryLikeAccount'  />">返回依帳號查詢</a>
 </div>
 
 </div>
@@ -51,30 +51,21 @@
 <hr>
 
 
-<c:forEach var="boardDetail" items="${boardDetail}">
+<c:forEach var="commentDetail" items="${commentDetail}">
 
 
 
-<div class="card mt-3">
+<div class="card my-3">
   <div class="card-header">
-    Board發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${boardDetail.createTime}" /></span>
+    Comment ID： <span>${commentDetail.commentId}</span>
     <hr>
-    Board Title： <span>${boardDetail.title}</span>
+    Comment發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${commentDetail.createTime}" /></span>
     <hr>
-    <c:choose>
-		    <c:when test="${not empty boardDetail.comments}">
-		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/comment/queryLikeAccountDetail?b=${boardDetail.boardId}'  />">查看Comment</a>
-		    </c:when>
-		    <c:otherwise>
-		        <!-- member 物件不存在，顯示登入按鈕 -->
-		        <a class="btn btn-secondary" type="button" href="#">查無回復紀錄</a>
-		    </c:otherwise>
-		</c:choose>
+    Comment 更新時間： <span>${commentDetail.updateTime}</span>
   </div>
   <div class="card-body">
   	
-	${boardDetail.boardMessage}
+	${commentDetail.reply}
   	
   </div>
   
