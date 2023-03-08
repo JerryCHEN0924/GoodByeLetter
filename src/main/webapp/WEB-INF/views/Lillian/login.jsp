@@ -30,9 +30,8 @@
             <form id="login" action="${contextRoot}/register/login" method="post">
                 <input type="text" required placeholder="您的帳號" maxlength="8" minlength="4" name="account"><br>
                 <input type="password" required placeholder="您的密碼" maxlength="8" minlength="4" name="password"><br>
-                <button type="submit" id="login_submit">
-                    <h6 id="login_h6">登入</h6>
-                </button>
+                <br>
+                <button type="submit" id="login_submit">登入</button>
             </form>
 
 
