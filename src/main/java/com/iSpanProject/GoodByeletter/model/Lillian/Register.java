@@ -20,11 +20,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import javax.persistence.UniqueConstraint;
-
 import javax.persistence.Transient;
-
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -33,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
+import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 
 @Entity
 @Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = {"account"})})
@@ -44,11 +43,10 @@ public class Register {
 	//@Column(name = "memberId")
 	private Integer memberId;
 
-	@Column(name = "account")
+	@Column(name = "account",columnDefinition = "nvarchar(50)", nullable = false)
 	private String account;
 
-	// @Column(name = "password",columnDefinition = "nvarchar(50)", nullable =
-	// false)
+	@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 	private String password;
 	
 	
@@ -99,7 +97,7 @@ public class Register {
 	// 阿戴:連到Commet
 	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
-
+	
 	@PrePersist
 	public void onCreate() {
 		if (registerTime == null) {

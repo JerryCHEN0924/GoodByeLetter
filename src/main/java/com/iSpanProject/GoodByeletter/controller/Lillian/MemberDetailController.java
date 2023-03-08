@@ -2,10 +2,11 @@ package com.iSpanProject.GoodByeletter.controller.Lillian;
 
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -64,6 +65,56 @@ public class MemberDetailController {
 		return "redirect:/";
 	}
 
+
+//編輯會員資料
+	@GetMapping("/memberDetail/edit")
+	public String editMemberDetailPage(@RequestParam Integer memberId, Model model) throws ParseException {// model儲存送過去
+
+		MemberDetail memberDetails=memberDetailService.findByMemberId(memberId);
+		
+		/////測試
+		System.out.println(memberDetails.getGender());
+		System.out.println(memberDetails.getBirthday());
+		System.out.println(memberDetails.getCounty());
+		
+		//////時間轉換///////////
+//		Date memberBirthday=memberDetails.getBirthday();
+//		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
+//		String memberBirthdayString=format.format(memberBirthday);
+//		Date memberBirthdayNewType=format.parse(memberBirthdayString);
+//		memberDetails.setBirthday(memberBirthdayNewType);
+		
+		model.addAttribute("memberDetails", memberDetails);
+
+
+		return "Lillian/MemberDetailEdit";
+
+	}
+
+	@PutMapping("/memberDetail/putMemberDetail")
+	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail,HttpSession session) {
+		Register registerNew=(Register)session.getAttribute("existing");
+		memberDetail.setFK_memberId(registerNew);
+		
+		memberDetailService.updateMemberDetail(memberDetail);
+
+		return "redirect:/";
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	@PostMapping("/addRegister")
 //	public String addRegister(@ModelAttribute("memberDetails") MemberDetail memberDetail,  Model model,HttpSession sessions) {		
 //		Register op = (Register)model.getAttribute("existing");
@@ -79,32 +130,4 @@ public class MemberDetailController {
 //		model.addAttribute("memberDetails", m1);
 //		return "Lillian/addMemberDetail";
 //	}
-
-//編輯會員資料
-	@GetMapping("/memberDetail/edit")
-	public String editMemberDetailPage(@RequestParam Integer memberId, Model model) throws ParseException {// model儲存送過去
-//		MemberDetail memberDetails =new MemberDetail();
-		MemberDetail memberDetails=memberDetailService.findByMemberId(memberId);
-		//////時間轉換///////////
-		Date memberBirthday=memberDetails.getBirthday();
-		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
-		String memberBirthdayString=format.format(memberBirthday);
-		Date memberBirthdayNewType=format.parse(memberBirthdayString);
-		memberDetails.setBirthday(memberBirthdayNewType);
-		
-		model.addAttribute("memberDetails", memberDetails);
-
-
-		return "Lillian/MemberDetailEdit";
-
-	}
-
-	@PutMapping("/memberDetail/putMemberDetail")
-	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail) {
-
-		memberDetailService.updateMemberDetail(memberDetail);
-
-		return "redirect:/";
-	}
-
 }
