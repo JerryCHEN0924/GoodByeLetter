@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.service.Lillian.MemberDetailService;
 import com.iSpanProject.GoodByeletter.service.Lillian.RegisterService;
@@ -62,6 +63,13 @@ public class registerController {
 			Integer memberId = registerNew.getMemberId();
 			model.addAttribute("memberId", memberId);
 			////////////
+			MemberDetail md = new  MemberDetail();
+//			Register reg = registerService.findById(memberId);
+//			md.setFK_memberId(reg);
+//			memberDetailService.insert(md);
+			
+			model.addAttribute("memberDetails", md);
+			
 			Map<String, String> msg = new HashMap<String, String>();
 			model.addAttribute("msg", msg);
 			msg.put("success", "會員註冊成功!");
@@ -85,7 +93,6 @@ public class registerController {
 	@PostMapping("/register/login")
 	public String login(@RequestParam(value = "account") String account,
 			@RequestParam(value = "password") String password,
-			// @RequestParam(value="memberId") Integer memberId,
 			HttpSession session, Model model) {
 
 		Register existing = registerService.findByAccAndPwd(account, password);
