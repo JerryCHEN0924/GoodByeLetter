@@ -3,7 +3,6 @@ package com.iSpanProject.GoodByeletter.model.Jerry;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -18,21 +17,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
 @Table(name="lastnote")
-//@Getter 0307測試好像沒有自動生成，在Controller呼叫沒得到get/set方法
-//@Setter 0307測試好像沒有自動生成，在Controller呼叫沒得到get/set方法
+
 public class LastNote implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -75,11 +68,11 @@ public class LastNote implements Serializable {
 	
 //	########以下是測試驗證專區勿動########
 	
-//	@Column(name="enabled")
-//	private Boolean enabled;
+	@Column(name="enabled")
+	private Boolean enabled;
 	
-//	@Column(name="verificationCode",updatable = false)
-//	private String verificationCode;
+	@Column(name="verificationCode",updatable = false)
+	private String verificationCode;
 	
 //	########以上是測試驗證專區勿動########
 	@Transient
@@ -96,9 +89,13 @@ public class LastNote implements Serializable {
 	public void onUpdate() {
 		createTime = new Date();
 	}
-	
+
+	public LastNote() {
+		super();
+	}
+
 	public LastNote(Integer noteId, Register fK_memberId, String recipientEmail, String notedetail, Date createTime,
-			String verify1, String verify2, Date verifyTime, Integer mId) {
+			String verify1, String verify2, Date verifyTime, Boolean enabled, String verificationCode, Integer mId) {
 		super();
 		this.noteId = noteId;
 		FK_memberId = fK_memberId;
@@ -108,20 +105,9 @@ public class LastNote implements Serializable {
 		this.verify1 = verify1;
 		this.verify2 = verify2;
 		this.verifyTime = verifyTime;
+		this.enabled = enabled;
+		this.verificationCode = verificationCode;
 		this.mId = mId;
-	}
-	
-
-	public Integer getmId() {
-		return mId;
-	}
-
-	public void setmId(Integer mId) {
-		this.mId = mId;
-	}
-
-	public LastNote() {
-		super();
 	}
 
 	public Integer getNoteId() {
@@ -188,12 +174,30 @@ public class LastNote implements Serializable {
 		this.verifyTime = verifyTime;
 	}
 
-//	public String getVerificationCode() {
-//		return verificationCode;
-//	}
-//
-//	public void setVerificationCode(String verificationCode) {
-//		this.verificationCode = verificationCode;
-//	}
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
+	}
+
+	public Integer getmId() {
+		return mId;
+	}
+
+	public void setmId(Integer mId) {
+		this.mId = mId;
+	}
+	
+	
 	
 }
