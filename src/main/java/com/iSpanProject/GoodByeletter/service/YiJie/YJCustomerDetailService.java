@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.iSpanProject.GoodByeletter.dao.Lillian.LevelDao;
 import com.iSpanProject.GoodByeletter.dao.YiJie.YJCustomerDetailDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 
 @Service
@@ -25,7 +26,10 @@ public class YJCustomerDetailService {
 		Level lev1 = optional.get();
 		detail.setPlevel(lev1);
 		
-		cdDao.save(detail);
-		
+		cdDao.save(detail);	
+	}
+	
+	public YJCustomerDetail updateDetail(YJCustomerDetail detail) {	
+		return cdDao.save(detail);
 	}
 }

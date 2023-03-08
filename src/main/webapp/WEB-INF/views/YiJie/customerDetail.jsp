@@ -38,8 +38,8 @@
 			<div id="space"></div>
 
 			<div class="container" id="form_container">
-				<div id="registerTitle">註冊廠商會員</div>
-				<form id="register_form" class="form-control" action="${contextRoot}/customerDetail/add2" method="post">
+				<div id="customer_Table">註冊廠商會員</div>
+				<form id="customer_form" class="form-control" action="${contextRoot}/customerDetail/add2" method="post">
 
 					<!-- regis -->
 					<div class="mb-3 row">

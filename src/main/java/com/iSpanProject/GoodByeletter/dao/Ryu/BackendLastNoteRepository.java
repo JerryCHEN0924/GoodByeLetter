@@ -2,13 +2,12 @@ package com.iSpanProject.GoodByeletter.dao.Ryu;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 public interface BackendLastNoteRepository extends JpaRepository<LastNote, Integer> {
 	
@@ -28,5 +27,10 @@ public interface BackendLastNoteRepository extends JpaRepository<LastNote, Integ
 	
 //	@Query(value="from LastNote ln where ln.FK_memberId = :fkm")
 //	public Page<LastNote> findByfKMemberId(Pageable pageable);
+	
+	
+	@Query(value="from LastNote where FK_memberId = :fkm")
+	public List<LastNote> findLastNoteByFKMQuery(@Param("fkm") Register fkm);
+	
 
 }

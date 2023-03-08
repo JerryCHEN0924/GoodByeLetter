@@ -2,7 +2,7 @@ package com.iSpanProject.GoodByeletter.service.Jerry;
 
 import java.util.Optional;
 
-import javax.validation.Validator;
+import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,31 +11,45 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.iSpanProject.GoodByeletter.dao.Jerry.LastNoteDao;
-import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 import net.bytebuddy.utility.RandomString;
 
 @Service
+@SessionAttributes("existing")
 public class LastnoteService {
 
 	@Autowired
 	private LastNoteDao lDao;
 
-	@Autowired
-	private RegisterDao registerDao;
-
-	@Autowired
-	private Validator validator;
+	@Autowired	
+	private SendMail sendMail;
+	
+//	@Autowired
+//	private GenerateJWT generateJWT;
+//	
+//	@Autowired
+//	private VerifyJWT verifyJWT;
+	
+//	@Autowired
+//	private Validator validator;
+	
 
 	@Transactional
 	public void SaveLastNote(LastNote lastNote) {
-//		####以下是驗證####
-//		String token = RandomString.make(64);
-//		lastNote.setVerificationCode(token);
-//		####以上是驗證####
+		Register member = lastNote.getFK_memberId();
+		String account = member.getAccount();
+//		String token2 = generateJWT.createToken(account, new Date(System.currentTimeMillis() + 7200000) , "GoodByeLetter.iii");
+//		####當遺囑儲存，存入一組驗證碼並將Enabled狀態轉為false####
+		String token = RandomString.make(64);
+		lastNote.setVerificationCode(token);
+		lastNote.setEnabled(false);
+//		####當遺囑儲存，存入一組驗證碼並將Enabled狀態轉為false####
+		
 		lDao.save(lastNote);
 //		Set<ConstraintViolation<LastNote>> violations = validator.validate(lastNote);
 //		if (!violations.isEmpty()) {
@@ -49,6 +63,54 @@ public class LastnoteService {
 //	}
 
 //		我是分隔線，以上是資料驗證，只完成40%，先丟一旁，優先研究驗證。
+	}
+	
+	
+	//寄送驗證信
+	public void sendVerificationEmail() {
+		
+		//###思考如何抓到「驗證日到期」的「收件人Email」###
+//		String memberEmail = md.getEmail();
+//		String lastnoteVerificationCode = ln.getVerificationCode();
+		//###思考如何抓到「驗證日到期」的「收件人Email」###
+		
+		Optional<LastNote> optional = lDao.findById(10);
+		LastNote lastNote = optional.get();
+		String verificationCode = lastNote.getVerificationCode();
+		String subject = "請驗證您在GoodBye Letter的信件";
+		String mailContent = "親愛的使用者，請點擊連結以進行驗證:"+"http://localhost:8080/index/LastNote/verify?code=" 
+		+ verificationCode + "，若於收到信的X時間內未驗證通過，您存放的信件會自動寄出。謝謝您。好好說再見開發團隊敬上";
+		
+		try {
+			sendMail.sendEmail("jk2455892@gmail.com", subject, mailContent);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//檢查TOKEN 成功
+	public void checkToken(String token) {
+		Optional<LastNote> optional = lDao.findById(10);
+		LastNote lastNote = optional.get();
+		String verificationCode = lastNote.getVerificationCode();
+		System.out.println("===========================");
+		System.out.println(token);
+		System.out.println(verificationCode);
+		System.out.println("===========================");
+		if(verificationCode.equals(token)) {
+			lastNote.setEnabled(true);
+			lDao.save(lastNote);
+		}else {
+			System.out.println("87做錯了呵呵");
+		}
+	}
+	
+	//檢查JWT 
+	public void checkJWT(String token) {
+		Optional<LastNote> optional = lDao.findById(10);
+		LastNote lastNote = optional.get();
+		String verificationCode = lastNote.getVerificationCode();
+//		verifyJWT.isTokenExpired(token, "GoodByeLetter.iii");
 	}
 
 	@Transactional
@@ -78,17 +140,5 @@ public class LastnoteService {
 		Page<LastNote> page = lDao.findAll(pgb);
 		return page;
 	}
-
-//	public LastNote updateById(Integer id, String newNotedetail) {
-//		Optional<LastNote> optional = lDao.findById(id);
-//		if (optional.isPresent()) {
-//			LastNote lastNote = optional.getClass();
-//			lastNote.
-//			return lastNote;
-//		}
-//		System.out.println("沒有這筆資料。");
-//		return null;
-
-//	}
 
 }

@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.Ryu;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,8 +139,12 @@ public class BackendLastNoteService {
 	}
 	
 	
-	// 依帳號查詢LastNote跳頁
-	
+	// 依帳號查詢LastNote後，再依FK_memberID跳頁
+	public List<LastNote> findLastNoteByAccountGroupByFKM(Register fkm){
+		
+		return backendLastNoteRepository.findLastNoteByFKMQuery(fkm);
+		
+	}
 	
 	
 	
