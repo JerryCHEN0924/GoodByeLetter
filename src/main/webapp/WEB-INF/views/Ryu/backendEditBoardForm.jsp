@@ -60,7 +60,7 @@
   		
   		<form:input path="boardId" type="hidden" />
   		<form:input path="createTime" type="hidden" />
-  		<form:input path="FK_memberId" type="hidden" />
+  		<form:input path="register" type="hidden" />
   		
   		<div class="mb-3 row">
 		    <label for="inputTitleName" class="col-sm-2 col-form-label">Title</label>

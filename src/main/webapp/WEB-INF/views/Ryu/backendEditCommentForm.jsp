@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>編輯部門 Page</title>
+<title>新增等級 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -22,19 +22,18 @@
 <div class="container w-75 text-center">
 
 
+
+
+
 <div class="row ">
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
-
 <hr>
 
-
-</div>
 </div>
 
-
-
+</div>
 
 
 
@@ -47,52 +46,65 @@
 <div class="offset-sm-2 col-sm-8 ">
 
 
+
 <div class="card">
+
   <div class="card-header">
-    查詢和編輯權限等級
+    新增留言
   </div>
+  
   <div class="card-body">
   	
-  	<form action="${contextRoot}/topGun/lastNote/queryLikeAccountPost" method="get" >
-		
-		
-		
-		<div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">依帳號查詢</label>
+	<form:form action="${contextRoot}/topGun/comment/editPost" modelAttribute="comment" method='put'>
+  		
+  		
+  		<form:input path="commentId" type="hidden" />
+  		<form:input path="createTime" type="hidden" />
+  		<form:input path="board" type="hidden" />
+  		<form:input path="register" type="hidden" />
+  		
+<!--   		<div class="mb-3 row"> -->
+<!-- 		    <label for="inputTitleName" class="col-sm-2 col-form-label">Title</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="title" class="form-control" id="inputTitleName" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
+		  
+  		<div class="mb-3 row">
+		    <label for="inputReply" class="col-sm-2 col-form-label">Reply</label>
 		    <div class="col-sm-10">
-		    	<input name="account" class="form-control" id=inputAccount  />
+		    	<form:textarea path="reply" class="form-control" id="inputReply" rows="" cols="" />
 		    </div>
 		  </div>
-		  
-		  
   		
   		
   		
   		
   		<div class="mt-3">
-  		
 	  		<button type="submit" class="btn btn-primary">送出</button>
-	  		
   		</div>
-		
-		
-		
-		
-		
-		
-		
-		
-	</form>
-  	
+  		
+  	</form:form>
   	
   	
   </div>
+  
+  
 </div>
 
 
 
+
+
 </div>
 </div>
+
+
+
+
+
+
+
 
 
 

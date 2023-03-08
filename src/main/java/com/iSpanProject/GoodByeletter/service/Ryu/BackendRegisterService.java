@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.Ryu;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -192,6 +193,17 @@ public class BackendRegisterService {
 		register.setFK_Plevel(registerLevel);
 		
 		backendRegisterRepository.save(register);
+		
+	}
+	
+	
+	
+	
+	
+	// 模糊查詢依Account
+	public List<Register> findRegisterByAccountNativeLikeQuery(String account){
+		
+		return backendRegisterRepository.findRegisterByAccountNativeLikeQuery(account);
 		
 	}
 	

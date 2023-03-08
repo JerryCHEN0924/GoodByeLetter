@@ -1,10 +1,6 @@
 package com.iSpanProject.GoodByeletter.controller.Jerry;
 
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,12 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.service.Jerry.LastnoteService;
 import com.iSpanProject.GoodByeletter.service.Jerry.SendMail;
 
 @Controller
+@SessionAttributes("existing")
 public class LastNoteController {
 
 	@Autowired
@@ -26,9 +25,11 @@ public class LastNoteController {
 	@Autowired
 	private SendMail sm;
 	
-	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面 //test for tina again again
+	//Post方法，存入遺囑後，重新導向到個人遺囑編輯頁面
 	@PostMapping("/LastNote/post")
-	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote) {
+	public String addLastNote(@ModelAttribute("lastNote") LastNote lastNote,Model model) {		
+		Register memberid = (Register) model.getAttribute("existing");
+		lastNote.setFK_memberId(memberid);
 		lastnoteService.SaveLastNote(lastNote);
 		return "redirect:/LastNote/edit";
 	}
@@ -43,12 +44,11 @@ public class LastNoteController {
 	
 //	遺囑編輯Put請求更新資料後，跳轉回LastNoteEditPage
 	@PutMapping("/LastNote/CRUD/put")
-	public String LastNoteCRUDPut(@ModelAttribute("nId")LastNote lastnote) {
+	public String LastNoteCRUDPut(@ModelAttribute("noteId")LastNote lastnote) {
 		lastnoteService.SaveLastNote(lastnote);
 		return "redirect:/LastNote/edit";
 		
 	}
-	
 	
 //	遺囑刪除
 	@DeleteMapping("/LastNote/CRUD/delete")

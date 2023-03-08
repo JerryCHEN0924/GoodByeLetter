@@ -30,67 +30,88 @@
 
 			<div class="card">
 
+				<%-- 					透過model newboard把資料傳給controller --%>
 
+				<%-- 					需要把boardId, createTime 加到model newboard裡 --%>
+				<input type="hidden" value="${newboard.boardId}" /> 
+				<input type="hidden" value="${newboard.createTime}" />
 
-				<form:form action="${contextRoot}/board/editpost" method="put"
-					modelAttribute="newboard">
-					<%-- 					透過model newboard把資料傳給controller --%>
-
-					<%-- 					需要把boardId, createTime 加到model newboard裡 --%>
-					<form:input path="boardId" type="hidden" />
-					<form:input path="createTime" type="hidden" />
-
-					<h5 class="card-header">
-						<form:input path="title" class="form-control" placeholder="查看留言板" />
-					</h5>
-					<div class="card-body">
-						<div class="input-group">
-							<form:textarea path="boardMessage" class="form-control" />
-						</div>
-						<br>
-						<button type="submit" class="btn btn-info">送出</button>
-					</div>
-				</form:form>
-
-
-
-				<%-- 				刪除按鈕 --%>
-				<form:form action="${contextRoot}/board/delete" method="delete">
-					<input type="hidden" name="boardId" value="${newboard.boardId}" />
-					<input type="submit" class="btn btn-outline-danger" value="刪除" />
-				</form:form>
-			</div>
-
-<hr>
-<%--回覆card --%>
-<div class="card">
-				<form:form action="${contextRoot}/comment/add1" method="post" modelAttribute="comment">
-					<div class="card-body">
-						<form:input path="reply" class="form-control" placeholder="回覆" />
-						<button type="submit" class="btn btn-primary">送出</button>
-					</div>
-				</form:form>
+				<div class="card-header">
+				<h5>${newboard.title}</h5><br>
+				 <h6 class="card-subtitle mb-2 text-muted">
+				 上傳時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${newboard.createTime}" /><br> 
+				 更新時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${newboard.updateTime}" />
+				 </h6>
+				</div>
+				<div class="card-body">
+					<div class="input-group">${newboard.boardMessage}</div>
+					<br>
+					<%--編輯按鈕 --%>
+					<form:form action="${contextRoot}/board/editPage" method="get">
+						<input type="hidden" name="boardId" value="${newboard.boardId}" />
+						<input type="submit" class="btn btn-outline-info" value="編輯留言板" />
+					</form:form>
+					<%--刪除按鈕 --%>
+					<form:form action="${contextRoot}/board/delete" method="delete">
+						<input type="hidden" name="boardId" value="${newboard.boardId}" />
+						<input type="submit" class="btn btn-outline-danger" value="刪除留言板" />
+					</form:form>
+				</div>
 			</div>
 			
 			
+			<hr>
+			<%--the list of comments--%>
+			
+			<c:forEach var="comment" items="${samebIdComment}">
+
+			<div class="card">
+			<div class="card-body">	
+			 <h6 class="card-subtitle mb-2 text-muted">
+			回覆時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${comment.createTime}" /><br> 
+			更新時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+									value="${comment.updateTime}" /><br></h6>
+			<h6>${comment.reply}</h6>
+			<%-- 			修改留言 --%>
+			<form:form action="${contextRoot}/comment/editPage" method="get">
+						<input type="hidden" name="boardId" value="${newboard.boardId}" />
+						<input type="hidden" name="commentId" value="${comment.commentId}" />
+						<input type="submit" class="btn btn-outline-info" value="編輯回覆" />
+			</form:form>
+<%-- 			刪除留言 --%>
+			<form:form action="${contextRoot}/comment/delete" method="delete">
+						<input type="hidden" name="boardId" value="${newboard.boardId}" />
+						<input type="hidden" name="commentId" value="${comment.commentId}" />
+						<input type="submit" class="btn btn-outline-danger" value="刪除回覆" />
+			</form:form>
+			
+			</div> 
+			</div>
+			</c:forEach> 
+			<hr>
+			
+			
+			<%--回覆card --%>
+			<form:form action="${contextRoot}/comment/add" method="post"
+			modelAttribute="comment"> 
+			<div class="card">
+			<div class="card-body"> 
+			<input type="hidden" name="boardId" value="${newboard.boardId}" />
+<%-- 			<input name="boardId" value="${newboard.boardId}"> --%>
+			<form:hidden path="bId" class="form-control" placeholder="bId" value="${newboard.boardId}" /> 
+			<form:textarea path="reply" class="form-control" placeholder="reply" /> 
+			<button type="submit" class="btn btn-primary">送出</button> 
+			</div> 
+			</div> 
+			</form:form> 
+			
+
+
+
 		</div>
-
-
-		<%--回覆card --%>
-		<!-- 		<div class="card"> -->
-		<%-- 			<form:form action="${contextRoot}/comment/add" method="post" --%>
-		<%-- 				modelAttribute="addComment"> --%>
-		<!-- 				 -->
-		<!-- 					<h5 class="card-title"></h5> -->
-		<%-- 					<form:input path="boardId" type="hidden" /> --%>
-		<%-- 					<form:input path="createTime" type="hidden" /> --%>
-		<%-- 					<form:input path="updateTime" type="hidden"/> --%>
-		<%-- 					<form:input path="reply" class="form-control" placeholder="新增回覆" /> --%>
-		<!-- 					<button type="submit" class="btn btn-primary">送出</button> -->
-		<!-- 				</div> -->
-		<%-- 			</form:form> --%>
-		<!-- 		</div> -->
-
 	</article>
 
 

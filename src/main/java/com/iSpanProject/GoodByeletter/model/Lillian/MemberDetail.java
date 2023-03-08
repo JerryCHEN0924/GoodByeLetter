@@ -135,7 +135,6 @@ public class MemberDetail {
 	}
 
 
-	
 	public Date getBirthday() {
 		return birthday;
 	}
