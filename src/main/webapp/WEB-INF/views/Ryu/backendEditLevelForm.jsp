@@ -53,24 +53,17 @@
   </div>
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/level/editPost" modelAttribute="level" method="put">
-  		
-  		<form:input path="plevel" type="hidden" />
-  		
-  		
-  		<div class="mb-3 row">
-		    <label for="inputPLevel" class="col-sm-2 col-form-label">Level</label>
+  	<form action="${contextRoot}/topGun/lastNote/queryLikeAccountPost" method="get" >
+		
+		
+		
+		<div class="mb-3 row">
+		    <label for="inputAccount" class="col-sm-2 col-form-label">依帳號查詢</label>
 		    <div class="col-sm-10">
-		    	<input name="plevel" class="form-control" id=inputPLevel value="${level.plevel}" disabled />
+		    	<input name="account" class="form-control" id=inputAccount  />
 		    </div>
 		  </div>
 		  
-		  <div class="mb-3 row">
-		    <label for="inputLevelName" class="col-sm-2 col-form-label">LevelName</label>
-		    <div class="col-sm-10">
-		    	<form:input path="levelName" class="form-control" id="inputLevelName" />
-		    </div>
-		  </div>
 		  
   		
   		
@@ -81,8 +74,15 @@
 	  		<button type="submit" class="btn btn-primary">送出</button>
 	  		
   		</div>
-  		
-  	</form:form>
+		
+		
+		
+		
+		
+		
+		
+		
+	</form>
   	
   	
   	

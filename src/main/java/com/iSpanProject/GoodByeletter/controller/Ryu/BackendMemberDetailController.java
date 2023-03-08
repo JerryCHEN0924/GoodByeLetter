@@ -46,7 +46,7 @@ public class BackendMemberDetailController {
 		
 		model.addAttribute("memberDetail", memberDetail);
 		
-		return "/Ryu/backendAddMemberDetailForm";
+		return "/Ryu/backendAddNewMemberDetailForm";
 	}
 	
 	// 新增會員細項資料
@@ -66,7 +66,7 @@ public class BackendMemberDetailController {
 			}
 			
 			System.out.println("======================");
-			return "/Ryu/backendAddMemberDetailForm";
+			return "/Ryu/backendAddNewMemberDetailForm";
 			
 		}
 		
@@ -102,7 +102,7 @@ public class BackendMemberDetailController {
 		
 		model.addAttribute("memberDetail", memberDetail);
 		
-		return "/Ryu/backendEditMemberDetail";
+		return "/Ryu/backendEditMemberDetailForm";
 		
 	}
 	

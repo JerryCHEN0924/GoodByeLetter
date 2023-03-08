@@ -110,6 +110,7 @@ public class BackendRegisterController {
 		backendRegisterService.insertRegister(register);
 		
 		Register newRegister = new Register();
+		
 		model.addAttribute("register", newRegister);
 		
 		return "/Ryu/backendAddNewRegisterForm";
