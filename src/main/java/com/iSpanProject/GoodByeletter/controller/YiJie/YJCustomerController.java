@@ -110,6 +110,10 @@ public class YJCustomerController {
 		return "YiJie/companylogin";
 	}
 	
+	@GetMapping("/example/company")
+	public String mycompanyPage() {
+		return "example/mycompany";
+	}
 	//登出
 //		@GetMapping("/register/logout")
 //		public String logoutRegister(HttpSession session) {

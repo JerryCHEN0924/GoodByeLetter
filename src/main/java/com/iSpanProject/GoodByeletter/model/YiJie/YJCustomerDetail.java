@@ -53,19 +53,24 @@ public class YJCustomerDetail {
 	@Column(name = "picValue")
 	private String picValue;
 	
-	@JsonManagedReference //主要控管序列化方(由此方控管序列化註釋)
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "picture", orphanRemoval = true)//mappedBy = "picture"可以避免多做Hibernate: 
-																														//    insert 
-																														//    into
-																														//        picture_picturePhoto
-																														//        (Picture_id, picturePhoto_id) 
-																														//    values
-																														//        (?, ?)
-	private List<Picture> picture = new ArrayList<>();
+
+	//@JsonManagedReference //主要控管序列化方(由此方控管序列化註釋)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name="fk_companydetail_id")
+	private List<Picture> pictures = new ArrayList<>();
+	
+	public List<Picture> getPictures() {
+		return pictures;
+	}
+	
+	public void setPictures(List<Picture> pictures) {
+		this.pictures = pictures;
+	}
 
 	public Integer getId() {
 		return id;
 	}
+	
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -135,8 +140,6 @@ public class YJCustomerDetail {
 		this.picValue = picValue;
 	}
 
-	public YJCustomerDetail() {
-
-	}
+	public YJCustomerDetail() {}
 
 }
