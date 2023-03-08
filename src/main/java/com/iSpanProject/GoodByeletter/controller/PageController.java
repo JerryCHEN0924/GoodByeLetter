@@ -11,11 +11,6 @@ public class PageController {
 		return "index";
 	}
 
-	@GetMapping("/newwebsite")
-	public String myNav() {
-		return "example/newwebsite";
-	}
-
 	@GetMapping("/myregister")
 	public String myregister() {
 		return "example/myregister";
