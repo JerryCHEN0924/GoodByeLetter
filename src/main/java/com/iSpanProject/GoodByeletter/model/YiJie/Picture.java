@@ -29,6 +29,9 @@ public class Picture {
 	@Column(name="photo_file")
 	private byte[] photoFile;
 	
+	@Column(name="state")
+	private boolean state;
+	
 	@JsonBackReference //不要做控管註釋
 	@JoinColumn(name="fk_companydetail_id")
 	@ManyToOne
