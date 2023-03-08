@@ -3,6 +3,7 @@ package com.iSpanProject.GoodByeletter.model.Lillian;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -32,7 +39,9 @@ public class MemberDetail {
 //	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
 	private String address;
 	
-
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "birthday")
 	private Date birthday;
 	
 //	@Column(name = "gender",columnDefinition = "nvarchar(50)", nullable = false)

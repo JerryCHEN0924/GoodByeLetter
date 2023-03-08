@@ -18,22 +18,17 @@
 <%@ include file="../layout/mynav.jsp"%>
 	
         <!--login  login_form_class-->
-        <article  class="wrapper style2" style="height:100vh">
+    <article  class="wrapper style2" style="height:100vh">
         <div class="container" id="login_form">
             <form id="login" action="${contextRoot}/customer/login" method="post">
-                <input type="text" placeholder="您的帳號" name="acc"><br>
-                <input type="text" placeholder="您的密碼" name="pass"><br>
+                <input type="text" placeholder="您的帳號" name="account"><br>
+                <input type="text" placeholder="您的密碼" name="password"><br>
                 <button type="submit" id="login_submit">
                     <h6 id="login_h6">登入</h6>
                 </button>
             </form>
-            <button type="submit" id="login_submit">
-                <h6 id="login_cencel">sorry 我沒有要登入</h6>
-            </button>
-            <a href="">忘記密碼</a>
-            <a href="">還沒有帳號，我要申請</a>
         </div>
-        </article>
+    </article>
 
         <!--nav close-->
 
@@ -45,37 +40,22 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/jquery-3.6.3.min.js"></script>
-    <script>
-
-    
-        const nav = document.getElementById('nav');
-        const nav_login = document.getElementById("nav_login");
-        const login_form = document.getElementById("login_form");
-        const login_cencel = document.getElementById('login_cencel');
-        // 按下Navbar登入 顯示login_form
-        nav_login.addEventListener('click', function () {
-            login_form.classList.add('login_show');
-            console.log('顯示login_form')
-        })
-        // 關閉login_form
-        login_cencel.addEventListener('click', function () {
-            login_form.classList.remove('login_show');
-            console.log('移除login_form');
-        })
-
-
-
-//         //調整nav顏色
-//         window.addEventListener('scroll', function () {
-//             if (window.scrollY > 50) {
-//                 nav.classList.add('narbar_background_color');
-
-//             } else {
-//                 nav.classList.remove('narbar_background_color');
-
-//             }
-//         });
-
+	
+    <script>   
+//         const nav = document.getElementById('nav');
+//         const nav_login = document.getElementById("nav_login");
+//         const login_form = document.getElementById("login_form");
+//         const login_cencel = document.getElementById('login_cencel');
+//         // 按下Navbar登入 顯示login_form
+//         nav_login.addEventListener('click', function () {
+//             login_form.classList.add('login_show');
+//             console.log('顯示login_form')
+//         })
+//         // 關閉login_form
+//         login_cencel.addEventListener('click', function () {
+//             login_form.classList.remove('login_show');
+//             console.log('移除login_form');
+//         })
     </script>
 </body>
 </html>

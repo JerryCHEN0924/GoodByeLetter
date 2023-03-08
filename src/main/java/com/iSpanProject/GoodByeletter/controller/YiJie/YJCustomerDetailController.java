@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.YiJie;
 
 import java.util.HashMap;
+
 //import java.util.List;
 import java.util.Map;
 //import java.util.Optional;
@@ -12,15 +13,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 //import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetailRepository;
 import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerDetailService;
+import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerService;
+
+
 @Controller
+@SessionAttributes("exis")//引入車車
 public class YJCustomerDetailController {
 
 //	@Autowired
-//	private YJCustomerDetailRepository customerDetailDao;
+	private YJCustomerService memberService;
 	@Autowired
 	private YJCustomerDetailService detailService;
 	
@@ -28,7 +35,8 @@ public class YJCustomerDetailController {
 	public String addDetail(@RequestParam(value="name") String name,
 							@RequestParam(value="type") String type,
 							@RequestParam(value="email") String email,
-							@RequestParam(value="address") String address, 
+							@RequestParam(value="address") String address,
+							@RequestParam(value = "memberId") Integer id,
 							//@RequestParam(value="picPath") String picPath,
 							//@RequestParam(value="picValue") String picValue,
 							Model model) {
@@ -39,11 +47,15 @@ public class YJCustomerDetailController {
 		detail1.setEmail(email);
 		detail1.setAddress(address);
 		
+		////抓member表單的id來存，需要加車車
+		Register reg = memberService.findById(id);
+		detail1.setFK_memberId(reg);
+		
 		detailService.insert(detail1);
 		Map<String, String> msg = new HashMap<String, String>();
 		model.addAttribute("msg", msg);
-		//msg.put("success", "會員註冊成功!");
-		return "customerDetail/add2";
+		msg.put("success", "會員註冊成功!");
+		return "redirect:/";
 	}
 	
 	@GetMapping("customerDetail/add2")
