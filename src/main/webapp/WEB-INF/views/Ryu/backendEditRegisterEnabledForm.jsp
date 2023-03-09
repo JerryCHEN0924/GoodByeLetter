@@ -45,13 +45,15 @@
 
 <div class="card">
   <div class="card-header">
-    審核會員Enabled狀態 Page
+    編輯會員 Page
   </div>
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/register/editPost" modelAttribute="register" method="put">
+  	<form:form action="${contextRoot}/topGun/registerEnabled/editPost" modelAttribute="register" method="put">
   		
   		<form:input path="memberId" type="hidden" />
+  		<form:input path="account" type="hidden" />
+  		<form:input path="password" type="hidden" />
   		<form:input path="registerTime" type="hidden" />
   		<form:input path="FK_Plevel" type="hidden" />
   		
@@ -73,7 +75,8 @@
   		<div class="mb-3 row">
 		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
 		    <div class="col-sm-10">
-		    	<form:input path="account" class="form-control" id="inputAccount" />
+		    	<input name="account" class="form-control" id="inputAccount" value="${register.account}" disabled />
+<%-- 		    	<form:input path="account" class="form-control" id="inputAccount" disabled /> --%>
 		    </div>
 		  </div>
 		  
@@ -82,7 +85,8 @@
   		 <div class="mb-3 row">
 		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
 		    <div class="col-sm-10">
-		    	<form:input path="password" class="form-control" id="inputPassword" />
+		    	<input name="password" class="form-control" id="inputPassword" value="${register.password}" disabled />
+<%-- 		    	<form:input path="password" class="form-control" id="inputPassword" disabled /> --%>
 		    </div>
 		  </div>
 		  

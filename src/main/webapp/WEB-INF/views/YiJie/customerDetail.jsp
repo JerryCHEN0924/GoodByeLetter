@@ -38,7 +38,7 @@
 			<div id="space"></div>
 
 			<div class="container" id="form_container">
-				<div id="customer_Table">註冊廠商會員</div>
+				<div id="customer_Table">填寫資料</div>
 				<form id="customer_form" class="form-control" action="${contextRoot}/customerDetail/add2" method="post">
 
 					<!-- regis -->

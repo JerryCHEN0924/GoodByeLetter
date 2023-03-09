@@ -37,38 +37,18 @@
 	<article id="portfolio" class="wrapper style3">
 		<div class="container">
 			<header>
-<%-- 				<c:choose> --%>
-<%-- 					<c:when test="${exis.memberId != null}"> --%>
-<!-- 						<li><a class="dropdown-item narbar_text_color" -->
-<%-- 							href="<c:url value='/register/logout' />"> --%>
-<%-- 							${exis.account}登出</a> --%>
-<!-- 						</li> -->
-<!-- 						<li><a class="dropdown-item narbar_text_color" -->
-<%-- 							href="<c:url value='/register/edit?memberId=${exis.memberId}' />">編輯帳號</a> --%>
-<!-- 						<li><a class="dropdown-item narbar_text_color" -->
-<%-- 							href="<c:url value='/memberDetail/edit?memberId=${exis.memberId}' />">編輯會員資料</a> --%>
-<!-- 						</li> -->
-<%-- 					</c:when> --%>
-<%-- 					<c:otherwise> --%>
-<!-- 						<li><a class="dropdown-item narbar_text_color" -->
-<%-- 							href="<c:url value='/login1' />"> 登入 </a> --%>
-<!-- 						</li> -->
-<!-- 						<li><a class="dropdown-item narbar_text_color" -->
-<%-- 							href="<c:url value='/register1' />"> 註冊 </a> --%>
-<!-- 						</li> -->
-<%-- 					</c:otherwise> --%>
-<%-- 				</c:choose> --%>
 				<h3>歡迎登入</h3>
 			</header>
 			<div>
-				<li>
-					<ul>
-						<li id="detail_Li">
-							<a class="" href="${contextRoot}/customerDetail/detailpage" ></a>
-						</li>
-						<li id="picture_Li"><a></a></li>
-					</ul>
-				</li>
+				<ul>
+					<li class="" id="detail_Li">
+						<a class="" href="<c:url value='/Detail/page1'/>">填寫廠商詳細資料</a>
+					</li>
+					<li class="" id="picture_Li">
+						<a class="" href="<c:url value='/picture/page1'/>">廣告圖片投放區</a>
+					</li>
+				</ul>
+				
 				
 			</div>
 		</div>	

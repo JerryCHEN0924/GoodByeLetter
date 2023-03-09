@@ -168,6 +168,7 @@
 	      <th scope="col">memberId</th>
 	      <th scope="col">account</th>
 	      <th scope="col">password</th>
+	      <th scope="col">enabled</th>
 	      <th scope="col">registerTime</th>
 	      <th scope="col">FK_Plevel</th>
 	      <th scope="col">Edit</th>
@@ -187,6 +188,7 @@
 	      <td>${register.memberId}</td>
 	      <td>${register.account}</td>
 	      <td>${register.password}</td>
+	      <td>${register.enabled}</td>
 	      <td>${register.registerTime}</td>
 	      <td>${register.FK_Plevel.plevel}</td>
 	      <td>
