@@ -33,7 +33,7 @@
 
 
 
-<nav class="navbar navbar-dark bg-primary"  >
+<nav class="navbar navbar-dark bg-dark"  >
 
   <div class="container-fluid">
   
@@ -175,6 +175,8 @@
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/register/queryLikeAccount' />">模糊查詢(ByAccount)Register</a></li>
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="<c:url value='/topGun/board/queryLikeAccount' />">模糊查詢(ByAccount)Board</a></li>
               <li><a class="dropdown-item" href="#">Action</a></li>
