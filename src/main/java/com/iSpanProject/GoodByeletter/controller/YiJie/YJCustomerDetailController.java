@@ -34,7 +34,13 @@ public class YJCustomerDetailController {
 	@Autowired
 	private YJCustomerDetailService detailService;
 	
-	@PostMapping("/customerDetail/add2")
+	@GetMapping("/Detail/page1")
+	public String DetailPage() {		
+		return "YiJie/customerDetail";
+	}
+	
+	//填寫會員詳細資料
+	@PostMapping("/customerDetail")
 	public String addDetail(@RequestParam(value="name") String name,
 							@RequestParam(value="type") String type,
 							@RequestParam(value="email") String email,
@@ -57,19 +63,14 @@ public class YJCustomerDetailController {
 		detailService.insert(detail1);
 		Map<String, String> msg = new HashMap<String, String>();
 		model.addAttribute("msg", msg);
-		msg.put("success", "會員註冊成功!");
-		return "redirect:/";
-	}
-	
-	@GetMapping("customerDetail/add2")
-	public String CustomerPage() {		
+		msg.put("success", "資料填寫成功!");
 		return "redirect:/";
 	}
 	
 	//////////////////////////////////////
 	
 	@GetMapping("customerDetail/detailpage")
-	public String DetailPage() {		
+	public String DetailPage2() {		
 		return "YiJie/companylogin";
 	}
 	
