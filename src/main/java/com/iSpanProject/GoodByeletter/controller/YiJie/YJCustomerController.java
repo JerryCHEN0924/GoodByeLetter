@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,17 +34,18 @@ public class YJCustomerController {
 	@Autowired
 	private YJCustomerDetailService detailService;
 	
+	
 	private static final String Code = "123";//預設驗證碼
 ///////////////////////////////////////////////////////////////	
 	//註冊
-	
 	@GetMapping("/customer/add")
 	public String registerCusPage() {
 		return "YiJie/mycompany";
 	}
 	
-	@PostMapping("/customer/registeradd")
-	public String registerCus(@RequestParam(value = "account") String acc,
+	@PostMapping("/customer")
+	public String registerCus(
+							  @RequestParam(value = "account") String acc,
 							  @RequestParam(value = "password") String pass,
 							  @RequestParam("rCode") String rCode,
 							  //HttpSession session,
@@ -72,10 +74,56 @@ public class YJCustomerController {
 			msg.put("success", "會員註冊成功!");
 			return "redirect:/";
 		}else {
-			return "/customer/add";
+			return "/customer/registeradd";
 		}
 	}
+	/////####################  input check  ################################//////
 	
+	@PostMapping("/customer/registeradd2")
+	public String registerCus2(@ModelAttribute("inputCheck") Register reg,
+								@RequestParam("rCode") String rCode,
+								Model model) {
+		Map<String, String> errors = new HashMap<String, String>();
+		model.addAttribute("errors", errors);
+		// 檢查帳號是否重複
+		if(customerService.accDuplicate(reg.getAccount()) != null) {
+			errors.put("message", "該帳號已被註冊!");
+		}
+		// 檢查驗證碼是否錯誤
+		if(Code.equals(rCode)) {
+			errors.put("message", "驗證碼錯誤!");
+		}
+		// 檢查帳號是否有輸入
+		if(reg.getAccount() == null || reg.getAccount().isEmpty()) {
+			errors.put("message", "請輸入您的帳號!");
+		}
+		// 檢查密碼是否有輸入
+		if(reg.getPassword() == null || reg.getPassword().isEmpty()) {
+			errors.put("message", "請輸入您的帳號!");
+		}
+		
+		if (!errors.isEmpty()) {
+		return "YiJie/mycompany";
+		}
+		
+		///////////
+			//加上車車來載memberId
+		customerService.insert(reg);
+		Register company = customerService.findByAccAndPass(reg.getAccount(), reg.getPassword());
+		Integer memberId = company.getMemberId();
+		model.addAttribute("memberId", memberId);
+			//創建對應的detail
+		YJCustomerDetail detail1 = new YJCustomerDetail();
+		Register reg2 = customerService.findById(memberId);
+		detail1.setFK_memberId(reg2);
+		detailService.insert(detail1);
+		////////////
+		return "YiJie/cuslogin";
+		
+	}
+	
+	
+	/////####################  input check  ################################//////
 	
 	@GetMapping("/customer/page")
 	public String loginCus1Page1() {
@@ -101,10 +149,12 @@ public class YJCustomerController {
 			
 			return "YiJie/companylogin";
 		} else {
-			return "/gologin";
+			return "redirect:/";
 		}
 	}
 
+	//////////////////////////////////////////
+	//
 	@GetMapping("/gologin")
 	public String loginCus1Page() {
 		return "YiJie/companylogin";
