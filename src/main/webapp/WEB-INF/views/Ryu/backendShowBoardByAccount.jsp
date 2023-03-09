@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>依Account查詢Board Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -39,12 +39,12 @@
 
 <div class="card">
   <div class="card-header">
-    依Account查詢LastNote
+    依Account查詢Board
   </div>
   <div class="card-body">
   	
   		
-	<form action="${contextRoot}/topGun/lastNote/queryLikeAccountPost" method="get" >
+	<form action="${contextRoot}/topGun/board/queryLikeAccountPost" method="get" >
 		
 		
 		
@@ -141,7 +141,7 @@
 	    <tr class="table-secondary table-active">
 	      <th scope="col">memberId</th>
 	      <th scope="col">account</th>
-	      <th scope="col">LastNote</th>
+	      <th scope="col">Board</th>
 	    </tr>
 	    
 	    
@@ -162,9 +162,9 @@
 <%-- 	      <a href="<c:url value='/topGun/lastNote/queryLikeAccountDetail?fkm=${register.memberId}'  />">查看LastNote</a> --%>
 	      
 	      <c:choose>
-		    <c:when test="${not empty register.lastnote}">
+		    <c:when test="${not empty register.boards}">
 		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/lastNote/queryLikeAccountDetail?fkm=${register.memberId}'  />">查看LastNote</a>
+		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/board/queryLikeAccountDetail?r=${register.memberId}'  />">查看Board</a>
 		    </c:when>
 		    <c:otherwise>
 		        <!-- member 物件不存在，顯示登入按鈕 -->

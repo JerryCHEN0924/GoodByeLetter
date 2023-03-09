@@ -209,12 +209,16 @@ public class BackendLastNoteController {
 	}
 	
 	// 依帳號查詢LastNote的Detail
-//	@GetMapping("/topGun/lastNote/queryLikeAccountDetail")
-//	public String getLastNoteByAccountDetail(@RequestParam("lId") String account, Model model) {
-//		
-//		
-//		
-//	}
+	@GetMapping("/topGun/lastNote/queryLikeAccountDetail")
+	public String getLastNoteByAccountDetail(@RequestParam("fkm") Register register, Model model) {
+		
+		List<LastNote> lastNoteDetail = backendLastNoteService.findLastNoteByAccountGroupByFKM(register);
+		
+		model.addAttribute("lastNoteDetail", lastNoteDetail);
+		
+		return "/Ryu/backendShowLastNoteDetailByAccount";
+		
+	}
 	
 	
 	

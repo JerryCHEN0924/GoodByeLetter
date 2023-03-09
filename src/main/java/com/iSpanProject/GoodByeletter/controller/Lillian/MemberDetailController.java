@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,7 +26,7 @@ import com.iSpanProject.GoodByeletter.service.Lillian.MemberDetailService;
 import com.iSpanProject.GoodByeletter.service.Lillian.RegisterService;
 
 @Controller
-@SessionAttributes("existing")
+@SessionAttributes({"existing","authenticated"})
 public class MemberDetailController {
 
 	@Autowired
@@ -72,11 +72,12 @@ public class MemberDetailController {
 
 		MemberDetail memberDetails=memberDetailService.findByMemberId(memberId);
 		
-		/////測試
-		System.out.println(memberDetails.getGender());
-		System.out.println(memberDetails.getBirthday());
-		System.out.println(memberDetails.getCounty());
-		
+		if(memberDetails == null){
+			MemberDetail md = new  MemberDetail();
+			model.addAttribute("memberDetails", md);
+			
+			return "Lillian/MemberDetailEdit";
+		}
 		//////時間轉換///////////
 //		Date memberBirthday=memberDetails.getBirthday();
 //		SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
@@ -92,9 +93,17 @@ public class MemberDetailController {
 	}
 
 	@PutMapping("/memberDetail/putMemberDetail")
-	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail,HttpSession session) {
-		Register registerNew=(Register)session.getAttribute("existing");
-		memberDetail.setFK_memberId(registerNew);
+	public String updateMemberDetailEdit(@ModelAttribute("memberDetail") MemberDetail memberDetail,HttpServletRequest request,Model model) {
+		Register registerNew =(Register)model.getAttribute("existing");
+
+		
+		Integer memberId = registerNew.getMemberId();
+		Register currentRegister = registerService.findById(memberId);
+
+		
+		memberDetail.setFK_memberId(currentRegister);
+		memberDetail.setFK_Plevel(currentRegister.getFK_Plevel());
+		
 		
 		memberDetailService.updateMemberDetail(memberDetail);
 

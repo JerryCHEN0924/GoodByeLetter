@@ -127,7 +127,6 @@
 						<%-- <p style="color:red">${msg.success}</p> --%>
 					</div>
 					<button type="submit">註冊會員</button>
-					<br> <a href="">已有會員</a><br> <a href="myindex.html">回首頁</a>
 				</form>
 			</div>
 		</div>
