@@ -48,7 +48,7 @@ public class YJCustomerService {
 	}
 	////////////////////
 	
-	public Register accDuplicate(String acc) {
+	public Register findByAcc(String acc) {
 		Register findByAcc =customerDao.findRegisterByAcc(acc);
 		
 		return findByAcc;
