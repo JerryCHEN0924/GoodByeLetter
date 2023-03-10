@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.Ryu;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendBoardRepository;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 
 @Service
@@ -120,8 +122,12 @@ public class BackendBoardService {
 	
 	
 	
-	
-	
+	// 依帳號查詢Board後，再依register (FK Key) 跳頁
+	public List<Board> findBoardByAccountGroupByR(Register r){
+		
+		return backendBoardRepository.findBoardByRQuery(r);
+		
+	}
 	
 	
 	

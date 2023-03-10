@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.model.Jerry;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,7 +17,6 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -60,9 +60,9 @@ public class LastNote implements Serializable {
 	@Column(name="verify2Email")
 	private String verify2;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
 	@Column(name="verifyTime")
 	private Date verifyTime;
 	
@@ -75,13 +75,19 @@ public class LastNote implements Serializable {
 	private String verificationCode;
 	
 //	########以上是測試驗證專區勿動########
-	@Transient
-	private Integer mId;
 
 	@PrePersist
 	public void onCreate() {
 		if(createTime == null) {
 			createTime = new Date();
+		}
+		
+		if(verifyTime == null) {
+			verifyTime = new Date();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(verifyTime);
+			cal.add(Calendar.MONTH, 1);
+			verifyTime = cal.getTime();
 		}
 	}
 	
@@ -95,7 +101,7 @@ public class LastNote implements Serializable {
 	}
 
 	public LastNote(Integer noteId, Register fK_memberId, String recipientEmail, String notedetail, Date createTime,
-			String verify1, String verify2, Date verifyTime, Boolean enabled, String verificationCode, Integer mId) {
+			String verify1, String verify2, Date verifyTime, Boolean enabled, String verificationCode) {
 		super();
 		this.noteId = noteId;
 		FK_memberId = fK_memberId;
@@ -107,7 +113,7 @@ public class LastNote implements Serializable {
 		this.verifyTime = verifyTime;
 		this.enabled = enabled;
 		this.verificationCode = verificationCode;
-		this.mId = mId;
+
 	}
 
 	public Integer getNoteId() {
@@ -188,14 +194,6 @@ public class LastNote implements Serializable {
 
 	public void setVerificationCode(String verificationCode) {
 		this.verificationCode = verificationCode;
-	}
-
-	public Integer getmId() {
-		return mId;
-	}
-
-	public void setmId(Integer mId) {
-		this.mId = mId;
 	}
 	
 	

@@ -39,12 +39,12 @@
 
 <div class="card">
   <div class="card-header">
-    依Account查詢LastNote
+    依Account查詢Register
   </div>
   <div class="card-body">
   	
   		
-	<form action="${contextRoot}/topGun/lastNote/queryLikeAccountPost" method="get" >
+	<form action="${contextRoot}/topGun/register/queryLikeAccountPost" method="get" >
 		
 		
 		
@@ -141,7 +141,7 @@
 	    <tr class="table-secondary table-active">
 	      <th scope="col">memberId</th>
 	      <th scope="col">account</th>
-	      <th scope="col">LastNote</th>
+	      <th scope="col">enabled</th>
 	    </tr>
 	    
 	    
@@ -162,13 +162,14 @@
 <%-- 	      <a href="<c:url value='/topGun/lastNote/queryLikeAccountDetail?fkm=${register.memberId}'  />">查看LastNote</a> --%>
 	      
 	      <c:choose>
-		    <c:when test="${not empty register.lastnote}">
+		    <c:when test="${register.enabled}">
+<%-- 		    <c:when test="${not empty register.enable}"> --%>
 		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/lastNote/queryLikeAccountDetail?fkm=${register.memberId}'  />">查看LastNote</a>
+		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/registerEnabled/edit?memberId=${register.memberId}'  />">True</a>
 		    </c:when>
 		    <c:otherwise>
 		        <!-- member 物件不存在，顯示登入按鈕 -->
-		        <a class="btn btn-secondary" type="button" href="#">查無此紀錄</a>
+		        <a class="btn btn-secondary" type="button" href="<c:url value='/topGun/registerEnabled/edit?memberId=${register.memberId}'  />">False</a>
 		    </c:otherwise>
 		</c:choose>
 	      

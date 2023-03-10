@@ -46,6 +46,14 @@ public class YJCustomerService {
 			return cus;
 		}return null;	
 	}
+	////////////////////
+	
+	public Register findByAcc(String acc) {
+		Register findByAcc =customerDao.findRegisterByAcc(acc);
+		
+		return findByAcc;
+	}
+	///////////////////
 	
 //	用來做登入	
 	public Register findByAccAndPass(String acc, String pass) {
@@ -70,14 +78,5 @@ public class YJCustomerService {
 	public List<Register> findAll() {
 		return customerDao.findAll();	
 	}
-	/////////////////////
-	public Register getRegById(Integer id) {
-        Optional<Register> register = customerDao.findById(id);
-        if (register.isPresent()) {
-        	return null;
-        }
-		return register.get();
-		
-    }
-	/////////////////////
+
 }

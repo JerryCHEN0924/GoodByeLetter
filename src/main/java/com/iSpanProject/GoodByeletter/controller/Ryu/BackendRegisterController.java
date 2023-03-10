@@ -237,6 +237,75 @@ public class BackendRegisterController {
 	
 	
 	
+	// 依帳號模糊查詢跳頁
+	@GetMapping("/topGun/register/queryLikeAccount")
+	public String getRegisterByAccountForm(Model model) {
+		
+		return "/Ryu/backendShowRegisterByAccount";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	// 依帳號模糊查詢
+	@GetMapping("/topGun/register/queryLikeAccountPost")
+	public String getRegisterByAccount(@RequestParam("account") String account, Model model) {
+		
+		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
+		
+		System.out.println("=====================");
+		System.out.println("=====================");
+		System.out.println(register);
+		System.out.println("=====================");
+		System.out.println("=====================");
+		
+		model.addAttribute("register", register);
+		
+		return "/Ryu/backendShowRegisterByAccount";
+		
+	}
+	
+	
+	
+	
+	// 修改註冊會員Enabled跳頁
+	@GetMapping("/topGun/registerEnabled/edit")
+	public String editRegisterEnablePage(@RequestParam("memberId") Integer memberId, Model model) {
+			
+	Register register = backendRegisterService.findRegisterById(memberId);
+			
+	model.addAttribute("register", register);
+			
+	return "/Ryu/backendEditRegisterEnabledForm";
+			
+	}
+	
+	
+	
+	
+	// 修改註冊會員Enabled資料
+	@PutMapping("/topGun/registerEnabled/editPost")
+	public String editPostRegisterEnabled(@ModelAttribute("register") Register register) {
+			
+		backendRegisterService.updateRegister(register);
+			
+		return "redirect:/topGun/register/queryLikeAccount";
+			
+	}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

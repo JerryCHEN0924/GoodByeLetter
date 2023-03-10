@@ -24,16 +24,23 @@
 
 <div class="container w-75 text-center">
 
+
+
+
 <div class="row mt-5">
 
 <div class="offset-sm-2 col-sm-8 ">
 
 <div>
-	<a class="btn btn-danger" type="button" href="<c:url value='/topGun/lastNote/queryLikeAccount'  />">返回上一頁</a>
+	<a class="btn btn-danger" type="button" href="<c:url value='/topGun/board/queryLikeAccount'  />">返回依帳號查詢</a>
 </div>
 
 </div>
 </div>
+
+
+
+
 
 
 <div class="row my-3">
@@ -44,18 +51,21 @@
 <hr>
 
 
-<c:forEach var="lastNoteDetail" items="${lastNoteDetail}">
+<c:forEach var="commentDetail" items="${commentDetail}">
 
 
 
-<div class="card mt-3">
+<div class="card my-3">
   <div class="card-header">
-    LastNote發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${lastNoteDetail.createTime}" /></span>
-    <br>
+    Comment ID： <span>${commentDetail.commentId}</span>
+    <hr>
+    Comment發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${commentDetail.createTime}" /></span>
+    <hr>
+    Comment 更新時間： <span>${commentDetail.updateTime}</span>
   </div>
   <div class="card-body">
   	
-	${lastNoteDetail.notedetail}
+	${commentDetail.reply}
   	
   </div>
   

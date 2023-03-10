@@ -4,6 +4,8 @@ package com.iSpanProject.GoodByeletter.controller.Tina;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,7 @@ import com.iSpanProject.GoodByeletter.service.Tina.CommentService;
 
 
 @Controller
-@SessionAttributes({"authenticated"})
+@SessionAttributes({"authenticated","existing"})
 public class BoardController {
 
 	
@@ -54,8 +56,12 @@ public class BoardController {
 	@PostMapping("/board/post")
 	public String addBoardPost(@ModelAttribute Board board, Model model) {
 //		儲存memberId
-		Register register = (Register) model.getAttribute("authenticated");
-		board.setRegister(register);
+		Register register_au = (Register) model.getAttribute("authenticated");
+		Register register_ex = (Register) model.getAttribute("existing");
+		System.out.println(register_au);
+		System.out.println(register_ex);
+		board.setRegister(register_au);
+		board.setRegister(register_ex);
 		//save
 		boardService.addBoard(board);	
 		//回傳一個空board
@@ -115,8 +121,10 @@ public class BoardController {
 							@RequestParam("boardId") Integer boardId,
 							Model model) {
 //		儲存memberId
-		Register register = (Register) model.getAttribute("authenticated");
-		board.setRegister(register);
+		Register register_au = (Register) model.getAttribute("authenticated");
+		Register register_ex = (Register) model.getAttribute("existing");
+		board.setRegister(register_au);
+		board.setRegister(register_ex);
 		
 		boardService.addBoard(board);
 		return "redirect:/board/show?boardId="+boardId;

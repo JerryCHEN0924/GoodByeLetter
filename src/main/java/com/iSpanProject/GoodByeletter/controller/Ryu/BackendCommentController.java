@@ -1,5 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -162,9 +164,17 @@ public class BackendCommentController {
 		
 	}
 	
-	
-	
-	
+	// 依帳號查詢Comment的Detail
+	@GetMapping("/topGun/comment/queryLikeAccountDetail")
+	public String getBoardByAccountDetail(@RequestParam("b") Board board, Model model) {
+		
+		List<Comment> commentDetail = backendCommentService.findCommentByAccountGroupByB(board);
+		
+		model.addAttribute("commentDetail", commentDetail);
+		
+		return "/Ryu/backendShowCommentDetailByAccount";
+		
+	}
 	
 	
 	

@@ -38,7 +38,7 @@
 			<div id="space"></div>
 
 			<div class="container" id="form_container">
-				<div id="customer_Table">註冊廠商會員</div>
+				<div id="customer_Table">填寫資料</div>
 				<form id="customer_form" class="form-control" action="${contextRoot}/customerDetail/add2" method="post">
 
 					<!-- regis -->
@@ -89,20 +89,15 @@
 								name="address" placeholder="請填入完整地址">
 						</div>
 					</div>
-					 <div>
-                    <p style="color:red">${msg.success}</p>
-                    </div>
-					<button type="submit">註冊會員</button>
-					<br> <a href="">已有會員</a><br> <a href="myindex.html">回首頁</a>
+					 
+					<button type="submit">送出</button>
+					<br>
+					<a href="/companylogig/page">返回</a>
 				</form>
 			</div>
 		</div>
 	</article>
-
-
-
-
-
+	
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>

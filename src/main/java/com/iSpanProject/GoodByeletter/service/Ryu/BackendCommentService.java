@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.Ryu;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendCommentRepository;
+import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
 
 @Service
@@ -119,9 +121,13 @@ public class BackendCommentService {
 	}
 	
 	
-	
-	
-	
+	// 目前沒用到
+	// 依帳號查詢Comment後，再依board (FK Key) 跳頁
+	public List<Comment> findCommentByAccountGroupByB(Board b){
+		
+		return backendCommentRepository.findCommentByBQuery(b);
+		
+	}
 	
 	
 	
