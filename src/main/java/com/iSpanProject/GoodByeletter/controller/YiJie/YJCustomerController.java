@@ -26,9 +26,7 @@ import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerDetailService;
 import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerService;
 
 @Controller
-public class YJCustomerController {
-	
-	
+public class YJCustomerController {	
 	@Autowired
 	private YJCustomerService customerService;
 	@Autowired
@@ -86,7 +84,7 @@ public class YJCustomerController {
 		Map<String, String> errors = new HashMap<String, String>();
 		model.addAttribute("errors", errors);
 		// 檢查帳號是否重複
-		if(customerService.accDuplicate(reg.getAccount()) != null) {
+		if(customerService.findByAcc(reg.getAccount()) != null) {
 			errors.put("message", "該帳號已被註冊!");
 		}
 		// 檢查驗證碼是否錯誤
@@ -145,11 +143,11 @@ public class YJCustomerController {
 		String pwd = exis.getPassword();
 			
 		if (acc.equals(acc1) && pass.equals(pwd)) {
-			session.setAttribute("existing", exis);
+			session.setAttribute("exis", exis);
 			
 			return "YiJie/companylogin";
 		} else {
-			return "redirect:/";
+			return "redirect:/gologin";
 		}
 	}
 

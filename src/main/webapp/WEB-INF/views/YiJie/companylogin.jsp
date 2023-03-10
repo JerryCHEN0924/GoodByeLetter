@@ -36,16 +36,19 @@
 	<%@ include file="../layout/mynav.jsp"%>
 	<article id="portfolio" class="wrapper style3">
 		<div class="container">
-			<header>
+			<div>
 				<h3>歡迎登入</h3>
-			</header>
+			</div>
 			<div>
 				<ul>
-					<li class="" id="detail_Li">
+					<li>
 						<a class="" href="<c:url value='/Detail/page1'/>">填寫廠商詳細資料</a>
 					</li>
-					<li class="" id="picture_Li">
+					<li>
 						<a class="" href="<c:url value='/picture/page1'/>">廣告圖片投放區</a>
+					</li>
+					<li>
+						<a class="" href="<c:url value='/Detail/page2'/>">更新廠商資料</a>
 					</li>
 				</ul>
 				

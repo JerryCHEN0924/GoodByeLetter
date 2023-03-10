@@ -30,21 +30,6 @@ public class Picture {
 	
 	public Picture() {}
 	
-	//////////////////////////////////////////////
-	//雙方控管才需要
-//	@JsonBackReference //不要做控管註釋
-//	@JoinColumn(name="fk_companydetail_id")
-//	@ManyToOne
-//	private YJCustomerDetail cusdetail;
-//
-//	public YJCustomerDetail getCusdetail() {
-//		return cusdetail;
-//	}
-//
-//	public void setCusdetail(YJCustomerDetail cusdetail) {
-//		this.cusdetail = cusdetail;
-//	}
-	/////////////////////////////////////////////
 
 	public Integer getId() {
 		return id;
@@ -70,6 +55,21 @@ public class Picture {
 		this.enable = enable;
 	}
 	
+	//////////////////////////////////////////////
+	//雙方控管才需要
+//	@JsonBackReference //不要做控管註釋
+//	@JoinColumn(name="fk_companydetail_id")
+//	@ManyToOne
+//	private YJCustomerDetail cusdetail;
+//
+//	public YJCustomerDetail getCusdetail() {
+//		return cusdetail;
+//	}
+//
+//	public void setCusdetail(YJCustomerDetail cusdetail) {
+//		this.cusdetail = cusdetail;
+//	}
+	/////////////////////////////////////////////
 	
 	
 	

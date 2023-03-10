@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.controller.YiJie;
 
+import java.text.ParseException;
 import java.util.HashMap;
 
 //import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 //import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetailRepository;
@@ -29,11 +31,12 @@ import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerService;
 @SessionAttributes("exis")//引入車車
 public class YJCustomerDetailController {
 
-//	@Autowired
+	@Autowired
 	private YJCustomerService memberService;
 	@Autowired
 	private YJCustomerDetailService detailService;
 	
+	//去填寫會員詳細資料頁面
 	@GetMapping("/Detail/page1")
 	public String DetailPage() {		
 		return "YiJie/customerDetail";
@@ -68,21 +71,48 @@ public class YJCustomerDetailController {
 	}
 	
 	//////////////////////////////////////
-	
+	//去廠商功能主頁面
 	@GetMapping("customerDetail/detailpage")
 	public String DetailPage2() {		
 		return "YiJie/companylogin";
 	}
 	
-	@PutMapping("/customerDetail/putDetail")
+//	//去更新廠商資料頁面
+//	@GetMapping("/Detail/page2")
+//	public String updDetailPage() {
+//		return "YiJie/detail";
+//	}
+	
+	//編輯會員資料
+		@GetMapping("/Detail/page2")
+		public String editDetailPage(HttpSession session,
+				Model model) throws ParseException {// model儲存送過去
+			Register reg = (Register)session.getAttribute("exis");
+			Integer memberId=reg.getpId();
+			YJCustomerDetail detail = detailService.findByMemberId(memberId);
+			if(detail == null) {
+				YJCustomerDetail dt = new YJCustomerDetail();
+				model.addAttribute("customerDetail", dt);
+				return "YiJie/detail";
+			}model.addAttribute("customerDetail", detail);
+			return "YiJie/detail";
+
+		}
+	//更新廠商資料
+	@PostMapping("/customerDetail/putDetail")
 	public String updDetail(@ModelAttribute("customerDetail") YJCustomerDetail detail,
-			HttpSession session) {
+							HttpSession session,
+							Model model) {
+		//透過"exis"抓到Register物件，存進reg
 		Register reg = (Register)session.getAttribute("exis");
-		detail.setFK_memberId(reg);
-		detailService.updateDetail(detail);
+		
+		//取出reg中的id放入mId
+		Integer mId = reg.getMemberId();
+		//0310
+		detailService.updateDetail(mId, detail);
+		
 		return "YiJie/companylogin";
 	}
-	
 	/////////////////////////////////////
 	
 //	@PostMapping("/customerDetail/addPicture")

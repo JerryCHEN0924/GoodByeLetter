@@ -2,6 +2,7 @@ package com.iSpanProject.GoodByeletter.controller.Tina;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ import com.iSpanProject.GoodByeletter.service.Tina.BoardService;
 import com.iSpanProject.GoodByeletter.service.Tina.CommentService;
 
 @Controller
-@SessionAttributes({"authenticated"})
+@SessionAttributes({"authenticated","existing"})
 public class CommentController {
 
 	@Autowired
@@ -46,8 +47,20 @@ public class CommentController {
 		Board board = boardService.findById(bId);
 		comment.setBoard(board);
 //		儲存memberId
-		Register register = (Register) model.getAttribute("authenticated");
-		comment.setRegister(register);
+//		Register register = (Register) model.getAttribute("authenticated");
+//		comment.setRegister(register);
+//		
+		Register register_au = (Register) model.getAttribute("authenticated");
+		Register register_ex = (Register) model.getAttribute("existing");
+		
+		System.out.println("=================");
+		System.out.println("=================");
+		System.out.println(register_au);
+		System.out.println(register_ex);
+		System.out.println("=================");
+		System.out.println("=================");
+		comment.setRegister(register_au);
+		comment.setRegister(register_ex);
 //		save
 		commentService.addComment(comment);             
 //		add new comment
@@ -90,8 +103,10 @@ public class CommentController {
 		Board board = boardService.findById(bId);
 		comment.setBoard(board);
 //		儲存memberId
-		Register register = (Register) model.getAttribute("authenticated");
-		comment.setRegister(register);
+		Register register_au = (Register) model.getAttribute("authenticated");
+		Register register_ex = (Register) model.getAttribute("existing");
+		comment.setRegister(register_au);
+		comment.setRegister(register_ex);
 		
 		commentService.addComment(comment);
 		return "redirect:/board/show?boardId="+boardId;
