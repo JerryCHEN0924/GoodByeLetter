@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -16,26 +17,17 @@
 <body>
 <%@ include file="../layout/mynav.jsp"%>
 
-<%-- <c:if test="${pageContext.request.userPrincipal != null}"> --%>
-<!--   <a href="/update">更新資料</a> -->
-<%-- </c:if> --%>
-<%-- <c:if test="${pageContext.request.userPrincipal == null}"> --%>
-<!--   <a href="/register">註冊</a> -->
-<%-- </c:if> --%>
-
         <!--login  login_form_class-->
         <article  class="wrapper style2" style="height:100vh">
         <div class="container-fluid" id="login_form">
-            <h1>登入</h1>
-            <form id="login" action="${contextRoot}/register/login" method="post">
-                <input type="text" required placeholder="您的帳號" maxlength="8" minlength="4" name="account"><br>
-                <input type="password" required placeholder="您的密碼" maxlength="8" minlength="4" name="password"><br>
+            <h1>更新密碼</h1>
+            <form id="login" action="${contextRoot}/updatePassword" method="post">
+                <input type="hidden"  name="token" value="${code}"/>
+                <input type="password" name="password" required placeholder="請輸入重置密碼" maxlength="8" minlength="4" />
                 <br>
-                <button type="submit" id="login_submit">登入</button>
+                <br>
+                <button type="submit" id="login_submit">送出</button>
             </form>
-
-
-            <a href="<c:url value='/forgetpwd' />">忘記密碼</a>
 
         </div>
         </article>
