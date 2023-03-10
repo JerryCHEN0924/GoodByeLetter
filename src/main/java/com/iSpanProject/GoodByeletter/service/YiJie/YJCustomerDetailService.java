@@ -2,20 +2,26 @@ package com.iSpanProject.GoodByeletter.service.YiJie;
 
 import java.util.Optional;
 
+import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.iSpanProject.GoodByeletter.dao.Lillian.LevelDao;
+import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.dao.YiJie.YJCustomerDetailDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 
 @Service
 @Transactional
 public class YJCustomerDetailService {
 
+	@Autowired
+	private RegisterDao cusDao;
 	@Autowired
 	private YJCustomerDetailDao cdDao;
 	@Autowired
@@ -28,8 +34,37 @@ public class YJCustomerDetailService {
 		
 		cdDao.save(detail);	
 	}
-	
-	public YJCustomerDetail updateDetail(YJCustomerDetail detail) {	
-		return cdDao.save(detail);
+	//更新Detail
+	public void updateDetail(Integer memberId, YJCustomerDetail detail) {							
+		Optional<YJCustomerDetail> op = cdDao.findById(memberId);
+		
+		YJCustomerDetail detail1 = op.get();
+		detail1.setName(detail.getName());
+		detail1.setType(detail.getType());
+		detail1.setEmail(detail.getEmail());
+		detail1.setAddress(detail.getAddress());
+		cdDao.save(detail1);
+		
 	}
+	//依據memberId找detail
+	public YJCustomerDetail findById(Integer memberId) {
+			
+		Optional<YJCustomerDetail> op = cdDao.findById(memberId);
+		
+		if(op.isEmpty()) { 
+			return null;
+		}
+		return op.get();		
+	}
+	//多的
+	public YJCustomerDetail findByMemberId(Integer memberId) {
+		YJCustomerDetail findByMemberId = cdDao.findDetailByMemberId(memberId);
+		return findByMemberId;
+	}
+//	public YJCustomerDetail findDetailIdByAcc(String acc) {
+//		Register acc1 = cusDao.findRegisterByAcc(acc);
+//		YJCustomerDetail detail = cusDao.findRegisterByAcc(acc);
+//		return
+//		
+//	}
 }

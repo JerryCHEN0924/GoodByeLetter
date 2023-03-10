@@ -44,7 +44,7 @@
 									<div class="mb-3 row">
 										<label for="name" class="col-sm-2 col-form-label">名字</label>
 										<div class="col-sm-10">
-											<form:input required type="text" path="name" class="form-control" id="name"
+											<form:input  type="text" path="name" class="form-control" id="name"
  												name="name" value="${memberDetails.name}" />
 										</div>
 									</div>		
@@ -80,7 +80,7 @@
 									<div class="mb-3 row">
 										<label for="birthday" class="col-sm-2 col-form-label">生日</label>
 										<div class="col-sm-10">
-											<form:input required type="date" path="birthday" class="form-control" id="birthday"
+											<form:input type="date" path="birthday" class="form-control" id="birthday"
 												name="birthday" value="${memberDetails.birthday}" />
 										</div>
 									</div>
@@ -88,7 +88,7 @@
 									<div class="mb-3 row">
 										<label for="email" class="col-sm-2 col-form-label">Email</label>
 										<div class="col-sm-10">
-											<form:input required type="email" path="email" class="form-control" id="email"
+											<form:input  type="email" path="email" class="form-control" id="email"
 												name="email" value="${memberDetails.email}" />
 										</div>
 									</div>
@@ -122,7 +122,7 @@
 										</div>			
 										</div>
 										<div class="col-sm-8">
-											<input type="text" required path="address" class="form-control" id="address"
+											<input type="text"  path="address" class="form-control" id="address"
 												name="address" value="${memberDetails.address}" placeholder="完整地址" />
 										</div>
 									<button type="submit">送出</button>
