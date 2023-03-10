@@ -37,103 +37,19 @@
 	<%@ include file="../layout/mynav.jsp"%>
 	<article id="myspace" class="wrapper style2">
 		<div class="container">
-			<!-- RYU -->
-			<div class="row ">
-
-				<div class="offset-sm-3 col-sm-6 my-3">
-
-					<nav aria-label="Page navigation example">
-						<ul class="pagination justify-content-center ">
-
-							<li class="page-item"><c:choose>
-
-									<c:when test="${page.number > 0}">
-
-										<li class="page-item"><a class="page-link"
-											href="${contextRoot }/LastNote/edit?p=${page.number - 0}"
-											aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-										</li>
-
-									</c:when>
-
-									<c:otherwise>
-
-										<li class="page-item disabled"><a class="page-link"
-											href="${contextRoot }/LastNote/edit?p=${page.number - 0}"
-											aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-										</li>
-
-									</c:otherwise>
-
-								</c:choose></li>
-
-
-							<c:forEach var="pageNumber" begin="1" end="${page.totalPages }">
-
-								<c:choose>
-
-
-									<c:when test="${page.number+1 != pageNumber }">
-
-										<li class="page-item"><a class="page-link"
-											href="${contextRoot }/LastNote/edit?p=${pageNumber }">${pageNumber }</a>
-										</li>
-
-									</c:when>
-
-									<c:otherwise>
-
-										<li class="page-item"><a class="page-link active"
-											href="#"> ${pageNumber } </a></li>
-
-									</c:otherwise>
-
-								</c:choose>
-
-
-							</c:forEach>
-
-
-
-							<li class="page-item"><c:choose>
-
-									<c:when test="${page.number+1 < page.totalPages}">
-
-										<li class="page-item"><a class="page-link"
-											href="${contextRoot }/LastNote/edit?p=${page.number + 2}"
-											aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-
-									</c:when>
-
-									<c:otherwise>
-
-										<li class="page-item disabled"><a class="page-link"
-											href="${contextRoot }/LastNote/edit?p=${page.number + 2}"
-											aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-
-									</c:otherwise>
-
-								</c:choose></li>
-
-						</ul>
-					</nav>
-
-				</div>
-			</div>
-
-			<!-- RYU -->
-
+			
 			<!-- myspace -->
 			<div class="card" id="">
 				<h1>GoodBye Letter CRUD</h1>
 
-				<c:forEach var="lastNote" items="${page.content}">
+				<c:forEach var="lastNote" items="${lastNotes}">
 					<table class="table table-hover">
 						<thead>
 							<tr>
 								<th scope="col">信件編號</th>
 								<th scope="col">收件人</th>
-								<th scope="col">內容</th>
+								<th scope="col">驗證日期</th>
+								<th scope="col">信件內容</th>
 								<th scope="col">操作</th>
 							</tr>
 						</thead>
@@ -141,6 +57,7 @@
 							<tr>
 								<td scope="row">${lastNote.noteId}</td>
 								<td scope="row">${lastNote.recipientEmail}</td>
+								<td scope="row">${lastNote.verifyTime}</td>
 								<td scope="row">${lastNote.notedetail}</td>
 								<td scope="row">
 									<div class="d-flex justify-content-center">

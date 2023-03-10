@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>測試用頁面</title>
+<title>驗證失敗</title>
 <link rel="stylesheet" href="assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
@@ -40,7 +40,7 @@
 	<article id="myspace" class="wrapper style2">
 		<div class="container-fluid " id="register">
 			<div id="space">
-				<a class="btn btn-outline-danger" href="" role="button">不要按</a>
+				<h1 class="display-1">驗證失敗！！請盡速聯絡管理員！！！</h1>
 			</div>
 
 		</div>
