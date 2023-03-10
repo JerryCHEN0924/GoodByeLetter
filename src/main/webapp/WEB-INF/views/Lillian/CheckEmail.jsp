@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
-<title>編輯帳號</title>
+<title>確認收信</title>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,45 +30,27 @@
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
 
+	<!-- regis -->
 	<article id="" class="wrapper style2">
 		<div class="container-fluid " id="register">
 			<div id="space"></div>
 
 
 			<div class="container" id="form_container">
-				<div id="registerShowTitle">編輯帳號</div>
-				<form:form id="register_form"
-					action="${contextRoot}/register/putRegister"
-					modelAttribute="registers" method="put">
-					<form:input path="memberId" type="hidden" />
-					<form:input path="registerTime" type="hidden" />
-					<form:input path="FK_Plevel" type="hidden" />
-
+				<div id="registerTitle"></div>
+				<form id="register_form" action="${contextRoot}/sendEmail/checkEmail"
+					method="get">
+					
 					<div class="mb-6 row">
-						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<form:input path="account" type="text" class="form-control"
-								placeholder="account(請輸入4~8碼)" id="account" maxlength="8"
-								minlength="4" name="account" />
+							<h1>已向您Email發送一封郵件，請立即收查!</h1>
 						</div>
-					</div>
-					<div class="mb-6 row">
-						<label for="password" class="col-sm-2 col-form-label">密碼</label>
-						<div class="col-sm-10">
-							<form:input  path="password" type="password" class="form-control"
-								placeholder="password(請輸入4~8碼)" id="password" maxlength="8"
-								minlength="4" name="password" />
-						</div>
-					</div>
-					<button type="submit">送出</button>
-				</form:form>
+					</div>	
+					
+				</form>
 			</div>
 		</div>
 	</article>
-
-
-
-
 
 
 
@@ -84,8 +66,9 @@
 
 
 	<script>
-		
+
 	</script>
 
 </body>
+
 </html>
