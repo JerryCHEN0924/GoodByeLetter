@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>註冊帳號</title>
@@ -37,36 +39,36 @@
 
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
-				<form id="register_form" action="${contextRoot}/register/add" method="post">
-					
+				<form:form id="register_form" action="${contextRoot}/register/add"
+					modelAttribute="newRegister" method="post">
+					<%-- <input type="text" value="${errors.account}" /> --%>
+					<p id="acc1" style="color: red">${errors.account}</p>
+					<p id="acc2" style="color: red">${errors.account1}</p>
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<input type="text" placeholder="account" class="form-control"
-								id="account" name="account">
+							<form:input type="text" path="account" onkeyup="value=value.replace(/[\W]/g,'') "
+								placeholder="account(請輸入4~8碼)" class="form-control"
+								maxlength="8" minlength="4" id="account" name="account" />
+
 						</div>
 					</div>
+					<p id="pwd" style="color: red">${errors.password}</p>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<input type="password" placeholder="password(密碼長度需大於 5 小於 12)"
-								class="form-control" id="password" name="password">
-								<div class="messages"></div>
-      					
+							<form:input type="password" path="password" onkeyup="value=value.replace(/[\W]/g,'') "
+								placeholder="password(請輸入4~8碼)" class="form-control"
+								maxlength="8" minlength="4" id="password" name="password" />
 						</div>
 					</div>
-					<div class="mb-6 row">
-						<label for="confirm-password" class="col-sm-2 col-form-label">確認密碼</label>
-						<div class="col-sm-10">
-							<input id="confirm-password" class="form-control" type="password"
-								placeholder="Confirm password" name="confirmPassword">
-							<div class="messages"></div>
-						</div>
-					</div>
+					<br>
 					<button type="submit">下一步</button>
-					<br> <a href="">已有會員</a><br>
+					<!-- 									<br> -->
+					<!-- 									<a href="">已有會員</a> -->
+					<!-- 									<br> -->
 
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</article>
@@ -85,9 +87,37 @@
 
 
 	<script>
-	
-	
+		// 						window.onload = function () {
+		// 							var p = document.querySelectorAll("p");
+		// 							for(var i = 0; i < p.length ; i++){
+		// 							p.addEventListener("change", checkDuplicate);//物件內容改變時觸發checkDuplicate
+		// 							}
+		// 							function checkDuplicate() {
+		// 								for(var i = 0; i<p.length ; i++){
+		// 								if (p == "請輸入您的帳號!") {
+
+		// 									setTimeout(function () {
+		// 										p.innerHTML = "";
+		// 									}, 5000);//過了五秒隱藏
+		// 									break;
+		// 								}
+		// 							}
+		// 							}
+		// 						}
+		window.onload = function() {
+			var ps = document.querySelectorAll("p");
+
+			for (var i = 0; i < ps.length; i++) {
+				if (ps[i].innerHTML === "請輸入您的帳號!") {
+
+					setTimeout(function() {
+						ps[i].innerHTML = "請輸入您的帳號!";
+					}, 5000);
+				}
+			}
+		}
 	</script>
 
 </body>
+
 </html>

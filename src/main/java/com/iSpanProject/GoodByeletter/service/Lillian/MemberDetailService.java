@@ -11,7 +11,6 @@ import com.iSpanProject.GoodByeletter.dao.Lillian.MemberDetailDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
-import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
 @Transactional
@@ -27,7 +26,6 @@ public class MemberDetailService {
 	private RegisterDao rDao;
 
 	public void insert(MemberDetail memberDetail) {
-
 		Optional<Level> optional = lDao.findById(1);
 		Level l1 = optional.get();
 		memberDetail.setFK_Plevel(l1);
@@ -37,6 +35,10 @@ public class MemberDetailService {
 	}
 	
 	public MemberDetail updateMemberDetail(MemberDetail md) {
+//		Optional<Level> optional = lDao.findById(1);
+//		Level l1 = optional.get();
+//		md.setFK_Plevel(l1);
+//		
 		return mDao.save(md);
 	}	
 	
@@ -54,10 +56,6 @@ public class MemberDetailService {
 		return findByMemberId;
 	}
 	
-	
-		
-		
-
 
 }
 

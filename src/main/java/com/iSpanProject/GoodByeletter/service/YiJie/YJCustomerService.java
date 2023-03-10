@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.YiJie;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class YJCustomerService {
 	}
 	//////////////////////
 	
-//	findById => 找相同id名的YJCustomer物件
+	//findById => 找相同id名的YJCustomer物件
 	public Register findById(Integer id) {
 		Optional<Register> optional = customerDao.findById(id);
 		
@@ -45,6 +46,15 @@ public class YJCustomerService {
 			return cus;
 		}return null;	
 	}
+	////////////////////
+	
+	public Register accDuplicate(String acc) {
+		Register findByAcc =customerDao.findRegisterByAcc(acc);
+		
+		return findByAcc;
+	}
+	///////////////////
+	
 //	用來做登入	
 	public Register findByAccAndPass(String acc, String pass) {
 		Register accAndpass = customerDao.findRegisterByAccAndPwd(acc, pass);
@@ -52,7 +62,7 @@ public class YJCustomerService {
 	}
 	
 //
-	public Register updateById(Integer id, String acc, String pass) {
+	public Register updateBymemberId(Integer id, String acc, String pass) {
 		Optional<Register> optional = customerDao.findById(id);
 		
 		if (optional.isPresent()) {
@@ -65,5 +75,8 @@ public class YJCustomerService {
 		return null;
 	}
 	
-	/////////////////////
+	public List<Register> findAll() {
+		return customerDao.findAll();	
+	}
+
 }

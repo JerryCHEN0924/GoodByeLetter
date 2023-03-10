@@ -1,5 +1,8 @@
 package com.iSpanProject.GoodByeletter.model.YiJie;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
+
 
 @Entity
 @Table(name = "companydetail")
@@ -23,10 +30,12 @@ public class YJCustomerDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	
 	@OneToOne(cascade = { CascadeType.PERSIST })
 	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_companydetail_member"))
 	private Register FK_memberId;
 
+	
 	@ManyToOne(cascade = { CascadeType.PERSIST })
 	@JoinColumn(name = "FK_Plevel", foreignKey = @ForeignKey(name = "FK_companydetail_level"))
 	private Level plevel;
@@ -43,10 +52,25 @@ public class YJCustomerDetail {
 	private String picPath;
 	@Column(name = "picValue")
 	private String picValue;
+	
+
+	//@JsonManagedReference //主要控管序列化方(由此方控管序列化註釋)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name="fk_companydetail_id")
+	private List<Picture> pictures = new ArrayList<>();
+	
+	public List<Picture> getPictures() {
+		return pictures;
+	}
+	
+	public void setPictures(List<Picture> pictures) {
+		this.pictures = pictures;
+	}
 
 	public Integer getId() {
 		return id;
 	}
+	
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -116,8 +140,6 @@ public class YJCustomerDetail {
 		this.picValue = picValue;
 	}
 
-	public YJCustomerDetail() {
-
-	}
+	public YJCustomerDetail() {}
 
 }
