@@ -36,7 +36,7 @@ public class Daily {
 //		vs.checkLocalDateWithVerifyDateAndSendVerifyEmail();
 		
 //		這個service會執行驗證日超過X天，就將遺囑寄出功能
-		vs.sendUserGoodByeLetter();
+//		vs.sendUserGoodByeLetter();
 	}
 
 
