@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.dao.Ryu;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,6 +32,9 @@ public interface BackendLastNoteRepository extends JpaRepository<LastNote, Integ
 	
 	@Query(value="from LastNote where FK_memberId = :fkm")
 	public List<LastNote> findLastNoteByFKMQuery(@Param("fkm") Register fkm);
+	
+//	@Query(value="from LastNote where verifyTime = :v")
+//	public List<LastNote> findLastNoteVerQuery(@Param("v") Date date);
 	
 
 }

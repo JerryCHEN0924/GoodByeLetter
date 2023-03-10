@@ -18,7 +18,7 @@ import com.iSpanProject.GoodByeletter.service.Jerry.LastnoteService;
 
 @Controller
 @SessionAttributes("existing")
-public class LastNoteController {
+public class GoodByeLetterController {
 
 	@Autowired
 	private LastnoteService lastnoteService;
@@ -46,29 +46,6 @@ public class LastNoteController {
 		Page<LastNote> page = lastnoteService.findByPage(pageNumber);
 		model.addAttribute("page", page);
 		return "Jerry/LastNoteEditPage";
-	}
-	
-	// 跳頁，測試頁面	
-	@GetMapping("/LastNote/test")
-	public String LastNoteTestPage() {
-		return "Jerry/LastNoteTestPage";
-	}
-	
-	// 跳頁，驗證信功能測試	
-	@GetMapping("/LastNote/sendVerificationEmail")
-	public String LastNoteTestSendMail() {
-		lastnoteService.sendVerificationEmail();
-		return "redirect:/LastNote/test";
-	}
-	
-	// 驗證信的TOKEN檢查
-	@GetMapping("/LastNote/verify")
-	public String verifyToken(@RequestParam("code") String token,Model model) {
-		System.out.println("===========控制器的===================");
-		System.out.println(token);
-		System.out.println("===========控制器的===================");
-		lastnoteService.checkToken(token);
-		return "redirect:/";
 	}
 	
 	

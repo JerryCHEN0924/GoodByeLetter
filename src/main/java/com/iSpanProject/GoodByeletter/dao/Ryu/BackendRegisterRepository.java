@@ -23,5 +23,6 @@ public interface BackendRegisterRepository extends JpaRepository<Register, Integ
 	@Query(value="select * from member where account like concat('%',:a,'%')", nativeQuery = true)
 	public List<Register> findRegisterByAccountNativeLikeQuery(@Param("a") String account);
 	
+	
 
 }
