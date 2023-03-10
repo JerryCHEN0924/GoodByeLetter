@@ -10,6 +10,8 @@ import java.util.Optional;
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -21,8 +23,15 @@ import com.iSpanProject.GoodByeletter.service.Lillian.MemberDetailService;
 
 @Service
 @SessionAttributes("existing")
+@PropertySource("classpath:GoodByeLetter.properties")
 public class VerifyService {
-
+	
+	@Value("${GBL.extendVerifyMonth}")
+	private Integer extendVerifyMonth;
+	
+	@Value("${GBL.beforeDay}")
+	private Integer beforeDay;
+	
 	@Autowired
 	private LastNoteDao lDao;
 
@@ -41,7 +50,7 @@ public class VerifyService {
 			Date today = new Date();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(today);
-			calendar.add(Calendar.MONTH, 6);
+			calendar.add(Calendar.MONTH, extendVerifyMonth);
 			Date newDate = calendar.getTime();
 			ln.setVerifyTime(newDate);
 			lDao.save(ln);
@@ -62,7 +71,7 @@ public class VerifyService {
 			LocalDate dbDate = verifyTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 			// 如果驗證日期比今天日期慢兩天，就寄信
-			if (dbDate.isBefore(today.minusDays(2))) {
+			if (dbDate.isBefore(today.minusDays(beforeDay))) {
 				lastNote.setEnabled(true);
 				lDao.save(lastNote);
 				String recipientEmail = lastNote.getRecipientEmail();
@@ -83,8 +92,12 @@ public class VerifyService {
 	// 每日檢查會啟動的功能1:撈出資料庫內是否有驗證日為今日的遺書，有的話寄出驗證信。
 	public void checkLocalDateWithVerifyDateAndSendVerifyEmail() {
 		LocalDate today = LocalDate.now();
+		System.out.println("===印出today格式==="+today);
 		List<LastNote> verifyLetter = lDao.findLastNoteVerifyTimeQuery(today);
 		if (verifyLetter != null) {
+			
+			System.out.println("===即將開始寄信流程===");
+			
 			for (LastNote lastNote : verifyLetter) {
 				Register member = lastNote.getFK_memberId();
 				String subject = "請驗證您在GoodBye Letter的信件";
@@ -94,6 +107,8 @@ public class VerifyService {
 				Integer memberId = member.getMemberId();
 				MemberDetail memberDetail = mds.findById(memberId);
 				String email = memberDetail.getEmail();
+				System.out.println("===即將寄信到"+ email + "===");
+
 				// 在for迴圈中開始寄信
 				try {
 					sendMail.sendEmail(email, subject, mailContent);

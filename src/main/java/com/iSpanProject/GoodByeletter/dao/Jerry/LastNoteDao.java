@@ -12,7 +12,7 @@ import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 public interface LastNoteDao extends JpaRepository<LastNote, Integer> {
 //	原生查詢語法，找到遺書資料表內所有驗證日為當日的資料
-	@Query(value = "select * from LastNote WHERE verifyTime = :a",nativeQuery = true)
+	@Query(value = "select * from LastNote WHERE verifyTime LIKE %:a%",nativeQuery = true)
 	public List<LastNote> findLastNoteVerifyTimeQuery(@Param("a") LocalDate date);
 
 	public LastNote findByverificationCode(String token);	
