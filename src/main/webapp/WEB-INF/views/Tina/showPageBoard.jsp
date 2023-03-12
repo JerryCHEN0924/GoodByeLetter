@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>showPageBoard</title>
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -18,7 +19,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
-
+<!-- 不知道為何, 我跟易潔的jsp引入mymain有問題 -->
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 </head>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>

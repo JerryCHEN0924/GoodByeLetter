@@ -25,7 +25,8 @@
 
 <body>
 
-<%@ include file="layout/mynav.jsp"%>
+<%-- <%@ include file="layout/mynav.jsp"%> --%>
+<%@ include file="layout/oldmynav.jsp"%>
 
 
 	<div id="outline">

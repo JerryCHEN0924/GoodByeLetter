@@ -24,7 +24,7 @@
 </script>
 
 <title>company login</title>
-
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 <style>
 	a {
 		margin: 10px auto 0px auto;
