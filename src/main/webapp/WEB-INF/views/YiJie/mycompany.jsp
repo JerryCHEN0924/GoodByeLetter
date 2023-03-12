@@ -38,19 +38,17 @@
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
 				<form id="register_form" action="${contextRoot}/customer" method="post">
-					<!--                     	<input name="_method" value="put" /> -->
-
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="account"
+							<input required type="text" class="form-control" id="account"
 								name="account">
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="password"
+							<input required type="password" class="form-control" id="password"
 								name="password">
 						</div>
 					</div>
@@ -58,7 +56,7 @@
 					<div class="mb-6 row">
 						<label for="verificationCode" class="col-sm-2 col-form-label">驗證碼</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="rCode"
+							<input required type="text" class="form-control" id="rCode"
 								name="rCode">
 						</div>
 					</div>

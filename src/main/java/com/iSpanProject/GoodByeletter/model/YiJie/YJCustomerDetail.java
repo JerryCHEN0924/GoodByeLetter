@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
-
 @Entity
 @Table(name = "companydetail")
 public class YJCustomerDetail {

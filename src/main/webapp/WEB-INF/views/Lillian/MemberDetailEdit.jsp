@@ -38,49 +38,49 @@
 								<div id="memberDetailEdit">編輯會員資料</div>
 								<form:form id="memberDetailEdit_form"
 									action="${contextRoot}/memberDetail/putMemberDetail" modelAttribute="memberDetails"
-									method="put">							
+									method="put">
 									<form:input type="hidden" path="id" />
-						
+
 									<div class="mb-3 row">
 										<label for="name" class="col-sm-2 col-form-label">名字</label>
 										<div class="col-sm-10">
-											<form:input required type="text" path="name" class="form-control" id="name"
- 												name="name" value="${memberDetails.name}" />
+											<form:input type="text" path="name" class="form-control" id="name"
+												name="name" value="${memberDetails.name}" />
 										</div>
-									</div>		
-									
+									</div>
+
 									<div class="mb-3 row">
 										<label for="gender" class="col-sm-2 col-form-label">性別</label>
 										<div class="col-sm-10">
 											<div class="form-check form-check-inline ">
 												<input type="hidden" id="genderR" value="${memberDetails.gender}" />
 												<form:radiobutton path="gender" class="form-check-input" name="gender"
- 													id="maleRadio" value="${memberDetails.gender}" />
+													id="maleRadio" value="${memberDetails.gender}" />
 												<label class="form-check-label" for="maleRadio"> 男性 </label>
 											</div>
 											<div class="form-check form-check-inline ">
 												<form:radiobutton path="gender" class="form-check-input" name="gender"
- 													id="femaleRadio" value="${memberDetails.gender}" />
+													id="femaleRadio" value="${memberDetails.gender}" />
 												<label class="form-check-label" for="femaleRadio"> 女性 </label>
 											</div>
 											<div class="form-check form-check-inline ">
 												<form:radiobutton path="gender" class="form-check-input" name="gender"
- 													id="nonbinaryRadio" value="${memberDetails.gender}" />
+													id="nonbinaryRadio" value="${memberDetails.gender}" />
 												<label class="form-check-label" for="nonbinaryRadio"> 中性
- 												</label>
- 											</div>
- 											<div class="form-check form-check-inline ">
+												</label>
+											</div>
+											<div class="form-check form-check-inline ">
 												<form:radiobutton path="gender" class="form-check-input" name="gender"
- 													id="secretRadio" value="${memberDetails.gender}" />
+													id="secretRadio" value="${memberDetails.gender}" />
 												<label class="form-check-label" for="secretRadio"> 保密 </label>
- 											</div>
- 										</div>
- 									</div>
+											</div>
+										</div>
+									</div>
 
 									<div class="mb-3 row">
 										<label for="birthday" class="col-sm-2 col-form-label">生日</label>
 										<div class="col-sm-10">
-											<form:input required type="date" path="birthday" class="form-control" id="birthday"
+											<form:input type="date" path="birthday" class="form-control" id="birthday"
 												name="birthday" value="${memberDetails.birthday}" />
 										</div>
 									</div>
@@ -88,7 +88,7 @@
 									<div class="mb-3 row">
 										<label for="email" class="col-sm-2 col-form-label">Email</label>
 										<div class="col-sm-10">
-											<form:input required type="email" path="email" class="form-control" id="email"
+											<form:input type="email" path="email" class="form-control" id="email"
 												name="email" value="${memberDetails.email}" />
 										</div>
 									</div>
@@ -101,30 +101,30 @@
 												<form:option value="TaipeiC">臺北市</form:option>
 												<form:option value="newTaipeiC">新北市</form:option>
 												<form:option value="taoyuanC">桃園市</form:option>
- 												<form:option value="taichungC">臺中市</form:option>
+												<form:option value="taichungC">臺中市</form:option>
 												<form:option value="tainanC">臺南市</form:option>
 												<form:option value="kaohsiungC">高雄市</form:option>
 												<form:option value="keelungC">基隆市</form:option>
- 												<form:option value="hsinchuC">新竹市</form:option>
- 												<form:option value="chiayiC">嘉義市</form:option>
+												<form:option value="hsinchuC">新竹市</form:option>
+												<form:option value="chiayiC">嘉義市</form:option>
 												<form:option value="yilanT">宜蘭縣</form:option>
 												<form:option value="hsinchuT">新竹縣</form:option>
- 												<form:option value="miaoliT">苗栗縣</form:option>
- 												<form:option value="changhuaT">彰化縣</form:option>
- 												<form:option value="nantouT">南投縣</form:option>
- 												<form:option value="yunlinT">雲林縣</form:option>
- 												<form:option value="chiayiT">嘉義縣</form:option>
+												<form:option value="miaoliT">苗栗縣</form:option>
+												<form:option value="changhuaT">彰化縣</form:option>
+												<form:option value="nantouT">南投縣</form:option>
+												<form:option value="yunlinT">雲林縣</form:option>
+												<form:option value="chiayiT">嘉義縣</form:option>
 												<form:option value="pingtungT">屏東縣</form:option>
- 												<form:option value="hualienT">花蓮縣</form:option>
- 												<form:option value="taitungT">台東縣</form:option>
- 												<form:option value="penghuT">澎湖縣</form:option>
- 											</form:select>
-										</div>			
+												<form:option value="hualienT">花蓮縣</form:option>
+												<form:option value="taitungT">台東縣</form:option>
+												<form:option value="penghuT">澎湖縣</form:option>
+											</form:select>
 										</div>
 										<div class="col-sm-8">
-											<input type="text" required path="address" class="form-control" id="address"
+											<input type="text" path="address" class="form-control" id="address"
 												name="address" value="${memberDetails.address}" placeholder="完整地址" />
 										</div>
+									</div>
 									<button type="submit">送出</button>
 								</form:form>
 							</div>

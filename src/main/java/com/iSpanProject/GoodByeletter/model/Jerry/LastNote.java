@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.model.Jerry;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -60,7 +61,7 @@ public class LastNote implements Serializable {
 	@Column(name="verify2Email")
 	private String verify2;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@JsonFormat(pattern = "yyyy/MM/dd", timezone = "GMT+8")
 	@Column(name="verifyTime")
@@ -84,6 +85,7 @@ public class LastNote implements Serializable {
 		
 		if(verifyTime == null) {
 			verifyTime = new Date();
+//			此功能為存入遺囑時就將驗證日設定為一個月後。
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(verifyTime);
 			cal.add(Calendar.MONTH, 1);
