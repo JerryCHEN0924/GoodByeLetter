@@ -8,13 +8,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 public interface LastNoteDao extends JpaRepository<LastNote, Integer> {
-//	原生查詢語法
-	@Query(value = "select * from LastNote WHERE verifyTime = :a",nativeQuery = true)
+//	原生查詢語法，找到遺書資料表內所有驗證日為當日的資料
+	@Query(value = "select * from LastNote WHERE verifyTime LIKE %:a%",nativeQuery = true)
 	public List<LastNote> findLastNoteVerifyTimeQuery(@Param("a") LocalDate date);
 
-//	@Query(value="from LastNote where verifyTime = :v")
-//    public List<LastNote> findLastNoteVerifyTimeQuery(@Param("v") Date date);
+	public LastNote findByverificationCode(String token);	
+	
+	public boolean existsByverificationCode(String token);
+	
+	@Query(value = "select * from LastNote WHERE FK_memberId = :f",nativeQuery = true)
+	public List<LastNote> findLastNoteBymemberId(@Param("f") Register r);
+	
+	
 	
 }

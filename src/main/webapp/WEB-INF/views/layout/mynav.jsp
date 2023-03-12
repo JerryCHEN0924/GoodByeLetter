@@ -1,74 +1,108 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-			<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-				<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-				<!DOCTYPE html>
-				<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html>
 
-				<head>
+<head>
+<style>
+.navigation {
+	position: fixed;
+	width: 100%;
+	/* width: 800px; */
+	height: 130px;
+	display: flex;	
+	align-items: center;
+	background: transparent;
+	/* border-radius: 10px; */
+	z-index: 200;
+}
 
-					<link rel="stylesheet" href="<c:url value='/assets/css/mymain.css' />" />
-					<style>
-						.narbar_background_color {
-							background-color: #ecb21f;
-							opacity: 0.9;
-							/* rgb(240, 225, 173); */
-							/* background-color: transparent;*/
-						}
+.navigation ul {
+	position: relative;
+	display: flex;
+	width: 100%;
+	
+}
 
-						.login_form_class {
-							display: none;
-							position: fixed;
-							background-color: rgb(250, 235, 215, 0.8);
-							top: 0;
-							left: 0;
-							bottom: 0;
-							right: 0;
-							width: 40%;
-							height: 60%;
-							margin: auto;
-							justify-content: center;
-							align-items: center;
-							flex-direction: column;
-							font-size: 20px;
-							z-index: 200;
-						}
+.navigation ul .list {
+	position: relative;
+	justify-content: center;
+	list-style: none;
+	width: 120px;
+	height: 140px;
+	z-index: 1;
+/* 	background:blue; */
+}
 
-						.login_show {
-							display: flex;
-						}
+.navigation ul .list .list_a {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	text-align: center;
+	font-weight: 500;
+}
 
-						#login_submit {
-							/* display: flex;
-            justify-content: center;
-            align-items: center; */
-							margin: 0 auto;
-							height: 40px;
-							border-radius: 10px;
-						}
+.navigation ul .list .list_a .icon {
+	position: relative;
+	display: block;
+	font-size: 2em;
+	line-height: 150px;
+	transition: 0.5s;
+	/* color: rgba(103, 103, 103, 0.5); */
+	color: rgba(114, 176, 176, 0.5);
+}
 
-						/* #login_h6 {
-            text-align: center;
-            margin: auto;
-        } */
-						a {
-							margin: 10px auto 0px auto;
-							font-size: 15px;
-						}
-					</style>
+.navigation ul .list.active a .icon {
+	transform: translateY(-16px);
+	color: #f9d423;
+}
 
-				</head>
+.navigation ul .list .list_a .text {
+	position: absolute;
+	/* font-weight: 0.5em; */
+	font-size: 1.2em;
+	font-weight: bold;
+	/* color: #fff; */
+	color: #140101;
+	transition: 0.5s;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	transform: translateY(0px);
+}
 
-				<body>
+.navigation ul .list.active .list_a .text {
+	transform: translateY(24px);
+	opacity: 1;
+}
 
-					<div id="mynavbar"></div>
+.indicator {
+	position: absolute;
+	width: 120px;
+	height: 140px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.5s;
+}
 
-					<!--Nav Bootstrap-->
-					<nav class="navbar .navbar-fixed-top navbar-expand-xl narbar_background_color" id="nav">
-						<div class="container-fluid">
-							<a class="navbar-brand narbar_text_color" href="#">OurBrand</a>
+.indicator::before {
+	content: "";
+	position: absolute;
+	bottom: 26px;
+	width: 90%;
+	height: 28px;
+	background: #f9d423;
+	border-radius: 10px;
+}
 
+<<<<<<< HEAD
 							<div class="collapse navbar-collapse show" id="navbarWithDropdown">
 								<ul class="navbar-nav">
 									<li class="nav-item"><a class="nav-link active narbar_text_color"
@@ -102,91 +136,231 @@
 												</a></li>
 										</ul>
 									</li>
+=======
+.navigation ul li:nth-child(2).active ~.indicator {
+	transform: translateX(calc(120px * 1));
+}
 
-									<li class="nav-item dropdown "><a class="nav-link dropdown-toggle narbar_text_color"
-											href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-											aria-expanded="false"> 合作夥伴 </a>
-										<ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
-											id="dropdown-menu_company">
-											<li><a class="dropdown-item narbar_text_color"
-													href="<c:url value='/customer/add' />">廣告商註冊</a></li>
-											<li><a class="dropdown-item narbar_text_color"
-													href="<c:url value='/customer/page' />">廣告商登入</a></li>
-											<li><a class="dropdown-item narbar_text_color disabled" href="#">XXX</a>
-											</li>
-											<li><a class="dropdown-item narbar_text_color disabled" href="#">XXX</a>
-											</li>
-										</ul>
-									</li>
+.navigation ul li:nth-child(3).active ~.indicator {
+	transform: translateX(calc(120px * 2));
+}
+>>>>>>> 1434ff3d82c08a5903cd2601647a88b0bfc7a07e
+
+.navigation ul li:nth-child(4).active ~.indicator {
+	transform: translateX(calc(120px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~.indicator {
+	transform: translateX(calc(120px * 4));
+}
+
+.navigation ul li:nth-child(6).active ~.indicator {
+	transform: translateX(calc(120px * 5));
+}
+
+ion-icon {
+	font-size: 2em;
+}
+
+.div_dropdown {
+	width: 120px;
+	position: absolute;
+	/* display: none; */
+	box-shadow: 0 0 10px 0px rgba(102, 136, 164, 0.5);
+	/* border: 3px solid rgb(52, 52, 52); */
+	border-radius: 5px;
+	top: 120px;
+	left: 6px;
+	visibility: hidden;
+	opacity: 0;
+	transform: 0.25s;
+	position: absolute;
+	background: #fff;
+}
+
+.div_dropdown.active {
+	visibility: visible;
+	opacity: 1;
+}
+
+/* dropdown */
+.dropdown {
+	margin: 0px;
+	padding: 0px;
+	flex-direction: column;
+	list-style: none;
+	/* border: 3px solid indianred; */
+	/* border: 2px solid #cfcccc; */
+	border-radius: 5px;
+}
+
+.dropdown li {
+	display: flex;
+	justify-content: center;
+	border-bottom: 3px solid rgba(114, 176, 176, 0.3);
+	/* border-bottom: 2px solid #cfcccc; */
+}
+
+.dropdown li:last-child {
+	border: none;
+}
+
+.dropdown li:hover {
+	background-color: #f9d423;
+}
+
+.dropdown a {
+	/* border: 3px lawngreen solid; */
+	color: #140101;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+	text-decoration: none;
+	margin: 2px 0px;
+}
+
+.dropdown a:hover {
+	font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+	<!--Nav Bootstrap-->
+	<div class="navigation">
+		<ul>
+			<li class="list active"><a href="${contextRoot}" class="list_a">
+					<span class="icon"><ion-icon name="planet-outline"></ion-icon></span>
+					<span class="text">首頁</span>
+			</a></li>
+
+			<li class="list"><a href="#" class="list_a"> <span
+					class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+					<span class="text">會員</span>
+			</a>
+				<div class="div_dropdown ">
+					<!-- 				style="width: 120px;" -->
+					<ul class="dropdown">
+						<c:choose>
+							<c:when test="${existing.memberId != null}">
+								<li><a href="<c:url value='/register/logout' />">
+										${existing.account}登出 </a></li>
+								<li><a
+									href="<c:url value='/register/edit?memberId=${existing.memberId}' />">編輯帳號</a>
+								<li><a
+									href="<c:url value='/memberDetail/edit?memberId=${existing.memberId}' />">編輯會員資料</a>
+									<%-- memberDetail/edit?memberId=${existing.memberId} --%></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="<c:url value='/login1' />"> 登入 </a></li>
+								<li><a href="<c:url value='/register1' />"> 註冊 </a></li>
+							</c:otherwise>
+						</c:choose>
+						<li><a href="mySpace.html"> 個人空間 </a></li>
+					</ul>
+				</div></li>
+
+			<li class="list"><a href="#" class="list_a"> <span
+					class="icon"><ion-icon name="people-outline"></ion-icon></span> <span
+					class="text">合作夥伴</span>
+			</a>
+				<div class="div_dropdown">
+					<ul class="dropdown">
+						<li><a href="<c:url value='/customer/add' />">廣告商註冊</a></li>
+						<li><a href="<c:url value='/customer/page' />">廣告商登入</a></li>
+					</ul>
+				</div></li>
 
 
-									<li class="nav-item dropdown "><a class="nav-link dropdown-toggle narbar_text_color"
-											href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-											aria-expanded="false"> 留言板 </a>
-										<ul class="dropdown-menu  " aria-labelledby="navbarDropdownMenuLink"
-											id="dropdown-menu_login">
-											<li><a href="<c:url value='/board/page' />"
-													class="dropdown-item narbar_text_color">
-													查看留言 </a></li>
-											<li><a href="<c:url value='/board/add' />"
-													class="dropdown-item narbar_text_color">
-													增加留言 </a></li>
-											<li><a href="" class="dropdown-item narbar_text_color" href="mySpace.html">
-													個人空間
-												</a></li>
-										</ul>
-									</li>
+			<li class=" list "><a href=" #" class="list_a"> <span
+					class="icon"><ion-icon name="chatbox-ellipses-outline"></ion-icon></span>
+					<span class="text">交流區</span>
+			</a>
+				<div class="div_dropdown " id="div_dropdown">
+					<ul class="dropdown">
+						<li><a href="<c:url value='/board/page' />"> 查看留言 </a></li>
+						<li><a href="<c:url value='/board/add' />"> 增加留言 </a></li>
+					</ul>
+				</div></li>
 
-									<li class="nav-item  dropdown ">
-										<a class="nav-link dropdown-toggle narbar_text_color" href="#" tabindex="-1"
-											data-bs-toggle="dropdown" role="button" id="navbarDropdownMenuLink"
-											aria-disabled="false">GoodBye Letter</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
-											id="dropdown-menu_GL">
-											<li><a class="dropdown-item narbar_text_color"
-													href="<c:url value='/LastNote' />">撰寫</a></li>
-											<li><a class="dropdown-item narbar_text_color"
-													href="<c:url value='/LastNote/edit' />">編輯</a></li>
-											<li><a class="dropdown-item narbar_text_color  disabled" href="#">XXX</a>
-											</li>
-										</ul>
-									</li>
-									<li class="nav-item "><a class="nav-link narbar_text_color" href="#">Features</a>
-									</li>
-									<li class="nav-item "><a class="nav-link disabled narbar_text_color" href="#"
-											tabindex="-1" aria-disabled="true">Disabled</a></li>
-								</ul>
-							</div>
-						</div>
-					</nav>
-					<script>
+			<li class="list"><a href="#" class="list_a"> <span
+					class="icon"><ion-icon name="images-outline"></ion-icon></span> <span
+					class="text">Photos</span>
+			</a></li>
 
-						const nav = document.getElementById('nav');
-						const nav_login = document.getElementById("nav_login");
-						const login_form = document.getElementById("login_form");
-						const login_cencel = document.getElementById('login_cencel');
-						// 按下Navbar登入 顯示login_form
-						nav_login.addEventListener('click', function () {
-							login_form.classList.add('login_show');
-							console.log('顯示login_form')
-						})
-						// 關閉login_form
-						login_cencel.addEventListener('click', function () {
-							login_form.classList.remove('login_show');
-							console.log('移除login_form');
-						})
+			<li class="list"><a href="#" class="list_a"> <span
+					class="icon"><ion-icon name="mail-open-outline"></ion-icon></span>
+					<span class="text">寫信</span>
+			</a>
+				<div class="div_dropdown " id="div_dropdown">
+					<ul class="dropdown">
+						<li><a href="<c:url value='/LastNote' />">撰寫</a></li>
+						<li><a href="<c:url value='/LastNote/edit' />">編輯</a></li>
+					</ul>
+				</div></li>
 
-						//調整nav顏色
-						window.addEventListener('scroll', function () {
-							if (window.scrollY > 50) {
-								nav.classList.add('narbar_background_color');
 
-							} else {
-								nav.classList.remove('narbar_background_color');
 
-							}
-						});
-					</script>
-				</body>
+			<div class="indicator"></div>
+		</ul>
+	</div>
 
-				</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/jquery-3.6.4.min.js"></script>
+	<script type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+	<script>
+
+        // navbar
+        let list = document.querySelectorAll(".list");
+        function activeLink() {
+            list.forEach((item) => {
+                console.log(`click`);
+                return item.classList.remove("active")
+            });
+            this.classList.add("active");
+        }
+        list.forEach((item) =>
+            item.addEventListener("mouseover", activeLink));
+
+
+        //dropdown
+        list.forEach((item) => {
+            // const div_dropdown = .querySelectorAll(".div_dropdown");
+            item.addEventListener("mouseover", function () {
+                const div_dropdown = this.querySelector('.div_dropdown');
+                div_dropdown.classList.add("active");
+            })
+
+            item.addEventListener("mouseout", function () {
+                const div_dropdown = this.querySelector('.div_dropdown');
+                div_dropdown.classList.remove("active");
+            })
+        })
+		
+	</script>
+</body>
+
+</html>

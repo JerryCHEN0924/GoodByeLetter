@@ -12,7 +12,14 @@ public class PageController {
 	public String home() {	
 			return "index";
 	}
-
+	@GetMapping("/oldindex")
+	public String newhome() {
+		return "oldindex";
+	}
+@GetMapping("/newnav")
+public String newnav() {
+	return "layout/newmynav";
+}
 	@GetMapping("/myregister")
 	public String myregister() {
 		return "example/myregister";

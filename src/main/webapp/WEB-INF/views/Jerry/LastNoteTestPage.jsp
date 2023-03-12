@@ -40,7 +40,7 @@
 	<article id="myspace" class="wrapper style2">
 		<div class="container-fluid " id="register">
 			<div id="space">
-				<a class="btn btn-outline-primary" href="${contextRoot}/LastNote/sendVerificationEmail" role="button">寄信測試</a>
+				<a class="btn btn-outline-danger" href="" role="button">不要按</a>
 			</div>
 
 		</div>

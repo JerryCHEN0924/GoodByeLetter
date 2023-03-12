@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>圖片上傳</title>
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 </head>
 <body>
 
