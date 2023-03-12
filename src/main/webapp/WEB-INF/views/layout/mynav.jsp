@@ -86,9 +86,7 @@
 													<li><a class="dropdown-item narbar_text_color"
 															href="<c:url value='/register/edit?memberId=${existing.memberId}' />">編輯帳號</a>
 													<li><a class="dropdown-item narbar_text_color"
-															href="<c:url value='/memberDetail/edit?memberId=${existing.memberId}' />">編輯會員資料</a>
-														<%-- memberDetail/edit?memberId=${existing.memberId} --%>
-
+															href="<c:url value='/memberDetail/edit?memberId=${existing.memberId}' />">編輯會員資料</a>												
 													</li>
 												</c:when>
 												<c:otherwise>
