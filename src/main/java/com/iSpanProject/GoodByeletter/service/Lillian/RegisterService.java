@@ -34,10 +34,8 @@ public class RegisterService {
 		Level l1 = optional.get();
 		 // 設置 Register 對象的權限等級為 1
 		register.setFK_Plevel(l1);
-		
-		
+	
 		rDao.save(register);
-
 	}
 
 	public Register findRegisterById(Integer id) {
@@ -101,9 +99,5 @@ public class RegisterService {
         }
 		return register.get();
     }
-	
-	
-
-
 	
 }

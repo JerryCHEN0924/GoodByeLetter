@@ -54,8 +54,9 @@ public class YJCustomerDetail {
 	
 
 	//@JsonManagedReference //主要控管序列化方(由此方控管序列化註釋)
+	//@OneToMany(cascade = CascadeType.ALL, mappedBy = "picture", orphanRemoval = true)
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name="fk_companydetail_id")
+	@JoinColumn(name="fk_companydetail_id")//0311由fk_companydetail_id改名FK_ComDetailId-取消修改
 	private List<Picture> pictures = new ArrayList<>();
 	
 	public List<Picture> getPictures() {

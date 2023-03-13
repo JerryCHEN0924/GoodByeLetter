@@ -16,13 +16,6 @@
 <body>
 <%@ include file="../layout/mynav.jsp"%>
 
-<%-- <c:if test="${pageContext.request.userPrincipal != null}"> --%>
-<!--   <a href="/update">更新資料</a> -->
-<%-- </c:if> --%>
-<%-- <c:if test="${pageContext.request.userPrincipal == null}"> --%>
-<!--   <a href="/register">註冊</a> -->
-<%-- </c:if> --%>
-
         <!--login  login_form_class-->
         <article  class="wrapper style2" style="height:100vh">
         <div class="container-fluid" id="login_form">
@@ -30,6 +23,10 @@
             <form id="login" action="${contextRoot}/register/login" method="post">
                 <input type="text" required placeholder="您的帳號" maxlength="8" minlength="4" name="account"><br>
                 <input type="password" required placeholder="您的密碼" maxlength="8" minlength="4" name="password"><br>
+                <br>
+                <label>
+                <input type="checkbox" name="rememberMe" value="1">記住我
+                </label>
                 <br>
                 <button type="submit" id="login_submit">登入</button>
             </form>
