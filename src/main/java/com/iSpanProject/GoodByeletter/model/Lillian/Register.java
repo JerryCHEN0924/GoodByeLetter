@@ -88,8 +88,8 @@ public class Register {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FK_memberId", orphanRemoval = true)
 	private List<LastNote> lastnote = new ArrayList<>();
 	
-//	@Column(name = "enabled" , nullable = false )
-//	private boolean enabled;
+	@Column(name = "enabled" , nullable = false )
+	private boolean enabled;
 
 	// 阿戴:連到Board
 	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
@@ -148,14 +148,14 @@ public class Register {
 	
 
 
-//	public boolean isEnabled() {
-//		return enabled;
-//	}
-//
-//
-//	public void setEnabled(boolean enabled) {
-//		this.enabled = enabled;
-//	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 
 	public List<LastNote> getLastnote() {
