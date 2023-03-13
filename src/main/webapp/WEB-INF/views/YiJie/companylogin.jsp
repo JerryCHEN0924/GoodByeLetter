@@ -42,7 +42,7 @@
 			<div>
 				<ul>
 					<li>
-						<a class="" href="<c:url value='/Detail/page1'/>">填寫廠商詳細資料</a>
+						<a class="" href="<c:url value='/picture/page2'/>">上傳圖片頁面2</a>
 					</li>
 					<li>
 						<a class="" href="<c:url value='/picture/page1'/>">廣告圖片投放區</a>
