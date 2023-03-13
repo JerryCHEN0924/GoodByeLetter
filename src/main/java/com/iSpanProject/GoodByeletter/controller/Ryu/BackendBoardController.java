@@ -67,7 +67,7 @@ public class BackendBoardController {
 	@PostMapping("/topGun/board/post")
 	public String addNewRegisterPost(@ModelAttribute("board") Board board, Model model) {
 		
-		Register register = (Register) model.getAttribute("authenticated");
+		Register register = (Register) model.getAttribute("existing");
 //		Register register = (Register) model.getAttribute("existing");
 		
 		board.setRegister(register);

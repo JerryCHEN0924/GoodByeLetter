@@ -22,6 +22,7 @@
 						integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 						crossorigin="anonymous"></script>
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+					<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 					<style>
 					</style>
 				</head>
@@ -151,7 +152,7 @@
 					<script>
 						window.onload = function () {
 							var time = "${memberDetails.birthday}"
-							var timeBirthdate = moment(time, "ddd MMM DD HH:mm:ss zzz YYYY");
+							var timeBirthdate = moment(time, "YYYY-MM-DD");
 							var timeBirthdateFormat = timeBirthdate.format("YYYY-MM-DD");
 							console.log(timeBirthdateFormat)
 							var birthday = document.getElementById('birthday').valueAsDate = new Date(
@@ -175,6 +176,7 @@
 							//-------------------------------------------------
 							var countyS = document.querySelector('option[value=${memberDetails.county}]');
 							countyS.selected = true;
+							
 
 						}
 					</script>

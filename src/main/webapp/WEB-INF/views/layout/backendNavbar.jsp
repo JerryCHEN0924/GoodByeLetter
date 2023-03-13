@@ -2,9 +2,17 @@
     pageEncoding="UTF-8"%>
 
 
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+
 
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
+
+<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
 
 <!DOCTYPE html>
 <html>
@@ -38,18 +46,32 @@
   <div class="container-fluid">
   
   
-    <div>
-    	<c:choose>
-		    <c:when test="${not empty existing}">
+  	<div>
+	   	<c:choose>
+		    <c:when test="${not empty contextUser}">
 		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/">${existing.account} 登出</a>
+		        <a class="btn btn-outline-primary" type="button" href="<c:url value='/logout' />">${contextUser.authorities} ${contextUser.name} 登出</a>
 		    </c:when>
 		    <c:otherwise>
 		        <!-- member 物件不存在，顯示登入按鈕 -->
-		        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun">${existing.account} 登入</a>
+		        <a class="btn btn-outline-success" type="button" href="<c:url value='/login' />">${contextUser.authorities} ${contextUser.name} 登入</a>
 		    </c:otherwise>
 		</c:choose>
-    </div>
+	</div>
+  
+  
+<!--     <div> -->
+<%--     	<c:choose> --%>
+<%-- 		    <c:when test="${not empty existing}"> --%>
+<!-- 		        member 物件存在，顯示登出按鈕 -->
+<%-- 		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/">${existing.account} 登出</a> --%>
+<%-- 		    </c:when> --%>
+<%-- 		    <c:otherwise> --%>
+<!-- 		        member 物件不存在，顯示登入按鈕 -->
+<%-- 		        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun">${existing.account} 登入</a> --%>
+<%-- 		    </c:otherwise> --%>
+<%-- 		</c:choose> --%>
+<!--     </div> -->
   
     <a class="navbar-brand" href="${contextRoot}/topGun/backendHome">後臺管理介面</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">

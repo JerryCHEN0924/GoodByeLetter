@@ -77,7 +77,7 @@ public class BackendLastNoteController {
 		
 		System.out.println("bean==>" + lastNote);
 		
-		Register register = (Register) model.getAttribute("authenticated");
+		Register register = (Register) model.getAttribute("existing");
 		
 		lastNote.setFK_memberId(register);
 		
