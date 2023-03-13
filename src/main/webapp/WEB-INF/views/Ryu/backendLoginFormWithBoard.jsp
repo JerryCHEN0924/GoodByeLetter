@@ -71,7 +71,7 @@
   
   <div class="card-body">
   	
-	<form action="<c:url value='/topGun/register/LoginProcess' />" method='POST'>
+	<form action="<c:url value='/topGun/register/LoginProcessWithBoard' />" method='POST'>
   		
   		
   		<div class="mb-3 row">

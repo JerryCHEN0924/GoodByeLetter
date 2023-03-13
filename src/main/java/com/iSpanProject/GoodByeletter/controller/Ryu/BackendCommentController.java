@@ -21,7 +21,7 @@ import com.iSpanProject.GoodByeletter.service.Ryu.BackendBoardService;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendCommentService;
 
 @Controller
-@SessionAttributes({"authenticated"})
+@SessionAttributes({"authenticated", "existing"})
 public class BackendCommentController {
 	
 	
@@ -80,7 +80,7 @@ public class BackendCommentController {
 		Board board = backendBoardService.findBoardById(bid);
 		
 		
-		Register register = (Register) model.getAttribute("authenticated");
+		Register register = (Register) model.getAttribute("existing");
 		
 		comment.setRegister(register);
 		
