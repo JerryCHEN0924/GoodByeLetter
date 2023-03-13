@@ -50,6 +50,9 @@
 					<li>
 						<a class="" href="<c:url value='/Detail/page2'/>">更新廠商資料</a>
 					</li>
+					<li>
+						<a class="" href="<c:url value='/customer/logout'/>">登出</a>
+					</li>
 				</ul>
 				
 				

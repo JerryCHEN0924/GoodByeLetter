@@ -136,8 +136,8 @@ public class YJCustomerController {
 						   Model model) {
 		
 		Register exis = customerService.findByAccAndPass(acc, pass);
-		
 		model.addAttribute("register", exis);
+		//model.addAttribute("exis", exis);
 		
 		String acc1 = exis.getAccount();
 		String pwd = exis.getPassword();
@@ -163,11 +163,11 @@ public class YJCustomerController {
 		return "example/mycompany";
 	}
 	//登出
-//		@GetMapping("/register/logout")
-//		public String logoutRegister(HttpSession session) {
-//			session.invalidate();
-//			return "redirect:/";
-//		}
+		@GetMapping("/customer/logout")
+		public String logout(HttpSession session) {
+			session.invalidate();
+			return "redirect:/";
+		}
 //////////////////////////////////////////////////////////////////////	
 //
 //	@ResponseBody
