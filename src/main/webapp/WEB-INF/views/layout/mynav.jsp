@@ -262,8 +262,16 @@
 								</a>
 								<div class="div_dropdown">
 									<ul class="dropdown">
-										<li><a href="<c:url value='/customer/add' />">廣告商註冊</a></li>
-										<li><a href="<c:url value='/customer/page' />">廣告商登入</a></li>
+										<c:choose>
+											<c:when test="${exis.memberId != null}">
+												<li><a href="<c:url value='/customer/logout'/>">${exis.account}登出</a></li>
+												<li><a href="<c:url value='/customer/home/page'/>">${exis.account} Home</a></li>	
+											</c:when>
+											<c:otherwise>
+												<li><a href="<c:url value='/customer/add/page' />">廣告商註冊</a></li>
+												<li><a href="<c:url value='/customer/login/page' />">廣告商登入</a></li>
+											</c:otherwise>
+										</c:choose>
 									</ul>
 								</div>
 							</li>

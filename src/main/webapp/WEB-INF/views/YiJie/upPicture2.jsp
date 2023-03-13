@@ -31,7 +31,7 @@
     <article id="" class="wrapper style2">
   <div class="container-fluid">
     <div class="container">
-      <h1>上傳圖片頁面2</h1>
+      <h1>上傳圖片頁面2(資料夾)</h1>
       <br>
       <form id="picture2-form" method="post" enctype="multipart/form-data">
         <div>
@@ -58,7 +58,7 @@
     reader.onload = function(){
       let formData = new FormData();
       formData.append('file', picture);
-      axios.post(`${contextRoot}/picture/upload`, formData)
+      axios.post(`${contextRoot}/customer/picture/upload`, formData)
       .then(res => {
         console.log(res);
         let reBlock = document.getElementById('upload_result');

@@ -36,43 +36,8 @@ public class YJCustomerDetailController {
 	@Autowired
 	private YJCustomerDetailService detailService;
 	
-	//去填寫會員詳細資料頁面
-	@GetMapping("/Detail/page1")
-	public String DetailPage() {		
-		return "YiJie/customerDetail";
-	}
-	
-	//填寫會員詳細資料
-	@PostMapping("/customerDetail")
-	public String addDetail(@RequestParam(value="name") String name,
-							@RequestParam(value="type") String type,
-							@RequestParam(value="email") String email,
-							@RequestParam(value="address") String address,
-							@RequestParam(value = "memberId") Integer id,
-							//@RequestParam(value="picPath") String picPath,
-							//@RequestParam(value="picValue") String picValue,
-							Model model) {
-		
-		YJCustomerDetail detail1 = new YJCustomerDetail();
-		detail1.setName(name);
-		detail1.setType(type);
-		detail1.setEmail(email);
-		detail1.setAddress(address);
-		
-		////抓member表單的id來存，需要加車車
-		Register reg = memberService.findById(id);
-		detail1.setFK_memberId(reg);
-		
-		detailService.insert(detail1);
-		Map<String, String> msg = new HashMap<String, String>();
-		model.addAttribute("msg", msg);
-		msg.put("success", "資料填寫成功!");
-		return "redirect:/";
-	}
-	
-	//////////////////////////////////////
 	//去廠商功能主頁面
-	@GetMapping("customerDetail/detailpage")
+	@GetMapping("/customer/home/page")
 	public String DetailPage2() {		
 		return "YiJie/companylogin";
 	}
@@ -83,23 +48,23 @@ public class YJCustomerDetailController {
 //		return "YiJie/detail";
 //	}
 	
-	//編輯會員資料
-		@GetMapping("/Detail/page2")
-		public String editDetailPage(HttpSession session,
-				Model model) throws ParseException {// model儲存送過去
-			Register reg = (Register)session.getAttribute("exis");
-			Integer memberId=reg.getpId();
-			YJCustomerDetail detail = detailService.findByMemberId(memberId);
-			if(detail == null) {
-				YJCustomerDetail dt = new YJCustomerDetail();
-				model.addAttribute("customerDetail", dt);
-				return "YiJie/detail";
-			}model.addAttribute("customerDetail", detail);
-			return "YiJie/detail";
-
-		}
 	//更新廠商資料
-	@PostMapping("/customerDetail/putDetail")
+	@GetMapping("/customer/detail/page")
+	public String editDetailPage(HttpSession session,
+			Model model) throws ParseException {// model儲存送過去
+		Register reg = (Register)session.getAttribute("exis");
+		Integer memberId=reg.getpId();
+		YJCustomerDetail detail = detailService.findByMemberId(memberId);
+		if(detail == null) {
+			YJCustomerDetail dt = new YJCustomerDetail();
+			model.addAttribute("customerDetail", dt);
+			return "YiJie/detail";
+		}model.addAttribute("customerDetail", detail);
+		return "YiJie/detail";
+
+	}
+	//更新廠商資料
+	@PostMapping("/customer/detail/putDetail")
 	public String updDetail(@ModelAttribute("customerDetail") YJCustomerDetail detail,
 							HttpSession session,
 							Model model) {
@@ -115,6 +80,41 @@ public class YJCustomerDetailController {
 	}
 	/////////////////////////////////////
 	
+//	//去填寫會員詳細資料頁面
+//	@GetMapping("/Detail/page1")
+//	public String DetailPage() {		
+//		return "YiJie/customerDetail";
+//	}
+//	
+//	//填寫會員詳細資料
+//	@PostMapping("/customerDetail")
+//	public String addDetail(@RequestParam(value="name") String name,
+//							@RequestParam(value="type") String type,
+//							@RequestParam(value="email") String email,
+//							@RequestParam(value="address") String address,
+//							@RequestParam(value = "memberId") Integer id,
+//							//@RequestParam(value="picPath") String picPath,
+//							//@RequestParam(value="picValue") String picValue,
+//							Model model) {
+//		
+//		YJCustomerDetail detail1 = new YJCustomerDetail();
+//		detail1.setName(name);
+//		detail1.setType(type);
+//		detail1.setEmail(email);
+//		detail1.setAddress(address);
+//		
+//		////抓member表單的id來存，需要加車車
+//		Register reg = memberService.findById(id);
+//		detail1.setFK_memberId(reg);
+//		
+//		detailService.insert(detail1);
+//		Map<String, String> msg = new HashMap<String, String>();
+//		model.addAttribute("msg", msg);
+//		msg.put("success", "資料填寫成功!");
+//		return "redirect:/";
+//	}
+	
+	//////////////////////////////////////
 //	@PostMapping("/customerDetail/addPicture")
 //	public String addPic(@RequestParam(value="picPath") String picPath,
 //						 @RequestParam(value="picValue") String picValue,

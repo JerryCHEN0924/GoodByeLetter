@@ -35,13 +35,13 @@ public class YJCustomerController {
 	
 	private static final String Code = "123";//預設驗證碼
 ///////////////////////////////////////////////////////////////	
-	//註冊
-	@GetMapping("/customer/add")
+	//註冊(禁制註冊重複帳號、並加入驗證錯誤訊息
+	@GetMapping("/customer/add/page")
 	public String registerCusPage() {
 		return "YiJie/mycompany";
 	}
 	
-	@PostMapping("/customer")
+	@PostMapping("/customer/add")
 	public String registerCus(
 							  @RequestParam(value = "account") String acc,
 							  @RequestParam(value = "password") String pass,
@@ -49,35 +49,70 @@ public class YJCustomerController {
 							  //HttpSession session,
 						      Model model) { 
 		
+		Register reg = customerService.findByAccAndPass(acc, pass);
+		if(reg != null) {
+			model.addAttribute("errorMessage", "該帳號已經存在");
+			return "YiJie/mycompany";
+		}
 		if(Code.equals(rCode)) {
 			Register cus1 = new Register();
 			cus1.setAccount(acc);
 			cus1.setPassword(pass);
 		
 			customerService.insert(cus1);
-			///////////
 			//加上車車來載memberId
-			Register reg = customerService.findByAccAndPass(acc, pass);
-			Integer memberId = reg.getMemberId();
+			Register reg1 = customerService.findByAccAndPass(acc, pass);
+			Integer memberId = reg1.getMemberId();
 			model.addAttribute("memberId", memberId);
 			
 			YJCustomerDetail detail1 = new YJCustomerDetail();
 			Register reg2 = customerService.findById(memberId);
 			detail1.setFK_memberId(reg2);
 			detailService.insert(detail1);
-			////////////
 			
-			Map<String, String> msg = new HashMap<String, String>();
-			model.addAttribute("msg", msg);
-			msg.put("success", "會員註冊成功!");
 			return "redirect:/";
 		}else {
-			return "/customer/registeradd";
+			model.addAttribute("errorMessage", "驗證碼輸入錯誤");
+			return "YiJie/mycompany";
 		}
+	}
+	
+	//登入
+	@GetMapping("/customer/login/page")
+	public String loginCus1Page1() {
+		return "YiJie/cuslogin";
+	}
+	@PostMapping("/customer/login")
+	public String loginCus(@RequestParam(value="account") String acc, 
+			@RequestParam(value="password") String pass, 
+			HttpSession session,
+			Model model) {
+		
+		Register exis = customerService.findByAccAndPass(acc, pass);
+		model.addAttribute("register", exis);
+		//model.addAttribute("exis", exis);
+		
+		String acc1 = exis.getAccount();
+		String pwd = exis.getPassword();
+		
+		if (acc.equals(acc1) && pass.equals(pwd)) {
+			session.setAttribute("exis", exis);
+			
+			return "YiJie/companylogin";
+		} else {
+			return "redirect:/";
+		}
+	}
+	
+	//登出
+	@GetMapping("/customer/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	/////####################  input check  ################################//////
 	
-	@PostMapping("/customer/registeradd2")
+	@PostMapping("/customer/add2")
 	public String registerCus2(@ModelAttribute("inputCheck") Register reg,
 								@RequestParam("rCode") String rCode,
 								Model model) {
@@ -122,52 +157,18 @@ public class YJCustomerController {
 	
 	
 	/////####################  input check  ################################//////
-	
-	@GetMapping("/customer/page")
-	public String loginCus1Page1() {
-		return "YiJie/cuslogin";
-	}
-	
-	//登入
-	@PostMapping("/customer/login")
-	public String loginCus(@RequestParam(value="account") String acc, 
-						   @RequestParam(value="password") String pass, 
-						   HttpSession session,
-						   Model model) {
-		
-		Register exis = customerService.findByAccAndPass(acc, pass);
-		model.addAttribute("register", exis);
-		//model.addAttribute("exis", exis);
-		
-		String acc1 = exis.getAccount();
-		String pwd = exis.getPassword();
-			
-		if (acc.equals(acc1) && pass.equals(pwd)) {
-			session.setAttribute("exis", exis);
-			
-			return "YiJie/companylogin";
-		} else {
-			return "redirect:/gologin";
-		}
-	}
 
-	//////////////////////////////////////////
-	//
-	@GetMapping("/gologin")
-	public String loginCus1Page() {
-		return "YiJie/companylogin";
-	}
-	
-	@GetMapping("/example/company")
-	public String mycompanyPage() {
-		return "example/mycompany";
-	}
-	//登出
-		@GetMapping("/customer/logout")
-		public String logout(HttpSession session) {
-			session.invalidate();
-			return "redirect:/";
-		}
+/////////////////////////////////////////////////////////////////////0313
+//	//
+//	@GetMapping("/gologin")
+//	public String loginCus1Page() {
+//		return "YiJie/companylogin";
+//	}
+//	
+//	@GetMapping("/example/company")
+//	public String mycompanyPage() {
+//		return "example/mycompany";
+//	}
 //////////////////////////////////////////////////////////////////////	
 //
 //	@ResponseBody
