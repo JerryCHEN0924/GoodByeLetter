@@ -30,7 +30,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
-import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 
 @Entity
 @Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = {"account"})})
