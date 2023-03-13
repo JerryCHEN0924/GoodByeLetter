@@ -7,15 +7,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PageController {
-	
+
 	@GetMapping("/")
-	public String home(@RequestParam(name="code", required = false) String code, Model model) {
-		if(code==null)
+	public String home() {	
 			return "index";
-		else {
-			model.addAttribute("code",code);
-			return "Lillian/resetPwd";
-		}
 	}
 	@GetMapping("/oldindex")
 	public String newhome() {

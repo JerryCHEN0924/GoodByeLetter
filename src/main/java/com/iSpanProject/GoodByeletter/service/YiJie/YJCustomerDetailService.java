@@ -56,10 +56,10 @@ public class YJCustomerDetailService {
 		}
 		return op.get();		
 	}
-	//多的
+	
 	public YJCustomerDetail findByMemberId(Integer memberId) {
-		YJCustomerDetail findByMemberId = cdDao.findDetailByMemberId(memberId);
-		return findByMemberId;
+		YJCustomerDetail detail = cdDao.findDetailByMemberId(memberId);
+		return detail;
 	}
 //	public YJCustomerDetail findDetailIdByAcc(String acc) {
 //		Register acc1 = cusDao.findRegisterByAcc(acc);
