@@ -33,10 +33,10 @@ public class Daily {
 		System.out.println("=====================");
 		
 //		這個service會執行透過驗證日到期找遺囑並執行寄出驗證信功能
-		vs.checkLocalDateWithVerifyDateAndSendVerifyEmail();
+//		vs.checkLocalDateWithVerifyDateAndSendVerifyEmail();
 		
 //		這個service會執行驗證日超過2天，就將遺囑寄出功能
-		vs.sendUserGoodByeLetter();
+//		vs.sendUserGoodByeLetter();
 	}
 
 

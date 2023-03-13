@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>遺書頁面</title>
-<link rel="stylesheet" href="assets/css/mymain.css" />
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
