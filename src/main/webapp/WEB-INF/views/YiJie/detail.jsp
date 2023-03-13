@@ -88,8 +88,8 @@
                                 value="${customerDetail.address}" path="address" placeholder="請填入地址" /> 
 						</div>
 					</div>
-					<button type="submit">註冊會員</button>
-					<a href="/picture/page1"></a>
+					<button type="submit">送出</button>
+					<a href="/picture/page1">返回</a>
 				</form:form>
 			</div>
 		</div>
