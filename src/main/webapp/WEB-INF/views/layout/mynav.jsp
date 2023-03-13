@@ -14,7 +14,7 @@
 	width: 100%;
 	/* width: 800px; */
 	height: 130px;
-	display: flex;	
+	display: flex;
 	align-items: center;
 	background: transparent;
 	/* border-radius: 10px; */
@@ -25,7 +25,9 @@
 	position: relative;
 	display: flex;
 	width: 100%;
-	
+	/* 	background:red;  */
+	/* 調整nav裡元素的位置 */
+	justify-content: left;
 }
 
 .navigation ul .list {
@@ -35,7 +37,6 @@
 	width: 120px;
 	height: 140px;
 	z-index: 1;
-/* 	background:blue; */
 }
 
 .navigation ul .list .list_a {
@@ -102,6 +103,32 @@
 	border-radius: 10px;
 }
 
+/* 右邊版 */
+/* .navigation ul li:nth-child(1).active ~.indicator { */
+/* 	transform: translateX(calc(-120px * 5)); */
+/* } */
+
+/* .navigation ul li:nth-child(2).active ~.indicator { */
+/* 	transform: translateX(calc(-120px * 4)); */
+/* } */
+
+/* .navigation ul li:nth-child(3).active ~.indicator { */
+/* 	transform: translateX(calc(-120px * 3)); */
+/* } */
+
+/* .navigation ul li:nth-child(4).active ~.indicator { */
+/* 	transform: translateX(calc(-120px * 2)); */
+/* } */
+
+/* .navigation ul li:nth-child(5).active ~.indicator { */
+/*  	transform: translateX(calc(-120px * 1));  */
+/* } */
+
+/* .navigation ul li:nth-child(6).active ~.indicator { */
+/* 	transform: translateX(calc(-120px * 0)); */
+/* } */
+
+/* 左邊版 */
 .navigation ul li:nth-child(2).active ~.indicator {
 	transform: translateX(calc(120px * 1));
 }
@@ -234,7 +261,16 @@ ion-icon {
 						<li><a href="<c:url value='/customer/page' />">廣告商登入</a></li>
 					</ul>
 				</div></li>
-
+			<li class="list"><a href="#" class="list_a"> <span
+					class="icon"><ion-icon name="mail-open-outline"></ion-icon></span>
+					<span class="text">寫信</span>
+			</a>
+				<div class="div_dropdown " id="div_dropdown">
+					<ul class="dropdown">
+						<li><a href="<c:url value='/LastNote' />">撰寫</a></li>
+						<li><a href="<c:url value='/LastNote/edit' />">編輯</a></li>
+					</ul>
+				</div></li>
 
 			<li class=" list "><a href=" #" class="list_a"> <span
 					class="icon"><ion-icon name="chatbox-ellipses-outline"></ion-icon></span>
@@ -247,23 +283,10 @@ ion-icon {
 					</ul>
 				</div></li>
 
-			<li class="list"><a href="#" class="list_a"> <span
-					class="icon"><ion-icon name="images-outline"></ion-icon></span> <span
-					class="text">Photos</span>
+			<li class="list"><a href="<c:url value='/wschat' />"
+				class="list_a"> <span class="icon"><ion-icon
+							name="chatbubbles-outline"></ion-icon></span> <span class="text">聊天室</span>
 			</a></li>
-
-			<li class="list"><a href="#" class="list_a"> <span
-					class="icon"><ion-icon name="mail-open-outline"></ion-icon></span>
-					<span class="text">寫信</span>
-			</a>
-				<div class="div_dropdown " id="div_dropdown">
-					<ul class="dropdown">
-						<li><a href="<c:url value='/LastNote' />">撰寫</a></li>
-						<li><a href="<c:url value='/LastNote/edit' />">編輯</a></li>
-					</ul>
-				</div></li>
-
-
 
 			<div class="indicator"></div>
 		</ul>
