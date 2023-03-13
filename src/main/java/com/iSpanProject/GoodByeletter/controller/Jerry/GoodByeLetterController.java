@@ -1,5 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.Jerry;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -42,9 +44,11 @@ public class GoodByeLetterController {
 	
 	// 跳頁，進入編輯遺囑頁面。
 	@GetMapping("/LastNote/edit")
-	public String LastNoteEdit(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
-		Page<LastNote> page = lastnoteService.findByPage(pageNumber);
-		model.addAttribute("page", page);
+	public String LastNoteEdit(Model model) {
+		Register memberid = (Register) model.getAttribute("existing");
+		List<LastNote> lastNotes = lastnoteService.findlastNoteBymember(memberid);
+		System.out.println(lastNotes);
+		model.addAttribute("lastNotes",lastNotes);
 		return "Jerry/LastNoteEditPage";
 	}
 	

@@ -49,18 +49,28 @@
 
 <div class="card">
   <div class="card-header">
-    查詢和編輯權限等級
+    編輯權限等級
   </div>
   <div class="card-body">
   	
-  	<form action="${contextRoot}/topGun/lastNote/queryLikeAccountPost" method="get" >
+  	<form:form action="${contextRoot}/topGun/level/editPost" modelAttribute="level" method="put">
+		
+		<form:input path="plevel" type="hidden" />
+		
+		
+		<div class="mb-3 row">
+		    <label for="inputPlevel" class="col-sm-2 col-form-label">MemberId</label>
+		    <div class="col-sm-10">
+		    	<input name="plevel" class="form-control" id="inputPlevel" value="${level.plevel}" disabled />
+		    </div>
+		  </div>
 		
 		
 		
 		<div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">依帳號查詢</label>
+		    <label for="inputLevelName" class="col-sm-2 col-form-label">LevelName</label>
 		    <div class="col-sm-10">
-		    	<input name="account" class="form-control" id=inputAccount  />
+		    	<form:input path="levelName" class="form-control" id="inputLevelName" />
 		    </div>
 		  </div>
 		  
@@ -82,7 +92,7 @@
 		
 		
 		
-	</form>
+	</form:form>
   	
   	
   	

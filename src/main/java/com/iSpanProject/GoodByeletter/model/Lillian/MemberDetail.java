@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.model.Lillian;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -58,8 +59,13 @@ public class MemberDetail {
 	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_memberDetail_member"))
 	private Register FK_memberId;
 	
-
-
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	@Column(name="verifyTime")
+	private Date verifyTimeEmail;
+	
+	private String token;
 	
 //	####################### Ryuz divider start #######################
 	
@@ -173,8 +179,24 @@ public class MemberDetail {
 	}
 
 
+	public Date getVerifyTimeEmail() {
+		return verifyTimeEmail;
+	}
+
+	public void setVerifyTimeEmail(Date verifyTimeEmail) {
+		this.verifyTimeEmail = verifyTimeEmail;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 	public MemberDetail() {
-//		super();
+
 	}
 
 }

@@ -1,21 +1,42 @@
-package com.iSpanProject.GoodByeletter.dao.Ryu;
+package com.iSpanProject.GoodByeletter.model.Ryu;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
 @EnableScheduling
+@PropertySource("classpath:RyuzScheduling.properties")
 public class BackendSchedulingForFun {
 	
 	
+	@Value("${ryuz.joke.01}")
+	private String ryuzFun01;
 	
+	@Value("${ryuz.joke.02}")
+	private String ryuzFun02;
+	
+	@Value("${ryuz.joke.03}")
+	private String ryuzFun03;
+	
+	@Value("${ryuz.joke.04}")
+	private String ryuzFun04;
+	
+	@Value("${ryuz.joke.05}")
+	private String ryuzFun05;
 	
 	
 	
 	
 	// @Scheduled(cron = "秒 分 時 日 月 年")
-	@Scheduled(cron = "00 38 10 * * ?")
+//	@Scheduled(cron = "00 38 10 * * ?")
+	@Scheduled(cron = "${ryuz.joke.01}")
+	@Scheduled(cron = "${ryuz.joke.02}")
+	@Scheduled(cron = "${ryuz.joke.03}")
+	@Scheduled(cron = "${ryuz.joke.04}")
+	@Scheduled(cron = "${ryuz.joke.05}")
 	public void wulala() {
 		
 		// 我也要玩

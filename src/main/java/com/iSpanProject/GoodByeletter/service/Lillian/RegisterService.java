@@ -11,7 +11,6 @@ import com.iSpanProject.GoodByeletter.dao.Lillian.LevelDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.MemberDetailDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
-import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service

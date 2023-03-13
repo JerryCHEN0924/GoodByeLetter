@@ -40,13 +40,13 @@
   
     <div>
     	<c:choose>
-		    <c:when test="${not empty authenticated}">
+		    <c:when test="${not empty existing}">
 		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/register/LogoutProcess">${authenticated.account} 登出</a>
+		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/">${existing.account} 登出</a>
 		    </c:when>
 		    <c:otherwise>
 		        <!-- member 物件不存在，顯示登入按鈕 -->
-		        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun">${authenticated.account} 登入</a>
+		        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun">${existing.account} 登入</a>
 		    </c:otherwise>
 		</c:choose>
     </div>
@@ -105,7 +105,7 @@
             
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="<c:url value='/topGun/register/add' />">新增註冊會員</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/register/page' />">查詢和編輯權限等級</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/register/page' />">查詢和編輯會員資料</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
