@@ -28,7 +28,7 @@ import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 
 
 @Controller
-@SessionAttributes({"authenticated"})
+@SessionAttributes({"authenticated", "existing"})
 public class BackendRegisterController {
 	
 	
@@ -56,12 +56,12 @@ public class BackendRegisterController {
 		
 	}
 	
-	@GetMapping("/topGun")
-	public String loginProcess(Model model) {
-		
-		return "Ryu/backendLoginForm";
-		
-	}
+//	@GetMapping("/topGun")
+//	public String loginProcess(Model model) {
+//		
+//		return "Ryu/backendLoginForm";
+//		
+//	}
 	
 	
 	
@@ -200,40 +200,112 @@ public class BackendRegisterController {
 		
 	}
 	
+//	######################################################
+//	######################################################
 	
 	
-	// 會員登入
-	@PostMapping("/topGun/register/LoginProcess")
-	public String loginProcess(@RequestParam("account") String account,@RequestParam("password") String password,
+	
+	// 模擬會員登入跳頁，新增留言
+	@GetMapping("/topGun/register/addLoginFormWithBoard")
+	public String loginProcessForm(Model model) {
+		
+		return "Ryu/backendLoginFormWithBoard";
+		
+	}
+	
+	
+	
+	
+	
+	
+	// 模擬會員登入，新增留言
+	@PostMapping("/topGun/register/LoginProcessWithBoard")
+	public String loginProcessWithBoard(@RequestParam("account") String account,@RequestParam("password") String password,
 								HttpServletRequest request, Model model) {
 		
 		Register register = backendRegisterService.login(account, password);
 		
 		if (register != null) {
 			  
-			  model.addAttribute("authenticated", register);
+			  model.addAttribute("existing", register);
 			  
-	            return "redirect:/topGun/backendHome";
+	            return "redirect:/topGun/board/add";
 	            
 		  }
 		  
 		  else {
 	            // 登入失敗，返回登入表單
-	            return "Ryu/backendLoginForm";
+	            return "Ryu/backendLoginFormWithBoard";
 	        }
 		
 	}
 	
 	
 	
-	// 會員登出
-	@GetMapping("/topGun/register/LogoutProcess")
-	public String logoutProcess(SessionStatus status) {
+	
+	
+	// 模擬會員登出，新增留言
+	@GetMapping("/topGun/register/LogoutProcessWithBoard")
+	public String logoutProcessWithBoard(SessionStatus status) {
 		
 		status.setComplete();
 		
-		return "redirect:/topGun";
+		return "redirect:/topGun/board/add";
 	}
+	
+	
+	
+//	======================= Block =======================
+	
+	
+	
+	// 模擬會員登入跳頁，新增留言
+		@GetMapping("/topGun/register/addLoginFormWithLastNote")
+		public String loginProcessFormWithLastNote(Model model) {
+			
+			return "Ryu/backendLoginFormWithLastNote";
+			
+		}
+	
+	
+	
+	// 模擬會員登入，新增LastNote
+		@PostMapping("/topGun/register/LoginProcessWithLastNote")
+		public String loginProcessWithLastNote(@RequestParam("account") String account,@RequestParam("password") String password,
+				HttpServletRequest request, Model model) {
+			
+			Register register = backendRegisterService.login(account, password);
+			
+			if (register != null) {
+				
+				model.addAttribute("existing", register);
+				
+				return "redirect:/topGun/lastNote/add";
+				
+			}
+			
+			else {
+				// 登入失敗，返回登入表單
+				return "Ryu/backendLoginFormWithLastNote";
+			}
+			
+		}
+		
+		
+		// 模擬會員登出，新增留言
+		@GetMapping("/topGun/register/LogoutProcessWithLastNote")
+		public String logoutProcessWithLastNote(SessionStatus status) {
+			
+			status.setComplete();
+			
+			return "redirect:/topGun/lastNote/add";
+		}
+		
+	
+	
+	
+//	######################################################
+//	######################################################
 	
 	
 	
