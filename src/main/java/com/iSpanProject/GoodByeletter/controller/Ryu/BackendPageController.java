@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -14,6 +15,7 @@ import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Controller
 @SessionAttributes({"existing", "username", "name", "userPrincipal"})
+//@RequestMapping("/topGun")
 public class BackendPageController {
 	
 	
@@ -22,6 +24,13 @@ public class BackendPageController {
 	
 	
 	
+	// 後台首頁入口
+	@GetMapping("/topGun")
+	public String enterBackendHome() {
+		
+		return "/Ryu/backendHome";
+		
+	}
 	
 	
 	
