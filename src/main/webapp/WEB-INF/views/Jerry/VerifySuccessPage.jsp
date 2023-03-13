@@ -7,9 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="refresh" content="3;URL=<c:url value='/' />" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>驗證失敗</title>
+<title>驗證成功</title>
 <link rel="stylesheet" href="assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
@@ -34,8 +34,7 @@
 </head>
 
 <body>
-	<!-- 這邊連結還不知道怎麼改成標準的樣子 -->
-	<% response.setHeader("Refresh", "3; URL=http://localhost:8080/index/"); %>
+
 	<%@ include file="../layout/mynav.jsp"%>
 	<!-- myspace -->
 	<article id="myspace" class="wrapper style2">
@@ -58,16 +57,12 @@
 
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/jquery-3.6.3.min.js"></script>
-	<script src="assets/js/main.js"></script>
-
-
+	<script src="<c:url value='/assets/js/breakpoints.min.js' />"></script>
+	<script src="<c:url value='/assets/js/browser.min.js' />"></script>
+	<script src="<c:url value='/assets/js/jquery.min.js' />"></script>
+	<script src="<c:url value='/assets/js/jquery.scrolly.min.js' />"></script>
+	<script src="<c:url value='/assets/js/main.js' />"></script>
+	<script src="<c:url value='/assets/js/util.js' />"></script>
 	<script>
 		
 	</script>

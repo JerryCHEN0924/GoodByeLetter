@@ -94,16 +94,12 @@
 
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/jquery-3.6.3.min.js"></script>
-	<script src="assets/js/main.js"></script>
-
-
+	<script src="<c:url value='/assets/js/breakpoints.min.js' />"></script>
+	<script src="<c:url value='/assets/js/browser.min.js' />"></script>
+	<script src="<c:url value='/assets/js/jquery.min.js' />"></script>
+	<script src="<c:url value='/assets/js/jquery.scrolly.min.js' />"></script>
+	<script src="<c:url value='/assets/js/main.js' />"></script>
+	<script src="<c:url value='/assets/js/util.js' />"></script>
 	<script>
 		
 	</script>
