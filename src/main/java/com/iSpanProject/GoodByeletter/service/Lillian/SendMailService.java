@@ -47,7 +47,7 @@ public class SendMailService {
 		message.setFrom("goodbyeletter.iii@gmail.com");
 		message.setTo(email);
 		String subject = "Password Reset Request";
-		String content = "Click the following link to reset your password: " + "http://localhost:8080/index/?code="
+		String content = "Click the following link to reset your password: " + "http://localhost:8080/index/resetPassword?code="
 				+ token ;
 		message.setSubject(subject);
 		message.setText(content);

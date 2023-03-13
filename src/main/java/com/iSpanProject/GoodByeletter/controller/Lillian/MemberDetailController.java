@@ -112,7 +112,7 @@ public class MemberDetailController {
 		model.addAttribute("newRegister", newRegister);
 		return "Lillian/forgetPwd";
 	}
-
+//1寄信
 	@PostMapping("/sendEmail")
 	public String sendEmail(@RequestParam("email") String email) throws MessagingException {
 		sendMailService.sendEmail(email);
@@ -122,6 +122,16 @@ public class MemberDetailController {
 	@GetMapping("/sendEmail/checkEmail")
 	public String checkEmail() {
 		return "Lillian/CheckEmail";
+	}
+//2更改新密碼
+	@GetMapping("/resetPassword")
+	public String resetPwd(@RequestParam(name="code", required = false) String code, Model model) {
+		if(code==null)
+			return "index";
+		else {
+			model.addAttribute("code",code);
+			return "Lillian/resetPwd";
+		}
 	}
 	
 	@PostMapping("/updatePassword")
@@ -136,23 +146,11 @@ public class MemberDetailController {
 		model.addAttribute("updatePwd","更新密碼完成");
 		return "Lillian/updatePwdSuccess";
 	}
-	
+//更改成功畫面
 	@GetMapping("/updatePwdSuccess")
 	public String updatePwdSuccess() {
 		return "redirect:/";
 	}
 	
-
-//		@RequestMapping("/sendemail")
-//		public String forgetpwd(@RequestParam(value="email",defaultValue="")String email,Model model) {
-//			System.out.println("提交的email"+ email);
-//			boolean flag = sendMailService.sendEmail("ldesf28961234@gmail.com", "邮件主题", "123");
-//			if(flag) {
-//				model.addAttribute("forgetpwdMSG", "已向您Email發送一封郵件，請立即收查!");
-//			}else {
-//				model.addAttribute("forgetpwdMSG", "已向您Email發送一封郵件，請立即收查!");
-//			}
-//			return "Lillian/sendemailsuccess";
-//		}
 
 }

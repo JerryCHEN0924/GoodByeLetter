@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>增加回覆3</title>
+<title>增加回覆</title>
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 </head>
 <body>
 <div class="card">
