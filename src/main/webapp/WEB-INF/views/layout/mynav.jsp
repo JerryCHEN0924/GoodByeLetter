@@ -133,9 +133,12 @@
 							transform: translateX(calc(120px * 1));
 						}
 
+
+
 						.navigation ul li:nth-child(3).active~.indicator {
 							transform: translateX(calc(120px * 2));
 						}
+
 
 
 						.navigation ul li:nth-child(4).active~.indicator {

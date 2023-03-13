@@ -24,6 +24,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 <style>
 </style>
 
@@ -82,7 +83,7 @@
 						<label for="birthday" class="col-sm-2 col-form-label">生日</label>
 						<div class="col-sm-10">
 							<input type="date" class="form-control" id="birthday"
-								name="birthday" value="2023-03-30">
+								name="birthday" >
 						</div>
 					</div>
 
