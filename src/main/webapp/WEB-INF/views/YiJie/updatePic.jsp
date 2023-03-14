@@ -36,7 +36,7 @@
                 <form id="picture-form" method="post" enctype="multipart/form-data">
                     <div>
                         <label for="picture-photos">上傳圖片</label>
-                        <input type="file" id="picture-photos" name="files" multiple>
+                        <input type="files" id="picture-photos" name="files" multiple>
                     </div>
                     <button type="submit">送出</button>
                 </form>

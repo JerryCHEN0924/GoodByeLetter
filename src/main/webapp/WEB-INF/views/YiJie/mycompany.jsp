@@ -34,7 +34,7 @@
 	<%@ include file="../layout/mynav.jsp"%>
 
   	<article id="" class="wrapper style2">
-		<div class="container-fluid " id="registerCus">
+		<div class="container-fluid" id="registerCus">
 			<div id="space"></div>
 
 

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +26,7 @@ import com.iSpanProject.GoodByeletter.dao.YiJie.YJCustomerDetailDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.Picture;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
+import com.iSpanProject.GoodByeletter.service.YiJie.PictureService;
 import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerDetailService;
 
 @Controller
@@ -34,9 +36,9 @@ public class PictureController {
 	@Autowired
 	private YJCustomerDetailService detailService;
 	@Autowired
-	private YJCustomerDetailDao cdDao;
+	private PictureService pService;
 	@Autowired
-	private PictureDao pDao;
+	private YJCustomerDetailDao cdDao;
 	
 	//圖片頁面1
 	@GetMapping("/customer/picture/page1")
@@ -44,33 +46,44 @@ public class PictureController {
 		return "YiJie/updatePic";
 	}
 	//圖片頁面2
-		@GetMapping("/customer/picture/page2")
-		public String picturePage2() {
-			return "YiJie/upPicture2";
-		}
+	@GetMapping("/customer/picture/page2")
+	public String picturePage2() {
+		return "YiJie/upPicture2";
+	}
 	
 	//圖片上傳
 	@ResponseBody
 	@PostMapping("/customer/picture/updata1")
-	public String upPicture(HttpSession session,
+	public String upPicture(@ModelAttribute("exis") Register exis,
+							//@RequestParam("files") byte[] files,//
 							@RequestParam("files") MultipartFile[] files,
 							Model model) throws IOException {
-		//0311
-		//透過"exis"抓到Register物件，存進reg
-		Register reg = (Register)session.getAttribute("exis");
-		Integer mId = reg.getMemberId();
+		
+		Integer mId = exis.getMemberId();
 		YJCustomerDetail detail = cdDao.findDetailByMemberId(mId);
+		Integer dId = detail.getId();
+		
+//		try {}catch(IOException e) {}
+//		
+//		Picture picture = new Picture();
+//		
+//		picture.setPhotoFile(files.getBytes());
+//		picture.setEnable(false);
+		
 		
 		List<Picture> photos = new LinkedList<>();
 		
 		for(MultipartFile file:files) {
 			Picture pic = new Picture();
-			byte[] pictureByte = file.getBytes();//有才能用throws IOException
+			byte[] pictureByte = file.getBytes();//有throws IOException才能用
 			
 			pic.setPhotoFile(pictureByte);
+			pic.setEnable(false);
 			photos.add(pic);
 		}
+		
 		detail.setPictures(photos);
+		
 		cdDao.save(detail);
 		
 		return "okok";

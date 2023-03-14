@@ -34,12 +34,12 @@
 			<div class="container">
 				<div>編輯詳細資料</div>
 				<form:form id="changeDetail_form" class="form-control" action="${contextRoot}/customer/detail/putDetail" 
-                    method="post" modelAttribute="customerDetail">
+                    method="post" modelAttribute="detail">
                     <!-- 這是啥 -->
                     <form:input type="hidden" path="id" />
 					
 					<div class="mb-3 row">
-						<label for="name" class="col-sm-2 col-form-label">公司名稱</label>
+						<label for="name" id="name" name="name" class="col-sm-2 col-form-label">公司名稱</label>
 						<div class="col-sm-10">
 							<form:input type="text" class="form-control" id="name" name="name" 
                                 value="${customerDetail.name}" path="name" />
@@ -76,7 +76,7 @@
 					<div class="mb-3 row">
 						<label for="email" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-10">
-                            <form:input type="email" path="email" class="form-control"
+                            <form:input type="email" path="email" class="form-control" id="email"
 								name="email" value="${customerDetail.email}" />
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 					<div class="mb-3 row">
 						<label for="address" class="col-sm-2 col-form-label">地址</label>
 						<div class="col-sm-10">
-                            <form:input type="text" class="form-control" name="address" 
+                            <form:input type="text" class="form-control" name="address" id="address"
                                 value="${customerDetail.address}" path="address" placeholder="請填入地址" /> 
 						</div>
 					</div>
