@@ -99,10 +99,12 @@ public class SecurityConfig {
 		 	 	.antMatchers("/",
 		 	 			"/register/**", "/register1", "/memberDetail/**",
 		 	 			"/customer/**", "/picture/**",
-		 	 			"/board/**", "/comment/**",
+		 	 			"/board/**", "/comment/**", "/wschat/**", "/ws/**",
 		 	 			"/LastNote/**",
 		 	 			"/css/**", "/js/**", "/images/**", "/assets/**",
 		 	 			"/user/login").permitAll() // 設置哪些路徑可以直接訪問，不需要認證 匹配到的路徑, 不需要身份驗證
+		 	 	
+		 	 	 .antMatchers("/ws", "/chat/**").permitAll()  // 允許 WebSocket 路徑訪問
 		 	 	
 		 	 	//當前登入用戶，只有具有1的權限才可以訪問這個路徑
 //		 	 	.antMatchers("/topGun/backendMember/add").hasAuthority("超級管理員")
@@ -131,6 +133,9 @@ public class SecurityConfig {
 		 	 	
 		 	 	.antMatchers("/topGun/**").hasRole("超級管理員")
 		 	 	
+		 	 	
+//		 	 	.antMatchers("/wschat/**").hasRole("超級管理員")
+		 	 	
 //		 	 	.antMatchers("/register/**").hasRole("一般會員")
 //		 	 	
 //		 	 	.antMatchers("/customer/**").hasRole("廣告商")
@@ -147,6 +152,9 @@ public class SecurityConfig {
 		 	 	
 		 	 
 		 	 .anyRequest().authenticated(); // 其他尚未匹配到的url都需要身份驗證
+		 
+		 
+		 
 		 	 
 		 	// 關閉csrf防護
 		 	 http.csrf().disable();
