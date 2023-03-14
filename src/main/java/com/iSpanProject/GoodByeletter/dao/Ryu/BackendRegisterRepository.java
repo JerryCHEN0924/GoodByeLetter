@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.dao.Ryu;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,11 +18,15 @@ public interface BackendRegisterRepository extends JpaRepository<Register, Integ
 	
 	// 會員資料細項使用
 	@Query(value="from Register where account = :acc")
-	public Register findRegisterByAccount(@Param("acc") String account);
+	public Register findRegisterByAccount(@Param("acc") String username);
 	
 	// 模糊查詢依Account
 	@Query(value="select * from member where account like concat('%',:a,'%')", nativeQuery = true)
 	public List<Register> findRegisterByAccountNativeLikeQuery(@Param("a") String account);
+	
+	
+	
+	Optional<Register> findByAccount(String account);
 	
 	
 

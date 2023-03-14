@@ -131,6 +131,25 @@ public class BackendPageController {
 		System.out.println("=======================");
 		System.out.println("=======================");
 		
+		String levelName = register.getFK_Plevel().getLevelName();
+		
+		System.out.println("==========HightLight=============");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("register = " + levelName);
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		System.out.println("=================================");
+		
+		
+		
+		
 		
 //		model.addAttribute("existing", register);
 		
@@ -159,27 +178,27 @@ public class BackendPageController {
 //			
 //		}
 		
-		List<Level> roles = Arrays.asList(register.getFK_Plevel());
+//		List<Level> roles = Arrays.asList(register.getFK_Plevel());
+//		
+//		
+//		List<String> roleIds4 = roles.stream().map(role -> role.getLevelName()).collect(Collectors.toList());
+//		String rolesString4 = String.join(",", roleIds4);
+//		
+//		
+//		System.out.println("============");
+//		System.out.println("============");
+//		System.out.println("roleIds4 = " + roleIds4);
+//		System.out.println("rolesString4 = " + rolesString4);
+//		System.out.println("============");
+//		System.out.println("============");
 		
 		
-		List<String> roleIds4 = roles.stream().map(role -> role.getLevelName()).collect(Collectors.toList());
-		String rolesString4 = String.join(",", roleIds4);
 		
-		
-		System.out.println("============");
-		System.out.println("============");
-		System.out.println("roleIds4 = " + roleIds4);
-		System.out.println("rolesString4 = " + rolesString4);
-		System.out.println("============");
-		System.out.println("============");
-		
-		
-		
-		if(rolesString4.equals("一般會員") ) {
+		if(levelName.equals("一般會員") ) {
 		
 		model.addAttribute("existing", register);
 		
-		}else if(rolesString4.equals("廣告商") ){
+		}else if(levelName.equals("廣告商") ){
 			
 			model.addAttribute("exis", register);
 			
@@ -222,10 +241,20 @@ public class BackendPageController {
 //	    String username = principal.getName(); // 從Principal對象中獲取用戶名
 //	    
 //	    return username;
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //		
-//		System.out.println("testtesttest");
-//		System.out.println(auth.getName());
+		System.out.println("=========================");
+		System.out.println("==========ROLE===========");
+		System.out.println("=========================");
+		System.out.println(auth.getName());
+		System.out.println(auth.getCredentials());
+		System.out.println(auth.getDetails());
+		System.out.println(auth.getPrincipal());
+		System.out.println(auth.getAuthorities());
+		System.out.println(auth.getClass());
+		System.out.println("=========================");
+		System.out.println("=========================");
+		System.out.println("=========================");
 		
 		return null;
 	    

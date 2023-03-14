@@ -128,9 +128,20 @@
 				</div>
 			
 			</div>
+			
+			
+			
+			
+			
+			
+			
+			
 		  
 		  
-		  
+<!-- 		  <div class="mb-3 row"> -->
+<!-- 			  <label for="remember-me">Remember Me</label> -->
+<!-- 			  <input type="checkbox" name="remember-me" id="remember-me"> -->
+<!-- 		  </div> -->
 		  
 		  
 <!-- 		  <div class="mb-3 row"> -->
