@@ -82,7 +82,9 @@ public class SecurityConfig {
 //		 	 .defaultSuccessUrl("/").permitAll() // 登入成功之後，跳轉路徑
 		 	 
 		 	 .and().authorizeRequests() // 定義那些Url被保護，那些不被保護
-		 	 	.antMatchers("/*", "/lastNoteLogin", "/register/*", "/register1", "/memberDetail/*", "/customer/*", "/board/*", "/comment/*", "/picture/*", "/LastNote/*", "/assets/*", "/css/*", "/js/*","/images/*", "/user/login").permitAll() // 設置哪些路徑可以直接訪問，不需要認證
+
+		 	 	.antMatchers("/", "/register/*", "/register1", "/memberDetail/*", "/customer/*", "/board/*", "/comment/*", "/picture/*", "/LastNote/*", "/assets/*", "/css/*", "/js/*","/images/*", "/user/login").permitAll() // 設置哪些路徑可以直接訪問，不需要認證
+
 		 	 	
 		 	 	//當前登入用戶，只有具有1的權限才可以訪問這個路徑
 //		 	 	.antMatchers("/topGun/backendMember/add").hasAuthority("超級管理員")
@@ -110,6 +112,7 @@ public class SecurityConfig {
 		 	 	
 		 	 	
 		 	 	.antMatchers("/topGun/*").hasRole("超級管理員")
+		 	 	
 		 	 	
 		 	 	
 		 	 	

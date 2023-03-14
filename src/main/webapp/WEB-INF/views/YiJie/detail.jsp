@@ -33,7 +33,7 @@
 
 			<div class="container">
 				<div>編輯詳細資料</div>
-				<form:form id="changeDetail_form" class="form-control" action="${contextRoot}/customerDetail/putDetail" 
+				<form:form id="changeDetail_form" class="form-control" action="${contextRoot}/customer/detail/putDetail" 
                     method="post" modelAttribute="customerDetail">
                     <!-- 這是啥 -->
                     <form:input type="hidden" path="id" />
@@ -89,7 +89,7 @@
 						</div>
 					</div>
 					<button type="submit">送出</button>
-					<a href="/picture/page1">返回</a>
+					<a href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
 				</form:form>
 			</div>
 		</div>

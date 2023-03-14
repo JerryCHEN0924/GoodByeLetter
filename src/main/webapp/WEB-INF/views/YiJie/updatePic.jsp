@@ -56,7 +56,7 @@
             formdata.append('files', picturePhotos[i])
         }
 
-        axios.post('${contextRoot}/picture/updata1', formdata,{
+        axios.post('${contextRoot}/customer/picture/updata1', formdata,{
             headers:{
                 'Content-Type':'multipart/form-data'
             }
