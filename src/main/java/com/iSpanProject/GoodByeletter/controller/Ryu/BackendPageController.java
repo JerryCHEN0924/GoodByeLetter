@@ -1,20 +1,23 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
 import java.security.Principal;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
+import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Controller
-@SessionAttributes({"existing", "username", "name", "userPrincipal"})
+@SessionAttributes({"existing", "username", "exis", "name", "userPrincipal"})
 //@RequestMapping("/topGun")
 public class BackendPageController {
 	
@@ -127,7 +130,60 @@ public class BackendPageController {
 		System.out.println("=======================");
 		
 		
+//		model.addAttribute("existing", register);
+		
+		
+		
+//		Level fk_Plevel = register.getFK_Plevel();
+//		
+//		
+//		String string = fk_Plevel.toString();
+//		
+//		
+//		System.out.println("====================");
+//		System.out.println("====================");
+//		System.out.println("string123 = " +string);
+//		System.out.println("====================");
+//		System.out.println("====================");
+		
+//		
+//		if(string == "1" ) {
+//			
+//			model.addAttribute("existing", register);
+//			
+//		}else {
+//			
+//			model.addAttribute("exis", register);
+//			
+//		}
+		
+		List<Level> roles = Arrays.asList(register.getFK_Plevel());
+		
+		
+		List<String> roleIds4 = roles.stream().map(role -> role.getLevelName()).collect(Collectors.toList());
+		String rolesString4 = String.join(",", roleIds4);
+		
+		
+		System.out.println("============");
+		System.out.println("============");
+		System.out.println("roleIds4 = " + roleIds4);
+		System.out.println("rolesString4 = " + rolesString4);
+		System.out.println("============");
+		System.out.println("============");
+		
+		
+		
+		if(rolesString4.equals("一般會員") ) {
+		
 		model.addAttribute("existing", register);
+		
+		}else if(rolesString4.equals("廣告商") ){
+			
+			model.addAttribute("exis", register);
+			
+		}
+		
+		
 		
 		return "Ryu/successMessage";
 		
