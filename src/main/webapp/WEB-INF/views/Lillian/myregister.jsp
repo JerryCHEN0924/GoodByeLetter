@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/mymain.css" />
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -23,6 +23,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 <style>
 </style>
 
@@ -41,7 +42,7 @@
 				<div id="registerTitle">註冊會員</div>
 				<form:form id="register_form" action="${contextRoot}/register/add"
 					modelAttribute="newRegister" method="post">
-					<%-- <input type="text" value="${errors.account}" /> --%>
+					
 					<p id="acc1" style="color: red">${errors.account}</p>
 					<p id="acc2" style="color: red">${errors.account1}</p>
 					<div class="mb-6 row">
@@ -64,9 +65,7 @@
 					</div>
 					<br>
 					<button type="submit">下一步</button>
-					<!-- 									<br> -->
-					<!-- 									<a href="">已有會員</a> -->
-					<!-- 									<br> -->
+					
 
 				</form:form>
 			</div>

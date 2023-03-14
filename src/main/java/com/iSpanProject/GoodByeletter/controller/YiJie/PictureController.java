@@ -39,24 +39,19 @@ public class PictureController {
 	private PictureDao pDao;
 	
 	//圖片頁面1
-	@GetMapping("/picture/page1")
+	@GetMapping("/customer/picture/page1")
 	public String picturePage1() {
 		return "YiJie/updatePic";
 	}
 	//圖片頁面2
-		@GetMapping("/picture/page2")
+		@GetMapping("/customer/picture/page2")
 		public String picturePage2() {
 			return "YiJie/upPicture2";
 		}
-		//
-	//回廠商主頁面-目前未啟用
-	@GetMapping("/companylogig/page")
-	public String backPage() {
-		return "YiJie/companylogin";
-	}
+	
 	//圖片上傳
 	@ResponseBody
-	@PostMapping("/picture/updata1")
+	@PostMapping("/customer/picture/updata1")
 	public String upPicture(HttpSession session,
 							@RequestParam("files") MultipartFile[] files,
 							Model model) throws IOException {
@@ -81,7 +76,7 @@ public class PictureController {
 		return "okok";
 	}
 	//保存到資料夾/images/
-	@PostMapping("/picture/upload")
+	@PostMapping("/customer/picture/upload")
 	public String upPicture2(HttpSession session,
 							@RequestParam("file") MultipartFile file,
 							Model modl) {

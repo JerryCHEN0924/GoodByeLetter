@@ -63,7 +63,9 @@ public class MemberDetailController {
 		Map<String, String> msg = new HashMap<String, String>();
 		model.addAttribute("msg", msg);
 		msg.put("success", "會員註冊成功!");
-
+		System.out.println("================================");
+		System.out.println(birthday);
+		System.out.println("================================");
 		return "redirect:/";
 	}
 
@@ -71,7 +73,8 @@ public class MemberDetailController {
 	@GetMapping("/memberDetail/edit")
 	public String editMemberDetailPage(@RequestParam Integer memberId, Model model) throws ParseException {// model儲存送過去
 		MemberDetail memberDetails = memberDetailService.findByMemberId(memberId);
-
+		
+		
 		if (memberDetails == null) {
 			MemberDetail md = new MemberDetail();
 			model.addAttribute("memberDetails", md);
@@ -86,6 +89,8 @@ public class MemberDetailController {
 //		memberDetails.setBirthday(memberBirthdayNewType);
 
 		model.addAttribute("memberDetails", memberDetails);
+		
+		
 
 		return "Lillian/MemberDetailEdit";
 	}

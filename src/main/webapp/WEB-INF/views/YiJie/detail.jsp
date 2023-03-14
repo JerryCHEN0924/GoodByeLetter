@@ -13,7 +13,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="assets/css/mymain.css" />
+	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 		rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
 		crossorigin="anonymous" />
@@ -33,7 +33,7 @@
 
 			<div class="container">
 				<div>編輯詳細資料</div>
-				<form:form id="changeDetail_form" class="form-control" action="${contextRoot}/customerDetail/putDetail" 
+				<form:form id="changeDetail_form" class="form-control" action="${contextRoot}/customer/detail/putDetail" 
                     method="post" modelAttribute="customerDetail">
                     <!-- 這是啥 -->
                     <form:input type="hidden" path="id" />
@@ -89,7 +89,7 @@
 						</div>
 					</div>
 					<button type="submit">送出</button>
-					<a href="/picture/page1">返回</a>
+					<a href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
 				</form:form>
 			</div>
 		</div>

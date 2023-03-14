@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -21,6 +22,7 @@ import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 
 @Controller
 @SessionAttributes({"authenticated","existing"})
+@RequestMapping("/topGun")
 public class BackendBoardController {
 	
 	
@@ -39,7 +41,7 @@ public class BackendBoardController {
 	
 	
 	// 新增留言跳頁
-	@GetMapping("/topGun/board/add")
+	@GetMapping("/board/add")
 	public String addNewBoardForm(Model model) {
 		
 		Board board = new Board();
@@ -64,10 +66,10 @@ public class BackendBoardController {
 	
 	
 	// 新增留言
-	@PostMapping("/topGun/board/post")
+	@PostMapping("/board/post")
 	public String addNewRegisterPost(@ModelAttribute("board") Board board, Model model) {
 		
-		Register register = (Register) model.getAttribute("authenticated");
+		Register register = (Register) model.getAttribute("existing");
 //		Register register = (Register) model.getAttribute("existing");
 		
 		board.setRegister(register);
@@ -103,7 +105,7 @@ public class BackendBoardController {
 	
 	
 	// 分頁查詢留言
-	@GetMapping("/topGun/board/page")
+	@GetMapping("/board/page")
 	public String showBoardByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
 		
 		Page<Board> page = backendBoardService.findBoardByPage(pageNumber);
@@ -117,7 +119,7 @@ public class BackendBoardController {
 	
 	
 	// 修改留言跳頁
-	@GetMapping("/topGun/board/edit")
+	@GetMapping("/board/edit")
 	public String editBoardPage(@RequestParam("boardId") Integer boardId, Model model) {
 		
 		Board board = backendBoardService.findBoardById(boardId);
@@ -131,7 +133,7 @@ public class BackendBoardController {
 	
 	
 	// 修改留言
-	@PutMapping("/topGun/board/editPost")
+	@PutMapping("/board/editPost")
 	public String editPostBoard(@ModelAttribute("board") Board board) {
 		
 		backendBoardService.updateBoard(board);
@@ -143,7 +145,7 @@ public class BackendBoardController {
 	
 	
 	// 刪除留言
-	@DeleteMapping("/topGun/board/delete")
+	@DeleteMapping("/board/delete")
 	public String deleteBoard(@RequestParam("boardId") Integer boardId) {
 		
 		backendBoardService.deleteBoardById(boardId);
@@ -155,7 +157,7 @@ public class BackendBoardController {
 	
 	
 	// 依帳號查詢Board跳頁
-	@GetMapping("/topGun/board/queryLikeAccount")
+	@GetMapping("/board/queryLikeAccount")
 	public String getBoardByAccountForm(Model model) {
 		
 		return "/Ryu/backendShowBoardByAccount";
@@ -165,7 +167,7 @@ public class BackendBoardController {
 	
 	
 	// 依帳號查詢Board
-	@GetMapping("/topGun/board/queryLikeAccountPost")
+	@GetMapping("/board/queryLikeAccountPost")
 	public String getBoardByAccount(@RequestParam("account") String account, Model model) {
 		
 		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
@@ -180,7 +182,7 @@ public class BackendBoardController {
 	
 	
 	// 依帳號查詢Board的Detail
-	@GetMapping("/topGun/board/queryLikeAccountDetail")
+	@GetMapping("/board/queryLikeAccountDetail")
 	public String getBoardByAccountDetail(@RequestParam("r") Register register, Model model) {
 		
 		List<Board> boardDetail = backendBoardService.findBoardByAccountGroupByR(register);

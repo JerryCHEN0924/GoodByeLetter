@@ -23,7 +23,10 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/index/assets/css/mymain.css" />
 <style>
-</style>
+	.error {
+	  color: red;
+	}
+  </style>
 
 </head>
 
@@ -37,7 +40,7 @@
 
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
-				<form id="register_form" action="${contextRoot}/customer" method="post">
+				<form id="register_form" action="${contextRoot}/customer/add" method="post">
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
@@ -52,7 +55,6 @@
 								name="password">
 						</div>
 					</div>
-<!-- 	驗證			 -->
 					<div class="mb-6 row">
 						<label for="verificationCode" class="col-sm-2 col-form-label">驗證碼</label>
 						<div class="col-sm-10">
@@ -60,18 +62,16 @@
 								name="rCode">
 						</div>
 					</div>
-<!-- 	驗證			 -->				
-					<button type="submit">下一步</button>
-					<br> <a href="">已有會員</a><br>
-
+				
+					<button type="submit">送出</button>
 				</form>
+				<c:if test="${not empty errorMessage}">
+  					<div class="error">${errorMessage}</div>
+				</c:if>
 			</div>
 		</div>
 	</article>
 
-
-
-	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>

@@ -29,6 +29,53 @@
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
+
+
+
+
+
+
+<div class="card my-5">
+
+  <div class="card-header">
+    <h1>模擬會員登入</h1>
+  </div>
+  
+  <div class="card-body">
+  
+  
+  
+  
+  	<div>
+   	<c:choose>
+	    <c:when test="${not empty existing}">
+	        <!-- member 物件存在，顯示登出按鈕 -->
+	        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/register/LogoutProcessWithBoard">${existing.account} 登出</a>
+	    </c:when>
+	    <c:otherwise>
+	        <!-- member 物件不存在，顯示登入按鈕 -->
+	        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun/register/addLoginFormWithBoard">${existing.account} 登入</a>
+	    </c:otherwise>
+	</c:choose>
+	</div>
+	
+	
+	
+	
+	
+  	
+  </div>
+  
+  
+</div>
+
+
+
+
+
+
+
+
 <hr>
 
 </div>
