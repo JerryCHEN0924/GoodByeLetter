@@ -16,8 +16,7 @@
 							display: flex;
 							align-items: center;
 							background: transparent;
-							/* border-radius: 10px; */
-							z-index: 200;
+							z-index: 1;
 						}
 
 						.navigation ul {
