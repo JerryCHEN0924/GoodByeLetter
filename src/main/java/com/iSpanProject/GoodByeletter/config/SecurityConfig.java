@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,13 +20,17 @@ import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
+
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
 public class SecurityConfig {
 	
 	
 	@Autowired
 	private BackendRegisterRepository backendRegisterRepository;
+	
+	
+	
 	
 //	@Autowired
 //	private BackendUserDetailsService backendUserDetailsService;
@@ -43,7 +48,6 @@ public class SecurityConfig {
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		 
 		 
 		 // 自定義沒有訪問權限訪問跳轉頁面
 		 http.exceptionHandling().accessDeniedPage("/WEB-INF/views/Ryu/unauthMessage.jsp");
@@ -105,6 +109,9 @@ public class SecurityConfig {
 		 	 			"/user/login").permitAll() // 設置哪些路徑可以直接訪問，不需要認證 匹配到的路徑, 不需要身份驗證
 		 	 	
 		 	 	 .antMatchers("/ws", "/chat/**").permitAll()  // 允許 WebSocket 路徑訪問
+		 	 	 
+		 	 	 
+		 	 	 .antMatchers("/getTest").permitAll()  // 允許 WebSocket 路徑訪問
 		 	 	
 		 	 	//當前登入用戶，只有具有1的權限才可以訪問這個路徑
 //		 	 	.antMatchers("/topGun/backendMember/add").hasAuthority("超級管理員")
@@ -159,17 +166,22 @@ public class SecurityConfig {
 		 	// 關閉csrf防護
 		 	 http.csrf().disable();
 		 
-		 
 		 	 http.rememberMe()
-		 	 	 .rememberMeParameter("remember-me")
-		 	 	 .userDetailsService(userDetailsService())
-		 	 	 .tokenValiditySeconds(60 * 3);
+		 	 
+//		 	 	 .rememberMeParameter("remember-me")
+//		 	 	 .userDetailsService(userDetailsService())
 //		 	 	 .tokenValiditySeconds(60 * 60 * 24 * 7); // 通常都會大於 session timeout 的時間
+//		 	 	 .tokenValiditySeconds(60 * 3);
 		 	 
-		 	 
+		 	.key("your-secret-key") // 設置 remember-me 的 key
+            .rememberMeParameter("remember-me") // 設置 remember-me 的 input 名稱
+            .rememberMeCookieName("remember-me-cookie") // 設置 remember-me 的 Cookie 名稱
+            .userDetailsService(userDetailsService()) // 設置 UserDetailsService
+            .tokenValiditySeconds(60 * 3) // 設置 remember-me 的有效期時間
+            .useSecureCookie(true); // 設置是否使用安全 Cookie
 		 	 
 		 
-		 
+//		 
 //       http
 //               .authorizeHttpRequests()
 //               .anyRequest().authenticated();
@@ -199,7 +211,7 @@ public class SecurityConfig {
 			@Override
 			public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {
 				
-				
+			
 				
 				Register register = backendRegisterRepository.findRegisterByAccount(account);
 				
@@ -299,7 +311,6 @@ public class SecurityConfig {
 //		                .roles(rolesString4)
 		                
 		                .build();
-				
 				
 				return userDetails;
 				

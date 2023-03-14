@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -185,6 +187,16 @@ public class BackendPageController {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return "Ryu/successMessage";
 		
 	}
@@ -204,16 +216,25 @@ public class BackendPageController {
 //	}
 	
 	@GetMapping("/getTest")
-	@ResponseBody
+//	@ResponseBody
 	public String getTest(Principal principal) {
 		
-	    String username = principal.getName(); // 從Principal對象中獲取用戶名
-	    
-	    return username;
+//	    String username = principal.getName(); // 從Principal對象中獲取用戶名
+//	    
+//	    return username;
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		
+//		System.out.println("testtesttest");
+//		System.out.println(auth.getName());
+		
+		return null;
 	    
 	}
 	
-	
+//	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//	
+//	System.out.println("testtesttest");
+//	System.out.println(auth.getName());
 	
 	
 //	@GetMapping("/getTest")
