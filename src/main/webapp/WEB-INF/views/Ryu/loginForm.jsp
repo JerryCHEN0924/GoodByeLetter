@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>沒有訪問權限 Page</title>
+<title>Security LoginForm</title>
 
 
 <link href="<c:url value='/css/bootstrap.min.css' />" rel="stylesheet" />
@@ -112,6 +112,24 @@
 		    	<input name="password" class="form-control" id="inputPassword" />
 		    </div>
 		  </div>
+		  
+		  
+		  
+		  
+		  <div class="mb-3 row">
+		  
+			  	<div class="offset-sm-4 col-sm-4">
+			  	
+				  <div class="form-check form-switch">
+					  <input class="form-check-input" name="remember-me" type="checkbox" value="true" role="switch" id="flexSwitchCheckDefault">
+					  <label class="form-check-label" for="flexSwitchCheckDefault">Remember Me</label>
+					</div>
+					
+				</div>
+			
+			</div>
+		  
+		  
 		  
 		  
 		  
