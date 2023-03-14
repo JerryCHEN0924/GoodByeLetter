@@ -19,7 +19,7 @@ public interface BoardDao extends JpaRepository<Board, Integer> {
 	public  List<Board> findBoardByTitle(@Param(value="title") String title);
 	
 	//模糊搜尋Title
-	public List<Board> findByTitleContaining(String title);
+	public List<Board> findByTitleContainingOrderByBoardIdDesc(String title);
 	
 	//找最新貼文
 	public Board findFirstBoardByOrderByCreateTimeDesc();

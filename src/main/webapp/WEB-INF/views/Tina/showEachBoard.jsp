@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,100 +19,139 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" href="/index/assets/css/mymain.css" />
+<style>
+.container {
+	
+	background: #fff;
+	box-shadow: 5px 0px 5px -5px #180532, -5px 0px 5px -5px #180532;
+	z-index: 200;
+	background: rgba(249, 212, 35, 0.25);
+}
+
+.container .searchBoard {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 20px;
+	/* border: 1px solid red; */
+}
+.container .searchBoard input{
+	font-size:1.2em;
+}
+.messageContent {
+	/* 	top right bottom left */
+	padding: 2em 4em 1em 4em;
+	margin: 0 0 1em 0;
+	text-align: left;
+	color: black;
+	background: #fff;
+	border-radius: 10px;
+	text-align: left;
+	
+}
+
+
+.messageContent h5 {
+	color: rgb(100, 99, 99)
+}
+</style>
 </head>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
 
-	<article id="myspace" class="wrapper style2" style="height: 100vh">
+	<article id="myspace" class="container-fluid wrapper">
 		<div class="container">
-			<h1>查看留言板頁面</h1>
+		<div class="searchBoard">
+			<h3>Id:${newboard.boardId}留言板</h3>
+		</div>
+		
+		<hr>
 
-
-			<div class="card">
-
-				<%-- 					透過model newboard把資料傳給controller --%>
-
-				<%-- 					需要把boardId, createTime 加到model newboard裡 --%>
-				<input type="hidden" value="${newboard.boardId}" /> 
-				<input type="hidden" value="${newboard.createTime}" />
-
-				<div class="card-header">
-				<h5>${newboard.title}</h5><br>
-				 <h6 class="card-subtitle mb-2 text-muted">
-				 上傳時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
-									value="${newboard.createTime}" /><br> 
-				 更新時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
-									value="${newboard.updateTime}" />
-				 </h6>
-				</div>
-				<div class="card-body">
-					<div class="input-group">${newboard.boardMessage}</div>
-					<br>
+		<div class="messageContent">
+		<%-- 					透過model newboard把資料傳給controller --%>
+		<%-- 					需要把boardId, createTime 加到model newboard裡 --%>
+		<input type="hidden" value="${newboard.boardId}" /> 
+		<input type="hidden" value="${newboard.createTime}" />
+		
+					<h4>
+						<strong>${newboard.register.memberId}</strong>
+					</h4>
+					<h5>
+						建立時間:
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+							value="${newboard.createTime}" />
+						更新時間:
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+							value="${newboard.updateTime}" />
+					</h5>
+					<h3>${newboard.title}</h3>
+					<p>${newboard.boardMessage}</p>
 					<%--編輯按鈕 --%>
 					<form:form action="${contextRoot}/board/editPage" method="get">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
-						<input type="submit" class="btn btn-outline-info" value="編輯留言板" />
+						<input type="submit" class="btn btn-success" value="編輯" />
 					</form:form>
 					<%--刪除按鈕 --%>
 					<form:form action="${contextRoot}/board/delete" method="delete">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
-						<input type="submit" class="btn btn-outline-danger" value="刪除留言板" />
+						<input type="submit" class="btn btn-danger" value="刪除" />
 					</form:form>
-				</div>
-			</div>
+		
+
+
+
 			
 			
-			<hr>
+			
 			<%--the list of comments--%>
 			
 			<c:forEach var="comment" items="${samebIdComment}">
-
-			<div class="card">
-			<div class="card-body">	
-			 <h6 class="card-subtitle mb-2 text-muted">
-			回覆時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
-									value="${comment.createTime}" /><br> 
-			更新時間:<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
-									value="${comment.updateTime}" /><br></h6>
-			<h6>${comment.reply}</h6>
-			<%-- 			修改留言 --%>
+			<hr>
+			
+			<h4><strong>${comment.register.memberId}</strong></h4>
+			<h5>
+				建立時間:
+				<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+				value="${comment.createTime}" />
+				更新時間:
+				<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+				value="${comment.updateTime}" />
+			</h5>
+			<p>${comment.reply}</p>
+			<%--修改留言 --%>
 			<form:form action="${contextRoot}/comment/editPage" method="get">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
 						<input type="hidden" name="commentId" value="${comment.commentId}" />
-						<input type="submit" class="btn btn-outline-info" value="編輯回覆" />
+						<input type="submit" class="btn btn-outline-success" value="編輯" />
 			</form:form>
-<%-- 			刪除留言 --%>
+			<%-- 刪除留言 --%>
 			<form:form action="${contextRoot}/comment/delete" method="delete">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
 						<input type="hidden" name="commentId" value="${comment.commentId}" />
-						<input type="submit" class="btn btn-outline-danger" value="刪除回覆" />
+						<input type="submit" class="btn btn-outline-danger" value="刪除" />
 			</form:form>
-			
-			</div> 
-			</div>
 			</c:forEach> 
-			<hr>
+			</div>
 			
 			
+			
+			<div class="messageContent">
 			<%--回覆card --%>
 			<form:form action="${contextRoot}/comment/add" method="post"
 			modelAttribute="comment"> 
-			<div class="card">
-			<div class="card-body"> 
 			<input type="hidden" name="boardId" value="${newboard.boardId}" />
-<%-- 			<input name="boardId" value="${newboard.boardId}"> --%>
 			<form:hidden path="bId" class="form-control" placeholder="bId" value="${newboard.boardId}" /> 
 			<form:textarea path="reply" class="form-control" placeholder="reply" /> 
-			<button type="submit" class="btn btn-primary">送出</button> 
-			</div> 
-			</div> 
+			<input type="submit" class="btn btn-outline-info" value="新增"></input> 	
 			</form:form> 
+			</div>
+			<div style="height:10px"></div>
 			
 
-
-
-		</div>
+		
 	</article>
 
 
@@ -132,5 +172,11 @@
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/jquery-3.6.3.min.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script type="module"
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule
+		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	
 </body>
 </html>
