@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -24,6 +25,7 @@ import com.iSpanProject.GoodByeletter.validate.LastNoteValidator;
 
 @Controller
 @SessionAttributes({"authenticated","existing"})
+@RequestMapping("/topGun")
 public class BackendLastNoteController {
 	
 	
@@ -42,7 +44,7 @@ public class BackendLastNoteController {
 	
 	
 	// 新增LastNote跳頁
-	@GetMapping("/topGun/lastNote/add")
+	@GetMapping("/lastNote/add")
 	public String addNewLastNoteForm(Model model) {
 		
 		LastNote lastNote = new LastNote();
@@ -56,7 +58,7 @@ public class BackendLastNoteController {
 	
 	
 	// 新增LastNote
-	@PostMapping("/topGun/lastNote/post")
+	@PostMapping("/lastNote/post")
 	public String addNewLastNotePost(@ModelAttribute("lastNote") LastNote lastNote, Model model, BindingResult bindingResult) {
 		
 		new LastNoteValidator().validate(lastNote, bindingResult);
@@ -117,7 +119,7 @@ public class BackendLastNoteController {
 	
 	
 	// 分頁查詢LastNote
-	@GetMapping("/topGun/lastNote/page")
+	@GetMapping("/lastNote/page")
 	public String showLastNoteByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
 		
 		
@@ -137,7 +139,7 @@ public class BackendLastNoteController {
 	
 	
 	// 修改LastNote跳頁
-	@GetMapping("/topGun/lastNote/edit")
+	@GetMapping("/lastNote/edit")
 	public String editLastNotePage(@RequestParam("noteId") Integer noteId, Model model) {
 		
 		LastNote lastNote = backendLastNoteService.findLastNoteById(noteId);
@@ -152,7 +154,7 @@ public class BackendLastNoteController {
 	
 	
 	// 修改LastNote
-	@PutMapping("/topGun/lastNote/editPost")
+	@PutMapping("/lastNote/editPost")
 	public String editPostLastNote(@ModelAttribute("lastNote") LastNote lastNote) {
 		
 		backendLastNoteService.updateLastNote(lastNote);
@@ -164,7 +166,7 @@ public class BackendLastNoteController {
 	
 	
 	// 刪除LastNote
-	@DeleteMapping("/topGun/lastNote/delete")
+	@DeleteMapping("/lastNote/delete")
 	public String deleteBoard(@RequestParam("noteId") Integer noteId) {
 		
 		backendLastNoteService.deleteLastNoteById(noteId);
@@ -176,7 +178,7 @@ public class BackendLastNoteController {
 	
 	
 	// 依帳號查詢LastNote跳頁
-	@GetMapping("/topGun/lastNote/queryLikeAccount")
+	@GetMapping("/lastNote/queryLikeAccount")
 	public String getLastNoteByAccountForm(Model model) {
 		
 //		Register register = new Register();
@@ -187,7 +189,7 @@ public class BackendLastNoteController {
 	
 	
 	// 依帳號查詢LastNote
-	@GetMapping("/topGun/lastNote/queryLikeAccountPost")
+	@GetMapping("/lastNote/queryLikeAccountPost")
 	public String getLastNoteByAccount(@RequestParam("account") String account, Model model) {
 		
 		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
@@ -209,7 +211,7 @@ public class BackendLastNoteController {
 	}
 	
 	// 依帳號查詢LastNote的Detail
-	@GetMapping("/topGun/lastNote/queryLikeAccountDetail")
+	@GetMapping("/lastNote/queryLikeAccountDetail")
 	public String getLastNoteByAccountDetail(@RequestParam("fkm") Register register, Model model) {
 		
 		List<LastNote> lastNoteDetail = backendLastNoteService.findLastNoteByAccountGroupByFKM(register);

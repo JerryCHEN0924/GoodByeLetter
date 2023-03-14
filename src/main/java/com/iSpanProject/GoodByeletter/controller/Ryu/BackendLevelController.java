@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
@@ -19,6 +20,7 @@ import com.iSpanProject.GoodByeletter.service.Ryu.BackendLevelService;
 
 
 @Controller
+@RequestMapping("/topGun")
 public class BackendLevelController {
 	
 	
@@ -32,7 +34,7 @@ public class BackendLevelController {
 //	####################### i am divider #######################
 	
 	// 新增權限等級跳頁
-	@GetMapping("/topGun/level/add")
+	@GetMapping("/level/add")
 	public String addNewLevelForm(Model model) {
 		
 		Level level = new Level();
@@ -46,7 +48,7 @@ public class BackendLevelController {
 	
 	
 	// 新增權限等級
-	@PostMapping("/topGun/level/post")
+	@PostMapping("/level/post")
 	public String addLevelPost(@ModelAttribute("level") Level level, Model model ) {
 		
 		backendLevelService.insertLevel(level);
@@ -62,7 +64,7 @@ public class BackendLevelController {
 	
 	
 	// 分頁查詢
-	@GetMapping("/topGun/level/page")
+	@GetMapping("/level/page")
 	public String showLevelByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
 		
 		Page<Level> page = backendLevelService.findLevelByPage(pageNumber);
@@ -76,7 +78,7 @@ public class BackendLevelController {
 	
 	
 	// 修改權限等級跳頁
-	@GetMapping("/topGun/level/edit")
+	@GetMapping("/level/edit")
 	public String editLevelPage(@RequestParam("plevel") Integer plevel, Model model) {
 		
 		Level level = backendLevelService.findLevelById(plevel);
@@ -90,7 +92,7 @@ public class BackendLevelController {
 	
 	
 	// 修改權限等級
-	@PutMapping("/topGun/level/editPost")
+	@PutMapping("/level/editPost")
 	public String editPostLevel(@ModelAttribute("level") Level level) {
 		
 		backendLevelService.insertLevel(level);
@@ -102,7 +104,7 @@ public class BackendLevelController {
 	
 	
 	// 刪除權限等級
-	@DeleteMapping("/topGun/level/delete")
+	@DeleteMapping("/level/delete")
 	public String deleteLevel(@RequestParam("plevel") Integer plevel) {
 		
 		backendLevelService.deleteLevelById(plevel);

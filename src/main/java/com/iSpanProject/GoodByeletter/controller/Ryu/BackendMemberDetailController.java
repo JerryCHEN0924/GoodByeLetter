@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
@@ -26,6 +27,7 @@ import com.iSpanProject.GoodByeletter.service.Ryu.BackendMemberDetailService;
 import com.iSpanProject.GoodByeletter.validate.MemberDetailValidator;
 
 @Controller
+@RequestMapping("/topGun")
 public class BackendMemberDetailController {
 	
 	@Autowired
@@ -39,7 +41,7 @@ public class BackendMemberDetailController {
 //	####################### i am divider #######################
 	
 	// 新增會員細項資料跳頁
-	@GetMapping("/topGun/memberDetail/add")
+	@GetMapping("/memberDetail/add")
 	public String addNewMemberDetailForm(Model model) {
 		
 		MemberDetail memberDetail = new MemberDetail();
@@ -50,7 +52,7 @@ public class BackendMemberDetailController {
 	}
 	
 	// 新增會員細項資料
-	@PostMapping("/topGun/memberDetail/post")
+	@PostMapping("/memberDetail/post")
 	public String insertMemberDetailData(@ModelAttribute("memberDetail") MemberDetail memberDetail, BindingResult bindingResult) {
 		
 		new MemberDetailValidator().validate(memberDetail, bindingResult);
@@ -83,7 +85,7 @@ public class BackendMemberDetailController {
 		
 	
 	// 分頁查詢跳頁
-	@GetMapping("/topGun/memberDetail/page")
+	@GetMapping("/memberDetail/page")
 	public String showMemberDetailByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
 		
 	Page<MemberDetail> page = backendMemberDetailService.findByPage(pageNumber);
@@ -95,7 +97,7 @@ public class BackendMemberDetailController {
 	}
 	
 	// 修改會員細項資料跳頁
-	@GetMapping("/topGun/memberDetail/edit")
+	@GetMapping("/memberDetail/edit")
 	public String editMemberDetailPage(@RequestParam("id") Integer id, Model model) {
 		
 		MemberDetail memberDetail = backendMemberDetailService.findMemberDetailById(id);
@@ -107,7 +109,7 @@ public class BackendMemberDetailController {
 	}
 	
 	// 修改會員細項資料
-	@PutMapping("/topGun/memberDetail/editPost")
+	@PutMapping("/memberDetail/editPost")
 	public String editPostMemberDetail(@ModelAttribute("memberDetail") MemberDetail memberDetail) {
 		
 		backendMemberDetailService.updateMemberDetail(memberDetail);
@@ -118,7 +120,7 @@ public class BackendMemberDetailController {
 	
 	
 	// 刪除會員細項資料
-	@DeleteMapping("/topGun/memberDetail/delete")
+	@DeleteMapping("/memberDetail/delete")
 	public String editPostMemberDetail(@RequestParam("id") Integer id) {
 		
 		System.out.println("================================");

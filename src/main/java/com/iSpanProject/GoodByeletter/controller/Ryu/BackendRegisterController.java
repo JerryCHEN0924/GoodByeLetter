@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -29,6 +30,7 @@ import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 
 @Controller
 @SessionAttributes({"authenticated", "existing"})
+@RequestMapping("/topGun")
 public class BackendRegisterController {
 	
 	
@@ -49,7 +51,7 @@ public class BackendRegisterController {
 	
 	
 	// 後台首頁跳轉
-	@GetMapping("/topGun/backendHome")
+	@GetMapping("/backendHome")
 	public String backendHome() {
 		
 		return "/Ryu/backendHome";
@@ -90,7 +92,7 @@ public class BackendRegisterController {
 	
 	
 	// 新增註冊會員跳頁
-	@GetMapping("/topGun/register/add")
+	@GetMapping("/register/add")
 	public String addNewRegisterForm(Model model) {
 		
 		Register register = new Register();
@@ -104,7 +106,7 @@ public class BackendRegisterController {
 	
 	
 	// 新增註冊會員
-	@PostMapping("/topGun/register/post")
+	@PostMapping("/register/post")
 	public String addNewRegisterPost(@ModelAttribute("register") Register register, Model model) {
 		
 		backendRegisterService.insertRegister(register);
@@ -120,7 +122,7 @@ public class BackendRegisterController {
 	
 	
 	// 分頁查詢註冊會員資料
-	@GetMapping("/topGun/register/page")
+	@GetMapping("/register/page")
 	public String showRegisterByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
 		
 		
@@ -135,7 +137,7 @@ public class BackendRegisterController {
 	
 	
 	// 修改註冊會員資料跳頁
-	@GetMapping("/topGun/register/edit")
+	@GetMapping("/register/edit")
 	public String editRegisterPage(@RequestParam("memberId") Integer memberId, Model model) {
 		
 		Register register = backendRegisterService.findRegisterById(memberId);
@@ -149,7 +151,7 @@ public class BackendRegisterController {
 	
 	
 	// 修改註冊會員資料
-	@PutMapping("/topGun/register/editPost")
+	@PutMapping("/register/editPost")
 	public String editPostRegister(@ModelAttribute("register") Register register) {
 		
 		backendRegisterService.updateRegister(register);
@@ -161,7 +163,7 @@ public class BackendRegisterController {
 	
 	
 	// 刪除註冊會員資料
-	@DeleteMapping("/topGun/register/delete")
+	@DeleteMapping("/register/delete")
 	public String deleteRegister(@RequestParam("memberId") Integer memberId) {
 		
 		System.out.println("================================");
@@ -206,7 +208,7 @@ public class BackendRegisterController {
 	
 	
 	// 模擬會員登入跳頁，新增留言
-	@GetMapping("/topGun/register/addLoginFormWithBoard")
+	@GetMapping("/register/addLoginFormWithBoard")
 	public String loginProcessForm(Model model) {
 		
 		return "Ryu/backendLoginFormWithBoard";
@@ -219,7 +221,7 @@ public class BackendRegisterController {
 	
 	
 	// 模擬會員登入，新增留言
-	@PostMapping("/topGun/register/LoginProcessWithBoard")
+	@PostMapping("/register/LoginProcessWithBoard")
 	public String loginProcessWithBoard(@RequestParam("account") String account,@RequestParam("password") String password,
 								HttpServletRequest request, Model model) {
 		
@@ -245,7 +247,7 @@ public class BackendRegisterController {
 	
 	
 	// 模擬會員登出，新增留言
-	@GetMapping("/topGun/register/LogoutProcessWithBoard")
+	@GetMapping("/register/LogoutProcessWithBoard")
 	public String logoutProcessWithBoard(SessionStatus status) {
 		
 		status.setComplete();
@@ -260,7 +262,7 @@ public class BackendRegisterController {
 	
 	
 	// 模擬會員登入跳頁，新增留言
-		@GetMapping("/topGun/register/addLoginFormWithLastNote")
+		@GetMapping("/register/addLoginFormWithLastNote")
 		public String loginProcessFormWithLastNote(Model model) {
 			
 			return "Ryu/backendLoginFormWithLastNote";
@@ -270,7 +272,7 @@ public class BackendRegisterController {
 	
 	
 	// 模擬會員登入，新增LastNote
-		@PostMapping("/topGun/register/LoginProcessWithLastNote")
+		@PostMapping("/register/LoginProcessWithLastNote")
 		public String loginProcessWithLastNote(@RequestParam("account") String account,@RequestParam("password") String password,
 				HttpServletRequest request, Model model) {
 			
@@ -293,7 +295,7 @@ public class BackendRegisterController {
 		
 		
 		// 模擬會員登出，新增留言
-		@GetMapping("/topGun/register/LogoutProcessWithLastNote")
+		@GetMapping("/register/LogoutProcessWithLastNote")
 		public String logoutProcessWithLastNote(SessionStatus status) {
 			
 			status.setComplete();
@@ -310,7 +312,7 @@ public class BackendRegisterController {
 	
 	
 	// 依帳號模糊查詢跳頁
-	@GetMapping("/topGun/register/queryLikeAccount")
+	@GetMapping("/register/queryLikeAccount")
 	public String getRegisterByAccountForm(Model model) {
 		
 		return "/Ryu/backendShowRegisterByAccount";
@@ -324,7 +326,7 @@ public class BackendRegisterController {
 	
 	
 	// 依帳號模糊查詢
-	@GetMapping("/topGun/register/queryLikeAccountPost")
+	@GetMapping("/register/queryLikeAccountPost")
 	public String getRegisterByAccount(@RequestParam("account") String account, Model model) {
 		
 		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
@@ -345,7 +347,7 @@ public class BackendRegisterController {
 	
 	
 	// 修改註冊會員Enabled跳頁
-	@GetMapping("/topGun/registerEnabled/edit")
+	@GetMapping("/registerEnabled/edit")
 	public String editRegisterEnablePage(@RequestParam("memberId") Integer memberId, Model model) {
 			
 	Register register = backendRegisterService.findRegisterById(memberId);
@@ -360,7 +362,7 @@ public class BackendRegisterController {
 	
 	
 	// 修改註冊會員Enabled資料
-	@PutMapping("/topGun/registerEnabled/editPost")
+	@PutMapping("/registerEnabled/editPost")
 	public String editPostRegisterEnabled(@ModelAttribute("register") Register register) {
 			
 		backendRegisterService.updateRegister(register);

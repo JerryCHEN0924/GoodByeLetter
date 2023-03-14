@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -22,6 +23,7 @@ import com.iSpanProject.GoodByeletter.service.Ryu.BackendCommentService;
 
 @Controller
 @SessionAttributes({"authenticated", "existing"})
+@RequestMapping("/topGun")
 public class BackendCommentController {
 	
 	
@@ -41,7 +43,7 @@ public class BackendCommentController {
 	
 	
 	// 新增回復留言跳頁
-	@GetMapping("/topGun/comment/add")
+	@GetMapping("/comment/add")
 	public String addNewCommentForm(@RequestParam("boardId") Integer boardId, Model model) {
 		
 		
@@ -70,7 +72,7 @@ public class BackendCommentController {
 	
 	
 	// 新增回復留言
-	@PostMapping("/topGun/comment/post")
+	@PostMapping("/comment/post")
 	public String addNewCommentPost(@ModelAttribute("comment") Comment comment, Model model) {
 		
 //		Board board = (Board) model.getAttribute("board");
@@ -112,7 +114,7 @@ public class BackendCommentController {
 	
 	
 	// 分頁查詢回復留言
-	@GetMapping("/topGun/comment/page")
+	@GetMapping("/comment/page")
 	public String showCommentByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
 		
 		Page<Comment> page = backendCommentService.findCommentByPage(pageNumber);
@@ -126,7 +128,7 @@ public class BackendCommentController {
 	
 	
 	// 修改回復留言跳頁
-	@GetMapping("/topGun/comment/edit")
+	@GetMapping("/comment/edit")
 	public String editCommentPage(@RequestParam("commentId") Integer commentId, Model model) {
 		
 		Comment comment = backendCommentService.findCommentById(commentId);
@@ -142,7 +144,7 @@ public class BackendCommentController {
 	
 	
 	// 修改回復留言
-	@PutMapping("/topGun/comment/editPost")
+	@PutMapping("/comment/editPost")
 	public String editPostComment(@ModelAttribute("comment") Comment comment) {
 		
 		backendCommentService.updateComment(comment);
@@ -155,7 +157,7 @@ public class BackendCommentController {
 	
 	
 	// 刪除回復留言
-	@DeleteMapping("/topGun/comment/delete")
+	@DeleteMapping("/comment/delete")
 	public String deleteComment(@RequestParam("commentId") Integer commentId) {
 		
 		backendCommentService.deleteCommentById(commentId);
@@ -165,7 +167,7 @@ public class BackendCommentController {
 	}
 	
 	// 依帳號查詢Comment的Detail
-	@GetMapping("/topGun/comment/queryLikeAccountDetail")
+	@GetMapping("/comment/queryLikeAccountDetail")
 	public String getBoardByAccountDetail(@RequestParam("b") Board board, Model model) {
 		
 		List<Comment> commentDetail = backendCommentService.findCommentByAccountGroupByB(board);
