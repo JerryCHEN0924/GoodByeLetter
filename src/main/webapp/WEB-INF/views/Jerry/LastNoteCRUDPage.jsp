@@ -82,19 +82,18 @@
 						</form:form>
 
 						<form action="${contextRoot}/LastNote/CRUD/delete" method="post">
-							<input type="hidden" name="_method" value="delete" />
-							<input type="hidden" name="noteId" value="${nId.noteId}">
+							<input type="hidden" name="_method" value="delete" /> <input
+								type="hidden" name="noteId" value="${nId.noteId}">
 							<button type="submit" class="btn btn-danger" aria-disabled="true">刪除</button>
 						</form>
 
 						<br>
-
 					</div>
 				</div>
 			</div>
-
-			<!-- 	表單區	 -->
 		</div>
+
+		<!-- 	表單區	 -->
 
 
 
