@@ -82,8 +82,8 @@ public class registerController {
 			return "Lillian/myregister";
 		}
 	}
-
-	@GetMapping("/register1")
+//跳頁至註冊畫面
+	@GetMapping("/register")
 	public String register1(Model model) {
 		Register newRegister = new Register();
 		model.addAttribute("newRegister", newRegister);
@@ -107,31 +107,37 @@ public class registerController {
 ///////////////////////////////////////////////////
 		// 自動登入
 			System.out.println(rememberMe);
+			System.out.println("====================================");
 		if (rememberMe != null && rememberMe.equals("1")) {
 			// 如果用戶驗證成功，則創建一個包含用戶身份信息的Cookie，然後將其添加到HTTP響應中
 			Cookie cookie = new Cookie("memberId", existing.getMemberId().toString());
 			System.out.println(existing.getMemberId().toString());
 			cookie.setMaxAge(60 * 60 * 24 * 7); // 設置Cookie的過期時間為一周
+			cookie.setPath("/"); // 設置Cookie的作用範圍
+			cookie.setSecure(true);// 設置HTTPS 安全的Cookie
 			response.addCookie(cookie);
 			}
 ///////////////////////////////////////////////////			
-			return "index";
+			return "redirect:/";
 		} else {
-			return "redirect:/login1";
+			return "redirect:/register/login1";
 		}
 	}
-
-	@GetMapping("/login1")
+//跳頁至登入畫面
+	@GetMapping("/register/login1")
 	public String login1() {
 		return "Lillian/login";
 	}
 
 //登出
 	@GetMapping("/register/logout")
-	public String logoutRegister(HttpSession session) {
-//		session.removeAttribute("acc");
-//		session.removeAttribute("pwd");
-		session.invalidate();
+	public String logoutRegister(HttpSession session,HttpServletResponse response) {
+		// 刪除cookie
+        Cookie cookie = new Cookie("memberId",null);
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        session.invalidate();
 		return "redirect:/";
 	}
 
