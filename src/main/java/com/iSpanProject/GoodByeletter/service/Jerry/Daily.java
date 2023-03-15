@@ -33,7 +33,7 @@ public class Daily {
 		System.out.println("=====================");
 		
 //		驗證日為當日，寄出驗證信給使用者本人
-		vs.checkLocalDateWithVerifyDateAndSendVerifyEmail();
+//		vs.checkLocalDateWithVerifyDateAndSendVerifyEmail();
 		
 //		驗證日過期2天，寄驗證信給第二驗證人
 //		vs.checkLocalDateWithVerifyDateAndSendVerifyEmail2();
