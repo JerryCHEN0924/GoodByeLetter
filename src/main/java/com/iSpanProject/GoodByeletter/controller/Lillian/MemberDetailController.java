@@ -40,7 +40,7 @@ public class MemberDetailController {
 	private SendMailService sendMailService;
 
 //註冊會員資料
-	@PostMapping("/MemberDetail/add2")
+	@PostMapping("/memberDetail/add2")
 	public String saveMemberDetail(@RequestParam(value = "name") String name,
 			@RequestParam(value = "gender") String gender,
 			@RequestParam(value = "birthday") @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthday,
@@ -118,13 +118,13 @@ public class MemberDetailController {
 		return "Lillian/forgetPwd";
 	}
 //1寄信
-	@PostMapping("/sendEmail")
+	@PostMapping("/forgetpwd/sendEmail")
 	public String sendEmail(@RequestParam("email") String email) throws MessagingException {
 		sendMailService.sendEmail(email);
 		return "Lillian/CheckEmail";
 	}
 	
-	@GetMapping("/sendEmail/checkEmail")
+	@GetMapping("/forgetpwd/checkEmail")
 	public String checkEmail() {
 		return "Lillian/CheckEmail";
 	}
@@ -139,7 +139,7 @@ public class MemberDetailController {
 		}
 	}
 	
-	@PostMapping("/updatePassword")
+	@PostMapping("/forgetpwd/updatePassword")
 	public String updatePassword(@RequestParam("token")String token, 
 			@RequestParam("password")String password,
 			Model model)throws MessagingException {
@@ -152,7 +152,7 @@ public class MemberDetailController {
 		return "Lillian/updatePwdSuccess";
 	}
 //更改成功畫面
-	@GetMapping("/updatePwdSuccess")
+	@GetMapping("/forgetpwd/updatePwdSuccess")
 	public String updatePwdSuccess() {
 		return "redirect:/";
 	}

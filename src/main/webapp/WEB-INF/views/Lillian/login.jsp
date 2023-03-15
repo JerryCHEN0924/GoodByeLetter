@@ -36,24 +36,26 @@
 			<a href="<c:url value='/forgetpwd' />">忘記密碼</a>
 			<div id="msg1" class="d-inline-block ms-3"></div>
 			<script>
-			$(#login).submit(function(){
-				var xhr = new XMLHttpRequest(); 
-				xhr.open("post","login",true);//true表示非同步請求。
-				 xhr.onload = function () {//The transaction completes successfully
-			         if (xhr.status === 200) {
-			             if (xhr.responseText == 'pass')
-			                 $("#msg1").html(`<span class="text-primary">恭喜！您已通過身份驗證。</span>`);
-			             else
-			                 $("#msg1").html(`<span class="text-danger">抱歉！您未通過身份驗證。</span>`);
-			         } else {
-			             $("#msg1").html(`<span class="text-danger">${xhr.status} ${xhr.statusText}</span>`);
-			         }
-			         setTimeout(function(){$("#msg1").html("")}, 2000);
-			     };
-			     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8") //預設Content-Type: text/plain;charset=UTF-8
-                 var formData = $(this).serialize(); //formData如: username=%E5%B0%8F%E5%80%A9&password=%E9%87%87%E8%87%A3
-                 
-			})
+			$(#login).submit(function(event){
+				event.preventDefault();
+				$.ajax({
+					async:true,
+					method:'post',
+					url:'${contextRoot}/register/login',
+					data:{account:"account",password:"password"},
+					success: function() {
+						$("#msg1").html('<span class="text-success">登入成功<span>')
+					},
+					error: function() {
+						$("#msg1").html('<span class="text-danger">登入失敗<span>')
+   					 },
+					 complete:function(){
+						setTimeout(function(){$("#msg1").html('');},5000);
+					 }
+
+				});
+				
+			});
 
 			</script>
 		</div>
@@ -62,13 +64,7 @@
 
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/jquery-3.6.3.min.js"></script>
+
 
 </body>
 </html>

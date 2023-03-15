@@ -43,7 +43,7 @@
 			<div class="container" id="form_container">
 				<div id="registerTitle">註冊會員</div>
 				<form id="register_form" class="form-control"
-					action="${contextRoot}/MemberDetail/add2" method="post">
+					action="${contextRoot}/memberDetail/add2" method="post">
 					<input type="hidden" name="memberId" value="${memberId}">
 					<!-- regis -->
 					<div class="mb-3 row">
@@ -138,16 +138,6 @@
 
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/jquery-3.6.3.min.js"></script>
-	<script src="assets/js/main.js"></script>
-
-
 	<script>
 		
 	</script>

@@ -21,7 +21,7 @@
         <article  class="wrapper style2" style="height:100vh">
         <div class="container-fluid" id="login_form">
             <h1>更新密碼</h1>
-            <form id="login" action="${contextRoot}/updatePassword" method="post">
+            <form id="login" action="${contextRoot}/forgetpwd/updatePassword" method="post">
                 <input type="hidden"  name="token" value="${code}"/>
                 <input type="password" name="password" required placeholder="請輸入重置密碼" maxlength="8" minlength="4" />
                 <br>
@@ -35,13 +35,7 @@
     
 
 <!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/jquery-3.6.3.min.js"></script>
+	
     
 </body>
 </html>
