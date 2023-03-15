@@ -16,8 +16,7 @@
 							display: flex;
 							align-items: center;
 							background: transparent;
-							/* border-radius: 10px; */
-							z-index: 200;
+							z-index: 1;
 						}
 
 						.navigation ul {
@@ -262,8 +261,16 @@
 								</a>
 								<div class="div_dropdown">
 									<ul class="dropdown">
-										<li><a href="<c:url value='/customer/add' />">廣告商註冊</a></li>
-										<li><a href="<c:url value='/customer/page' />">廣告商登入</a></li>
+										<c:choose>
+											<c:when test="${exis.memberId != null}">
+												<li><a href="<c:url value='/customer/logout'/>">${exis.account}登出</a></li>
+												<li><a href="<c:url value='/customer/home/page'/>">${exis.account} Home</a></li>	
+											</c:when>
+											<c:otherwise>
+												<li><a href="<c:url value='/customer/add/page' />">廣告商註冊</a></li>
+												<li><a href="<c:url value='/customer/login/page' />">廣告商登入</a></li>
+											</c:otherwise>
+										</c:choose>
 									</ul>
 								</div>
 							</li>
@@ -320,7 +327,6 @@
 					<script src="assets/js/breakpoints.min.js"></script>
 					<script src="assets/js/util.js"></script>
 					<script src="assets/js/main.js"></script>
-					<script src="assets/js/jquery-3.6.4.min.js"></script>
 					<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 					<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

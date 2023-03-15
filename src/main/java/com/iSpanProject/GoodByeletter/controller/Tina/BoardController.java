@@ -141,8 +141,8 @@ public class BoardController {
 	//模糊查詢Title
 //	@ResponseBody
 	@GetMapping("/board/like")
-	public String findCustomerByNameContaining(@RequestParam("title") String title, Integer pageNum, Model model){	
-		List<Board> like = boardService.findByTitleContaining(title);	
+	public String findCustomerByNameContainingIdDesc(@RequestParam("title") String title, Integer pageNum, Model model){	
+		List<Board> like = boardService.findByTitleContainingOrderByBoardIdDesc(title);	
 		model.addAttribute("like",like);
 //		跳轉好像有問題
 //		return "redirect:/board/page";	

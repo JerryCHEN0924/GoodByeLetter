@@ -42,13 +42,16 @@
 			<div>
 				<ul>
 					<li>
-						<a class="" href="<c:url value='/picture/page2'/>">上傳圖片頁面2</a>
+						<a class="" href="<c:url value='/customer/picture/page2?memberId=${exis.memberId}'/>">上傳圖片頁面2</a>
 					</li>
 					<li>
-						<a class="" href="<c:url value='/picture/page1'/>">廣告圖片投放區</a>
+						<a class="" href="<c:url value='/customer/picture/page1'/>">廣告圖片投放區</a>
 					</li>
 					<li>
-						<a class="" href="<c:url value='/Detail/page2'/>">更新廠商資料</a>
+						<a class="" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
+					</li>
+					<li>
+						<a class="" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
 					</li>
 				</ul>
 				

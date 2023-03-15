@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.iSpanProject.GoodByeletter.dao.Jerry.LastNoteDao;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
-import com.iSpanProject.GoodByeletter.service.Lillian.MemberDetailService;
 
 import net.bytebuddy.utility.RandomString;
 
@@ -25,12 +24,6 @@ public class LastnoteService {
 
 	@Autowired
 	private LastNoteDao lDao;
-
-	@Autowired
-	private MemberDetailService mds;
-
-	@Autowired
-	private SendMail sendMail;
 
 //	@Autowired
 //	private GenerateJWT generateJWT;
@@ -43,7 +36,6 @@ public class LastnoteService {
 
 	@Transactional
 	public void SaveLastNote(LastNote lastNote) {
-		Register member = lastNote.getFK_memberId();
 //		####JWT測試####
 //		String account = member.getAccount();
 //		String token2 = generateJWT.createToken(account, new Date(System.currentTimeMillis() + 7200000) , "GoodByeLetter.iii");
