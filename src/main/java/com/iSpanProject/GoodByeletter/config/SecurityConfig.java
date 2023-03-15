@@ -7,6 +7,8 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
@@ -108,6 +110,7 @@ public class SecurityConfig {
 		 	 	
 		 	 	 .antMatchers("/ws", "/chat/**").permitAll()  // 允許 WebSocket 路徑訪問
 		 	 	 
+		 	 	.antMatchers("/forgetpwd/**").permitAll()  // 允許 亮竹的 路徑訪問
 		 	 	 
 		 	 	 .antMatchers("/getTest").permitAll()  // 允許 測試 路徑訪問
 		 	 	

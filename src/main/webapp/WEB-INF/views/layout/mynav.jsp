@@ -247,11 +247,11 @@
 												</li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="<c:url value='/login1' />"> 登入 </a></li>
-												<li><a href="<c:url value='/register1' />"> 註冊 </a></li>
+												<li><a href="<c:url value='/register/login1' />"> 登入 </a></li>
+												<li><a href="<c:url value='/register' />"> 註冊 </a></li>
 											</c:otherwise>
 										</c:choose>
-										<li><a href="mySpace.html"> 個人空間 </a></li>
+<!-- 										<li><a href="mySpace.html"> 個人空間 </a></li> -->
 									</ul>
 								</div>
 							</li>

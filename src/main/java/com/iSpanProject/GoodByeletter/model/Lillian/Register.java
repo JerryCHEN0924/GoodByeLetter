@@ -25,14 +25,17 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.iSpanProject.GoodByeletter.LoginInterceptor;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
 
+@Configuration
 @Entity
 @Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = {"account"})})
 //竹 把account設成唯一
@@ -100,9 +103,16 @@ public class Register {
 	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
 	
+
+	//cookie用
+	public LoginInterceptor loginInterceptor() {
+        return new LoginInterceptor();
+    }
+
 	// 阿戴:連到MemberDetail
 	@OneToOne(mappedBy = "FK_memberId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private MemberDetail memberDetail;
+
 	
 	@PrePersist
 	public void onCreate() {
