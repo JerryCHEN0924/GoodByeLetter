@@ -1,15 +1,14 @@
 package com.iSpanProject.GoodByeletter.controller.Jerry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.jasypt.encryption.StringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,12 +34,15 @@ public class GoodByeLetterController {
 	@Autowired
 	private LastnoteService lastnoteService;
 
+	@Autowired
+	private StringEncryptor stringEncryptor;
+
 	// 跳頁，進入撰寫遺囑頁面。
 	@GetMapping("")
 	public String addNote(Model model) {
-		// 如果不是會員，就導向去登入業面
+		// 如果不是會員，就導向去登入頁面
 		if (!model.containsAttribute("existing")) {
-			return "redirect:/login1";
+			return "redirect:/register/login1";
 		}
 		LastNote lastnote = new LastNote();
 		model.addAttribute("lastNote", lastnote);
@@ -49,17 +51,23 @@ public class GoodByeLetterController {
 
 	// Post方法存入遺囑，重新導向到遺囑編輯頁面，目前採前端表單控制輸入欄位，但後端因為使用validation驗證資料，還沒有用方法去捕捉錯誤並處理，回傳的畫面會很醜。
 	@PostMapping("/post")
-	public String addLastNote(@Valid @ModelAttribute("lastNote") LastNote lastNote, Model model,RedirectAttributes redirectAttributes,
-			BindingResult bindingResult) {
+	public String addLastNote(@Valid @ModelAttribute("lastNote") LastNote lastNote, Model model,
+			RedirectAttributes redirectAttributes, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			// 如果有錯誤訊息，返回錯誤訊息
 			List<ObjectError> allErrors = bindingResult.getAllErrors();
-
 			redirectAttributes.addFlashAttribute("errorMessages", allErrors);
 			return "Jerry/LastNote";
 		} else {
 			Register memberid = (Register) model.getAttribute("existing");
 			lastNote.setFK_memberId(memberid);
+
+			// 加密
+			String notedetail = lastNote.getNotedetail();
+			String encrypt = stringEncryptor.encrypt(notedetail);
+			lastNote.setNotedetail(encrypt);
+			// 加密結束
+
 			lastnoteService.SaveLastNote(lastNote);
 			return "redirect:/LastNote/edit";
 		}
@@ -69,12 +77,21 @@ public class GoodByeLetterController {
 	// 跳頁，進入編輯遺囑頁面。
 	@GetMapping("/edit")
 	public String LastNoteEdit(Model model) {
+		// 如果不是會員，就導向去登入頁面
 		if (!model.containsAttribute("existing")) {
 			return "redirect:/login1";
 		}
 		Register memberid = (Register) model.getAttribute("existing");
 		List<LastNote> lastNotes = lastnoteService.findlastNoteBymember(memberid);
-		System.out.println(lastNotes);
+		// 解密
+		if (!lastNotes.isEmpty()) {
+			for (LastNote lastNote : lastNotes) {
+				String notedetail = lastNote.getNotedetail();
+				String decrypt = stringEncryptor.decrypt(notedetail);
+				lastNote.setNotedetail(decrypt);
+			}
+		}
+		// 解密結束
 		model.addAttribute("lastNotes", lastNotes);
 		return "Jerry/LastNoteEditPage";
 	}
