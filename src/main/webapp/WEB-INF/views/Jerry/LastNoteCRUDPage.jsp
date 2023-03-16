@@ -13,6 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GoodBye Letter</title>
 <link rel="stylesheet" href="/index/assets/css/mymain.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.min.js"></script>
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -43,13 +46,13 @@
 		<div class="container-fluid " id="register">
 			<div class="container">
 				<h1>GoodBye Letter</h1>
-				<!-- 	表單區	 -->
+				
 				<div class="card">
 					<div class="card-header">更新遺囑</div>
 					<div class="card-body">
 
 						<form:form action="${contextRoot}/LastNote/CRUD/put"
-							modelAttribute="nId" method="put">
+							modelAttribute="nId" method="put" id="lastNoteForm"> 
 
 							<form:input type="hidden" class="form-control" path="noteId"
 								id="noteId" value="${nId.noteId}" />
@@ -78,42 +81,52 @@
 								<form:textarea class="form-control" id="notedetail"
 									path="notedetail" rows="3" />
 							</div>
-							<button class="btn btn-success" type="submit">送出</button>
+							<button class="btn btn-success" onclick="save()" type="button">送出</button>
+							<button class="btn btn-danger" onclick="resetbutton()" type="button">重置</button>
 						</form:form>
-
-						<form action="${contextRoot}/LastNote/CRUD/delete" method="post">
-							<input type="hidden" name="_method" value="delete" /> <input
-								type="hidden" name="noteId" value="${nId.noteId}">
-							<button type="submit" class="btn btn-danger" aria-disabled="true">刪除</button>
-						</form>
 
 						<br>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- 	表單區	 -->
-
-
-
 	</article>
 
-
-
-
-
-
-
 	<!-- Scripts -->
-	<script src="<c:url value='/assets/js/breakpoints.min.js' />"></script>
-	<script src="<c:url value='/assets/js/browser.min.js' />"></script>
-	<script src="<c:url value='/assets/js/jquery.min.js' />"></script>
-	<script src="<c:url value='/assets/js/jquery.scrolly.min.js' />"></script>
-	<script src="<c:url value='/assets/js/main.js' />"></script>
-	<script src="<c:url value='/assets/js/util.js' />"></script>
+
 	<script>
-		
+	function save() {
+	    Swal.fire({
+	      title: '確定要儲存嗎？',
+	      icon: 'success',
+	      showCancelButton: true,
+	      confirmButtonText: '確定！',
+	      cancelButtonText: '取消',
+	      reverseButtons: true
+	    }).then((result) => {
+	      if (result.isConfirmed) {
+	        // 如果用戶確認要儲存，則提交表單
+	        document.getElementById('lastNoteForm').submit();
+	      }
+	    })
+}
+	
+	function resetbutton() {
+	    Swal.fire({
+	      title: '確定要重置表單嗎？',
+	      icon: 'warning',
+	      showCancelButton: true,
+	      confirmButtonText: '我確定！',
+	      cancelButtonText: '取消',
+	      reverseButtons: true
+	    }).then((result) => {
+	      if (result.isConfirmed) {
+	        // 如果用戶確認要重置表單，則重置
+	        document.getElementById('lastNoteForm').reset();
+	      }
+	    })
+}
+	
 	</script>
 
 </body>

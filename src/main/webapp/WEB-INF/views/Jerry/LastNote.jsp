@@ -11,6 +11,9 @@
 <meta charset="UTF-8">
 <title>遺書頁面</title>
 <link rel="stylesheet" href="/index/assets/css/mymain.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.min.js"></script>
+	
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -36,18 +39,15 @@
 
 	<article id="myspace" class="wrapper style2">
 
-		<div class="container-fluid " id="register">
+		<div class="container-fluid " id="lastNote">
 			<div class="container">
 				<h1 class="display-4 mb-5">GoodBye Letter</h1>
 				<!-- 	表單區	 -->
 				<div class="card">
 					<div class="card-header bg-light text-black ">新增遺囑</div>
 					<div class="card-body">
-						<form:form action="${contextRoot}/LastNote/post"
+						<form:form action="${contextRoot}/LastNote/post" id="lastNoteForm"
 							modelAttribute="lastNote" method="POST">
-							<!-- 							以下這兩行為從前端取得會員ID後再送進後端處理，已改為從後端取得 -->
-							<%-- 								<form:input type="hidden" class="form-control" --%>
-							<%--  									path="FK_memberId" id="FK_memberId" value="${existing.memberId}" />  --%>
 
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>
@@ -64,20 +64,23 @@
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">第二驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify2"
-									value="bbb@gmail.com" id="verify2"
+									value="CCC@gmail.com" id="verify2"
 									placeholder="name@example.com" />
 							</div>
+							
 							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label">信件內容</label>
-								<form:textarea class="form-control" id="notedetail"
-									defaultValue="這是GoodBye Letter的預設內容" path="notedetail" rows="3" />
+								<label for="notedetail" class="form-label">信件內容</label>
+								<form:textarea class="form-control" id="notedetail" maxlength="500"
+									placeholder="想對那個人...說些什麼呢?" path="notedetail" rows="3" />
+								<form:errors path="notedetail" />
 							</div>
-
+							
 							<div class="d-flex justify-content-center">
-								<button class="btn btn-success" type="submit">送出</button>
-								<button class="btn btn-danger" type="Reset">重置</button>
+								<button class="btn btn-success" id="saveButton" onclick="save()" type="button">送出</button>
+								<button class="btn btn-danger" id="resetButton1231" onclick="resetbutton()" type="button">重置</button>
 							</div>
 						</form:form>
+
 					</div>
 				</div>
 			</div>
@@ -86,7 +89,39 @@
 
 	</article>
 
-
+	<script>
+	function save() {
+	    Swal.fire({
+	      title: '確定要儲存嗎？',
+	      icon: 'success',
+	      showCancelButton: true,
+	      confirmButtonText: '確定！',
+	      cancelButtonText: '取消',
+	      reverseButtons: true
+	    }).then((result) => {
+	      if (result.isConfirmed) {
+	        // 如果用戶確認要儲存，則提交表單
+	        document.getElementById('lastNoteForm').submit();
+	      }
+	    })
+}
+	
+	function resetbutton() {
+	    Swal.fire({
+	      title: '確定要重置表單嗎？',
+	      icon: 'warning',
+	      showCancelButton: true,
+	      confirmButtonText: '我確定！',
+	      cancelButtonText: '取消',
+	      reverseButtons: true
+	    }).then((result) => {
+	      if (result.isConfirmed) {
+	        // 如果用戶確認要重置表單，則重置
+	        document.getElementById('lastNoteForm').reset();
+	      }
+	    })
+}
+	</script>
 	<script src="<c:url value='/js/jquery-3.6.3.min.js' />"></script>
 </body>
 </html>
