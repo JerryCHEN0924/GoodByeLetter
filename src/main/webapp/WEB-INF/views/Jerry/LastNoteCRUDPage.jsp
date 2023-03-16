@@ -81,7 +81,7 @@
 								<form:textarea class="form-control" id="notedetail"
 									path="notedetail" rows="3" />
 							</div>
-							<button class="btn btn-success" type="submit">送出</button>
+							<button class="btn btn-success" onclick="save()" type="button">送出</button>
 							<button class="btn btn-danger" onclick="resetbutton()" type="button">重置</button>
 						</form:form>
 
@@ -95,19 +95,18 @@
 	<!-- Scripts -->
 
 	<script>
-	function del() {
+	function save() {
 	    Swal.fire({
-	      title: '確定要刪除嗎？',
-	      text: '刪除後無法恢復！',
-	      icon: 'warning',
+	      title: '確定要儲存嗎？',
+	      icon: 'success',
 	      showCancelButton: true,
-	      confirmButtonText: '我確定！',
+	      confirmButtonText: '確定！',
 	      cancelButtonText: '取消',
 	      reverseButtons: true
 	    }).then((result) => {
 	      if (result.isConfirmed) {
-	        // 如果用戶確認要刪除，則提交表單
-	        document.getElementById('delform').submit();
+	        // 如果用戶確認要儲存，則提交表單
+	        document.getElementById('lastNoteForm').submit();
 	      }
 	    })
 }

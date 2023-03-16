@@ -64,16 +64,15 @@
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">第二驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify2"
-									value="bbb@gmail.com" id="verify2"
+									value="CCC@gmail.com" id="verify2"
 									placeholder="name@example.com" />
 							</div>
 							
 							<div class="mb-3">
 								<label for="notedetail" class="form-label">信件內容</label>
 								<form:textarea class="form-control" id="notedetail" maxlength="500"
-									defaultValue="這是GoodBye Letter的預設內容" path="notedetail" rows="3" />
+									placeholder="想對那個人...說些什麼呢?" path="notedetail" rows="3" />
 								<form:errors path="notedetail" />
-								
 							</div>
 							
 							<div class="d-flex justify-content-center">

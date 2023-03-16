@@ -19,6 +19,8 @@ public interface LastNoteDao extends JpaRepository<LastNote, Integer> {
 	
 	public boolean existsByverificationCode(String token);
 	
+	public List<LastNote> findByenabledFalse();
+	
 	@Query(value = "select * from LastNote WHERE FK_memberId = :f",nativeQuery = true)
 	public List<LastNote> findLastNoteBymemberId(@Param("f") Register r);
 	

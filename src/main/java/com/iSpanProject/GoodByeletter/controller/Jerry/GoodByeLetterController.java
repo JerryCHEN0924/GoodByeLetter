@@ -100,14 +100,24 @@ public class GoodByeLetterController {
 	@GetMapping("/CRUD")
 	public String LastNoteCRUD(@RequestParam("noteId") Integer id, Model model) {
 		LastNote nId = lastnoteService.findById(id);
+		// 解密
+		String notedetail = nId.getNotedetail();
+		String decrypt = stringEncryptor.decrypt(notedetail);
+		nId.setNotedetail(decrypt);
+		// 解密結束
 		model.addAttribute("nId", nId);
 		return "Jerry/LastNoteCRUDPage";
 	}
 
 //	Put請求更新編輯遺囑，跳轉回LastNoteEditPage
 	@PutMapping("/CRUD/put")
-	public String LastNoteCRUDPut(@ModelAttribute("noteId") @Valid LastNote lastnote) {
-		lastnoteService.SaveLastNote(lastnote);
+	public String LastNoteCRUDPut(@ModelAttribute("noteId") @Valid LastNote lastNote) {
+		// 加密
+		String notedetail = lastNote.getNotedetail();
+		String encrypt = stringEncryptor.encrypt(notedetail);
+		lastNote.setNotedetail(encrypt);
+		// 加密結束
+		lastnoteService.SaveLastNote(lastNote);
 		return "redirect:/LastNote/edit";
 
 	}
@@ -120,11 +130,5 @@ public class GoodByeLetterController {
 
 	}
 
-	// JSON方式存入遺囑頁面
-//	@ResponseBody
-//	@PostMapping("/LastNote/addJSON")
-//	public LastNote SaveLastNoteJSON(@RequestBody LastNote lastNote) {
-//		return lastNoteDao.save(lastNote);
-//	}
 
 }

@@ -1,5 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.Jerry;
 
+import java.util.List;
+
 import org.jasypt.encryption.StringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.iSpanProject.GoodByeletter.dao.Jerry.LastNoteDao;
+import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.service.Jerry.VerifyService;
 
 @Controller
@@ -19,10 +23,21 @@ public class VerifyController {
 
 	@Autowired
 	private StringEncryptor stringEncryptor;
+	
+	@Autowired
+	private LastNoteDao lDao;
 
 	// 跳頁，測試頁面
 	@GetMapping("/test")
 	public String LastNoteTestPage() {
+		
+		List<LastNote> findByenabledFalse = lDao.findByenabledFalse();
+		for (LastNote lastNote : findByenabledFalse) {
+			System.out.println("==============");
+			System.out.println("這是ID:"+lastNote.getNoteId());
+			System.out.println("==============");
+			
+		}
 		
 		//加密
 //		String text = "我是一條魚";
@@ -37,8 +52,6 @@ public class VerifyController {
 //		System.out.println("=========");
 //		System.out.println("解密:"+decrypt);
 //		System.out.println("=========");
-		
-		
 		//加密結束
 		
 		return "Jerry/LastNoteTestPage";
