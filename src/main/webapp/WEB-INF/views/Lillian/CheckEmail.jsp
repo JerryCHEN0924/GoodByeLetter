@@ -43,6 +43,11 @@
 					
 					<div class="mb-6 row">
 						<div class="col-sm-10">
+						<br>
+            <br>
+            <br>
+            <br>
+            <br>
 							<h1>已向您Email發送一封郵件，請立即收查!</h1>
 						</div>
 					</div>	

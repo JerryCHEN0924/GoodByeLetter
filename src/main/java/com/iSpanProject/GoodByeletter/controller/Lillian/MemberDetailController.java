@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
@@ -40,14 +40,28 @@ public class MemberDetailController {
 	private SendMailService sendMailService;
 
 //註冊會員資料
+
 	@PostMapping("/memberDetail/add2")
 	public String saveMemberDetail(@RequestParam(value = "name") String name,
 			@RequestParam(value = "gender") String gender,
 			@RequestParam(value = "birthday") @DateTimeFormat(pattern = "yyyy-MM-dd") Date birthday,
 			@RequestParam(value = "email") String email, @RequestParam(value = "county") String county,
 			@RequestParam(value = "address") String address, @RequestParam(value = "memberId") Integer memberId,
+//			@ModelAttribute("newMemberDetail") MemberDetail memberDetail,
 			Model model) {
-
+//		if (!errors.isEmpty()) {
+//			return "Lillian/addMemberDetail";
+//		}
+		// 檢查Email是否已經存在
+//	    boolean isEmailExist = memberDetailService.checkEmailExist(email);
+//	    if (isEmailExist) {
+//	        // 如果Email已經存在，返回錯誤消息
+//	        Map<String, String> msg = new HashMap<>();
+//	        msg.put("error", "此Email已被註冊!");
+//	        model.addAttribute("msg", msg);
+//	        return "Lillian/addMemberDetail";
+//	    }
+	    // 如果Email不存在，保存新用户信息
 		MemberDetail newMemberDetail = new MemberDetail();
 		newMemberDetail.setName(name);
 		newMemberDetail.setGender(gender);
@@ -63,11 +77,16 @@ public class MemberDetailController {
 		Map<String, String> msg = new HashMap<String, String>();
 		model.addAttribute("msg", msg);
 		msg.put("success", "會員註冊成功!");
-		System.out.println("================================");
-		System.out.println(birthday);
-		System.out.println("================================");
+		
 		return "redirect:/";
-	}
+		
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return "Lillian/addMemberDetail";
+//		}
+}
+		
+		
 
 //編輯會員資料
 	@GetMapping("/memberDetail/edit")
@@ -129,7 +148,7 @@ public class MemberDetailController {
 		return "Lillian/CheckEmail";
 	}
 //2更改新密碼
-	@GetMapping("/resetPassword")
+	@GetMapping("/forgetpwd/resetPassword")
 	public String resetPwd(@RequestParam(name="code", required = false) String code, Model model) {
 		if(code==null)
 			return "index";

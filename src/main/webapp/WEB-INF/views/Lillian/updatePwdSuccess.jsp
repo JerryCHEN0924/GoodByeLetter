@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="assets/css/mymain.css" />
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -21,6 +21,7 @@
         <article  class="wrapper style2" style="height:100vh">
         <div class="container-fluid" id="login_form">
             <form id="login" action="${contextRoot}/forgetpwd/updatePwdSuccess"  method="get">
+            
             <h1>成功更新</h1>
                
             </form>
