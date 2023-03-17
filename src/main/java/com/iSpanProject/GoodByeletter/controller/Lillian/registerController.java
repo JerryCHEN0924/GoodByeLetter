@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
@@ -91,12 +91,14 @@ public class registerController {
 	}
 
 //登入
+	@ResponseBody
 	@PostMapping("/register/login")
 	public String login(@RequestParam(value = "account") String account,
 			@RequestParam(value = "password") String password,
-			@RequestParam(value = "rememberMe", required = false) String rememberMe, HttpSession session, Model model,
+			@RequestParam(value = "rememberMe", required = false) String rememberMe, 
+			@RequestParam(value = "error", required = false) String error,
+			HttpSession session, Model model,
 			HttpServletResponse response) {
-
 		Register existing = registerService.findByAccAndPwd(account, password);
 		model.addAttribute("register", existing);
 		String acc = existing.getAccount();
@@ -106,20 +108,20 @@ public class registerController {
 			session.setAttribute("existing", existing);
 ///////////////////////////////////////////////////
 		// 自動登入
-			System.out.println(rememberMe);
-			System.out.println("====================================");
-		if (rememberMe != null && rememberMe.equals("1")) {
-			// 如果用戶驗證成功，則創建一個包含用戶身份信息的Cookie，然後將其添加到HTTP響應中
-			Cookie cookie = new Cookie("memberId", existing.getMemberId().toString());
-			System.out.println(existing.getMemberId().toString());
-			cookie.setMaxAge(60 * 60 * 24 * 7); // 設置Cookie的過期時間為一周
-			cookie.setPath("/"); // 設置Cookie的作用範圍
-			cookie.setSecure(true);// 設置HTTPS 安全的Cookie
-			response.addCookie(cookie);
-			}
+//			System.out.println(rememberMe);
+//			System.out.println("====================================");
+//		if (rememberMe != null && rememberMe.equals("1")) {
+//			// 如果用戶驗證成功，則創建一個包含用戶身份信息的Cookie，然後將其添加到HTTP響應中
+//			Cookie cookie = new Cookie("memberId", existing.getMemberId().toString());
+//			System.out.println(existing.getMemberId().toString());
+//			cookie.setMaxAge(60 * 60 * 24 * 7); // 設置Cookie的過期時間為一周
+//			cookie.setPath("/"); // 設置Cookie的作用範圍
+//			response.addCookie(cookie);
+//			}
 ///////////////////////////////////////////////////			
 			return "redirect:/";
 		} else {
+			
 			return "redirect:/register/login1";
 		}
 	}
