@@ -41,9 +41,9 @@
 		<div class="container-fluid " id="register">
 			<div id="space">
 			
-				你付的金額為:${paymentSuccess.TradeAmt}
+				<h1>你付的金額為:${paymentSuccess.TradeAmt}</h1>
 				
-				<h1>有收到您的付款資訊，但過程可能被駭客竄改，請注意資訊安全。</h1>
+				<h2>有收到您的付款資訊，但過程可能被駭客竄改，請注意資訊安全。</h2>
 				<br>
 				<a class="btn btn-outline-danger" href="${contextRoot}" role="button">請點我回到首頁</a>
 			</div>

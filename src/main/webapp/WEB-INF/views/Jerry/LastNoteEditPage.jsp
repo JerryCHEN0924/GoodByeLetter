@@ -45,10 +45,10 @@
 					<thead>
 						<tr>
 							<th style="width: 100px;">信件編號</th>
-							<th style="width: 100px;">收件人</th>
-							<th style="width: 100px;">驗證日期</th>
+							<th style="width: 250px;">收件人</th>
+							<th style="width: 200px;">驗證日期</th>
 							<th>信件內容</th>
-							<th style="width: 100px;">操作</th>
+							<th style="width: 200px;">操作</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,7 +65,7 @@
 											<form action="${contextRoot}/LastNote/CRUD" method="get">
 												<input type="hidden" name="noteId"
 													value="${lastNote.noteId}" />
-												<button type="submit" class="btn btn-success btn-sm">編輯</button>
+												<button type="submit" class="btn btn-outline-success ">編輯</button>
 											</form>
 										</div>
 										<div>
@@ -73,7 +73,7 @@
 												method="post" id="delete-form${lastNote.noteId}">
 												<input type="hidden" name="_method" value="delete" /> <input
 													type="hidden" name="noteId" value="${lastNote.noteId}" />
-												<button type="button" class="btn btn-outline-danger btn-sm"
+												<button type="button" class="btn btn-outline-danger 
 													id="delete-btn"
 													onclick="del(${lastNote.noteId})">刪除</button>
 											</form>
