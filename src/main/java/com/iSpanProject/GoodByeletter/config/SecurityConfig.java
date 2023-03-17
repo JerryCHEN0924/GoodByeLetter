@@ -99,20 +99,33 @@ public class SecurityConfig {
 //		 	 .defaultSuccessUrl("/").permitAll() // 登入成功之後，跳轉路徑
 		 	 
 		 	 .and().authorizeRequests() // 定義那些Url被保護，那些不被保護
+		 	 
+		 	 
+//		 	 ====================================================================================
+//		 	 ====================================================================================
+		 	 
 
-		 	 	.antMatchers("/",
-		 	 			"/register/**", "/register1", "/memberDetail/**",
-		 	 			"/customer/**", "/picture/**",
-		 	 			"/board/**", "/comment/**", "/wschat/**", "/ws/**",
-		 	 			"/LastNote/**",
-		 	 			"/css/**", "/js/**", "/images/**", "/assets/**",
-		 	 			"/user/login").permitAll() // 設置哪些路徑可以直接訪問，不需要認證 匹配到的路徑, 不需要身份驗證
-		 	 	
-		 	 	 .antMatchers("/ws", "/chat/**").permitAll()  // 允許 WebSocket 路徑訪問
-		 	 	 
-		 	 	.antMatchers("/forgetpwd/**").permitAll()  // 允許 亮竹的 路徑訪問
-		 	 	 
-		 	 	 .antMatchers("/getTest").permitAll()  // 允許 測試 路徑訪問
+//		 	 	.antMatchers("/",
+//		 	 			"/register/**", "/register1", "/memberDetail/**",
+//		 	 			"/customer/**", "/picture/**",
+//		 	 			"/board/**", "/comment/**", "/wschat/**", "/ws/**",
+//		 	 			"/LastNote/**",
+//		 	 			"/css/**", "/js/**", "/images/**", "/assets/**",
+//		 	 			"/user/login").permitAll() // 設置哪些路徑可以直接訪問，不需要認證 匹配到的路徑, 不需要身份驗證
+//		 	 	
+//		 	 	 .antMatchers("/ws", "/chat/**").permitAll()  // 允許 WebSocket 路徑訪問
+//		 	 	 
+//		 	 	.antMatchers("/forgetpwd/**").permitAll()  // 允許 亮竹的 路徑訪問
+//		 	 	 
+//		 	 	 .antMatchers("/getTest").permitAll()  // 允許 測試 路徑訪問
+		 	 
+		 	 
+//		 	 ====================================================================================
+//		 	 ==================================================================================== 
+		 	 
+		 	 
+		 	 
+		 	 
 		 	 	
 		 	 	//當前登入用戶，只有具有1的權限才可以訪問這個路徑
 //		 	 	.antMatchers("/topGun/backendMember/add").hasAuthority("超級管理員")
@@ -137,11 +150,15 @@ public class SecurityConfig {
 //		 	 	.antMatchers("/topGun/backendMember/add").hasRole("admin")
 //		 	 	.antMatchers("/topGun/backendMember/add").hasRole("user")
 		 	 	
-		 	 	
+//			 	 ====================================================================================
+//			 	 ====================================================================================
+		 	 	 
+		 	 	 
 		 	 	
 //		 	 	.antMatchers("/topGun/**").hasRole("超級管理員")
 		 	 	.antMatchers("/topGun/**").hasAuthority("超級管理員")
 		 	 	
+		 	 	.antMatchers("/**").permitAll()  // 允許 測試 所有路徑訪問
 		 	 	
 //		 	 	.antMatchers("/wschat/**").hasRole("超級管理員")
 		 	 	
