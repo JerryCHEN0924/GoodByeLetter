@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.YiJie;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 //import java.util.Optional;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
+import com.iSpanProject.GoodByeletter.model.YiJie.Picture;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerRepository;
 import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerDetailService;
@@ -65,11 +67,19 @@ public class YJCustomerController {
 			Integer memberId = reg1.getMemberId();
 			model.addAttribute("memberId", memberId);
 			
+			//新增帳號時同時建立detail
 			YJCustomerDetail detail1 = new YJCustomerDetail();
 			Register reg2 = customerService.findById(memberId);
 			detail1.setFK_memberId(reg2);
-			detailService.insert(detail1);
+			//建立detail時要新建picture//0314
+//			List<Picture> pic = new LinkedList<>();
+//			Picture picture = new Picture();
+//			picture.setEnable(false);
+//			pic.add(picture);
+//			detail1.setPictures(pic);
 			
+			///////////////////////////
+			detailService.insert(detail1);
 			return "redirect:/";
 		}else {
 			model.addAttribute("errorMessage", "驗證碼輸入錯誤");

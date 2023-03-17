@@ -26,9 +26,9 @@ public class PictureService {
 		picture.setEnable(false);//將Enable初始值設定為false
 		pDao.save(picture);
 	}
-	//0311-用memberId找Picture
-//	public Picture findPictureByMemberId(Integer memberId) {
-//		Picture picture = pDao.findPictureBymemberId(memberId);
+	//0311-用pictureId找Picture
+//	public Picture findPictureByMemberId(Integer pictureId) {
+//		Picture picture = pDao.findAll(pictureId);
 //		return picture;
 //	}
 	//
