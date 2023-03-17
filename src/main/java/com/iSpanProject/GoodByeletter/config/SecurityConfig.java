@@ -158,7 +158,7 @@ public class SecurityConfig {
 //		 	 	.antMatchers("/topGun/**").hasRole("超級管理員")
 		 	 	.antMatchers("/topGun/**").hasAuthority("超級管理員")
 		 	 	
-		 	 	.antMatchers("/**").permitAll()  // 允許 測試 所有路徑訪問
+		 	 	.antMatchers("/**").permitAll(); // 允許 測試 所有路徑訪問
 		 	 	
 //		 	 	.antMatchers("/wschat/**").hasRole("超級管理員")
 		 	 	
@@ -177,9 +177,9 @@ public class SecurityConfig {
 		 	 	
 		 	 	
 		 	 
-		 	 .anyRequest().authenticated() // 其他尚未匹配到的url都需要身份驗證
-		 	 .and()
-		 	 .authenticationProvider(authenticationProvider);
+//		 	 .anyRequest().authenticated() // 其他尚未匹配到的url都需要身份驗證
+//		 	 .and()
+//		 	 .authenticationProvider(authenticationProvider);
 		 	
 		 
 		 	 
