@@ -81,8 +81,10 @@
 								<form:textarea class="form-control" id="notedetail"
 									path="notedetail" rows="3" />
 							</div>
-							<button class="btn btn-success" onclick="save()" type="button">送出</button>
-							<button class="btn btn-danger" onclick="resetbutton()" type="button">重置</button>
+							<div class="justify-content-center">
+							<button class="btn btn-outline-success btn-lg" onclick="save()" type="button">送出</button>
+							<button class="btn btn-outline-danger btn-lg" onclick="resetbutton()" type="button">重置</button>
+							</div>
 						</form:form>
 
 						<br>
