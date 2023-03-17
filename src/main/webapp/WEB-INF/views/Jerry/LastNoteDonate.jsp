@@ -41,16 +41,16 @@
 		<!-- 	金流 -->
 		<div class="container my-5 border shadow p-5 w-75">
 
-			<form id="idFormAioCheckOut" method="post" action="ECPayServer"
+			<form id="idFormAioCheckOut" method="post" action="${contextRoot}/ECPay/ECPayServer"
 				class="border shadow p-3 mb-5">
 				<div class="row text-primary ">
 					<div class="mb-3 col-sm-3">
 						<label class="col-xs-12">贊助金額:</label> <input
-							type="text" name="TotalAmount" placeholder="請填寫整數，僅限新台幣。" class="form-control" />
+							type="text" name="TotalAmount" value="1000" placeholder="請填寫整數，僅限新台幣。" class="form-control" />
 					</div>
 					<div class="mb-3 col-sm-4">
 						<label class="col-xs-12">交易描述: </label> <input
-							type="text" name="TradeDesc" placeholder="交易描述。"
+							type="text" name="TradeDesc" value="Donate GoodBye Letter" placeholder="交易描述。"
 							class="form-control" /> 請勿帶入特殊字元。
 					</div>
 					<div class="mb-3 col-sm-5">
