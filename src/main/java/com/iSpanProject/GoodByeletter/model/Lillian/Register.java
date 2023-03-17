@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,14 +25,17 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.iSpanProject.GoodByeletter.LoginInterceptor;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
 
+@Configuration
 @Entity
 @Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = {"account"})})
 //竹 把account設成唯一
@@ -46,7 +51,6 @@ public class Register {
 
 	@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 	private String password;
-	
 	
 	
 //	####################### Ryuz divider start #######################
@@ -98,6 +102,17 @@ public class Register {
 	// 阿戴:連到Commet
 	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
+	
+
+	//cookie用
+	public LoginInterceptor loginInterceptor() {
+        return new LoginInterceptor();
+    }
+
+	// 阿戴:連到MemberDetail
+	@OneToOne(mappedBy = "FK_memberId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private MemberDetail memberDetail;
+
 	
 	@PrePersist
 	public void onCreate() {
@@ -181,9 +196,21 @@ public class Register {
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
+	
+	
+
+	public MemberDetail getMemberDetail() {
+		return memberDetail;
+	}
+
+
+	public void setMemberDetail(MemberDetail memberDetail) {
+		this.memberDetail = memberDetail;
+	}
+
 
 	public Register(Integer memberId, String account, String password, Level fK_Plevel, Date registerTime,
-			List<LastNote> lastnote, Set<Board> boards, Set<Comment> comments) {
+			List<LastNote> lastnote, Set<Board> boards, Set<Comment> comments, MemberDetail memberDetail) {
 		super();
 		this.memberId = memberId;
 		this.account = account;
@@ -193,6 +220,7 @@ public class Register {
 		this.lastnote = lastnote;
 		this.boards = boards;
 		this.comments = comments;
+		this.memberDetail = memberDetail;
 	}
 
 	public Register() {

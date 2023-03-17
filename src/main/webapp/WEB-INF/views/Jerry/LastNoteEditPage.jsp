@@ -11,6 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GoodBye Letter編輯</title>
 <link rel="stylesheet" href="/index/assets/css/mymain.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -37,61 +39,54 @@
 	<%@ include file="../layout/mynav.jsp"%>
 	<article id="myspace" class="wrapper style2">
 		<div class="container">
-			
-			<!-- myspace -->
 			<div class="card" id="">
-				<h1>GoodBye Letter CRUD</h1>
-
-				<c:forEach var="lastNote" items="${lastNotes}">
-					<table class="table table-hover">
-						<thead>
+				<h1>GoodBye Letter</h1>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th style="width: 100px;">信件編號</th>
+							<th style="width: 250px;">收件人</th>
+							<th style="width: 200px;">驗證日期</th>
+							<th>信件內容</th>
+							<th style="width: 200px;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="lastNote" items="${lastNotes}">
 							<tr>
-								<th scope="col">信件編號</th>
-								<th scope="col">收件人</th>
-								<th scope="col">驗證日期</th>
-								<th scope="col">信件內容</th>
-								<th scope="col">操作</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td scope="row">${lastNote.noteId}</td>
-								<td scope="row">${lastNote.recipientEmail}</td>
-								<td scope="row">${lastNote.verifyTime}</td>
-								<td scope="row">${lastNote.notedetail}</td>
-								<td scope="row">
+								<td>${lastNote.noteId}</td>
+								<td>${lastNote.recipientEmail}</td>
+								<td>${lastNote.verifyTime}</td>
+								<td
+									style="max-width: 500px; overflow: hidden; text-overflow: ellipsis;">${lastNote.notedetail}</td>
+								<td>
 									<div class="d-flex justify-content-center">
 										<div class="mx-1">
 											<form action="${contextRoot}/LastNote/CRUD" method="get">
 												<input type="hidden" name="noteId"
-													value="${lastNote.noteId}" /> <input type="submit"
-													class="btn btn-success btn-sm" value="編輯" />
+													value="${lastNote.noteId}" />
+												<button type="submit" class="btn btn-outline-success ">編輯</button>
 											</form>
 										</div>
 										<div>
-											<form action="${contextRoot}/LastNote/CRUD/delete" method="post">
-												<input type="hidden" name="_method" value="delete" /> 
-												<input type="hidden" name="noteId" value="${lastNote.noteId}" />
-												<input type="submit" class="btn btn-outline-danger btn-sm "
-													value="刪除" />
+											<form action="${contextRoot}/LastNote/CRUD/delete"
+												method="post" id="delete-form${lastNote.noteId}">
+												<input type="hidden" name="_method" value="delete" /> <input
+													type="hidden" name="noteId" value="${lastNote.noteId}" />
+												<button type="button" class="btn btn-outline-danger 
+													id="delete-btn"
+													onclick="del(${lastNote.noteId})">刪除</button>
 											</form>
 										</div>
 									</div>
 								</td>
-
 							</tr>
-
-						</tbody>
-					</table>
-				</c:forEach>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</article>
-
-
-
-
-
 
 	<!-- Scripts -->
 	<script src="<c:url value='/assets/js/breakpoints.min.js' />"></script>
@@ -101,7 +96,24 @@
 	<script src="<c:url value='/assets/js/main.js' />"></script>
 	<script src="<c:url value='/assets/js/util.js' />"></script>
 	<script>
-		
+			
+		function del(deleteId) {
+		console.log(deleteId);
+	    Swal.fire({
+	      title: '確定要刪除嗎？',
+	      text: '刪除後無法恢復！',
+	      icon: 'warning',
+	      showCancelButton: true,
+	      confirmButtonText: '我確定！',
+	      cancelButtonText: '取消',
+	      reverseButtons: true
+	    }).then((result) => {
+	      if (result.isConfirmed) {
+	        // 如果用戶確認要刪除，則提交表單
+	        document.getElementById('delete-form'+deleteId).submit();
+	      }
+	    })
+}
 	</script>
 </body>
 </html>

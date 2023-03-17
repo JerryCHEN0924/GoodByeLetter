@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>依帳號查詢 Goodbye Letter Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -39,7 +39,7 @@
 
 <div class="card">
   <div class="card-header">
-    依Account查詢LastNote
+    依帳號查詢 Goodbye Letter
   </div>
   <div class="card-body">
   	
@@ -49,7 +49,7 @@
 		
 		
 		<div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+		    <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
 		    <div class="col-sm-10">
 		    	<input name="account" class="form-control" id=inputAccount  />
 		    </div>
@@ -111,7 +111,6 @@
 
 
 
-<hr>
 
 
 
@@ -126,7 +125,7 @@
 <div class="card">
   <div class="card-header">
   
-  依Account查詢使用者
+  Goodbye Letter 資料清單
   
   </div>
   <div class="card-body">
@@ -139,9 +138,9 @@
 	  
 	  
 	    <tr class="table-secondary table-active">
-	      <th scope="col">memberId</th>
-	      <th scope="col">account</th>
-	      <th scope="col">LastNote</th>
+	      <th scope="col">會員編號</th>
+	      <th scope="col">帳號</th>
+	      <th scope="col">GoodBye Letter 編號</th>
 	    </tr>
 	    
 	    
@@ -164,7 +163,7 @@
 	      <c:choose>
 		    <c:when test="${not empty register.lastnote}">
 		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/lastNote/queryLikeAccountDetail?fkm=${register.memberId}'  />">查看LastNote</a>
+		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/lastNote/queryLikeAccountDetail?fkm=${register.memberId}'  />">查看信件紀錄</a>
 		    </c:when>
 		    <c:otherwise>
 		        <!-- member 物件不存在，顯示登入按鈕 -->

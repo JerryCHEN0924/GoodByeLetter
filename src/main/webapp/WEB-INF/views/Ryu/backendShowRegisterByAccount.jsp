@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>依帳號查詢會員啟用狀態資料 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -39,7 +39,7 @@
 
 <div class="card">
   <div class="card-header">
-    依Account查詢Register
+    依帳號查詢會員啟用狀態資料
   </div>
   <div class="card-body">
   	
@@ -49,7 +49,7 @@
 		
 		
 		<div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+		    <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
 		    <div class="col-sm-10">
 		    	<input name="account" class="form-control" id=inputAccount  />
 		    </div>
@@ -111,7 +111,6 @@
 
 
 
-<hr>
 
 
 
@@ -126,7 +125,7 @@
 <div class="card">
   <div class="card-header">
   
-  依Account查詢使用者
+  會員啟用狀態資料清單
   
   </div>
   <div class="card-body">
@@ -139,9 +138,9 @@
 	  
 	  
 	    <tr class="table-secondary table-active">
-	      <th scope="col">memberId</th>
-	      <th scope="col">account</th>
-	      <th scope="col">enabled</th>
+	      <th scope="col">會員編號</th>
+	      <th scope="col">帳號</th>
+	      <th scope="col">啟用狀態</th>
 	    </tr>
 	    
 	    

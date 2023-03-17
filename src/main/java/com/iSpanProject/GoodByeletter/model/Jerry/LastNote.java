@@ -1,7 +1,6 @@
 package com.iSpanProject.GoodByeletter.model.Jerry;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,6 +17,9 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -26,7 +28,6 @@ import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Entity
 @Table(name="lastnote")
-
 public class LastNote implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -40,13 +41,13 @@ public class LastNote implements Serializable {
 	@JoinColumn(name="FK_memberId", foreignKey=@ForeignKey(name = "FK_lastnote_member"), nullable = false)
 	private Register FK_memberId;
 	
-//	@Email(message = "信箱格式錯誤")
-//	@NotBlank(message = "信箱不可為空")
+	@Email(message = "信箱格式錯誤")
+	@NotBlank(message = "信箱不可為空")
 	@Column(name="recipientEmail", nullable = false)
 	private String recipientEmail;
 	
-//	@NotBlank(message = "內容不可為空")
-	@Column(name="notedetail",columnDefinition = "nvarchar(500)", nullable = false)
+	@Column(name="notedetail",columnDefinition = "nvarchar(MAX)", nullable = false)
+	@Size(min = 0, max=500, message = "字數必須在0到500之間")
 	private String notedetail;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -55,9 +56,12 @@ public class LastNote implements Serializable {
 	@Column(name="createTime", nullable = false)
 	private Date createTime;
 	
+	@NotBlank(message = "請至少填寫一位第二驗證人")
+	@Email(message = "信箱格式錯誤")
 	@Column(name="verify1Email")
 	private String verify1;
 	
+	@Email(message = "信箱格式錯誤")
 	@Column(name="verify2Email")
 	private String verify2;
 	
@@ -67,15 +71,12 @@ public class LastNote implements Serializable {
 	@Column(name="verifyTime")
 	private Date verifyTime;
 	
-//	########以下是測試驗證專區勿動########
-	
 	@Column(name="enabled")
 	private Boolean enabled;
 	
 	@Column(name="verificationCode",updatable = false)
 	private String verificationCode;
-	
-//	########以上是測試驗證專區勿動########
+
 
 	@PrePersist
 	public void onCreate() {
@@ -84,18 +85,25 @@ public class LastNote implements Serializable {
 		}
 		
 		if(verifyTime == null) {
-			verifyTime = new Date();
-//			此功能為存入遺囑時就將驗證日設定為一個月後。
+			Date time = new Date();
 			Calendar cal = Calendar.getInstance();
-			cal.setTime(verifyTime);
-			cal.add(Calendar.MONTH, 1);
+			cal.setTime(time);
+//			此功能為存入遺囑時就將驗證日設定為六個月後。
+			cal.add(Calendar.MONTH, 6);
 			verifyTime = cal.getTime();
 		}
 	}
 	
+//	資料更新前會做:
 	@PreUpdate
 	public void onUpdate() {
 		createTime = new Date();
+		Date time = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(time);
+//		更新遺囑就將驗證日設定當日的六個月後。
+		cal.add(Calendar.MONTH, 6);
+		verifyTime = cal.getTime();
 	}
 
 	public LastNote() {

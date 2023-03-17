@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>查詢留言紀錄 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -57,14 +57,14 @@
 
 <div class="card mt-3">
   <div class="card-header">
-    Board發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${boardDetail.createTime}" /></span>
+    留言發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${boardDetail.createTime}" /></span>
     <hr>
-    Board Title： <span>${boardDetail.title}</span>
+    留言標題： <span>${boardDetail.title}</span>
     <hr>
     <c:choose>
 		    <c:when test="${not empty boardDetail.comments}">
 		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/comment/queryLikeAccountDetail?b=${boardDetail.boardId}'  />">查看Comment</a>
+		        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/comment/queryLikeAccountDetail?b=${boardDetail.boardId}'  />">查看回覆留言</a>
 		    </c:when>
 		    <c:otherwise>
 		        <!-- member 物件不存在，顯示登入按鈕 -->

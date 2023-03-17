@@ -59,9 +59,9 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputLevelName" class="col-sm-2 col-form-label">LevelName</label>
+		    <label for="inputLevelName" class="col-sm-2 col-form-label">權限名稱</label>
 		    <div class="col-sm-10">
-		    	<form:input path="levelName" class="form-control" id="inputLevelName" />
+		    	<form:input path="levelName" class="form-control" id="inputLevelName" placeholder="超級管理員" />
 		    </div>
 		  </div>
   		

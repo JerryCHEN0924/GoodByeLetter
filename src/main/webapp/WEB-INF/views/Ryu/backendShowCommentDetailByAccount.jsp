@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>查詢回覆留言紀錄 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -57,11 +57,11 @@
 
 <div class="card my-3">
   <div class="card-header">
-    Comment ID： <span>${commentDetail.commentId}</span>
+    回覆留言標號： <span>${commentDetail.commentId}</span>
     <hr>
-    Comment發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${commentDetail.createTime}" /></span>
+    發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${commentDetail.createTime}" /></span>
     <hr>
-    Comment 更新時間： <span>${commentDetail.updateTime}</span>
+    更新時間： <span>${commentDetail.updateTime}</span>
   </div>
   <div class="card-body">
   	

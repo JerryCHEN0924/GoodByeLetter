@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新增等級 Page</title>
+<title>編輯回覆留言 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -50,7 +50,7 @@
 <div class="card">
 
   <div class="card-header">
-    新增留言
+    編輯回覆留言
   </div>
   
   <div class="card-body">
@@ -71,7 +71,7 @@
 <!-- 		  </div> -->
 		  
   		<div class="mb-3 row">
-		    <label for="inputReply" class="col-sm-2 col-form-label">Reply</label>
+		    <label for="inputReply" class="col-sm-2 col-form-label">回覆內容</label>
 		    <div class="col-sm-10">
 		    	<form:textarea path="reply" class="form-control" id="inputReply" rows="" cols="" />
 		    </div>

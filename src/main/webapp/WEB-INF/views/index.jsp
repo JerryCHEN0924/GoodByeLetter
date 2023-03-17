@@ -35,33 +35,7 @@
 	/* font-family: 'Patua One', cursive; */
 }
 
-/************** topic ****************/
-#topic {
-	position: absolute;
-	width: 100%;
-	height: 100vh;
-	margin: 0 auto;
-	padding: 0px;
-	z-index: 1;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center;
-	background-size: cover;
-	background-image: url(images/letters.jpg);
-	opacity: 0.5;
-	display: flex;
-	align-items: center;
-	/* 垂直置中 */
-	justify-content: center;
-	/* 水平置中 */
-}
 
-/* 文字置中 */
-#topicContent {
-	width: 100%;
-	text-align: center;
-	align-items: center;
-}
 
 /************article  *****************/
 article {
@@ -219,22 +193,7 @@ article {
 
 </head>
 <body>
-
-	<%-- <%@ include file="layout/mynav.jsp"%> --%>
-	<%@ include file="layout/mynav.jsp"%>
-
-	<!-- top1 -->
-<!-- 	<article> -->
-<!-- 		<div class="container-fluid article1 " id="topic"> -->
-<!-- 			<div id="topicContent"> -->
-<!-- 				<h1>寫下你的信~</h1> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</article> -->
-
-	<!--work-->
-
-	
+	<%@ include file="layout/mynav.jsp"%>	
 
     <!-- letter animation  -->
     <article id="">
