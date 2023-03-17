@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看會員 Page</title>
+<title>查詢會員細項資料 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -146,7 +146,7 @@
 <div class="card">
   <div class="card-header">
   
-  查看會員 Page
+  查詢會員細項資料
   
   </div>
   <div class="card-body">
@@ -159,16 +159,16 @@
 	  
 	  
 	    <tr class="table-secondary table-active">
-	      <th scope="col">id</th>
-	      <th scope="col">name</th>
-	      <th scope="col">gender</th>
-	      <th scope="col">birthday</th>
+	      <th scope="col">編號</th>
+	      <th scope="col">姓名</th>
+	      <th scope="col">性別</th>
+	      <th scope="col">生日</th>
 	      <th scope="col">Email</th>
-	      <th scope="col">County</th>
-	      <th scope="col">address</th>
-	      <th scope="col">FK_memberId</th>
-	      <th scope="col">FK_Plevel</th>
-	      <th scope="col">Edit</th>
+	      <th scope="col">國家</th>
+	      <th scope="col">地址</th>
+	      <th scope="col">會員編號</th>
+	      <th scope="col">權限編號</th>
+	      <th scope="col">編輯</th>
 	    </tr>
 	    
 	    

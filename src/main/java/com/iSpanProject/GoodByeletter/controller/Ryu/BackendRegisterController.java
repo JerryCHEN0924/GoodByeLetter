@@ -303,7 +303,53 @@ public class BackendRegisterController {
 			return "redirect:/topGun/lastNote/add";
 		}
 		
-	
+//		======================= Block =======================
+		
+		
+		
+		// 模擬會員登入跳頁，後台首頁選單
+		@GetMapping("/register/addLoginFormImitation")
+		public String loginProcessFormImitation(Model model) {
+			
+			return "Ryu/backendLoginFormImitation";
+			
+		}
+		
+		
+		
+		// 模擬會員登入，後台首頁選單
+		@PostMapping("/register/LoginProcessImitation")
+		public String loginProcessImitation(@RequestParam("account") String account,@RequestParam("password") String password,
+				HttpServletRequest request, Model model) {
+			
+			Register register = backendRegisterService.login(account, password);
+			
+			if (register != null) {
+				
+				model.addAttribute("existing", register);
+				
+				return "redirect:/topGun";
+				
+			}
+			
+			else {
+				// 登入失敗，返回登入表單
+				return "Ryu/backendLoginFormImitation";
+			}
+			
+		}
+		
+		
+		
+		// 模擬會員登出，後台首頁選單
+		@GetMapping("/register/LogoutProcessImitation")
+		public String logoutProcessImitation(SessionStatus status) {
+			
+			status.setComplete();
+			
+			return "redirect:/topGun";
+		}
+		
 	
 	
 //	######################################################

@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>編輯會員 Page</title>
+<title>編輯會員註冊資料 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -45,7 +45,7 @@
 
 <div class="card">
   <div class="card-header">
-    審核會員Enabled狀態 Page
+   編輯會員註冊資料
   </div>
   <div class="card-body">
   	
@@ -59,7 +59,7 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputMemberId" class="col-sm-2 col-form-label">MemberId</label>
+		    <label for="inputMemberId" class="col-sm-2 col-form-label">編號</label>
 		    <div class="col-sm-10">
 		    	<input name="memberId" class="form-control" id="inputMemberId" value="${register.memberId}" disabled />
 		    </div>
@@ -71,7 +71,7 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+		    <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
 		    <div class="col-sm-10">
 		    	<form:input path="account" class="form-control" id="inputAccount" />
 		    </div>
@@ -80,7 +80,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+		    <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
 		    <div class="col-sm-10">
 		    	<form:input path="password" class="form-control" id="inputPassword" />
 		    </div>
@@ -89,7 +89,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputEnabled" class="col-sm-2 col-form-label">Enabled</label>
+		    <label for="inputEnabled" class="col-sm-2 col-form-label">啟用狀態</label>
 		    <div class="col-sm-10">
 		    	<form:input path="enabled" class="form-control" id="inputEnabled" />
 		    </div>
@@ -97,14 +97,14 @@
 		  
 		  
 		  <div class="mb-3 row">
-		    <label for="inputRegisterTime" class="col-sm-2 col-form-label">RegisterTime</label>
+		    <label for="inputRegisterTime" class="col-sm-2 col-form-label">註冊時間</label>
 		    <div class="col-sm-10">
 		    	<input name="registerTime" class="form-control" id="inputRegisterTime" value="${register.registerTime}" disabled />
 		    </div>
 		  </div>
 		  
   		<div class="mb-3 row">
-		    <label for="inputFK_Plevel" class="col-sm-2 col-form-label">Level</label>
+		    <label for="inputFK_Plevel" class="col-sm-2 col-form-label">權限編號</label>
 		    <div class="col-sm-10">
 		    	<input name="FK_Plevel" class="form-control" id="inputFK_Plevel" value="${register.FK_Plevel.plevel}" disabled />
 		    </div>

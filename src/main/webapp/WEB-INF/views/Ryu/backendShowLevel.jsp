@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看會員等級 Page</title>
+<title>查看權限等級 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -147,7 +147,7 @@
 <div class="card">
   <div class="card-header">
   
-  查看權限等級 Page
+  查看權限等級
   
   </div>
   <div class="card-body">
@@ -160,9 +160,9 @@
 	  
 	  
 	    <tr class="table-primary table-active">
-	      <th scope="col">plevel</th>
-	      <th scope="col">levelName</th>
-	      <th scope="col">Edit</th>
+	      <th scope="col">權限編號</th>
+	      <th scope="col">權限名稱</th>
+	      <th scope="col">編輯</th>
 	    </tr>
 	    
 	    
