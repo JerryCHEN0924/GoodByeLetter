@@ -139,7 +139,6 @@ public class BoardController {
 	
 
 	//模糊查詢Title
-//	@ResponseBody
 	@GetMapping("/board/like")
 	public String findCustomerByNameContainingIdDesc(@RequestParam("title") String title, Integer pageNum, Model model){	
 		List<Board> like = boardService.findByTitleContainingOrderByBoardIdDesc(title);	
@@ -149,99 +148,11 @@ public class BoardController {
 		return "Tina/showPageBoard";
 	}
 	
-//	public List<Board> findByPage(@RequestParam Integer pageNumber){
-//		Pageable pgb = PageRequest.of(pageNumber-1, 2, Sort.Direction.ASC,"boardId");
-//		Page<Board> page = boardDao.findAll(pgb);
-//		List<Board> list= page.getContent();
-//		return list;
-//	
-//	}
+
 	
 	@GetMapping("/board/ajax")
 	public String ajax(@ModelAttribute Board board) {
 		return "Tina/ajaxBoard";
 		
 	}
-	
-	//用boardDto遮罩的controller
-//	@ResponseBody
-//	@PostMapping("/board/ajaxPost")
-//	public Page<Board> ajaxPost(@RequestBody BoardDto dto, Board board1) {
-//		String inputTitle = dto.getInputTitle();
-//		String inputMessString = dto.getInputMessage();
-//		
-//		Board board = new Board();
-//		board.setTitle(inputTitle);
-//		board.setBoardMessage(inputMessString);
-//		
-//		boardService.addBoard(board);
-//		Page<Board> page = boardService.findByPage(1);
-//	
-//		return page;
-//		
-//	}
-//	
-//	public Board addBoard(@RequestBody Board board) {
-//		return boardDao.save(board);
-//	}
-	
-	
-	//透過id查詢留言板
-//	@ResponseBody
-//	@GetMapping("board/id")
-//	public Board findById(@RequestParam("id") Integer boardId) {
-//		Optional<Board> optional= boardDao.findById(boardId);
-//		if(optional.isPresent()) {
-//			Board findBoard = optional.get();
-//			return findBoard;
-//		}
-//		return null;
-//	}
-	//透過title查詢留言板
-//	@ResponseBody
-//	@GetMapping("board/title")
-//	public List<Board> findBoardByTitle(@RequestParam("title") String title) {		
-//		return boardDao.findBoardByTitle(title);
-//	}
-	
-	//模糊查詢Title
-//	@ResponseBody
-//	@GetMapping("board/like")
-//	public List<Board> findBoardByTitleContaining(@RequestParam("str")String str){
-//		return boardDao.findBoardByTitleContaining(str);
-//		
-//	}
-	
-	
-//	查詢所有留言板:json
-//	@ResponseBody
-//	@PostMapping("boards")
-//	public List<Board> findAll(){
-//		return boardService.findAll();
-//	}
-//	
-	
-
-	
-	//刪除留言板
-//	@ResponseBody
-//	@DeleteMapping("board/delete")
-//	public String deleteBoardById(@RequestParam("id") Integer boardId) {
-//		try {
-//			boardDao.deleteById(boardId);
-//			return "刪除留言板成功";
-//		}catch(EmptyResultDataAccessException e) {
-//			return "沒有這個留言板";
-//		}
-//	}
-	
-	
-	//留言板Page
-//	public List<Board> findByPage(@RequestParam Integer pageNumber){
-//		Pageable pgb = PageRequest.of(pageNumber-1, 2, Sort.Direction.ASC,"boardId");
-//		Page<Board> page = boardDao.findAll(pgb);
-//		List<Board> list= page.getContent();
-//		return list;
-//	
-//	}
 }

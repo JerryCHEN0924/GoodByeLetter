@@ -65,7 +65,7 @@
 	<article id="myspace" class="container-fluid wrapper">
 		<div class="container">
 		<div class="searchBoard">
-			<h3>Id:${newboard.boardId}留言板</h3>
+			<h3>Id:${newboard.boardId}留言板 ${contextUser.name}</h3>
 		</div>
 		
 		<hr>
@@ -77,7 +77,7 @@
 		<input type="hidden" value="${newboard.createTime}" />
 		
 					<h4>
-						<strong>${newboard.register.memberId}</strong>
+						<strong>${newboard.register.account}</strong>
 					</h4>
 					<h5>
 						建立時間:
@@ -89,6 +89,9 @@
 					</h5>
 					<h3>${newboard.title}</h3>
 					<p>${newboard.boardMessage}</p>
+					
+					
+					<c:if test="${contextUser.name==newboard.register.account}">
 					<%--編輯按鈕 --%>
 					<form:form action="${contextRoot}/board/editPage" method="get">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
@@ -99,7 +102,7 @@
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
 						<input type="submit" class="btn btn-danger" value="刪除" />
 					</form:form>
-		
+					</c:if>
 
 
 
@@ -111,7 +114,7 @@
 			<c:forEach var="comment" items="${samebIdComment}">
 			<hr>
 			
-			<h4><strong>${comment.register.memberId}</strong></h4>
+			<h4><strong>${comment.register.account}</strong></h4>
 			<h5>
 				建立時間:
 				<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
@@ -121,6 +124,8 @@
 				value="${comment.updateTime}" />
 			</h5>
 			<p>${comment.reply}</p>
+			
+			<c:if test="${contextUser.name==comment.register.account}">
 			<%--修改留言 --%>
 			<form:form action="${contextRoot}/comment/editPage" method="get">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
@@ -133,11 +138,13 @@
 						<input type="hidden" name="commentId" value="${comment.commentId}" />
 						<input type="submit" class="btn btn-outline-danger" value="刪除" />
 			</form:form>
+			</c:if>
+			
 			</c:forEach> 
 			</div>
 			
 			
-			
+			<c:if test="${not empty contextUser}">
 			<div class="messageContent">
 			<%--回覆card --%>
 			<form:form action="${contextRoot}/comment/add" method="post"
@@ -147,10 +154,10 @@
 			<form:textarea path="reply" class="form-control" placeholder="reply" /> 
 			<input type="submit" class="btn btn-outline-info" value="新增"></input> 	
 			</form:form> 
-			</div>
-			<div style="height:10px"></div>
+			</div>			
+			</c:if>
 			
-
+	<div style="height:10px"></div>
 		
 	</article>
 
