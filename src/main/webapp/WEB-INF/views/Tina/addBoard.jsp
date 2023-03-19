@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +69,7 @@
 	</div>
 	
 	<hr>
-	
+	<c:if test="${contextUser.name == newboard.register.account}">
 			<div class="messageContent">
 			<form:form action="${contextRoot}/board/post"
 				modelAttribute="newboard">
@@ -102,8 +103,8 @@
 					<h3>${lastestBoard.title}</h3>
 					<p>${lastestBoard.boardMessage}</p>
 				</div>
-		
-	</div>
+	</c:if>	
+	</div>	
 	</article>
 
 
