@@ -121,7 +121,7 @@ public class BackendMemberDetailController {
 	
 	// 刪除會員細項資料
 	@DeleteMapping("/memberDetail/delete")
-	public String editPostMemberDetail(@RequestParam("id") Integer id) {
+	public String deleteMemberDetail(@RequestParam("id") Integer id) {
 		
 		System.out.println("================================");
 		System.out.println("================================");
@@ -134,6 +134,7 @@ public class BackendMemberDetailController {
 		backendMemberDetailService.deleteMemberDetailById(id);
 		
 		return "redirect:/topGun/memberDetail/page";
+//		return "redirect:/topGun";
 		
 	}
 	

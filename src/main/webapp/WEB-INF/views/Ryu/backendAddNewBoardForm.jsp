@@ -25,7 +25,7 @@
 
 
 
-<div class="row ">
+<div class="row">
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
@@ -35,7 +35,7 @@
 
 
 
-<div class="card my-5">
+<div class="card mt-5">
 
   <div class="card-header">
     <h1>模擬會員登入</h1>
@@ -73,7 +73,6 @@
 
 
 
-<hr>
 
 </div>
 
@@ -81,6 +80,7 @@
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
 

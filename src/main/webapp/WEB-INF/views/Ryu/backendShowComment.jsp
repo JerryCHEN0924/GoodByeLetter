@@ -26,7 +26,7 @@
 
 
 
-<div class="row mt-3">
+<div class="row mt-5">
 
 <div class="offset-sm-3 col-sm-6">
 
@@ -127,7 +127,7 @@
 
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -223,14 +223,9 @@
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
-
-<div>
-
-<hr>
-
-</div>
 
 
 

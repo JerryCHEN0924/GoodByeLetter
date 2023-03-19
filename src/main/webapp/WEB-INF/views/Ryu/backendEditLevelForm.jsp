@@ -27,7 +27,7 @@
 <div class="offset-sm-3 col-sm-6 my-3">
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 </div>

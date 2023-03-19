@@ -16,6 +16,7 @@ import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
+@Transactional
 public class BackendMemberDetailService {
 	
 	
@@ -97,14 +98,32 @@ public class BackendMemberDetailService {
 	
 	
 	// 查詢ID刪除註冊會員細項資料
-	@Transactional
+//	@Transactional
 	public void deleteMemberDetailById(Integer id) {
 		
 		Optional<MemberDetail> optional = backendMemberDetailRepository.findById(id);
 		
 		if(optional.isPresent()) {
 			
+			
+			System.out.println("=======================");
+			System.out.println("======確認 MemberDetail 為 "+ id + " ========");
+			System.out.println("=======================");
+			System.out.println("=======================");
+			System.out.println("======執行 Repo 刪除 MemberDetail========");
+			System.out.println("=======================");
+			
+//			backendMemberDetailRepository.deleteById(id);
+			
 			backendMemberDetailRepository.deleteById(id);
+			
+//			backendMemberDetailRepository.deleteAll();
+			
+		} else {
+			
+			System.out.println("=======================");
+			System.out.println("======執行 Repo 失敗========");
+			System.out.println("=======================");
 			
 		}
 		

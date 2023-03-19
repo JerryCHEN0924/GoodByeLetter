@@ -22,13 +22,13 @@
 
 
 
-<div class="container w-75 text-center">
+<div class="container text-center">
 
 
 
-<div class="row ">
+<div class="row mt-5">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
