@@ -26,7 +26,7 @@
 
 
 
-<div class="row mt-3">
+<div class="row mt-5">
 
 <div class="offset-sm-3 col-sm-6">
 
@@ -127,7 +127,7 @@
 
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -156,13 +156,13 @@
 	  
 	  
 	    <tr class="table-secondary table-active">
-	      <th scope="col">boardId</th>
-	      <th scope="col">title</th>
-	      <th scope="col">boardMessage</th>
-	      <th scope="col">createTime</th>
-	      <th scope="col">updateTime</th>
-	      <th scope="col">FK_memberId</th>
-	      <th scope="col">Edit</th>
+	      <th scope="col">編號</th>
+	      <th scope="col">標題</th>
+	      <th scope="col">內容</th>
+	      <th scope="col">新增時間</th>
+	      <th scope="col">更新時間</th>
+	      <th scope="col">會員編號</th>
+	      <th scope="col">編輯</th>
 	    </tr>
 	    
 	    
@@ -200,7 +200,7 @@
 				<div>
 			<form action="${contextRoot}/topGun/comment/add" method="get" >
 				<input type="hidden" name="boardId" value="${board.boardId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
+				<input type="submit" class="btn btn-outline-warning btn-sm ms-2" value="回覆" />
 			</form>
 				</div>
 			</div>
@@ -232,11 +232,7 @@
 
 
 
-<div>
-
-<hr>
-
-</div>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -282,7 +278,7 @@
 	<div>
 			<form action="${contextRoot}/topGun/comment/add" method="get" >
 				<input type="hidden" name="boardId" value="${board.boardId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
+				<input type="submit" class="btn btn-outline-warning btn-sm ms-2" value="回覆" />
 			</form>
 	</div>
 	

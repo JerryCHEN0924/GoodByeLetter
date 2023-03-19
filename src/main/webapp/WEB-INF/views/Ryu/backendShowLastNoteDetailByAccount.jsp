@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>查詢信件紀錄 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -50,7 +50,7 @@
 
 <div class="card mt-3">
   <div class="card-header">
-    LastNote發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${lastNoteDetail.createTime}" /></span>
+    信件建立時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${lastNoteDetail.createTime}" /></span>
     <br>
   </div>
   <div class="card-body">

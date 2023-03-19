@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看會員 Page</title>
+<title>查看會員註冊資料 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -22,13 +22,13 @@
 
 
 
-<div class="container w-75 text-center">
+<div class="container text-center">
 
 
 
-<div class="row ">
+<div class="row mt-5">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -152,7 +152,7 @@
 <div class="card">
   <div class="card-header">
   
-  查看註冊會員資料 Page
+  查看會員註冊資料
   
   </div>
   <div class="card-body">
@@ -165,13 +165,13 @@
 	  
 	  
 	    <tr class="table-primary table-active">
-	      <th scope="col">memberId</th>
-	      <th scope="col">account</th>
-	      <th scope="col">password</th>
-	      <th scope="col">enabled</th>
-	      <th scope="col">registerTime</th>
-	      <th scope="col">FK_Plevel</th>
-	      <th scope="col">Edit</th>
+	      <th scope="col">會員編號</th>
+	      <th scope="col">帳號</th>
+	      <th scope="col">密碼</th>
+	      <th scope="col">啟用狀態</th>
+	      <th scope="col">註冊時間</th>
+	      <th scope="col">權限編號</th>
+	      <th scope="col">編輯</th>
 	    </tr>
 	    
 	    

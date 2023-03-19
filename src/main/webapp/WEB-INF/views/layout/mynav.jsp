@@ -229,7 +229,7 @@
 									<span class="text">首頁</span>
 								</a></li>
 
-							<li class="list"><a href="#" class="list_a"> <span class="icon"><ion-icon
+							<li class="list"><a href="<c:url value='/register/login1' />" class="list_a"> <span class="icon"><ion-icon
 											name="person-circle-outline"></ion-icon></span>
 									<span class="text">會員</span>
 								</a>
@@ -248,16 +248,16 @@
 												</li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="<c:url value='/login1' />"> 登入 </a></li>
-												<li><a href="<c:url value='/register1' />"> 註冊 </a></li>
+												<li><a href="<c:url value='/register/login1' />"> 登入 </a></li>
+												<li><a href="<c:url value='/register' />"> 註冊 </a></li>
 											</c:otherwise>
 										</c:choose>
-										<li><a href="mySpace.html"> 個人空間 </a></li>
+<!-- 										<li><a href="mySpace.html"> 個人空間 </a></li> -->
 									</ul>
 								</div>
 							</li>
 
-							<li class="list"><a href="#" class="list_a"> <span class="icon"><ion-icon
+							<li class="list"><a href="<c:url value='/customer/login/page' />" class="list_a"> <span class="icon"><ion-icon
 											name="people-outline"></ion-icon></span> <span class="text">合作夥伴</span>
 								</a>
 								<div class="div_dropdown">
@@ -268,14 +268,14 @@
 												<li><a href="<c:url value='/customer/home/page'/>">${exis.account} Home</a></li>	
 											</c:when>
 											<c:otherwise>
-												<li><a href="<c:url value='/customer/add/page' />">廣告商註冊</a></li>
 												<li><a href="<c:url value='/customer/login/page' />">廣告商登入</a></li>
+												<li><a href="<c:url value='/customer/add/page' />">廣告商註冊</a></li>
 											</c:otherwise>
 										</c:choose>
 									</ul>
 								</div>
 							</li>
-							<li class="list"><a href="#" class="list_a"> <span class="icon"><ion-icon
+							<li class="list"><a href="<c:url value='/LastNote' />" class="list_a"> <span class="icon"><ion-icon
 											name="mail-open-outline"></ion-icon></span>
 									<span class="text">寫信</span>
 								</a>
@@ -283,11 +283,12 @@
 									<ul class="dropdown">
 										<li><a href="<c:url value='/LastNote' />">撰寫</a></li>
 										<li><a href="<c:url value='/LastNote/edit' />">編輯</a></li>
+										<li><a href="<c:url value='/ECPay' />">支持GoodBye Letter</a></li>
 									</ul>
 								</div>
 							</li>
 
-							<li class=" list "><a href=" #" class="list_a"> <span class="icon"><ion-icon
+							<li class=" list "><a href="<c:url value='/board/page' />" class="list_a"> <span class="icon"><ion-icon
 											name="chatbox-ellipses-outline"></ion-icon></span>
 									<span class="text">交流區</span>
 								</a>
@@ -324,12 +325,12 @@
 
 
 
-					<script src="assets/js/jquery.min.js"></script>
-					<script src="assets/js/jquery.scrolly.min.js"></script>
-					<script src="assets/js/browser.min.js"></script>
-					<script src="assets/js/breakpoints.min.js"></script>
-					<script src="assets/js/util.js"></script>
-					<script src="assets/js/main.js"></script>
+					<script src="${contextRoot}/assets/js/jquery.min.js"></script>
+					<script src="${contextRoot}/assets/js/jquery.scrolly.min.js"></script>
+					<script src="${contextRoot}/assets/js/browser.min.js"></script>
+					<script src="${contextRoot}/assets/js/breakpoints.min.js"></script>
+					<script src="${contextRoot}/assets/js/util.js"></script>
+					<script src="${contextRoot}/assets/js/main.js"></script>
 					<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 					<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

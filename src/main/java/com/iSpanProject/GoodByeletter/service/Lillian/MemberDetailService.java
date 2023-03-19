@@ -1,11 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.Lillian;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Optional;
-import java.util.UUID;
-
-import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +11,6 @@ import com.iSpanProject.GoodByeletter.dao.Lillian.MemberDetailDao;
 import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
-import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
 @Transactional
@@ -61,6 +55,14 @@ public class MemberDetailService {
 		MemberDetail findByMemberId = mDao.findMemberDetailByMemberId(memberId);
 		return findByMemberId;
 	}
-
+	public MemberDetail findByEmail(String email) {
+		MemberDetail findByEmail=mDao.findByEmail(email);
+		return findByEmail;
+		
+	}
+	//判斷email是否存在
+	public boolean checkEmailExist(String email) {
+        return mDao.findByEmail(email).isPresent();
+    }
 	
 }

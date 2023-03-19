@@ -25,23 +25,22 @@
 
 
 
-<div class="row ">
+<div class="row mt-5 ">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
-<hr>
 
 </div>
 
 </div>
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
 
 
-
-<div class="row ">
+<div class="row mt-5">
 
 <div class="offset-sm-2 col-sm-8 ">
 
@@ -59,9 +58,9 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputLevelName" class="col-sm-2 col-form-label">LevelName</label>
+		    <label for="inputLevelName" class="col-sm-2 col-form-label">權限名稱</label>
 		    <div class="col-sm-10">
-		    	<form:input path="levelName" class="form-control" id="inputLevelName" />
+		    	<form:input path="levelName" class="form-control" id="inputLevelName" placeholder="超級管理員" />
 		    </div>
 		  </div>
   		

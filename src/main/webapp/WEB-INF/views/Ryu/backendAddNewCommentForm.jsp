@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新增等級 Page</title>
+<title>新增回覆留言 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -25,11 +25,13 @@
 
 
 
-<div class="row ">
+<div class="row row mt-5">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
-<hr>
+
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -60,7 +62,7 @@
 	<div>
 			<form action="${contextRoot}/topGun/comment/add" method="get" >
 				<input type="hidden" name="boardId" value="${board.boardId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
+				<input type="submit" class="btn btn-outline-warning btn-sm ms-2" value="回覆" />
 			</form>
 	</div>
 	
@@ -75,7 +77,7 @@
 
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -99,7 +101,7 @@
 <div class="card">
 
   <div class="card-header">
-    新增留言
+    新增回覆留言
   </div>
   
   <div class="card-body">
@@ -126,7 +128,7 @@
 <!-- 		  </div> -->
 		  
   		<div class="mb-3 row">
-		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">ReplyMessage</label>
+		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">回覆留言</label>
 		    <div class="col-sm-10">
 		    	<form:textarea path="reply" class="form-control" id="inputBoardMessage" rows="" cols="" />
 		    </div>

@@ -25,14 +25,18 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.iSpanProject.GoodByeletter.LoginInterceptor;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
+import com.iSpanProject.GoodByeletter.model.Ryu.VendorDetails;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
 
+@Configuration
 @Entity
 @Table(name = "member", uniqueConstraints = {@UniqueConstraint(columnNames = {"account"})})
 //竹 把account設成唯一
@@ -59,12 +63,23 @@ public class Register {
 	@Transient
 	private Integer pId;
 	
+	@JsonManagedReference // 主要序列化方 雙向情況才需要使用
+	@OneToOne(mappedBy = "register", orphanRemoval = true)
+	private VendorDetails vendorDetails;
+	
 //	======================= Block =======================
+	
+	public VendorDetails getVendorDetails() {
+		return vendorDetails;
+	}
+	
+	public void setVendorDetails(VendorDetails vendorDetails) {
+		this.vendorDetails = vendorDetails;
+	}
 	
 	public Integer getpId() {
 		return pId;
 	}
-
 
 	public void setpId(Integer pId) {
 		this.pId = pId;
@@ -100,9 +115,16 @@ public class Register {
 	@OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
 	Set<Comment> comments = new HashSet<>();
 	
+
+	//cookie用
+	public LoginInterceptor loginInterceptor() {
+        return new LoginInterceptor();
+    }
+
 	// 阿戴:連到MemberDetail
 	@OneToOne(mappedBy = "FK_memberId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private MemberDetail memberDetail;
+
 	
 	@PrePersist
 	public void onCreate() {
@@ -197,21 +219,28 @@ public class Register {
 	public void setMemberDetail(MemberDetail memberDetail) {
 		this.memberDetail = memberDetail;
 	}
+	
+	
 
 
-	public Register(Integer memberId, String account, String password, Level fK_Plevel, Date registerTime,
-			List<LastNote> lastnote, Set<Board> boards, Set<Comment> comments, MemberDetail memberDetail) {
+	public Register(Integer memberId, String account, String password, Integer pId, VendorDetails vendorDetails,
+			Level fK_Plevel, Date registerTime, List<LastNote> lastnote, boolean enabled, Set<Board> boards,
+			Set<Comment> comments, MemberDetail memberDetail) {
 		super();
 		this.memberId = memberId;
 		this.account = account;
 		this.password = password;
+		this.pId = pId;
+		this.vendorDetails = vendorDetails;
 		FK_Plevel = fK_Plevel;
 		this.registerTime = registerTime;
 		this.lastnote = lastnote;
+		this.enabled = enabled;
 		this.boards = boards;
 		this.comments = comments;
 		this.memberDetail = memberDetail;
 	}
+
 
 	public Register() {
 		super();

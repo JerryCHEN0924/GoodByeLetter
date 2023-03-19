@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新增會員 Page</title>
+<title>新增會員註冊資料 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -28,11 +28,10 @@
 
 
 
-<div class="row ">
+<div class="row mt-5">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
-<h1>新增會員 Page</h1>
 
 </div>
 
@@ -40,11 +39,11 @@
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
 
-
-<div class="row ">
+<div class="row mt-5">
 
 <div class="offset-sm-2 col-sm-8 ">
 
@@ -52,7 +51,7 @@
 
 <div class="card">
   <div class="card-header">
-    新增會員
+    新增會員註冊資料
   </div>
   <div class="card-body">
   	
@@ -85,7 +84,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+		    <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
 		    <div class="col-sm-10">
 		    	<form:input path="account" class="form-control" id="inputAccount" />
 		    </div>
@@ -94,7 +93,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+		    <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
 		    <div class="col-sm-10">
 		    	<form:input path="password" class="form-control" id="inputPassword" />
 		    </div>

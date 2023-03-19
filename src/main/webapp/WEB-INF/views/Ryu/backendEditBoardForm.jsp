@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新增等級 Page</title>
+<title>編輯留言 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -29,7 +29,7 @@
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 </div>
 
@@ -50,7 +50,7 @@
 <div class="card">
 
   <div class="card-header">
-    新增留言
+    編輯留言
   </div>
   
   <div class="card-body">
@@ -63,14 +63,14 @@
   		<form:input path="register" type="hidden" />
   		
   		<div class="mb-3 row">
-		    <label for="inputTitleName" class="col-sm-2 col-form-label">Title</label>
+		    <label for="inputTitleName" class="col-sm-2 col-form-label">留言標題</label>
 		    <div class="col-sm-10">
 		    	<form:input path="title" class="form-control" id="inputTitleName" />
 		    </div>
 		  </div>
 		  
   		<div class="mb-3 row">
-		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">BoardMessage</label>
+		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">留言內容</label>
 		    <div class="col-sm-10">
 		    	<form:textarea path="boardMessage" class="form-control" id="inputBoardMessage" rows="" cols="" />
 		    </div>

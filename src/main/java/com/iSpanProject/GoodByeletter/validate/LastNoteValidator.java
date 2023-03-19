@@ -34,7 +34,7 @@ public class LastNoteValidator implements Validator {
 //		ValidationUtils.rejectIfEmpty(errors, "email", "", "email欄不能空白");
 		
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "notedetail", "", "內容欄位不正確不可為空");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "notedetail", "", "內容欄位不正確不可為空");
 		
 		
 //		ValidationUtils.rejectIfEmpty(errors, "gender", "", "gender欄不能空白");
@@ -110,7 +110,12 @@ public class LastNoteValidator implements Validator {
 		
 		
 		
+		if (lastNote.getNotedetail() != null && lastNote.getNotedetail().length() <15 || lastNote.getNotedetail().length() >500) {
+		errors.rejectValue("notedetail", "", "內容格式不正確，請輸入15個字以上，500字以下。");
+	}
 		
+		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "notedetail", "", "內容欄位不正確不可為空");
 		
 		
 		

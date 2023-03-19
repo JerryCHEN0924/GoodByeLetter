@@ -1,6 +1,5 @@
 package com.iSpanProject.GoodByeletter.model.Lillian;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,7 +34,8 @@ public class MemberDetail {
 //	@Column(name = "County",columnDefinition = "nvarchar(50)", nullable = false)
 	private String County;
 
-//	@Column(name = "Email",columnDefinition = "nvarchar(50)", nullable = false)
+//	@Column(name = "Email")
+	@Column(unique = true)
 	private String Email;
 
 //	@Column(name = "address",columnDefinition = "nvarchar(50)", nullable = false)
@@ -197,6 +198,11 @@ public class MemberDetail {
 
 	public MemberDetail() {
 
+	}
+//判斷email是否存在
+	public boolean isPresent() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

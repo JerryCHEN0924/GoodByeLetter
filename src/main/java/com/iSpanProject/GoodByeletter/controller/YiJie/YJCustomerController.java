@@ -1,6 +1,7 @@
 package com.iSpanProject.GoodByeletter.controller.YiJie;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 //import java.util.Optional;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
+import com.iSpanProject.GoodByeletter.model.YiJie.Picture;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerRepository;
 import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerDetailService;
@@ -65,11 +67,19 @@ public class YJCustomerController {
 			Integer memberId = reg1.getMemberId();
 			model.addAttribute("memberId", memberId);
 			
+			//新增帳號時同時建立detail
 			YJCustomerDetail detail1 = new YJCustomerDetail();
 			Register reg2 = customerService.findById(memberId);
 			detail1.setFK_memberId(reg2);
-			detailService.insert(detail1);
+			//建立detail時要新建picture//0314
+//			List<Picture> pic = new LinkedList<>();
+//			Picture picture = new Picture();
+//			picture.setEnable(false);
+//			pic.add(picture);
+//			detail1.setPictures(pic);
 			
+			///////////////////////////
+			detailService.insert(detail1);
 			return "redirect:/";
 		}else {
 			model.addAttribute("errorMessage", "驗證碼輸入錯誤");
@@ -89,19 +99,19 @@ public class YJCustomerController {
 			Model model) {
 		
 		Register exis = customerService.findByAccAndPass(acc, pass);
-		model.addAttribute("register", exis);
-		//model.addAttribute("exis", exis);
-		
-		String acc1 = exis.getAccount();
-		String pwd = exis.getPassword();
-		
-		if (acc.equals(acc1) && pass.equals(pwd)) {
-			session.setAttribute("exis", exis);
+		if( exis != null ) {
+			model.addAttribute("register", exis);
 			
-			return "YiJie/companylogin";
-		} else {
-			return "redirect:/";
+			String acc1 = exis.getAccount();
+			String pass1 = exis.getPassword();
+			
+			if (acc.equals(acc1) && pass.equals(pass1)) {
+				session.setAttribute("exis", exis);
+				return "YiJie/companylogin";
+			}
 		}
+		model.addAttribute("errorMessage", "此帳號不存在");
+		return "YiJie/cuslogin";
 	}
 	
 	//登出
@@ -110,51 +120,54 @@ public class YJCustomerController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	
+
 	/////####################  input check  ################################//////
 	
-	@PostMapping("/customer/add2")
-	public String registerCus2(@ModelAttribute("inputCheck") Register reg,
-								@RequestParam("rCode") String rCode,
-								Model model) {
-		Map<String, String> errors = new HashMap<String, String>();
-		model.addAttribute("errors", errors);
-		// 檢查帳號是否重複
-		if(customerService.findByAcc(reg.getAccount()) != null) {
-			errors.put("message", "該帳號已被註冊!");
-		}
-		// 檢查驗證碼是否錯誤
-		if(Code.equals(rCode)) {
-			errors.put("message", "驗證碼錯誤!");
-		}
-		// 檢查帳號是否有輸入
-		if(reg.getAccount() == null || reg.getAccount().isEmpty()) {
-			errors.put("message", "請輸入您的帳號!");
-		}
-		// 檢查密碼是否有輸入
-		if(reg.getPassword() == null || reg.getPassword().isEmpty()) {
-			errors.put("message", "請輸入您的帳號!");
-		}
-		
-		if (!errors.isEmpty()) {
-		return "YiJie/mycompany";
-		}
-		
-		///////////
-			//加上車車來載memberId
-		customerService.insert(reg);
-		Register company = customerService.findByAccAndPass(reg.getAccount(), reg.getPassword());
-		Integer memberId = company.getMemberId();
-		model.addAttribute("memberId", memberId);
-			//創建對應的detail
-		YJCustomerDetail detail1 = new YJCustomerDetail();
-		Register reg2 = customerService.findById(memberId);
-		detail1.setFK_memberId(reg2);
-		detailService.insert(detail1);
-		////////////
-		return "YiJie/cuslogin";
-		
-	}
-	
+//	@PostMapping("/customer/add2")
+//	public String registerCus2(@ModelAttribute("inputCheck") Register reg,
+//								@RequestParam("rCode") String rCode,
+//								Model model) {
+//		Map<String, String> errors = new HashMap<String, String>();
+//		model.addAttribute("errors", errors);
+//		// 檢查帳號是否重複
+//		if(customerService.findByAcc(reg.getAccount()) != null) {
+//			errors.put("message", "該帳號已被註冊!");
+//		}
+//		// 檢查驗證碼是否錯誤
+//		if(Code.equals(rCode)) {
+//			errors.put("message", "驗證碼錯誤!");
+//		}
+//		// 檢查帳號是否有輸入
+//		if(reg.getAccount() == null || reg.getAccount().isEmpty()) {
+//			errors.put("message", "請輸入您的帳號!");
+//		}
+//		// 檢查密碼是否有輸入
+//		if(reg.getPassword() == null || reg.getPassword().isEmpty()) {
+//			errors.put("message", "請輸入您的帳號!");
+//		}
+//		
+//		if (!errors.isEmpty()) {
+//		return "YiJie/mycompany";
+//		}
+//		
+//		///////////
+//			//加上車車來載memberId
+//		customerService.insert(reg);
+//		Register company = customerService.findByAccAndPass(reg.getAccount(), reg.getPassword());
+//		Integer memberId = company.getMemberId();
+//		model.addAttribute("memberId", memberId);
+//			//創建對應的detail
+//		YJCustomerDetail detail1 = new YJCustomerDetail();
+//		Register reg2 = customerService.findById(memberId);
+//		detail1.setFK_memberId(reg2);
+//		detailService.insert(detail1);
+//		////////////
+//		return "YiJie/cuslogin";
+//		
+//	}
+//	
 	
 	/////####################  input check  ################################//////
 

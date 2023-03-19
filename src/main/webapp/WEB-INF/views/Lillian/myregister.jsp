@@ -51,7 +51,6 @@
 							<form:input type="text" path="account" onkeyup="value=value.replace(/[\W]/g,'') "
 								placeholder="account(請輸入4~8碼)" class="form-control"
 								maxlength="8" minlength="4" id="account" name="account" />
-
 						</div>
 					</div>
 					<p id="pwd" style="color: red">${errors.password}</p>
@@ -65,56 +64,13 @@
 					</div>
 					<br>
 					<button type="submit">下一步</button>
-					
-
 				</form:form>
 			</div>
 		</div>
 	</article>
 
-
-
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/jquery-3.6.3.min.js"></script>
-	<script src="assets/js/main.js"></script>
-
-
 	<script>
-		// 						window.onload = function () {
-		// 							var p = document.querySelectorAll("p");
-		// 							for(var i = 0; i < p.length ; i++){
-		// 							p.addEventListener("change", checkDuplicate);//物件內容改變時觸發checkDuplicate
-		// 							}
-		// 							function checkDuplicate() {
-		// 								for(var i = 0; i<p.length ; i++){
-		// 								if (p == "請輸入您的帳號!") {
-
-		// 									setTimeout(function () {
-		// 										p.innerHTML = "";
-		// 									}, 5000);//過了五秒隱藏
-		// 									break;
-		// 								}
-		// 							}
-		// 							}
-		// 						}
-		window.onload = function() {
-			var ps = document.querySelectorAll("p");
-
-			for (var i = 0; i < ps.length; i++) {
-				if (ps[i].innerHTML === "請輸入您的帳號!") {
-
-					setTimeout(function() {
-						ps[i].innerHTML = "請輸入您的帳號!";
-					}, 5000);
-				}
-			}
-		}
 	</script>
 
 </body>

@@ -13,7 +13,7 @@
 					<meta charset="UTF-8">
 					<meta http-equiv="X-UA-Compatible" content="IE=edge">
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
-					<link rel="stylesheet" href="assets/css/mymain.css" />
+					<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 					<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 						rel="stylesheet"
 						integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
@@ -72,16 +72,6 @@
 
 
 					<!-- Scripts -->
-					<script src="assets/js/jquery.min.js"></script>
-					<script src="assets/js/jquery.scrolly.min.js"></script>
-					<script src="assets/js/browser.min.js"></script>
-					<script src="assets/js/breakpoints.min.js"></script>
-					<script src="assets/js/util.js"></script>
-					<script src="assets/js/main.js"></script>
-					<script src="assets/js/jquery-3.6.3.min.js"></script>
-					<script src="assets/js/main.js"></script>
-
-
 					<script>
 
 					</script>

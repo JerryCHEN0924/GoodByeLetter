@@ -43,6 +43,8 @@
 				<a class="btn btn-outline-danger" href="" role="button">不要按</a>
 			</div>
 
+
+
 		</div>
 	</article>
 
@@ -53,12 +55,6 @@
 
 
 	<!-- Scripts -->
-	<script src="<c:url value='/assets/js/breakpoints.min.js' />"></script>
-	<script src="<c:url value='/assets/js/browser.min.js' />"></script>
-	<script src="<c:url value='/assets/js/jquery.min.js' />"></script>
-	<script src="<c:url value='/assets/js/jquery.scrolly.min.js' />"></script>
-	<script src="<c:url value='/assets/js/main.js' />"></script>
-	<script src="<c:url value='/assets/js/util.js' />"></script>
 	<script>
 		
 	</script>

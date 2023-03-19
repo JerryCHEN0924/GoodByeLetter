@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>編輯部門 Page</title>
+<title>編輯權限等級 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -27,7 +27,7 @@
 <div class="offset-sm-3 col-sm-6 my-3">
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 </div>
@@ -59,7 +59,7 @@
 		
 		
 		<div class="mb-3 row">
-		    <label for="inputPlevel" class="col-sm-2 col-form-label">MemberId</label>
+		    <label for="inputPlevel" class="col-sm-2 col-form-label">編號</label>
 		    <div class="col-sm-10">
 		    	<input name="plevel" class="form-control" id="inputPlevel" value="${level.plevel}" disabled />
 		    </div>
@@ -68,7 +68,7 @@
 		
 		
 		<div class="mb-3 row">
-		    <label for="inputLevelName" class="col-sm-2 col-form-label">LevelName</label>
+		    <label for="inputLevelName" class="col-sm-2 col-form-label">權限名稱</label>
 		    <div class="col-sm-10">
 		    	<form:input path="levelName" class="form-control" id="inputLevelName" />
 		    </div>

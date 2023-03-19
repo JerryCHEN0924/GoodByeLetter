@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>查詢全部 Goodbye Letter Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -26,7 +26,7 @@
 
 
 
-<div class="row mt-3">
+<div class="row mt-5">
 
 <div class="offset-sm-3 col-sm-6">
 
@@ -127,7 +127,7 @@
 
 
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -143,7 +143,7 @@
 <div class="card">
   <div class="card-header">
   
-  查看LastNote
+  查詢全部 Goodbye Letter
   
   </div>
   <div class="card-body">
@@ -156,15 +156,15 @@
 	  
 	  
 	    <tr class="table-secondary table-active">
-	      <th scope="col">noteId</th>
-	      <th scope="col">recipientEmail</th>
-	      <th scope="col">verify1</th>
-	      <th scope="col">verify2</th>
-	      <th scope="col">verifyTime</th>
-	      <th scope="col">createTime</th>
-	      <th scope="col">notedetail</th>
-	      <th scope="col">FK_memberId</th>
-	      <th scope="col">Edit</th>
+	      <th scope="col">編號</th>
+	      <th scope="col">收件人信箱</th>
+	      <th scope="col">第一驗證人信箱</th>
+	      <th scope="col">第二驗證人信箱</th>
+	      <th scope="col">驗證時間</th>
+	      <th scope="col">新增時間</th>
+	      <th scope="col">信件內容</th>
+	      <th scope="col">會員編號</th>
+	      <th scope="col">編輯</th>
 	    </tr>
 	    
 	    
@@ -228,13 +228,8 @@
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
-
-<div>
-
-<hr>
-
-</div>
 
 
 
@@ -256,7 +251,7 @@
 
 <div class="card mt-3">
   <div class="card-header">
-    LastNote發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${lastNote.createTime}" /></span>
+    Goodbye Letter 發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${lastNote.createTime}" /></span>
     <br>
   </div>
   <div class="card-body">
@@ -303,7 +298,7 @@
 
 
 
-
+<hr>
 
 
 

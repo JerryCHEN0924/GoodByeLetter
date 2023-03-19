@@ -51,6 +51,9 @@
 						<a class="" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
 					</li>
 					<li>
+						<a class="" href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>">圖片展示</a>
+					</li>
+					<li>
 						<a class="" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
 					</li>
 				</ul>

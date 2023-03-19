@@ -36,14 +36,8 @@ public class YJCustomerDetailService {
 	}
 	//更新Detail
 	public void updateDetail(Integer memberId, YJCustomerDetail detail) {							
-		Optional<YJCustomerDetail> op = cdDao.findById(memberId);
 		
-		YJCustomerDetail detail1 = op.get();
-		detail1.setName(detail.getName());
-		detail1.setType(detail.getType());
-		detail1.setEmail(detail.getEmail());
-		detail1.setAddress(detail.getAddress());
-		cdDao.save(detail1);
+		cdDao.save(detail);
 		
 	}
 	//依據memberId找detail

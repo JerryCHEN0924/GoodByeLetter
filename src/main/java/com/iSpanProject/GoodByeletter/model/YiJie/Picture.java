@@ -1,15 +1,11 @@
 package com.iSpanProject.GoodByeletter.model.YiJie;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,9 +26,20 @@ public class Picture {
 	@Column(name="enable")
 	private boolean enable;
 	
-	///  #### FK ###  ///0311做一個外鍵存companydetail_id	
-//	@OneToOne(cascade= {CascadeType.PERSIST })
-//	@JoinColumn(name="FK_ComDetailId",foreignKey=@ForeignKey(name="fk_companydetail_id"))
+	///  #### FK ###  //做一個外鍵存companydetail_id
+//	@ManyToOne
+//	@JoinColumn(name="fk_companydetail_id")
+//	private Integer companydetailId;
+//	
+//	public Integer getCompanydetailId() {
+//		return companydetailId;
+//	}
+//
+//	public void setCompanydetailId(Integer companydetailId) {
+//		this.companydetailId = companydetailId;
+//	}
+
+	//////////////////////////////////////////////////
 //	private YJCustomerDetail FK_ComDetailId;
 //	
 //	public YJCustomerDetail getFK_ComDetailId() {

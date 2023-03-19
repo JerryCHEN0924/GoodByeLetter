@@ -12,6 +12,11 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="/index/assets/css/mymain.css" />
+<style>
+	.error {
+	  color: red;
+	}
+  </style>
 </head>
 
 <body>
@@ -21,17 +26,29 @@
 	
         <!--login  login_form_class-->
     <article  class="wrapper style2" style="height:100vh">
-        <div class="container" id="login_form">
-        	<div>
-        		<h3>廠商登入頁面</h3>
-        	</div>
-            <form id="login" action="${contextRoot}/customer/login" method="post">
-                <input type="text" placeholder="您的帳號" name="account"><br>
-                <input type="text" placeholder="您的密碼" name="password"><br>
-                <button type="submit" id="login_submit">
-                    <h6 id="login_h6">登入</h6>
-                </button>
-            </form>
+        <div class="container-fluid">
+			<div class="container" id="form_container">
+				<div>廠商登入頁面</div>
+            	<form id="login_form" action="${contextRoot}/customer/login" method="post">
+					<div class="mb-6 row">
+						<label for="account" class="col-sm-2 col-form-label">帳號</label>
+						<div class="col-sm-10">
+							<input required class="form-control" id="account" type="text" placeholder="您的帳號" name="account">
+						</div>	
+					</div>
+					<div class="mb-6 row">
+						<label for="password" class="col-sm-2 col-form-label">密碼</label>
+						<div class="col-sm-10">
+							<input required class="form-control" id="password" type="text" placeholder="您的密碼" name="password">
+						</div>
+					</div>
+                	<button type="submit" id="login_submit">登入</button>      
+            	</form>
+				<c:if test="${not empty errorMessage}">
+					<div class="error">${errorMessage}</div>
+				</c:if>
+			
+			</div>
         </div>
     </article>
 

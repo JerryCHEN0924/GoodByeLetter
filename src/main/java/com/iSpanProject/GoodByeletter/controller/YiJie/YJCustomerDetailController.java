@@ -28,7 +28,7 @@ import com.iSpanProject.GoodByeletter.service.YiJie.YJCustomerService;
 
 
 @Controller
-@SessionAttributes("exis")//引入車車
+@SessionAttributes({"exis","detail"})//引入車車
 public class YJCustomerDetailController {
 
 	@Autowired
@@ -50,30 +50,35 @@ public class YJCustomerDetailController {
 	
 	//更新廠商資料
 	@GetMapping("/customer/detail/page")
-	public String editDetailPage(HttpSession session,
-			Model model) throws ParseException {// model儲存送過去
-		Register reg = (Register)session.getAttribute("exis");
-		Integer memberId=reg.getpId();
+	public String editDetailPage(@ModelAttribute("exis") Register exis,
+								Model model) throws ParseException {// model儲存送過去
+		//0314
+		//Register reg = (Register)session.getAttribute("exis");
+		Integer memberId = exis.getMemberId();
+		
 		YJCustomerDetail detail = detailService.findByMemberId(memberId);
-		if(detail == null) {
-			YJCustomerDetail dt = new YJCustomerDetail();
-			model.addAttribute("customerDetail", dt);
-			return "YiJie/detail";
-		}model.addAttribute("customerDetail", detail);
+		model.addAttribute("detail", detail);
 		return "YiJie/detail";
 
 	}
-	//更新廠商資料
 	@PostMapping("/customer/detail/putDetail")
-	public String updDetail(@ModelAttribute("customerDetail") YJCustomerDetail detail,
+	public String updDetail(@ModelAttribute("exis") Register exis,
+							@ModelAttribute("detail") YJCustomerDetail detail,
+							@RequestParam(value = "name") String name,
+							@RequestParam(value = "type") String type,
+							@RequestParam(value = "email") String email,
+							@RequestParam(value = "address") String address,
 							HttpSession session,
 							Model model) {
-		//透過"exis"抓到Register物件，存進reg
-		Register reg = (Register)session.getAttribute("exis");
 		
-		//取出reg中的id放入mId
-		Integer mId = reg.getMemberId();
-		//0310
+		Register reg = (Register)session.getAttribute("exis");//透過"exis"抓到Register物件，存進reg
+		Integer mId = reg.getMemberId();//取出reg中的id放入mId
+		//0314
+		detail.setName(name);
+		detail.setType(type);
+		detail.setEmail(email);
+		detail.setAddress(address);
+		
 		detailService.updateDetail(mId, detail);
 		
 		return "YiJie/companylogin";

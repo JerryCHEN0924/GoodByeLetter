@@ -210,5 +210,23 @@ public class BackendRegisterService {
 	
 	
 	
+	// 分頁功能，Account模糊查詢
+	public Page<Register> findAllByAccountQueryLikePage(String account, Integer pageNumber){
+		
+		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "memberId");
+		
+		Page<Register> page = backendRegisterRepository.findAllByAccountQueryLikePage(account, pgb);
+		
+		return page;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
