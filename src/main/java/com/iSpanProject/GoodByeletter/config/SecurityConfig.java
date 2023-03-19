@@ -37,7 +37,7 @@ public class SecurityConfig {
 		 	 
 		 	 
 		 	 
-		 	 	.antMatchers("/topGun/**").hasAuthority("超級管理員")
+//		 	 	.antMatchers("/topGun/**").hasAuthority("超級管理員")
 		 	 	
 		 	 	.antMatchers("/**").permitAll(); // 允許 所有路徑訪問
 		 

@@ -137,6 +137,8 @@ public class BackendVendorPhotosController {
 		// 必須要找出對應的Level物件
 		String account = vendorPhotos.getAccount();
 		
+		String title = vendorPhotos.getTitle();
+		
 		Register register = backendRegisterRepository.findRegisterByAccount(account);
 		
 		VendorDetails vendorDetails = register.getVendorDetails();
@@ -145,7 +147,8 @@ public class BackendVendorPhotosController {
 		
 		backendVendorPhotosService.insertVendorPhotos(vendorPhotos);
 		
-		redirectAttributes.addFlashAttribute("ModifyMessage", "新增成功");
+//		redirectAttributes.addFlashAttribute("ModifyMessage", "新增成功");
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告文案 [ " + title + " ] 新增成功");
 		
 		return "redirect:/topGun/vendorPhotos/page";
 		

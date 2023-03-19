@@ -123,6 +123,7 @@ public class BackendVendorDetailsController {
 //		BackendVendorDetailsValidator backendVendorDetailsValidator = new BackendVendorDetailsValidator();
 		// 呼叫Validate進行資料檢查
 		backendVendorDetailsValidator.validate(vendorDetails, bindingResult);
+		
 		if (bindingResult.hasErrors()) {
 //          下列敘述可以理解Spring MVC如何處理錯誤	
 			System.out.println("======================");
@@ -180,7 +181,9 @@ public class BackendVendorDetailsController {
 		
 		backendVendorDetailsService.insertVendorDetails(vendorDetails);
 		
-		redirectAttributes.addFlashAttribute("ModifyMessage", "新增成功");
+//		redirectAttributes.addFlashAttribute("ModifyMessage", "新增成功");
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告商 [ " + account + " ] 詳細資料新增成功");
 		
 //		// 將上傳的檔案移到指定的資料夾, 目前註解此功能
 //			File imageFolder = new File(rootDirectory, "images");
@@ -196,6 +199,10 @@ public class BackendVendorDetailsController {
 		return "redirect:/topGun/vendorDetails/page";
 		
 	}
+	
+	
+	
+//	####################### Ryuz divider #######################
 	
 	
 	
@@ -246,8 +253,6 @@ public class BackendVendorDetailsController {
 	
 	
 	
-	
-	
 	private byte[] fileToByteArray(String path) {
 		byte[] result = null;
 		try (InputStream is = servletContext.getResourceAsStream(path);
@@ -263,6 +268,8 @@ public class BackendVendorDetailsController {
 		}
 		return result;
 	}
+	
+	
 
 	public byte[] blobToByteArray(Blob blob) {
 		byte[] result = null;
@@ -279,6 +286,10 @@ public class BackendVendorDetailsController {
 		return result;
 
 	}
+	
+	
+	
+//	####################### i am divider #######################
 	
 	
 	
@@ -483,7 +494,9 @@ public class BackendVendorDetailsController {
 	
 	
 	
+//	####################### Ryuz divider #######################
 	
+//	####################### i am divider #######################
 	
 	
 	
