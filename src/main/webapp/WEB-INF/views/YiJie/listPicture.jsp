@@ -28,47 +28,66 @@
 		<div class="container-fluid " id="picture-list">
 			<div class="container">
 				<div>查看圖片列</div>
-				</div>
+				
 				<table>
 					<c:forEach items="${listPicture}" var="onePicture">
-						<tr>
-							<td class="picture-text">${exis.account}上傳的圖片</td>
+						<tr>	
+							<div id="output-result"></div>
 							<td><button class="picture-btn" data-id="${onePicture.id}">查看圖片</button></td>
+							<button class="delete-btn" data-id="${onePicture.id}">刪除圖片</button>
 						</tr>
 					</c:forEach>
 				</table>
-							
-			<div id="output-result"></div>
+			</div>
 		</div>
 	</article>
 	<script>
 	const pictureBtn = document.getElementsByClassName('picture-btn');
-	
+
 	for(i=0; i < pictureBtn.length; i++){
-			pictureBtn[i].addEventListener('click', function(e){
-				let onePicture = this.getAttribute('data-id');
-				getPicture(onePicture);
-			})
-		}
-		function getPicture(onePicture){
-			axios.get('${contextRoot}/customer/picture/pictureIds?detailId=' + onePicture)//3/17 ?detailId=修改成pictureId
-			.then(res => {
-				console.log(res.data)
-				htmlMaker(res.data)
-			})
-			.catch(err => {
-                console.error(err);
-            })
-			function htmlMaker(data){
-				let output = document.getElementById('output-result');
-				let htmlstring='';
+		pictureBtn[i].addEventListener('click', function(e){
+			let onePicture = this.getAttribute('data-id');
+			getPicture(onePicture);
+		})
+	}
+
+	function getPicture(onePicture){
+		axios.get('${contextRoot}/customer/picture/pictureIds?detailId=' + onePicture)//3/17 ?detailId=修改成pictureId
+		.then(res => {
+			console.log(res.data)
+			htmlMaker(res.data)
+		})
+		.catch(err => {
+            console.error(err);
+        })
+		function htmlMaker(data){
+			let output = document.getElementById('output-result');
+			let htmlstring='';
+			htmlstring += "<img width='1000px' height='600px' src='${contextRoot}/customer/picture/image?photoId=" + onePicture + "' />"
 				
-			
-					htmlstring += "<img width='300px' src='${contextRoot}/customer/picture/image?photoId=" + onePicture + "' />"
-				
-				output.innerHTML = htmlstring;
-			}
+			output.innerHTML = htmlstring;
 		}
+	}
+	const deleteBtn = document.getElementsByClassName('delete-btn');
+
+	for(i=0; i < deleteBtn.length; i++){
+    	deleteBtn[i].addEventListener('click', function(e){
+        	let photoId = this.getAttribute('data-id');
+        	deletePicture(photoId);
+    	})
+	}
+
+	function deletePicture(photoId){
+    	axios.delete('${contextRoot}/customer/pictures/delete?pictureId=' + photoId)
+    	.then(res => {
+        	console.log(res.data)
+        	// 重新載入圖片列表
+        	location.reload();
+    	})
+    	.catch(err => {
+        	console.error(err);
+    	})
+	}
 		</script>
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -83,5 +102,5 @@
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<!-- ############################################################################ -->
 		
-		</body>
-		</html>
+</body>
+</html>

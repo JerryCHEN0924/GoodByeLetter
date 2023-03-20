@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.iSpanProject.GoodByeletter.dao.Lillian.RegisterDao;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.Picture;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
@@ -33,7 +34,8 @@ public class YJCustomerController {
 	private YJCustomerService customerService;
 	@Autowired
 	private YJCustomerDetailService detailService;
-	
+	@Autowired
+	private RegisterDao rDao;
 	
 	private static final String Code = "123";//預設驗證碼
 ///////////////////////////////////////////////////////////////	
@@ -44,15 +46,15 @@ public class YJCustomerController {
 	}
 	
 	@PostMapping("/customer/add")
-	public String registerCus(
-							  @RequestParam(value = "account") String acc,
+	public String registerCus(@RequestParam(value = "account") String acc,
 							  @RequestParam(value = "password") String pass,
 							  @RequestParam("rCode") String rCode,
-							  //HttpSession session,
-						      Model model) { 
-		
-		Register reg = customerService.findByAccAndPass(acc, pass);
-		if(reg != null) {
+							  @RequestParam(value = "type") String type,//0318
+						      Model model) {
+		//去後端找有沒有相同的帳號
+		Register reg = rDao.findRegisterByAcc(acc);
+		String account = reg.getAccount();
+		if(account != null) {
 			model.addAttribute("errorMessage", "該帳號已經存在");
 			return "YiJie/mycompany";
 		}
@@ -71,12 +73,7 @@ public class YJCustomerController {
 			YJCustomerDetail detail1 = new YJCustomerDetail();
 			Register reg2 = customerService.findById(memberId);
 			detail1.setFK_memberId(reg2);
-			//建立detail時要新建picture//0314
-//			List<Picture> pic = new LinkedList<>();
-//			Picture picture = new Picture();
-//			picture.setEnable(false);
-//			pic.add(picture);
-//			detail1.setPictures(pic);
+			detail1.setType(type);
 			
 			///////////////////////////
 			detailService.insert(detail1);

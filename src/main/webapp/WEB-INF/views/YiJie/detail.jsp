@@ -45,12 +45,12 @@
                                 value="${customerDetail.name}" path="name" />
 						</div>
 					</div>
-
+					<!--
 					<div class="mb-3 row">
 						<label for="type" class="col-sm-2 col-form-label">公司種類</label>
 						<div class="col-sm-10">
 							<div class="form-check form-check-inline ">
-								<!-- <input type="hidden" value="${customerDetail.type}" /> -->
+								
                                 <form:radiobutton path="type" class="form-check-input" name="type"
  									id="maleRadio" value="${customerDetail.type}" />
 								<label class="form-check-label" for="lawyerRadio"> 律師 </label>
@@ -72,7 +72,7 @@
 							</div>
 						</div>
 					</div>
-
+					-->
 					<div class="mb-3 row">
 						<label for="email" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-10">
