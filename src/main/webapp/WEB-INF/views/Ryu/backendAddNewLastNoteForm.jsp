@@ -22,22 +22,39 @@
 
 
 
-<div class="container w-75 text-center">
 
+
+<div class="container text-center">
 
 
 
 
 <div class="row">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
 
 
-<div class="card mt-5">
+</div>
+</div>
+
+
+<hr class="border border-dark border-3 opacity-75">
+
+
+
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
+
+
+
+
+
+<div class="card text-dark mt-1">
 
   <div class="card-header">
+  
     <h1>模擬會員登入(GoodBye Letter)</h1>
+    
   </div>
   
   <div class="card-body">
@@ -74,26 +91,24 @@
 
 
 
-</div>
-
-</div>
-
 
 <hr class="border border-dark border-3 opacity-75">
 
 
 
 
-<div class="row ">
+<div class="row">
 
-<div class="offset-sm-2 col-sm-8 ">
+<div class="offset-sm-2 col-sm-8">
 
+<span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span>
 
+<div class="card text-dark mt-5">
 
-<div class="card">
   <div class="card-header">
     新增 GoodBye Letter 內容
   </div>
+  
   <div class="card-body">
   	
   	<form:form action="${contextRoot}/topGun/lastNote/post" modelAttribute="lastNote" method='POST'>
@@ -178,6 +193,17 @@
 
 
 
+<div class="row my-5">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+  		</div>
 
 
 
@@ -187,8 +213,9 @@
 
 
 
+</div>
 
-
+<hr class="border border-dark border-3 opacity-75">
 
 
 

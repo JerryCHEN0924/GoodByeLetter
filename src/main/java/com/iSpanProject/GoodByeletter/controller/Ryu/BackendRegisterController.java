@@ -429,9 +429,14 @@ public class BackendRegisterController {
 	
 	// 修改註冊會員Enabled資料
 	@PutMapping("/registerEnabled/editPost")
-	public String editPostRegisterEnabled(@ModelAttribute("register") Register register) {
+	public String editPostRegisterEnabled(@ModelAttribute("register") Register register,
+			RedirectAttributes redirectAttributes) {
+		
+		String account = register.getAccount();
 			
 		backendRegisterService.updateRegister(register);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員 [ " + account + " ] 啟用狀態修改成功");
 			
 		return "redirect:/topGun/register/queryLikeAccount";
 			

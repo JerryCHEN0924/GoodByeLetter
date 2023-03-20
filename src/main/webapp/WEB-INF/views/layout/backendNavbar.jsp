@@ -127,6 +127,18 @@
           </li>
           
           
+          <li class="nav-item">
+            <a class="nav-link" href="<c:url value='/topGun/register/queryLikeAccount' />">審核會員啟用狀態</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="<c:url value='/topGun/board/queryLikeAccount' />">查詢及編輯會員留言</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="<c:url value='/topGun/lastNote/queryLikeAccount' />">查詢及編輯會員GoodBye Letter</a>
+          </li>
+          
           
           
           
@@ -202,7 +214,7 @@
             
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">登入會員帳號後新增留言</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯留言、新增回覆留言</a></li>
               <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯全部回復留言</a></li>
               <li>
                 <hr class="dropdown-divider">
@@ -218,8 +230,8 @@
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/add' />">新增LastNote</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/page' />">查詢和編輯LastNote</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/add' />">新增 GoodBye Letter</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/page' />">查詢和編輯 GoodBye Letter</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -227,28 +239,6 @@
             
           </li>
           
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              依帳號查詢系列
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/register/queryLikeAccount' />">模糊查詢(ByAccount)Register</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/board/queryLikeAccount' />">模糊查詢(ByAccount)Board</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/queryLikeAccount' />">模糊查詢(ByAccount)LastNote</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
-            
-          </li>
           
           
           
