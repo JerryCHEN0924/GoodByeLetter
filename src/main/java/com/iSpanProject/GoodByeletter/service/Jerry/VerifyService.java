@@ -123,11 +123,11 @@ public class VerifyService {
 					String verificationCode = lastNote.getVerificationCode();
 
 					String subject = "請協助驗證「" + memberName + "」在GoodBye Letter的信件";
-					String mailContent = "<h2>您好，這是一封來自GoodBye Letter的驗證信件</h2>。" + "<span style='font-size:20px;'>因「"
-							+ memberName + "」先生/小姐指定您為GoodBye Letter的第二驗證人，" + "若您確認「" + memberName + "」依然健在，"
+					String mailContent = "<h2>您好，這是一封來自GoodBye Letter的驗證信件。</h2>" + "<span style='font-size:20px;'>「"
+							+ memberName + "」先生/小姐指定您為GoodBye Letter的第二驗證人，" + "若您確認「" + memberName + "」先生/小姐安然無恙，"
 							+ "請點擊連結以進行驗證:</span>" + "<a href='http://localhost:8080/index/LastNote/verify?code="
 							+ verificationCode + "'>" + "<span style='font-size:20px;color:green;'>驗證連結</span></a><br>"
-							+ "<span style='font-size:16px;;'>若您未於收到信後的48小時進行驗證，「" + memberName + "」存放的信件將會自動寄出。</span>"
+							+ "<span style='font-size:16px;;'>若您未於收到信後的48小時進行驗證，「" + memberName + "」先生/小姐存放的信件將會自動寄出。</span>"
 							+ "<span style='font-size:14px;'>謝謝。好好說再見開發團隊敬上</span>";
 
 					String email = lastNote.getVerify1();

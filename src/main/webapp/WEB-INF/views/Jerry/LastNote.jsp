@@ -49,14 +49,14 @@
 					<div class="card-header bg-light text-black fw-bold">GoodBye
 						Letter表單資料</div>
 					<div class="card-body">
-						<form:form id="lastNoteForm" modelAttribute="lastNote"
+						<form:form id="lastNoteForm" modelAttribute="LastNote"
 							method="POST">
 
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label fw-bold">收件人信箱</label>
 								<form:input type="email" class="form-control"
 									value="jk2455892@gmail.com" path="recipientEmail"
-									id="recipientEmail" placeholder="name@example.com"/>
+									id="recipientEmail" placeholder="name@example.com" />
 								<form:errors path="recipientEmail" cssClass="text-danger" />
 							</div>
 							<h1>${errorMessage}</h1>
@@ -79,15 +79,13 @@
 								<label for="notedetail" class="form-label fw-bold">信件內容</label>
 								<form:textarea class="form-control" id="notedetail"
 									maxlength="500" placeholder="想對那個人...說些什麼呢?" path="notedetail"
-									rows="3"/>
+									rows="3" />
 								<form:errors path="notedetail" cssClass="text-danger" />
 							</div>
 
 							<div class="justify-content-center">
 								<button class="btn btn-outline-success btn-lg" id="saveButton"
-									type="submit">送出</button>
-<!-- 								<button class="btn btn-outline-success btn-lg" id="saveButton" -->
-<!-- 									onclick="save()" type="button">送出</button> -->
+									onclick="save()" type="button">送出</button>
 								<button class="btn btn-outline-danger btn-lg"
 									id="resetButton1231" onclick="resetbutton()" type="submit">重置</button>
 							</div>
@@ -103,7 +101,6 @@
 
 	<script>
 	function save() {
-		  // 檢查必填欄位是否為空
 		  const recipientEmail = document.getElementById('recipientEmail').value;
 		  const verify1 = document.getElementById('verify1').value;
 		  const verify2 = document.getElementById('verify2').value;

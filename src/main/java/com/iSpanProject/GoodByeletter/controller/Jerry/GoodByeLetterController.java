@@ -36,30 +36,22 @@ public class GoodByeLetterController {
 	// 跳頁，進入撰寫遺囑頁面。
 	@GetMapping("")
 	public String addNote(Model model) {
-		// 如果不是會員，就導向去登入頁面
-		if (!model.containsAttribute("existing")) {
-			return "redirect:/register/login1";
-		}
+// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
+//		if (!model.containsAttribute("existing")) {
+//			return "redirect:/register/login1";
+//		}
 		LastNote lastnote = new LastNote();
-		model.addAttribute("lastNote", lastnote);
+		model.addAttribute("LastNote", lastnote);
 		return "Jerry/LastNote";
 	}
 
-	// Post方法存入遺囑，重新導向到遺囑編輯頁面，目前採前端表單控制輸入欄位，但後端因為使用validation驗證資料，還沒有用方法去捕捉錯誤並處理，回傳的畫面會很醜。
+	// Post方法存入遺囑後，重新導向到遺囑編輯頁面。因為使用validation驗證資料，但不知道為什麼沒辦法捕捉錯誤並處理。
 	@PostMapping
-	public String addLastNote(@Valid @ModelAttribute LastNote lastNote, Model model, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			System.out.println("=========");
-			System.out.println("錯誤訊息");
-			System.out.println("=========");
-			// 如果有錯誤訊息，返回錯誤訊息
-			model.addAttribute("errors", bindingResult.getAllErrors());
-//			return "Jerry/LastNote";
-			return "redirect:/LastNote/edit";
+	public String addLastNote(@Valid @ModelAttribute("LastNote") LastNote lastNote, Model model,BindingResult result) {
+		if (result.hasErrors()) {
+			model.addAttribute("errors", result.getAllErrors());
+			return "Jerry/LastNote";
 		} else {
-			System.out.println("=========");
-			System.out.println("正確訊息");
-			System.out.println("=========");
 			Register memberid = (Register) model.getAttribute("existing");
 			lastNote.setFK_memberId(memberid);
 			
@@ -79,10 +71,10 @@ public class GoodByeLetterController {
 	// 跳頁，進入編輯遺囑頁面。
 	@GetMapping("/edit")
 	public String LastNoteEdit(Model model) {
-		// 如果不是會員，就導向去登入頁面
-		if (!model.containsAttribute("existing")) {
-			return "redirect:/register/login1";
-		}
+// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
+//		if (!model.containsAttribute("existing")) {
+//			return "redirect:/register/login1";
+//		}
 		Register memberid = (Register) model.getAttribute("existing");
 		List<LastNote> lastNotes = lastnoteService.findlastNoteBymember(memberid);
 		// 解密
@@ -129,7 +121,6 @@ public class GoodByeLetterController {
 	public String LastNoteCRUDdelete(@RequestParam("noteId") Integer id) {
 		lastnoteService.deleteById(id);
 		return "redirect:/LastNote/edit";
-
 	}
 
 
