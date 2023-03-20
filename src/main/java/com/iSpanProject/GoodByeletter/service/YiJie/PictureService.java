@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.service.YiJie;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -26,11 +27,16 @@ public class PictureService {
 		picture.setEnable(false);//將Enable初始值設定為false
 		pDao.save(picture);
 	}
-	//0311-用pictureId找Picture
-//	public Picture findPictureByMemberId(Integer pictureId) {
-//		Picture picture = pDao.findAll(pictureId);
-//		return picture;
-//	}
-	//
-	
+	//找出所有圖片
+	public List<Picture> getAllPicture(){
+		return pDao.findAll();
+	}
+	//依照id找圖片
+	public Optional<Picture> getPictureById(Integer id) {
+		return pDao.findById(id);
+	}
+	//由id山圖片
+	public void deletePictureById(Integer id) {
+		pDao.deleteById(id);
+	}
 }

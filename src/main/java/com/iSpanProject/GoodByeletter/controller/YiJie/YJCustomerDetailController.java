@@ -65,7 +65,7 @@ public class YJCustomerDetailController {
 	public String updDetail(@ModelAttribute("exis") Register exis,
 							@ModelAttribute("detail") YJCustomerDetail detail,
 							@RequestParam(value = "name") String name,
-							@RequestParam(value = "type") String type,
+							//@RequestParam(value = "type") String type,
 							@RequestParam(value = "email") String email,
 							@RequestParam(value = "address") String address,
 							HttpSession session,
@@ -73,9 +73,8 @@ public class YJCustomerDetailController {
 		
 		Register reg = (Register)session.getAttribute("exis");//透過"exis"抓到Register物件，存進reg
 		Integer mId = reg.getMemberId();//取出reg中的id放入mId
-		//0314
 		detail.setName(name);
-		detail.setType(type);
+		//detail.setType(type);//0318
 		detail.setEmail(email);
 		detail.setAddress(address);
 		
