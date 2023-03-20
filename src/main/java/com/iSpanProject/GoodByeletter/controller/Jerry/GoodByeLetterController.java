@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,25 +46,33 @@ public class GoodByeLetterController {
 	}
 
 	// Post方法存入遺囑，重新導向到遺囑編輯頁面，目前採前端表單控制輸入欄位，但後端因為使用validation驗證資料，還沒有用方法去捕捉錯誤並處理，回傳的畫面會很醜。
-	@PostMapping("/post")
-	public String addLastNote(@Valid @ModelAttribute("lastNote") LastNote lastNote, Model model, BindingResult bindingResult) {
+	@PostMapping
+	public String addLastNote(@Valid @ModelAttribute LastNote lastNote, Model model, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
+			System.out.println("=========");
+			System.out.println("錯誤訊息");
+			System.out.println("=========");
 			// 如果有錯誤訊息，返回錯誤訊息
 			model.addAttribute("errors", bindingResult.getAllErrors());
-			return "Jerry/LastNote";
+//			return "Jerry/LastNote";
+			return "redirect:/LastNote/edit";
 		} else {
+			System.out.println("=========");
+			System.out.println("正確訊息");
+			System.out.println("=========");
 			Register memberid = (Register) model.getAttribute("existing");
 			lastNote.setFK_memberId(memberid);
-
+			
 			// 加密
 			String notedetail = lastNote.getNotedetail();
 			String encrypt = stringEncryptor.encrypt(notedetail);
 			lastNote.setNotedetail(encrypt);
 			// 加密結束
-
+			
 			lastnoteService.SaveLastNote(lastNote);
 			return "redirect:/LastNote/edit";
 		}
+		
 
 	}
 
