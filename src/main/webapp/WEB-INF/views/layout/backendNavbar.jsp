@@ -277,8 +277,8 @@
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/add' />">Action</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">Another action</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
