@@ -118,7 +118,8 @@ public class BackendRegisterService {
 	// 分頁功能
 	public Page<Register> findRegisterByPage(Integer pageNumber){
 		
-		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "memberId");
+//		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "memberId");
+		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "memberId");
 		
 		Page<Register> page = backendRegisterRepository.findAll(pgb);
 		

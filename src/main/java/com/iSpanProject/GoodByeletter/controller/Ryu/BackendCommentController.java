@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
@@ -73,13 +74,16 @@ public class BackendCommentController {
 	
 	// 新增回復留言
 	@PostMapping("/comment/post")
-	public String addNewCommentPost(@ModelAttribute("comment") Comment comment, Model model) {
+	public String addNewCommentPost(@ModelAttribute("comment") Comment comment, Model model, 
+			RedirectAttributes redirectAttributes) {
 		
 //		Board board = (Board) model.getAttribute("board");
 		
 		Integer bid = comment.getbId();
 		
 		Board board = backendBoardService.findBoardById(bid);
+		
+//		String title = board.getTitle();
 		
 		
 		Register register = (Register) model.getAttribute("existing");
@@ -106,7 +110,12 @@ public class BackendCommentController {
 		
 		model.addAttribute("comment", newComment);
 		
+		
+//		redirectAttributes.addFlashAttribute("backendHomeMessages", "留言 [ " + title + " ] 新增回覆留言成功");
+		
 		return "/Ryu/backendAddNewCommentForm";
+		
+//		return "redirect:/topGun/comment/add";
 		
 		
 	}
@@ -145,9 +154,14 @@ public class BackendCommentController {
 	
 	// 修改回復留言
 	@PutMapping("/comment/editPost")
-	public String editPostComment(@ModelAttribute("comment") Comment comment) {
+	public String editPostComment(@ModelAttribute("comment") Comment comment, 
+			RedirectAttributes redirectAttributes) {
+		
+		Integer commentId = comment.getCommentId();
 		
 		backendCommentService.updateComment(comment);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "回覆留言編號  [ " + commentId + " ] 修改成功");
 		
 		return "redirect:/topGun/comment/page";
 		
@@ -158,9 +172,16 @@ public class BackendCommentController {
 	
 	// 刪除回復留言
 	@DeleteMapping("/comment/delete")
-	public String deleteComment(@RequestParam("commentId") Integer commentId) {
+	public String deleteComment(@RequestParam("commentId") Integer commentId, 
+			RedirectAttributes redirectAttributes) {
+		
+		Comment presentComment = backendCommentService.findCommentById(commentId);
+		
+		Integer presentCommentId = presentComment.getCommentId();
 		
 		backendCommentService.deleteCommentById(commentId);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "回覆留言編號  [ " + presentCommentId + " ] 刪除成功");
 		
 		return "redirect:/topGun/comment/page";
 		
@@ -180,7 +201,68 @@ public class BackendCommentController {
 	
 	
 	
+	// 條件搜尋之修改回復留言跳頁
+	@GetMapping("/comment/editByAccount")
+	public String editCommentPageByAccount(@RequestParam("commentId") Integer commentId, Model model) {
+		
+		Comment comment = backendCommentService.findCommentById(commentId);
+		
+		model.addAttribute("comment", comment);
+		
+		return "/Ryu/backendHomeEditCommentForm";
+		
+		
+		
+	}
 	
+	
+	
+	
+	// 條件搜尋之修改回復留言
+	@PutMapping("/comment/editPostByAccount")
+	public String editPostCommentByAccount(@ModelAttribute("comment") Comment comment, 
+			RedirectAttributes redirectAttributes) {
+		
+		Integer commentId = comment.getCommentId();
+		
+		Comment presentComment = backendCommentService.findCommentById(commentId);
+		
+		Register register = presentComment.getRegister();
+		
+		String account = register.getAccount();
+		
+		backendCommentService.updateComment(comment);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", " 會員 [ " + account + "]，回覆留言編號  [ " + commentId + " ] 修改成功");
+		
+//		return "redirect:/topGun/comment/page";
+		
+		return "redirect:/topGun/board/queryLikeAccount";
+		
+	}
+	
+	
+	
+	// 條件搜尋之刪除回復留言
+	@DeleteMapping("/comment/deleteByAccount")
+	public String deleteCommentByAccount(@RequestParam("commentId") Integer commentId, 
+			RedirectAttributes redirectAttributes) {
+		
+		Comment presentComment = backendCommentService.findCommentById(commentId);
+		
+		Register register = presentComment.getRegister();
+		
+		String account = register.getAccount();
+		
+		Integer presentCommentId = presentComment.getCommentId();
+		
+		backendCommentService.deleteCommentById(commentId);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", " 會員 [ " + account + "]，回覆留言編號  [ " + presentCommentId + " ] 修改成功");
+		
+		return "redirect:/topGun/board/queryLikeAccount";
+		
+	}
 	
 	
 	

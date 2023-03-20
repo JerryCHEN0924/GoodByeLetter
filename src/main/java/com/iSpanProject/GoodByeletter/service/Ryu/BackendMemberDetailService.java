@@ -54,7 +54,8 @@ public class BackendMemberDetailService {
 	// 分頁功能
 	public Page<MemberDetail> findByPage(Integer pageNumber){
 				
-		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "id");
+//		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "id");
+		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "id");
 				
 		Page<MemberDetail> page = backendMemberDetailRepository.findAll(pgb);
 				

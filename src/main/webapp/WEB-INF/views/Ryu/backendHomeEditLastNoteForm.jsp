@@ -69,7 +69,7 @@
   </div>
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/lastNote/editPost" modelAttribute="lastNote" method='PUT'>
+  	<form:form action="${contextRoot}/topGun/lastNote/editPostByAccount" modelAttribute="lastNote" method='PUT'>
   		
   		<form:input path="noteId" type="hidden" />
   		<form:input path="FK_memberId" type="hidden" />
@@ -201,8 +201,8 @@
 		
 			<div class="offset-sm-5 col-sm-2">
 		
-				<form action="${contextRoot}/topGun" method="get" >
-					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				<form action="${contextRoot}/topGun/lastNote/queryLikeAccount" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="返回查詢 GoodBye Letter" />
 				</form>
 		
 			</div>

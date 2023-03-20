@@ -63,9 +63,11 @@
 
 
 <div class="card text-dark mt-5">
+
   <div class="card-header">
     編輯廣告文案
   </div>
+  
   <div class="card-body">
   	
   	<form:form enctype='multipart/form-data' action="${contextRoot}/topGun/vendorPhotos/put/${vendorPhotos.vendorPhotosId}" modelAttribute="vendorPhotos" method='POST'>
