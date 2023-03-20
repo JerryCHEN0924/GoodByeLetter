@@ -46,7 +46,12 @@
   <div class="container-fluid">
   
   
-  	<div>
+  
+  
+  	<div class="d-flex flex-row mb-3">
+  
+  
+  	<div class="p-2">
 	   	<c:choose>
 		    <c:when test="${not empty contextUser}">
 		        <!-- member 物件存在，顯示登出按鈕 -->
@@ -77,18 +82,40 @@
 <%-- 		    </c:otherwise> --%>
 <%-- 		</c:choose> --%>
 <!--     </div> -->
+
+
+
+	<div class="p-2">
   
-    <a class="navbar-brand align-center" href="${contextRoot}/topGun/backendHome">後臺管理介面</a>
+    <a class="navbar-brand fs-2 fw-bolder position-absolute top-50 start-50 translate-middle" href="${contextRoot}/topGun/backendHome">後臺管理介面</a>
+    
+    </div>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     
     
+    
+    
+    
     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
     
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">後臺管理選單</h5>
+      
+        <h5 class="offcanvas-title fs-2 fw-bolder" id="offcanvasDarkNavbarLabel">後臺管理選單</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        
       </div>
       
       <div class="offcanvas-body">
@@ -96,7 +123,7 @@
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${contextRoot}/">Home</a>
+            <a class="nav-link active fs-2 fw-bolder" aria-current="page" href="${contextRoot}/">Home</a>
           </li>
           
           
@@ -117,7 +144,6 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
             </ul>
             
           </li>
@@ -141,12 +167,11 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/page' />">新增廣告商細項資料</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/page' />">查詢和編輯廣告商細項資料</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails/add' />">新增廣告商細項資料</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails/page' />">查詢和編輯廣告商細項資料</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
             </ul>
             
           </li>
@@ -158,12 +183,11 @@
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos/add' />">新增廠商文案資料</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos/page' />">查看和編輯廠商文案資料</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
             </ul>
             
           </li>
@@ -183,7 +207,6 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
             </ul>
             
           </li>
@@ -200,7 +223,6 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
             </ul>
             
           </li>
@@ -224,10 +246,37 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
             </ul>
             
           </li>
+          
+          
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              廠商管理(新版)
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="<c:url value='/topGun/backendHome/getVendorPhotosQuery' />">搜尋廣告文案(By Title)</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails' />">查詢全部廠商細項資料(新版)</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos' />">查詢全部廠商文案資料(新版)</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/backendHome/money' />">廣告文案預覽(For審核狀態True)</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
           
           
           

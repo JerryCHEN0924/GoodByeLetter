@@ -32,7 +32,7 @@
 
 <div class="offset-sm-3 col-sm-6 my-3">
 
-<hr>
+<hr class="border border-dark border-3 opacity-75">
 
 </div>
 
@@ -58,12 +58,17 @@
   	
   	<form:form action="${contextRoot}/topGun/lastNote/editPost" modelAttribute="lastNote" method='PUT'>
   		
+  		<form:input path="noteId" type="hidden" />
+  		<form:input path="FK_memberId" type="hidden" />
+  		<form:input path="createTime" type="hidden" />
+  		<form:input path="verifyTime" type="hidden" />
   		
   		<c:if test='${lastNote.noteId != null}'>
   		 <div class="mb-3 row">
 		    <label for="inputNoteId" class="col-sm-2 col-form-label">編號</label>
 		    <div class="col-sm-10">
-		    	<form:input path="noteId" class="form-control" id="inputNoteId" />
+<%-- 		    	<form:input path="noteId" class="form-control" id="inputNoteId" /> --%>
+		    	<input name="noteId" class="form-control" id="inputNoteId" value="${lastNote.noteId}" disabled />
 		    </div>
 		  </div>
 		 </c:if>
@@ -74,7 +79,8 @@
   		 <div class="mb-3 row">
 		    <label for="inputFK_memberId" class="col-sm-2 col-form-label">會員編號</label>
 		    <div class="col-sm-10">
-		    	<form:input path="FK_memberId" class="form-control" id="inputFK_memberId" />
+<%-- 		    	<form:input path="FK_memberId" class="form-control" id="inputFK_memberId" /> --%>
+		    	<input name="FK_memberId" class="form-control" id="inputFK_memberId" value="${lastNote.FK_memberId.memberId}" disabled />
 		    </div>
 		  </div>
 		 </c:if>
@@ -85,7 +91,8 @@
   		 <div class="mb-3 row">
 		    <label for="inputCreateTime" class="col-sm-2 col-form-label">新增時間</label>
 		    <div class="col-sm-10">
-		    	<form:input path="createTime" class="form-control" id="inputCreateTime" />
+<%-- 		    	<form:input path="createTime" class="form-control" id="inputCreateTime" /> --%>
+		    	<input name="createTime" class="form-control" id="inputCreateTime" value="${lastNote.createTime}" disabled />
 		    </div>
 		  </div>
 		 </c:if>
@@ -95,7 +102,8 @@
   		 <div class="mb-3 row">
 		    <label for="inputVerifyTime" class="col-sm-2 col-form-label">驗證時間</label>
 		    <div class="col-sm-10">
-		    	<form:input path="verifyTime" class="form-control" id="inputVerifyTime" />
+<%-- 		    	<form:input path="verifyTime" class="form-control" id="inputVerifyTime" /> --%>
+		    	<input name="verifyTime" class="form-control" id="inputVerifyTime" value="${lastNote.verifyTime}" disabled />
 		    </div>
 		  </div>
 		 </c:if>

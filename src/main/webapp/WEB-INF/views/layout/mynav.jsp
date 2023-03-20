@@ -3,6 +3,7 @@
 		<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 			<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 				<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+				<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
 				<!DOCTYPE html>
 				<html>
 
@@ -292,9 +293,11 @@
 									<span class="text">交流區</span>
 								</a>
 								<div class="div_dropdown " id="div_dropdown">
-									<ul class="dropdown">
+									<ul class="dropdown">									
 										<li><a href="<c:url value='/board/page' />"> 查看留言 </a></li>
+									<c:if test="${not empty contextUser}">
 										<li><a href="<c:url value='/board/add' />"> 增加留言 </a></li>
+									</c:if>
 									</ul>
 								</div>
 							</li>

@@ -19,35 +19,44 @@
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
 
-<div class="container w-75 text-center">
+
+
+<div class="container text-center">
 
 
 
 
 
-<div class="row ">
+<div class="row my-3">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
-<hr>
+
 
 </div>
-
 </div>
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
 
 
-<div class="row ">
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
 
-<div class="offset-sm-2 col-sm-8 ">
+<span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span>
+
+<div class="row">
+
+<div class="offset-sm-2 col-sm-8">
 
 
 
-<div class="card">
+
+
+
+<div class="card text-dark mt-5">
 
   <div class="card-header">
     新增權限等級資料
@@ -69,22 +78,18 @@
   		
   		
   		<div class="mt-3">
+  		
 	  		<button type="submit" class="btn btn-primary">送出</button>
+	  		
   		</div>
+  		
+  		
   		
   	</form:form>
   	
   	
+  	
   </div>
-  
-  
-</div>
-
-
-
-
-
-</div>
 </div>
 
 
@@ -92,8 +97,34 @@
 
 
 
+</div>
+</div>
 
 
+
+
+
+
+
+
+
+		<div class="row my-5">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+  		</div>
+
+
+
+</div>
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 
