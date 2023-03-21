@@ -14,8 +14,8 @@ public class CookieConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		System.out.println("我是攔截器");
-		registry.addInterceptor(loginInterceptor).addPathPatterns("/*","/board/**","/LastNote/**")
-      .excludePathPatterns("/register/**","/forgetpwd/**","/mynav.jsp");
+		registry.addInterceptor(loginInterceptor).addPathPatterns("/*","/LastNote/**")
+      .excludePathPatterns("/logout","/user/login","/lastNoteLogin","/login","/board/**","/topGun/**","/register/**","/forgetpwd/**","/mynav.jsp");
 	}
 }
 //addPathPatterns("/**") 表示攔截所有的請求
