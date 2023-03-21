@@ -28,7 +28,7 @@
 
     <%@ include file="../layout/mynav.jsp"%>
 
-    <article id="" class="wrapper style2">
+    <article id=""  class="wrapper style2" style="height:100vh">
         <div class="container-fluid">
             <div class="container">
                 <h1>上傳圖片頁面</h1>

@@ -26,72 +26,105 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       
 	<style>
-		.a001 {
-			margin: 10px auto 0px auto;
-			font-size: 30px;
+		
+		body {
+			margin: 0;
+			padding: 0;
 		}
-		#banner{
-			width: 100%;
-			height: 110px;
-			background-color: aquamarine;
-			text-align: Right;
+		
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			width: 100vw;
+			box-sizing: border-box;
 		}
-		#user{
-			font-size:2em;
+		
+		.left {
+			flex-basis: 70%;
+			background-color: #f2f2f2;
+			padding: 20px;
+			height: 100%;
+			box-sizing: border-box;
+			text-align:center;
 		}
-	
-		#url001{
-			height:100vh;
-			width: 300px;
-			background-color: rgb(38, 236, 143);
-			font-size:2em;
-			text-align: left;
+		
+		.right {
+			flex-basis: 30%;
+			background-color: #e6e6e6;
+			padding: 20px;
+			height: 100%;
+			box-sizing: border-box;
+			text-align:center;
+		}
+		.banner {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			height: 10%;
+			background-color: #28046a;
+			color: #fff;
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			padding: 0 20px;
+		}
+		
+		.banner a {
+			color: #fff;
+			text-decoration: none;
+			margin-left: 10px;
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				flex-direction: column;
+				height: auto;
+			}
+			
+			.left, .right {
+				flex-basis: 100%;
+				height: auto;
+			}
 		}
 	</style>
 	</head>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
-	<div id="banner">
-		<span class="material-icons-outlined">logout</span>
+	
+		
 	</div>
-	<div id="url001">
-		<ul>
-			<li>
-				<a class="a001" href="<c:url value='/customer/picture/page1'/>">投放圖片</a>
-			</li>
-	
-			<li>
-				<a class="a001" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
-			</li>
-	
-			<li>
-				<a class="a001" href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>">圖片展示</a>
-			</li>
-	
-			<li>
-				<a class="a001" href="<c:url value='/customer/picture/page2?memberId=${exis.memberId}'/>">上傳圖片頁面2</a>
-			</li>
-	
-			<li>
-				<a class="" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
-			</li>
-	
-			<li>
-				<a class="" href="<c:url value='/customer/add'/>">檢視廣告</a><!-- 之後此連結移到首頁 -->
-			</li>
-		</ul>	
+	<div class="container">
+		<div class="banner">
+			<span class="material-icons-outlined"><a class="a001" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a></span>
+		</div>
+		<div class="left">
+			<p>這裡是左欄</p>
+			<h1>歡迎${exis.account}登入</h1><ul></ul>
+		</div>
+		<div class="right">
+			<p>這裡是右欄</p>
+				<li>
+					<a class="a001" href="<c:url value='/customer/picture/page1'/>">投放圖片</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>">圖片展示</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/add'/>">檢視廣告</a><!-- 之後此連結移到首頁 -->
+				</li>
+			</ul>
+		</div>
 	</div>
-	<article class="wrapper style2" style="height:100vh">
-		<div class="container">
-			<div>
-				<h1>歡迎${exis.account}登入</h1>
-				<h3></h3>
-			</div>
-			
-		</div>	
-	</article>
-	
-	
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>

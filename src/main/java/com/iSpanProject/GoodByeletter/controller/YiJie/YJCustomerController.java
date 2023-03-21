@@ -53,8 +53,7 @@ public class YJCustomerController {
 						      Model model) {
 		//去後端找有沒有相同的帳號
 		Register reg = rDao.findRegisterByAcc(acc);
-		String account = reg.getAccount();
-		if(account != null) {
+		if(reg != null) {
 			model.addAttribute("errorMessage", "該帳號已經存在");
 			return "YiJie/mycompany";
 		}
