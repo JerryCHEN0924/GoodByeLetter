@@ -75,11 +75,13 @@
 				
 					<h4>
 						<strong>${newboard.register.memberId}</strong>
+						<h3><form:hidden path="createTime" value="${newboard.createTime}" placeholder="createTime" class="form-control" /></h3>
 					</h4>
 					<h5>
 						建立時間:
 						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
 							value="${newboard.createTime}" />
+							
 						更新時間:
 						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
 							value="${newboard.updateTime}" />
