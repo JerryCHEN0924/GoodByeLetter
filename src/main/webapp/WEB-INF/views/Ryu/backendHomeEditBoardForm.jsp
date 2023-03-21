@@ -70,7 +70,7 @@
   
   <div class="card-body">
   	
-	<form:form action="${contextRoot}/topGun/board/editPost" modelAttribute="board" method='put'>
+	<form:form action="${contextRoot}/topGun/board/editPostByAccount" modelAttribute="board" method='put'>
   		
   		
   		<form:input path="boardId" type="hidden" />
@@ -123,8 +123,8 @@
 		
 			<div class="offset-sm-5 col-sm-2">
 		
-				<form action="${contextRoot}/topGun" method="get" >
-					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				<form action="${contextRoot}/topGun/board/queryLikeAccount" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回查詢留言" />
 				</form>
 		
 			</div>

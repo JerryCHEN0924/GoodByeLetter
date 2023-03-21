@@ -99,7 +99,7 @@ public class Register {
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	private Date registerTime;
 
-
+	// Jerry:雙向一對多
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FK_memberId", orphanRemoval = true)
 	private List<LastNote> lastnote = new ArrayList<>();

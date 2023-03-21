@@ -70,17 +70,19 @@
   
   <div class="card-body">
   	
-  	<form:form enctype='multipart/form-data' action="${contextRoot}/topGun/vendorPhotos/put/${vendorPhotos.vendorPhotosId}" modelAttribute="vendorPhotos" method='POST'>
+  	<form:form enctype='multipart/form-data' action="${contextRoot}/topGun/vendorPhotosBackup/put/${vendorPhotos.id}" modelAttribute="vendorPhotos" method='POST'>
   		
   		
-  		<form:hidden path="vendorPhotosId" class="form-control" id="inputVendorPhotosId" />
+  		<form:hidden path="id" class="form-control" id="inputVendorPhotosId" />
+<%--   		<form:hidden path="yJCustomerDetail" class="form-control" id="inputVendorPhotosFk_companydetail_id" /> --%>
+  		<form:hidden path="photoFile" class="form-control" id="inputVendorPhotosPhotoFile" />
   		
   		
-  		<c:if test='${vendorPhotos.vendorPhotosId != null}'>
+  		<c:if test='${vendorPhotos.id != null}'>
   		 <div class="mb-3 row">
 		    <label for="inputVendorPhotosId" class="col-sm-2 col-form-label">文案編號</label>
 		    <div class="col-sm-10">
-		    	<input name="vendorPhotosId" value="${vendorPhotos.vendorPhotosId}" class="form-control" id="inputVendorPhotosId" disabled />
+		    	<input name="id" value="${vendorPhotos.id}" class="form-control" id="inputVendorPhotosId" disabled />
 		    </div>
 		  </div>
 		 </c:if>
@@ -88,44 +90,54 @@
 		  
 		  
 		  
-		   <div class="mb-3 row">
-		    <label for="inputTitle" class="col-sm-2 col-form-label">文案標題</label>
-		    <div class="col-sm-10">
-		    	<form:input path="title" class="form-control" id="inputTitle" placeholder="好好說再見" />
-		    	<form:errors path="title" class="form-control" id="inputTitle" cssClass="error" />
-		    </div>
-		  </div>
+<!-- 		   <div class="mb-3 row"> -->
+<!-- 		    <label for="inputTitle" class="col-sm-2 col-form-label">文案標題</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="title" class="form-control" id="inputTitle" placeholder="好好說再見" /> --%>
+<%-- 		    	<form:errors path="title" class="form-control" id="inputTitle" cssClass="error" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
 		  
 		  
 		  
 		  
-  		 <div class="mb-3 row">
-		    <label for="inputDescription" class="col-sm-2 col-form-label">文案描述</label>
-		    <div class="col-sm-10">
-		    	<form:textarea path="description" class="form-control" id="inputDescription" rows="15" cols="" />
-		    	<form:errors path="description" class="form-control" id="inputDescription" cssClass="error" />
-		    </div>
-		  </div>
+<!--   		 <div class="mb-3 row"> -->
+<!-- 		    <label for="inputDescription" class="col-sm-2 col-form-label">文案描述</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:textarea path="description" class="form-control" id="inputDescription" rows="15" cols="" /> --%>
+<%-- 		    	<form:errors path="description" class="form-control" id="inputDescription" cssClass="error" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
+		  
+		  
+		  
+<!-- 		  <div class="mb-3 row"> -->
+<!-- 		    <label for="inputEnabled" class="col-sm-2 col-form-label">審核狀態</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="enabled" class="form-control" id="inputEnabled" /> --%>
+<%-- 		    	<form:errors path="enabled" class="form-control" id="inputEnabled" cssClass="error" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
 		  
 		  
 		  
 		  <div class="mb-3 row">
 		    <label for="inputEnabled" class="col-sm-2 col-form-label">審核狀態</label>
 		    <div class="col-sm-10">
-		    	<form:input path="enabled" class="form-control" id="inputEnabled" />
-		    	<form:errors path="enabled" class="form-control" id="inputEnabled" cssClass="error" />
+		    	<form:input path="enable" class="form-control" id="inputEnabled" />
+<%-- 		    	<form:errors path="enable" class="form-control" id="inputEnabled" cssClass="error" /> --%>
 		    </div>
 		  </div>
 		  
 		  
 		  
-  		 <div class="mb-3 row">
-		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">文案圖片</label>
-		    <div class="col-sm-10">
-		    	<form:input path="image" class="form-control" id="inputVendorDetailsImage" type='file' />
-		    	<form:errors path="image" class="form-control" id="inputVendorDetailsImage" cssClass="error" />
-		    </div>
-		  </div>
+<!--   		 <div class="mb-3 row"> -->
+<!-- 		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">文案圖片</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="image" class="form-control" id="inputVendorDetailsImage" type='file' /> --%>
+<%-- 		    	<form:errors path="image" class="form-control" id="inputVendorDetailsImage" cssClass="error" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
 		  
 		  
 		  
