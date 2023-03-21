@@ -35,6 +35,7 @@ import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Ryu.VendorDetails;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
+import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 
 @Configuration
 @Entity
@@ -67,6 +68,9 @@ public class Register {
 	@OneToOne(mappedBy = "register", orphanRemoval = true)
 	private VendorDetails vendorDetails;
 	
+	@OneToOne(mappedBy = "FK_memberId", orphanRemoval = true)
+	private YJCustomerDetail customerDetail;
+	
 //	======================= Block =======================
 	
 	public VendorDetails getVendorDetails() {
@@ -85,10 +89,22 @@ public class Register {
 		this.pId = pId;
 	}
 	
+	public YJCustomerDetail getCustomerDetail() {
+		return customerDetail;
+	}
+
+	public void setCustomerDetail(YJCustomerDetail customerDetail) {
+		this.customerDetail = customerDetail;
+	}
+
+	
 //	####################### Ryuz divider end #######################
 	
 	
-	
+
+
+
+
 	@ManyToOne
 	@JoinColumn(name = "FK_Plevel", foreignKey=@ForeignKey(name = "FK_member_level"))
 	private Level FK_Plevel;

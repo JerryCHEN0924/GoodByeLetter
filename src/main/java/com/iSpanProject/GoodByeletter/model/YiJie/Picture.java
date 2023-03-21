@@ -5,8 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -52,6 +57,65 @@ public class Picture {
 
 	///  ###########  ///
 	public Picture() {}
+	
+	
+	
+	
+	@ManyToOne
+	@JoinColumn(name="fk_companydetail_id")
+	private YJCustomerDetail customerDetail;
+	
+	
+	
+//	####################### Ryuz divider #######################
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+	
+	
+	@Transient
+	MultipartFile image;
+	
+	@Transient
+	private String account;
+	
+	
+	public MultipartFile getImage() {
+		return image;
+	}
+	
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+	
+	public String getAccount() {
+		return account;
+	}
+	
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public YJCustomerDetail getCustomerDetail() {
+		return customerDetail;
+	}
+
+	public void setCustomerDetail(YJCustomerDetail customerDetail) {
+		this.customerDetail = customerDetail;
+	}
+	
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	####################### i am divider #######################
+	
+	
+	
+	
+	
+	
+	
+
 
 	public Integer getId() {
 		return id;

@@ -108,6 +108,15 @@
 		  
 		  
 		  
+		   <div class="mb-3 row">
+		    <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
+		    <div class="col-sm-10">
+		    	<form:input path="account" class="form-control" id="inputAccount" placeholder="請輸入已存在之帳號" />
+		    	<form:errors path="account" class="form-control" id="inputAccount" cssClass="error" />
+		    </div>
+		  </div>
+		  
+		  
 		  
 		  
 		  

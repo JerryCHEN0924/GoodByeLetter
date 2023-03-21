@@ -76,6 +76,7 @@
   		<form:hidden path="id" class="form-control" id="inputVendorPhotosId" />
 <%--   		<form:hidden path="yJCustomerDetail" class="form-control" id="inputVendorPhotosFk_companydetail_id" /> --%>
   		<form:hidden path="photoFile" class="form-control" id="inputVendorPhotosPhotoFile" />
+  		<form:hidden path="customerDetail" class="form-control" id="inputVendorPhotosPhotoFile" />
   		
   		
   		<c:if test='${vendorPhotos.id != null}'>
