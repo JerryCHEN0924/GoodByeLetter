@@ -41,9 +41,9 @@ public class GoodByeLetterController {
 	@GetMapping("")
 	public String addNote(Model model) {
 		// 如果不是會員，就導向去登入頁面
-		if (!model.containsAttribute("existing")) {
-			return "redirect:/register/login1";
-		}
+//		if (!model.containsAttribute("existing")) {
+//			return "redirect:/register/login1";
+//		}
 		LastNote lastnote = new LastNote();
 		model.addAttribute("lastNote", lastnote);
 		return "Jerry/LastNote";
@@ -78,9 +78,9 @@ public class GoodByeLetterController {
 	@GetMapping("/edit")
 	public String LastNoteEdit(Model model) {
 		// 如果不是會員，就導向去登入頁面
-		if (!model.containsAttribute("existing")) {
-			return "redirect:/login1";
-		}
+//		if (!model.containsAttribute("existing")) {
+//			return "redirect:/login1";
+//		}
 		Register memberid = (Register) model.getAttribute("existing");
 		List<LastNote> lastNotes = lastnoteService.findlastNoteBymember(memberid);
 		// 解密
