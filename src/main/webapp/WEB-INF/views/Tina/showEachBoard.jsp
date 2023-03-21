@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
+<%-- <c:set var="contextUser" value="${pageContext.request.userPrincipal}"/> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +91,8 @@
 					<p>${newboard.boardMessage}</p>
 					
 					
-					<c:if test="${contextUser.name==newboard.register.account}">
+<%-- 					<c:if test="${contextUser.name==newboard.register.account}"> --%>
+					<c:if test="${existing.account==newboard.register.account}">
 					<%--編輯按鈕 --%>
 					<form:form action="${contextRoot}/board/editPage" method="get">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
@@ -125,7 +126,8 @@
 			</h5>
 			<p>${comment.reply}</p>
 			
-			<c:if test="${contextUser.name==comment.register.account}">
+<%-- 			<c:if test="${contextUser.name==comment.register.account}"> --%>
+			<c:if test="${existing.account==comment.register.account}">
 			<%--修改留言 --%>
 			<form:form action="${contextRoot}/comment/editPage" method="get">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
@@ -144,7 +146,8 @@
 			</div>
 			
 			
-			<c:if test="${not empty contextUser}">
+<%-- 			<c:if test="${not empty contextUser}"> --%>
+ 			<c:if test="${not empty existing or not empty exis}"> 
 			<div class="messageContent">
 			<%--回覆card --%>
 			<form:form action="${contextRoot}/comment/add" method="post"
@@ -155,10 +158,10 @@
 			<input type="submit" class="btn btn-outline-info" value="新增"></input> 	
 			</form:form> 
 			</div>			
-			</c:if>
+			</c:if> 
 			
 	<div style="height:10px"></div>
-		
+	</div>	
 	</article>
 
 

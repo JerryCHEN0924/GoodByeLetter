@@ -13,9 +13,9 @@ public class PageController {
 			return "index";
 	}
 	
-@GetMapping("/newnav")
+@GetMapping("/mynav")
 public String newnav() {
-	return "layout/newmynav";
+	return "layout/mynav";
 }
 	@GetMapping("/myregister")
 	public String myregister() {
