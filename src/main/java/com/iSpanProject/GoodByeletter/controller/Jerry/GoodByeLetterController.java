@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.catalina.connector.Response;
 import org.jasypt.encryption.StringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +50,7 @@ public class GoodByeLetterController {
 		return "Jerry/LastNote";
 	}
 
-	// Post方法存入遺囑後，重新導向到遺囑編輯頁面。因為使用validation驗證資料，但不知道為什麼沒辦法捕捉錯誤並處理。
+	// Post方法存入遺囑後，重新導向到遺囑編輯頁面。使用validation做後端驗證，但不知道為什麼沒辦法捕捉錯誤並處理。
 	@PostMapping
 	public String addLastNote(@Valid @ModelAttribute("LastNote") LastNote lastNote, Model model,BindingResult result) {
 		if (result.hasErrors()) {
