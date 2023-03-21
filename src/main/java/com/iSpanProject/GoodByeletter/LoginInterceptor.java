@@ -23,25 +23,48 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
     	System.out.println("我是??????");
     	HttpSession session = request.getSession();
-    	
-        // 獲取 Cookie 中的用户信息
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getValue().equals("1")) {
-                    // 根據用户 ID 查詢數據庫獲取用户信息
-                	Integer memberId = Integer.parseInt(cookie.getValue());
-                	Register register = registerService.findById(memberId);
-                	session.setAttribute("existing", register);
-                    return true;
-                }
-            }
-        }
-        // 跳轉到登錄頁面
-        response.sendRedirect(request.getContextPath() + "/register/login1");
-        return false;
+    	String requestURI = request.getRequestURI();//為了抓使用者要到的rui
+    	 System.out.println(requestURI);
+    	boolean cookieFound = false;
+    	// 獲取 Cookie 中的用户信息
+    	Cookie[] cookies = request.getCookies();//getcookie出來是陣列，所以要Cookie[]
+    	if (cookies != null) {
+    	    for (Cookie cookie : cookies) {//java不能直接用name抓到對應的cookie
+    	        if (cookie.getName().equals("memberId") && cookie.getValue().equals("1")) {
+    	            // 根據用户 ID 查詢數據庫獲取用户信息
+    	            Integer memberId = Integer.parseInt(cookie.getValue());//本來cookie裡面是字串所以要轉成數字
+    	            Register register = registerService.findById(memberId);
+    	            session.setAttribute("existing", register);
+    	            cookieFound = true;
+    	            break;
+    	        }else {
+    	        	System.out.println("===============");;
+    	        	System.out.println("nonononononnonono cookie");;
+    	        	System.out.println("===============");;
+    	        }
+    	    }
+    	}
+    	if (cookieFound) {
+    	    // 如果從Cookie中獲取到了數據，則直接返回true
+    	    return true;
+    	} else {
+    	    // 如果從Cookie中没有獲取到數據，則從session中獲取數據
+    	    Register register = (Register) session.getAttribute("existing");
+    	    if (register != null) {
+    	    	System.out.println("aaaaaaaaaaaaaaaaaaaaa");
+    	        return true;
+    	    } else {
+    	    	if(!"/index/".equals(requestURI)){//如果沒有session或cookie，使用者點擊除了首頁以外 -> return false 就會到/register/login1
+    	    		
+    	    		System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbb");
+    	    		response.sendRedirect(request.getContextPath()+"/register/login1");
+    	    		return false;
+    	    	}
+    	    	System.out.println("cccccccccccccccccccccccccccb");
+    	        return true;//如果使用者想要進入index,-> return true 就可以進去
+    	    }
+    	}
     }
- 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
@@ -59,7 +60,9 @@ public class BackendLastNoteController {
 	
 	// 新增LastNote
 	@PostMapping("/lastNote/post")
-	public String addNewLastNotePost(@ModelAttribute("lastNote") LastNote lastNote, Model model, BindingResult bindingResult) {
+	public String addNewLastNotePost(@ModelAttribute("lastNote") LastNote lastNote,
+			Model model, BindingResult bindingResult, 
+			RedirectAttributes redirectAttributes) {
 		
 		new LastNoteValidator().validate(lastNote, bindingResult);
 		
@@ -80,6 +83,8 @@ public class BackendLastNoteController {
 		System.out.println("bean==>" + lastNote);
 		
 		Register register = (Register) model.getAttribute("existing");
+		
+		String account = register.getAccount();
 		
 		lastNote.setFK_memberId(register);
 		
@@ -107,10 +112,11 @@ public class BackendLastNoteController {
 		
 		
 		
-		
-		
-		
 		backendLastNoteService.insertLastNote(lastNote);
+		
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員 [ " + account + " ] GoodBye Letter 新增成功");
+		
 		
 		return "redirect:/topGun/lastNote/add";
 		
@@ -155,9 +161,14 @@ public class BackendLastNoteController {
 	
 	// 修改LastNote
 	@PutMapping("/lastNote/editPost")
-	public String editPostLastNote(@ModelAttribute("lastNote") LastNote lastNote) {
+	public String editPostLastNote(@ModelAttribute("lastNote") LastNote lastNote, 
+			RedirectAttributes redirectAttributes) {
+		
+		Integer lastNoteId = lastNote.getNoteId();
 		
 		backendLastNoteService.updateLastNote(lastNote);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "編號 [ " + lastNoteId + " ] GoodBye Letter 修改成功");
 		
 		return "redirect:/topGun/lastNote/page";
 		
@@ -167,9 +178,12 @@ public class BackendLastNoteController {
 	
 	// 刪除LastNote
 	@DeleteMapping("/lastNote/delete")
-	public String deleteBoard(@RequestParam("noteId") Integer noteId) {
+	public String deleteBoard(@RequestParam("noteId") Integer noteId, 
+			RedirectAttributes redirectAttributes) {
 		
 		backendLastNoteService.deleteLastNoteById(noteId);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "編號 [ " + noteId + " ] GoodBye Letter 修改成功");
 		
 		return "redirect:/topGun/lastNote/page";
 		
@@ -221,6 +235,72 @@ public class BackendLastNoteController {
 		return "/Ryu/backendShowLastNoteDetailByAccount";
 		
 	}
+	
+	
+	
+	
+	
+	
+	// 條件搜尋之修改LastNote跳頁
+	@GetMapping("/lastNote/editByAccount")
+	public String editLastNotePageByAccount(@RequestParam("noteId") Integer noteId, Model model) {
+		
+		LastNote lastNote = backendLastNoteService.findLastNoteById(noteId);
+		
+		model.addAttribute("lastNote", lastNote);
+		
+		return "/Ryu/backendHomeEditLastNoteForm";
+		
+		
+	}
+	
+	
+	
+	
+	
+	// 條件搜尋之修改LastNote
+	@PutMapping("/lastNote/editPostByAccount")
+	public String editPostLastNoteByAccount(@ModelAttribute("lastNote") LastNote lastNote, 
+			RedirectAttributes redirectAttributes) {
+		
+		Integer lastNoteId = lastNote.getNoteId();
+		
+		Register presentRegister = lastNote.getFK_memberId();
+		
+		String account = presentRegister.getAccount();
+		
+		backendLastNoteService.updateLastNote(lastNote);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員 [ " + account + " ]，編號 [ " + lastNoteId + " ] GoodBye Letter 修改成功");
+		
+		return "redirect:/topGun/lastNote/queryLikeAccount";
+		
+	}
+		
+	
+	
+	
+	
+	// 刪除LastNote
+	@DeleteMapping("/lastNote/deleteByAccount")
+	public String deleteLastNoteByAccount(@RequestParam("noteId") Integer noteId, 
+			RedirectAttributes redirectAttributes) {
+		
+		LastNote presentLastNote = backendLastNoteService.findLastNoteById(noteId);
+		
+		Register presentRegister = presentLastNote.getFK_memberId();
+		
+		String account = presentRegister.getAccount();
+		
+		backendLastNoteService.deleteLastNoteById(noteId);
+		
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員 [ " + account + " ]，編號 [ " + noteId + " ] GoodBye Letter 刪除成功");
+		
+		return "redirect:/topGun/lastNote/queryLikeAccount";
+		
+	}
+	
 	
 	
 	

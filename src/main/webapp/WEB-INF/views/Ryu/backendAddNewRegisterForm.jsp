@@ -21,20 +21,20 @@
 
 
 
-
-<div class="container w-75 text-center">
-
+<div class="container text-center">
 
 
 
 
-<div class="row mt-5">
+
+
+<div class="row my-3">
 
 <div class="offset-sm-3 col-sm-6">
 
 
-</div>
 
+</div>
 </div>
 
 
@@ -43,16 +43,25 @@
 
 
 
-<div class="row mt-5">
-
-<div class="offset-sm-2 col-sm-8 ">
 
 
 
-<div class="card">
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
+
+<span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span>
+
+<div class="row">
+
+<div class="offset-sm-2 col-sm-8">
+
+
+
+<div class="card text-dark mt-5">
+
   <div class="card-header">
     新增會員註冊資料
   </div>
+  
   <div class="card-body">
   	
   	<form:form action="${contextRoot}/topGun/register/post" modelAttribute="register" method='POST'>
@@ -68,7 +77,7 @@
 				<div class="offset-sm-1 col-sm-10 ">
 			
 					<form:select path="pId" class="form-select form-select-lg mb-1 text-center"  aria-label=".form-select-lg example" >
-						<form:option value="2" >請選部門</form:option>
+						<form:option value="1" >請選部門</form:option>
 						<form:options items="${plevelList}" />
 					</form:select>
 				
@@ -106,6 +115,7 @@
   		</div>
   		
   		
+  		
   	</form:form>
   	
   	
@@ -117,6 +127,7 @@
 
 
 
+
 </div>
 </div>
 
@@ -126,6 +137,31 @@
 
 
 
+
+
+
+
+
+
+		<div class="row my-5">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+  		</div>
+
+
+
+</div>
+
+
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 

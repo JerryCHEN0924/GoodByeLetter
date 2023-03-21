@@ -22,14 +22,24 @@
 
 
 
-<div class="container w-75 text-center">
+<div class="container text-center">
 
 
 
 
-<div class="row mt-5">
+<div class="row">
 
 <div class="offset-sm-3 col-sm-6">
+
+
+
+</div>
+</div>
+
+
+
+<hr class="border border-dark border-3 opacity-75">
+
 
 
 
@@ -123,113 +133,113 @@
 
 
 
-</div>
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
+
+
+
+<span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span>
+
+
+
+
+
+
+
+<table class="table table-striped table-hover table-bordered border-dark table-success caption-top align-middle">
+
+  <caption class="text-center fs-3 text-white">查看權限等級</caption>
+  
+	
+
+  <thead class="table-dark">
+  
+    <tr class="table-active">
+      <th scope="col">權限編號</th>
+      <th scope="col">權限名稱</th>
+      <th scope="col">編輯</th>
+    </tr>
+    
+  </thead>
+  
+  
+  
+  <tbody class="table-group-divider">
+  
+  <c:forEach var="level" items="${page.content}">
+    <tr>
+      <th scope="row">${level.plevel}</th>
+      <td>${level.levelName}</td>
+      <td>
+      
+      	<div class="d-flex justify-content-center">
+      	
+      		<div class="mx-1">
+      		
+<%--       			<a class="btn btn-outline-success" type="button" href="<c:url value='/topGun/vendorDetails/put/${vendorDetails.vendorDetailsId}' />">編輯</a> --%>
+      		
+<%-- 				<form:form action="${contextRoot}/topGun/vendorDetails/put/${vendorDetails.vendorDetailsId}" method="get" > --%>
+<!-- 					<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" /> -->
+<%-- 				</form:form> --%>
+
+					<form action="${contextRoot}/topGun/level/edit" method="get" >
+						<input type="hidden" name="plevel" value="${level.plevel}" />
+						<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
+					</form>
+				
+			</div>
+			
+			<div class="mx-1">
+			
+<%-- 				<form:form action="${contextRoot}/topGun/vendorDetails/delete/${vendorDetails.vendorDetailsId}" method="post" > --%>
+<!-- 				<input type="hidden" name="_method" value="delete" /> -->
+<!-- 				<input type="submit" class="btn btn-outline-warning btn-sm" value="刪除" /> -->
+<%-- 				</form:form> --%>
+			
+<%-- 				<form:form action="${contextRoot}/topGun/vendorDetails/delete/${vendorDetails.vendorDetailsId}" method="delete" > --%>
+<!-- 				<input type="submit" class="btn btn-outline-danger btn-sm" value="刪除" /> -->
+<%-- 				</form:form> --%>
+				
+				<form action="${contextRoot}/topGun/level/delete" method="post" >
+					<input type="hidden" name="_method" value="delete" />
+					<input type="hidden" name="plevel" value="${level.plevel}" />
+					<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
+				</form>
+			
+			</div>
+			
+		</div>
+      
+      </td>
+      
+    </tr>
+    
+  </c:forEach>
+  
+  
+    
+  </tbody>
+  
+  
+  
+  
+  
+</table>
+
 
 </div>
+
+
+
+
+
+
+
 
 
 
 
 
 <hr class="border border-dark border-3 opacity-75">
-
-
-
-
-
-
-<div class="row mt-3">
-
-<div class="offset-sm-1 col-sm-10 ">
-
-
-
-<div class="card">
-  <div class="card-header">
-  
-  查看權限等級
-  
-  </div>
-  <div class="card-body">
-  	
-  	<c:forEach var="level" items="${page.content}">
-  	
-  	<table class="table table table-dark table-striped-columns table-hover">
-  	
-	  <thead>
-	  
-	  
-	    <tr class="table-primary table-active">
-	      <th scope="col">權限編號</th>
-	      <th scope="col">權限名稱</th>
-	      <th scope="col">編輯</th>
-	    </tr>
-	    
-	    
-	    
-	  </thead>
-	  
-	  
-	  
-	  <tbody>
-	  
-	  
-	  
-	    <tr>
-	      <td>${level.plevel}</td>
-	      <td>${level.levelName}</td>
-	      <td>
-	      	<div class="d-flex justify-content-center">
-	      		<div class="mx-1">
-		  	<form action="${contextRoot}/topGun/level/edit" method="get" >
-				<input type="hidden" name="plevel" value="${level.plevel}" />
-				<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
-			</form>
-				</div>
-				<div>
-			<form action="${contextRoot}/topGun/level/delete" method="post" >
-				<input type="hidden" name="_method" value="delete" />
-				<input type="hidden" name="plevel" value="${level.plevel}" />
-				<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
-			</form>
-				</div>
-			</div>
-	      </td>
-	    </tr>
-	    
-	    
-	    
-	    
-	  </tbody>
-	</table>
-  	
-  	</c:forEach>
-  	
-  	
-  </div>
-</div>
-
-
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

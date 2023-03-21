@@ -74,27 +74,28 @@ public class VerifyService {
 			for (LastNote lastNote : verifyLetter) {
 				Integer noteId = lastNote.getNoteId();
 				Integer memberId = lastNote.getFK_memberId().getMemberId();
-				System.out.println("===================");
-				System.out.println(memberId);
-				System.out.println("===================");
 				MemberDetail memberDetail = mds.findByMemberId(memberId);
 				String memberName = memberDetail.getName();
 				String verificationCode = lastNote.getVerificationCode();
 
 				String subject = memberName + "，請驗證您在GoodBye Letter的信件";
-				String mailContent = "<h2>親愛的使用者，本日為您GoodBye Letter編號:「" + noteId + "」的驗證日。</h2><br>"
+				String mailContent = "<h2>親愛的使用者，本日為您GoodBye Letter編號:「" + noteId + "」的驗證日。</h2>"
 						+ "<span style='font-size:20px;color:blue;'>請點擊連結以進行驗證:</span>"
 						+ "<a href='http://localhost:8080/index/LastNote/verify?code=" + verificationCode + "'>"
 						+ "<span style='font-size:20px;color:red;'>驗證連結</span></a><br>"
-						+ "<span style='font-size:16px;'>請於收到驗證信的48小時內進行驗證，系統會將驗證信寄給您指定的第二驗證人，進行第二階段驗證。<br>"
+						+ "<span style='font-size:16px;color:black'>"
+						+ "請於收到驗證信的48小時內進行驗證。若未於48小時內通過驗證，系統會將驗證信寄給您指定的第二驗證人，進行第二階段驗證。<br>"
 						+ "若第二驗證人收到信後，於48小時後也未進行驗證，則會將您保存的信件寄出給指定收件人。</span><br>"
+						+ "---------------------------------------------------------------<br>"
 						+ "<span style='font-size:14px;'>謝謝您。好好說再見開發團隊敬上</span>";
 				String email = memberDetail.getEmail();
 
-				System.out.println("===即將寄信到" + email + "===");
 
 				try {
 					sendMail.sendEmail(email, subject, mailContent);
+					System.out.println("========");
+					System.out.println("寄出TOKEN驗證信給會員本人");
+					System.out.println("========");
 				} catch (MessagingException e) {
 					System.out.println("寄信失敗");
 					e.printStackTrace();
@@ -123,20 +124,23 @@ public class VerifyService {
 					String verificationCode = lastNote.getVerificationCode();
 
 					String subject = "請協助驗證「" + memberName + "」在GoodBye Letter的信件";
-					String mailContent = "<h2>您好，這是一封來自GoodBye Letter的驗證信件</h2>。" + "<span style='font-size:20px;'>因「"
-							+ memberName + "」先生/小姐指定您為GoodBye Letter的第二驗證人，" + "若您確認「" + memberName + "」依然健在，"
+					String mailContent = "<h2>您好，這是一封來自GoodBye Letter的驗證信件。</h2>" + "<span style='font-size:18px;'>「"
+							+ memberName + "」先生/小姐指定您為GoodBye Letter的第二驗證人，" + "若您確認「" + memberName + "」先生/小姐安然無恙，"
 							+ "請點擊連結以進行驗證:</span>" + "<a href='http://localhost:8080/index/LastNote/verify?code="
 							+ verificationCode + "'>" + "<span style='font-size:20px;color:green;'>驗證連結</span></a><br>"
-							+ "<span style='font-size:16px;;'>若您未於收到信後的48小時進行驗證，「" + memberName + "」存放的信件將會自動寄出。</span>"
+							+ "<br><span style='font-size:16px;;'>若您未於收到信後的48小時進行驗證，「" + memberName + "」先生/小姐存放的信件將會自動寄出。</span>"
+							+ "<br>---------------------<br>"
 							+ "<span style='font-size:14px;'>謝謝。好好說再見開發團隊敬上</span>";
 
 					String email = lastNote.getVerify1();
 					String email2 = lastNote.getVerify2();
-					System.out.println("===即將寄信到" + email + "===");
 
 					try {
 						sendMail.sendEmail(email, subject, mailContent);
 						sendMail.sendEmail(email2, subject, mailContent);
+						System.out.println("========");
+						System.out.println("寄出第二驗證人驗證信");
+						System.out.println("========");
 					} catch (MessagingException e) {
 						System.out.println("信件寄送失敗");
 						e.printStackTrace();
@@ -173,10 +177,17 @@ public class VerifyService {
 					String subject = "請是一封來自「" + memberName + "」的GoodBye Letter";
 					String body = "<span style='font-size:18px;'>" + decryptNoteDetail + "</span>";
 					body += "<br>---------------------<br>"
-							+ "GoodBye Letter 好好說再見";
+						 +"<a href='http://localhost:8080/index/LastNote/'>"
+						 + "<span style='font-size:14px;color:blue;'>GoodBye Letter 好好說再見</span></a>";
+							
+							
+
 
 					try {
 						sendMail.sendEmail(recipientEmail, subject, body);
+						System.out.println("========");
+						System.out.println("寄出GoodBye Letter");
+						System.out.println("========");
 					} catch (MessagingException e) {
 						System.out.println("寄出遺囑信件失敗。");
 						e.printStackTrace();
@@ -189,48 +200,5 @@ public class VerifyService {
 		}
 
 	}
-
-	// 檢查JWT
-//	public void checkJWT(String token) {
-//		Optional<LastNote> optional = lDao.findById(10);
-//		LastNote lastNote = optional.get();
-//		String verificationCode = lastNote.getVerificationCode();
-//		verifyJWT.isTokenExpired(token, "GoodByeLetter.iii");
-//	}
-
-	// 寄送驗證信
-//	public void sendVerificationEmail() {
-
-	// ###思考如何抓到「驗證日到期」的「收件人Email」###
-//		String memberEmail = md.getEmail();
-//		String lastnoteVerificationCode = ln.getVerificationCode();
-	// ###思考如何抓到「驗證日到期」的「收件人Email」###
-//
-//		Optional<LastNote> optional = lDao.findById(10);
-//		LastNote lastNote = optional.get();
-//		String verificationCode = lastNote.getVerificationCode();
-//		String subject = "請驗證您在GoodBye Letter的信件";
-//		String mailContent = "親愛的使用者，請點擊連結以進行驗證:" + "http://localhost:8080/index/LastNote/verify?code="
-//				+ verificationCode + "，若於收到信的X時間內未驗證通過，您存放的信件會自動寄出。謝謝您。好好說再見開發團隊敬上";
-//
-//		try {
-//			sendMail.sendEmail("jk2455892@gmail.com", subject, mailContent);
-//		} catch (MessagingException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-	// 檢查TOKEN (完成但寫死不好)
-//	public void checkToken(String token) {
-//		Optional<LastNote> optional = lDao.findById(10);
-//		LastNote lastNote = optional.get();
-//		String verificationCode = lastNote.getVerificationCode();
-//		if (verificationCode.equals(token)) {
-//			lastNote.setEnabled(true);
-//			lDao.save(lastNote);
-//		} else {
-//			System.out.println("87做錯了呵呵");
-//		}
-//	}
 
 }

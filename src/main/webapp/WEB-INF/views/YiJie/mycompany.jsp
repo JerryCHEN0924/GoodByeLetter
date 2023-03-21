@@ -39,30 +39,57 @@
 
 
 			<div class="container" id="form_container">
-				<div id="registerTitle">註冊會員</div>
+				<div id="registerTitle">註冊會員</div><br>
 				<form id="register_form" action="${contextRoot}/customer/add" method="post">
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
 							<input required type="text" class="form-control" id="account"
-								name="account">
+							name="account">
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
 							<input required type="password" class="form-control" id="password"
-								name="password">
+							name="password">
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="verificationCode" class="col-sm-2 col-form-label">驗證碼</label>
 						<div class="col-sm-10">
 							<input required type="text" class="form-control" id="rCode"
-								name="rCode">
+							name="rCode">
 						</div>
 					</div>
-				
+					
+					<!--  -->
+					<div class="mb-3 row">
+						<label for="type" class="col-sm-2 col-form-label">公司種類</label>
+						<div class="col-sm-10">
+							<div class="form-check form-check-inline ">
+								<input type="radio" class="form-check-input" name="type"
+									id="lawyerRadio" value="律師">
+								<label class="form-check-label" for="lawyerRadio"> 律師 </label>
+							</div>
+							<div class="form-check form-check-inline ">
+								<input type="radio" class="form-check-input" name="type"
+									id="morticianRadio" value="禮儀社"> <label
+									class="form-check-label" for="morticianRadio"> 禮儀社 </label>
+							</div>
+							<div class="form-check form-check-inline ">
+								<input type="radio" class="form-check-input" name="type"
+									id="counselingRadio" value="諮商師"> <label
+									class="form-check-label" for="counselingRadio"> 諮商師 </label>
+							</div>
+							<div class="form-check form-check-inline ">
+								<input checked type="radio" class="form-check-input" name="type"
+									id="otherRadio" value="其他"> <label
+									class="form-check-label" for="otherRadio"> 其他 </label>
+							</div>
+						</div>
+					</div>
+					<!--  -->
 					<button type="submit">送出</button>
 				</form>
 				<c:if test="${not empty errorMessage}">

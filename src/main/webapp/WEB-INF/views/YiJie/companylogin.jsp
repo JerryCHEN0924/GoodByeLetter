@@ -5,65 +5,126 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/mymain.css" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-	crossorigin="anonymous" />
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-	crossorigin="anonymous">	
-</script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js">	
-</script>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="assets/css/mymain.css" />
+		<link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+			integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+			crossorigin="anonymous" />
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+			crossorigin="anonymous">	
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+		
+		<title>company login</title>
+	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+	<style>
+		
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			width: 100vw;
+			box-sizing: border-box;
+		}
+		
+		.left {
+			flex-basis: 70%;
+			background-color: #f2f2f2;
+			padding: 20px;
+			height: 100%;
+			box-sizing: border-box;
+			text-align:center;
+		}
+		
+		.right {
+			flex-basis: 30%;
+			background-color: #e6e6e6;
+			padding: 20px;
+			height: 100%;
+			box-sizing: border-box;
+			text-align:center;
+		}
+		.banner {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			height: 10%;
+			background-color: #28046a;
+			color: #fff;
+			position: fixed;
+			top: 0;
+			right: 0;
+			left: 0;
+			padding: 0 20px;
+		}
+		
+		.banner a {
+			color: #fff;
+			text-decoration: none;
+			margin-left: 10px;
+		}
 
-<title>company login</title>
-<link rel="stylesheet" href="/index/assets/css/mymain.css" />
-<style>
-	a {
-		margin: 10px auto 0px auto;
-		font-size: 15px;
-	}
-</style>
-</head>
+		@media (max-width: 768px) {
+			.container {
+				flex-direction: column;
+				height: auto;
+			}
+			
+			.left, .right {
+				flex-basis: 100%;
+				height: auto;
+			}
+		}
+	</style>
+	</head>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
-	<article id="portfolio" class="wrapper style3">
-		<div class="container">
-			<div>
-				<h3>歡迎登入</h3>
-			</div>
-			<div>
-				<ul>
-					<li>
-						<a class="" href="<c:url value='/customer/picture/page2?memberId=${exis.memberId}'/>">上傳圖片頁面2</a>
-					</li>
-					<li>
-						<a class="" href="<c:url value='/customer/picture/page1'/>">廣告圖片投放區</a>
-					</li>
-					<li>
-						<a class="" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
-					</li>
-					<li>
-						<a class="" href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>">圖片展示</a>
-					</li>
-					<li>
-						<a class="" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
-					</li>
-				</ul>
-				
-				
-			</div>
-		</div>	
-	</article>
 	
-	
+		
+	</div>
+	<div class="container">
+		<div class="banner">
+			<span class="material-icons-outlined"><a class="a001" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a></span>
+		</div>
+		<div class="left">
+			<p>這裡是左欄</p>
+			<h1>歡迎${exis.account}登入</h1><ul></ul>
+		</div>
+		<div class="right">
+			<p>這裡是右欄</p>
+				<li>
+					<a class="a001" href="<c:url value='/customer/picture/page1'/>">投放圖片</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>">圖片展示</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
+				</li>
+				<li>
+					<a class="a001" href="<c:url value='/customer/add'/>">檢視廣告</a><!-- 之後此連結移到首頁 -->
+				</li>
+			</ul>
+		</div>
+	</div>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>

@@ -49,7 +49,8 @@ public class BackendVendorDetailsService {
 	// 分頁功能
 	public Page<VendorDetails> findByPage(Integer pageNumber){
 		
-		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "vendorDetailsId");
+//		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "vendorDetailsId");
+		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "vendorDetailsId");
 		
 		Page<VendorDetails> page = backendVendorDetailsRepository.findAll(pgb);
 		

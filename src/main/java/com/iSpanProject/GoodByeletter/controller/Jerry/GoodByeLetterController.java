@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,45 +36,55 @@ public class GoodByeLetterController {
 	// 跳頁，進入撰寫遺囑頁面。
 	@GetMapping("")
 	public String addNote(Model model) {
+
 		// 如果不是會員，就導向去登入頁面
-		if (!model.containsAttribute("existing")) {
-			return "redirect:/register/login1";
-		}
+
+// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
+
+//		if (!model.containsAttribute("existing")) {
+//			return "redirect:/register/login1";
+//		}
 		LastNote lastnote = new LastNote();
-		model.addAttribute("lastNote", lastnote);
+		model.addAttribute("LastNote", lastnote);
 		return "Jerry/LastNote";
 	}
 
-	// Post方法存入遺囑，重新導向到遺囑編輯頁面，目前採前端表單控制輸入欄位，但後端因為使用validation驗證資料，還沒有用方法去捕捉錯誤並處理，回傳的畫面會很醜。
-	@PostMapping("/post")
-	public String addLastNote(@Valid @ModelAttribute("lastNote") LastNote lastNote, Model model, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			// 如果有錯誤訊息，返回錯誤訊息
-			model.addAttribute("errors", bindingResult.getAllErrors());
+	// Post方法存入遺囑後，重新導向到遺囑編輯頁面。因為使用validation驗證資料，但不知道為什麼沒辦法捕捉錯誤並處理。
+	@PostMapping
+	public String addLastNote(@Valid @ModelAttribute("LastNote") LastNote lastNote, Model model,BindingResult result) {
+		if (result.hasErrors()) {
+			model.addAttribute("errors", result.getAllErrors());
 			return "Jerry/LastNote";
 		} else {
 			Register memberid = (Register) model.getAttribute("existing");
 			lastNote.setFK_memberId(memberid);
-
+			
 			// 加密
 			String notedetail = lastNote.getNotedetail();
 			String encrypt = stringEncryptor.encrypt(notedetail);
 			lastNote.setNotedetail(encrypt);
 			// 加密結束
-
+			
 			lastnoteService.SaveLastNote(lastNote);
 			return "redirect:/LastNote/edit";
 		}
+		
 
 	}
 
 	// 跳頁，進入編輯遺囑頁面。
 	@GetMapping("/edit")
 	public String LastNoteEdit(Model model) {
+
 		// 如果不是會員，就導向去登入頁面
-		if (!model.containsAttribute("existing")) {
-			return "redirect:/register/login1";
-		}
+//		if (!model.containsAttribute("existing")) {
+//			return "redirect:/login1";
+
+// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
+//		if (!model.containsAttribute("existing")) {
+//			return "redirect:/register/login1";
+
+//		}
 		Register memberid = (Register) model.getAttribute("existing");
 		List<LastNote> lastNotes = lastnoteService.findlastNoteBymember(memberid);
 		// 解密
@@ -122,7 +131,6 @@ public class GoodByeLetterController {
 	public String LastNoteCRUDdelete(@RequestParam("noteId") Integer id) {
 		lastnoteService.deleteById(id);
 		return "redirect:/LastNote/edit";
-
 	}
 
 

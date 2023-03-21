@@ -19,27 +19,28 @@
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
 
-
-
-
-<div class="container w-75 text-center">
+<div class="container text-center">
 
 
 
 
 
-<div class="row ">
+<div class="row my-3 ">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
-<hr>
+
 
 </div>
-
 </div>
 
 
 
+<hr class="border border-dark border-3 opacity-75">
+
+
+
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-3">
 
 
 
@@ -50,7 +51,10 @@
 
 
 
-<div class="card">
+
+
+
+<div class="card text-dark mt-5">
   <div class="card-header">
     編輯廠商細項資料
   </div>
@@ -161,6 +165,9 @@
   	
   	
   	
+  	
+  	
+  	
   </div>
 </div>
 
@@ -172,6 +179,62 @@
 </div>
 
 
+
+
+
+
+
+
+
+		<div class="row my-3">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+<!-- 			<div class="offset-sm-5 col-sm-1"> -->
+			
+			
+<%-- 			<form action="${contextRoot}/topGun/backendHome/memberDetail/delete" method="post" > --%>
+<!-- 				<input type="hidden" name="_method" value="delete" /> -->
+<%-- 				<input type="hidden" name="id" value="${memberDetail.id}" /> --%>
+<!-- 				<input type="submit" class="btn btn-outline-danger" value="刪除" /> -->
+<%-- 			</form> --%>
+			
+<%-- 			<form:form action="${contextRoot}/topGun/backendHome/memberDetail/delete?id=${memberDetail.id}" method="delete" > --%>
+<!-- 				<input type="submit" class="btn btn-outline-danger btn-sm" value="刪除" /> -->
+<%-- 			</form:form> --%>
+			
+			
+			
+<!--   			</div> -->
+  			
+  			
+  			
+  			
+<!--   			<div class="col-sm-1"> -->
+  			
+  			
+  			
+<%-- 			  	<form action="${contextRoot}/topGun" method="get" > --%>
+<!-- 					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" /> -->
+<%-- 				</form> --%>
+				
+				
+				
+<!-- 			</div> -->
+  			
+	  		
+  		</div>
+
+
+</div>
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
@@ -107,15 +108,22 @@ public class BackendRegisterController {
 	
 	// 新增註冊會員
 	@PostMapping("/register/post")
-	public String addNewRegisterPost(@ModelAttribute("register") Register register, Model model) {
+	public String addNewRegisterPost(@ModelAttribute("register") Register register, Model model,
+			 RedirectAttributes redirectAttributes) {
+		
+		String account = register.getAccount();
 		
 		backendRegisterService.insertRegister(register);
 		
-		Register newRegister = new Register();
+//		Register newRegister = new Register();
+//		
+//		model.addAttribute("register", newRegister);
+//		
+//		return "/Ryu/backendAddNewRegisterForm";
 		
-		model.addAttribute("register", newRegister);
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 新增成功");
 		
-		return "/Ryu/backendAddNewRegisterForm";
+		return "redirect:/topGun/register/add";
 		
 	}
 	
@@ -152,9 +160,14 @@ public class BackendRegisterController {
 	
 	// 修改註冊會員資料
 	@PutMapping("/register/editPost")
-	public String editPostRegister(@ModelAttribute("register") Register register) {
+	public String editPostRegister(@ModelAttribute("register") Register register,
+			 RedirectAttributes redirectAttributes) {
+		
+		String account = register.getAccount();
 		
 		backendRegisterService.updateRegister(register);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 修改成功");
 		
 		return "redirect:/topGun/register/page";
 		
@@ -164,7 +177,8 @@ public class BackendRegisterController {
 	
 	// 刪除註冊會員資料
 	@DeleteMapping("/register/delete")
-	public String deleteRegister(@RequestParam("memberId") Integer memberId) {
+	public String deleteRegister(@RequestParam("memberId") Integer memberId,
+			 RedirectAttributes redirectAttributes) {
 		
 		System.out.println("================================");
 		System.out.println("================================");
@@ -172,7 +186,13 @@ public class BackendRegisterController {
 		System.out.println("================================");
 		System.out.println("================================");
 		
+		Register presentRegister = backendRegisterService.findRegisterById(memberId);
+		
+		String account = presentRegister.getAccount();
+		
 		backendRegisterService.deleteRegisterById(memberId);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 刪除成功");
 		
 		return "redirect:/topGun/register/page";
 		
@@ -409,9 +429,14 @@ public class BackendRegisterController {
 	
 	// 修改註冊會員Enabled資料
 	@PutMapping("/registerEnabled/editPost")
-	public String editPostRegisterEnabled(@ModelAttribute("register") Register register) {
+	public String editPostRegisterEnabled(@ModelAttribute("register") Register register,
+			RedirectAttributes redirectAttributes) {
+		
+		String account = register.getAccount();
 			
 		backendRegisterService.updateRegister(register);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員 [ " + account + " ] 啟用狀態修改成功");
 			
 		return "redirect:/topGun/register/queryLikeAccount";
 			

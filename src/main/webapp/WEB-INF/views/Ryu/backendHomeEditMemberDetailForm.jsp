@@ -22,7 +22,10 @@
 <div class="container text-center">
 
 
-<div class="row my-3 ">
+
+
+
+<div class="row my-3">
 
 <div class="offset-sm-3 col-sm-6">
 
@@ -33,20 +36,21 @@
 
 
 
-
-
-
 <hr class="border border-dark border-3 opacity-75">
+
 
 
 <div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-3">
 
 
 
+<div class="row">
 
-<div class="row ">
+<div class="offset-sm-2 col-sm-8">
 
-<div class="offset-sm-2 col-sm-8 ">
+
+
+
 
 
 <div class="card text-dark mt-5">
@@ -148,6 +152,7 @@
   	
   	
   	
+  	
   </div>
 </div>
 
@@ -213,6 +218,8 @@
 
 
 </div>
+
+
 
 <hr class="border border-dark border-3 opacity-75">
 

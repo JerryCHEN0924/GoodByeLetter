@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="3;URL=<c:url value='/' />" />
+<meta http-equiv="refresh" content="100;URL=<c:url value='/' />" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>驗證成功</title>
 <link rel="stylesheet" href="/index/assets/css/mymain.css" />

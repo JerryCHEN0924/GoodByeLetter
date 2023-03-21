@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
+import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendMemberDetailService;
 import com.iSpanProject.GoodByeletter.validate.MemberDetailValidator;
 
@@ -32,6 +34,9 @@ public class BackendMemberDetailController {
 	
 	@Autowired
 	private BackendMemberDetailService backendMemberDetailService;
+	
+//	@Autowired
+//	private BackendRegisterService backendRegisterService;
 	
 	
 	
@@ -53,7 +58,8 @@ public class BackendMemberDetailController {
 	
 	// 新增會員細項資料
 	@PostMapping("/memberDetail/post")
-	public String insertMemberDetailData(@ModelAttribute("memberDetail") MemberDetail memberDetail, BindingResult bindingResult) {
+	public String insertMemberDetailData(@ModelAttribute("memberDetail") MemberDetail memberDetail,
+			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
 		new MemberDetailValidator().validate(memberDetail, bindingResult);
 		
@@ -74,8 +80,16 @@ public class BackendMemberDetailController {
 		
 		System.out.println("bean==>" + memberDetail);
 		
+		// get 不到 register ... null ...
+		// 為甚麼 ... 因為這時候 memberDetail 還沒建立 ... 當然 get 不到 ... 87 ...
+//		Register register = memberDetail.getFK_memberId();
+//		String account = register.getAccount();
+		
+		String account = memberDetail.getAccount();
 		
 		backendMemberDetailService.insertMemberDetail(memberDetail);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 詳細資料新增成功");
 		
 		return "redirect:/topGun/memberDetail/add";
 		
@@ -110,9 +124,16 @@ public class BackendMemberDetailController {
 	
 	// 修改會員細項資料
 	@PutMapping("/memberDetail/editPost")
-	public String editPostMemberDetail(@ModelAttribute("memberDetail") MemberDetail memberDetail) {
+	public String editPostMemberDetail(@ModelAttribute("memberDetail") MemberDetail memberDetail,
+			 RedirectAttributes redirectAttributes) {
+		
+		Register presentRegister = memberDetail.getFK_memberId();
+		
+		String account = presentRegister.getAccount();
 		
 		backendMemberDetailService.updateMemberDetail(memberDetail);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 詳細資料修改成功");
 		
 		return "redirect:/topGun/memberDetail/page";
 		
@@ -120,8 +141,10 @@ public class BackendMemberDetailController {
 	
 	
 	// 刪除會員細項資料
+	// 因 Register 之對應屬性為 cascaded all，致使本刪除功能暫時失效
 	@DeleteMapping("/memberDetail/delete")
-	public String deleteMemberDetail(@RequestParam("id") Integer id) {
+	public String deleteMemberDetail(@RequestParam("id") Integer id,
+			 RedirectAttributes redirectAttributes) {
 		
 		System.out.println("================================");
 		System.out.println("================================");
@@ -131,7 +154,15 @@ public class BackendMemberDetailController {
 		System.out.println("================================");
 		System.out.println("================================");
 		
+		MemberDetail presentMemberDetail = backendMemberDetailService.findMemberDetailById(id);
+		
+		Register presentRegister = presentMemberDetail.getFK_memberId();
+		
+		String account = presentRegister.getAccount();
+		
 		backendMemberDetailService.deleteMemberDetailById(id);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 詳細資料刪除成功");
 		
 		return "redirect:/topGun/memberDetail/page";
 //		return "redirect:/topGun";
@@ -152,11 +183,14 @@ public class BackendMemberDetailController {
 	
 	
 	
+//	####################### Ryuz divider #######################
+	
+//	####################### i am divider #######################
 	
 	
 	
-	//////////////////////////////////////////////
-		
+	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder, WebRequest request) {
 	
@@ -183,13 +217,9 @@ public class BackendMemberDetailController {
 	
 	
 	
-	//////////////////////////////////////////////
+//	####################### Ryuz divider #######################
 	
-	
-	
-	
-	
-	
+//	####################### i am divider #######################
 	
 	
 	

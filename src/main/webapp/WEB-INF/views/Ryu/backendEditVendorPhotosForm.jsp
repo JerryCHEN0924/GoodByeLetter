@@ -22,38 +22,52 @@
 
 
 
-<div class="container w-75 text-center">
+
+
+<div class="container text-center">
 
 
 
 
 
-<div class="row ">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="row">
+
+<div class="offset-sm-3 col-sm-6">
+
+
+
+</div>
+</div>
+
+
 
 <hr class="border border-dark border-3 opacity-75">
 
-</div>
-
-</div>
 
 
 
 
 
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
+
+<%-- <span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span> --%>
 
 
-<div class="row ">
-
-<div class="offset-sm-2 col-sm-8 ">
 
 
+<div class="row">
 
-<div class="card">
+<div class="offset-sm-2 col-sm-8">
+
+
+
+<div class="card text-dark mt-5">
+
   <div class="card-header">
     編輯廣告文案
   </div>
+  
   <div class="card-body">
   	
   	<form:form enctype='multipart/form-data' action="${contextRoot}/topGun/vendorPhotos/put/${vendorPhotos.vendorPhotosId}" modelAttribute="vendorPhotos" method='POST'>
@@ -136,7 +150,6 @@
 	  		
   		</div>
   		
-  		
   	</form:form>
   	
   	
@@ -146,8 +159,6 @@
 
 
 
-
-
 </div>
 </div>
 
@@ -155,6 +166,26 @@
 
 
 
+
+
+
+<div class="row my-5">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+  		</div>
+
+
+
+</div>
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 
