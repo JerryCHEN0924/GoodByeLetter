@@ -24,7 +24,7 @@
 <body>
     <%@ include file="../layout/mynav.jsp"%>
     
-    <article id="" class="wrapper style2">
+    <article id="" class="wrapper style2" style="height:100vh">
 		<div class="container-fluid " id="picture-list">
 			<div class="container">
 				<div>查看圖片列</div>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
+<%-- <c:set var="contextUser" value="${pageContext.request.userPrincipal}"/> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +68,8 @@
 		<h3>編輯Id:${newcomment.commentId}回覆</h3>
 	</div>
 <!-- 	隱藏board資訊 -->
-	<c:if test="${contextUser.name== commentId.register.account}">
+<%-- 	<c:if test="${contextUser.name== commentId.register.account}"> --%>
+<%-- 	<c:if test="${existing.account == commentId.register.account}"> --%>
 	<form:hidden path="bId" class="form-control" placeholder="bId" value="${newboard.boardId}" /> 
 	<input type="hidden" name="boardId" value="${newboard.boardId}">
 	<hr>
@@ -91,7 +92,7 @@
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
 						<input type="submit" class="btn btn-outline-success" value="編輯" />			
 				</div>
-				</c:if>
+<%-- 				</c:if> --%>
 	</form:form>
 
 </div>	

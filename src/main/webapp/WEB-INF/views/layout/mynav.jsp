@@ -3,7 +3,7 @@
 		<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 			<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 				<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-				<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
+				<c:set var="contextUser" value="${pageContext.request.userPrincipal}" />
 				<!DOCTYPE html>
 				<html>
 
@@ -11,19 +11,18 @@
 					<style>
 						.navigation {
 							position: fixed;
-							width: 100%;
-							/* width: 800px; */
+							width: auto;
 							height: 130px;
 							display: flex;
 							align-items: center;
-							background: transparent;
+ 							background: transparent;
 							z-index: 1;
 						}
 
 						.navigation ul {
 							position: relative;
 							display: flex;
-							width: 100%;
+							width: auto;
 							/* 	background:red;  */
 							/* 調整nav裡元素的位置 */
 							justify-content: left;
@@ -229,8 +228,8 @@
 									<span class="text">首頁</span>
 								</a></li>
 
-							<li class="list"><a href="<c:url value='/register/login1' />" class="list_a"> <span class="icon"><ion-icon
-											name="person-circle-outline"></ion-icon></span>
+							<li class="list"><a href="<c:url value='/register/login1' />" class="list_a"> <span
+										class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
 									<span class="text">會員</span>
 								</a>
 								<div class="div_dropdown ">
@@ -252,20 +251,23 @@
 												<li><a href="<c:url value='/register' />"> 註冊 </a></li>
 											</c:otherwise>
 										</c:choose>
-<!-- 										<li><a href="mySpace.html"> 個人空間 </a></li> -->
+										<!-- 										<li><a href="mySpace.html"> 個人空間 </a></li> -->
 									</ul>
 								</div>
 							</li>
 
-							<li class="list"><a href="<c:url value='/customer/login/page' />" class="list_a"> <span class="icon"><ion-icon
-											name="people-outline"></ion-icon></span> <span class="text">合作夥伴</span>
+							<li class="list"><a href="<c:url value='/customer/login/page' />" class="list_a"> <span
+										class="icon"><ion-icon name="people-outline"></ion-icon></span> <span
+										class="text">合作夥伴</span>
 								</a>
 								<div class="div_dropdown">
 									<ul class="dropdown">
 										<c:choose>
 											<c:when test="${exis.memberId != null}">
-												<li><a href="<c:url value='/customer/logout'/>">${exis.account}登出</a></li>
-												<li><a href="<c:url value='/customer/home/page'/>">${exis.account} Home</a></li>	
+												<li><a href="<c:url value='/customer/logout'/>">${exis.account}登出</a>
+												</li>
+												<li><a href="<c:url value='/customer/home/page'/>">${exis.account}
+														Home</a></li>
 											</c:when>
 											<c:otherwise>
 												<li><a href="<c:url value='/customer/login/page' />">廣告商登入</a></li>
@@ -275,8 +277,8 @@
 									</ul>
 								</div>
 							</li>
-							<li class="list"><a href="<c:url value='/LastNote' />" class="list_a"> <span class="icon"><ion-icon
-											name="mail-open-outline"></ion-icon></span>
+							<li class="list"><a href="<c:url value='/LastNote' />" class="list_a"> <span
+										class="icon"><ion-icon name="mail-open-outline"></ion-icon></span>
 									<span class="text">寫信</span>
 								</a>
 								<div class="div_dropdown " id="div_dropdown">
@@ -288,27 +290,38 @@
 								</div>
 							</li>
 
-							<li class=" list "><a href="<c:url value='/board/page' />" class="list_a"> <span class="icon"><ion-icon
-											name="chatbox-ellipses-outline"></ion-icon></span>
+							<li class=" list "><a href="<c:url value='/board/page' />" class="list_a"> <span
+										class="icon"><ion-icon name="chatbox-ellipses-outline"></ion-icon></span>
 									<span class="text">交流區</span>
 								</a>
 								<div class="div_dropdown " id="div_dropdown">
-									<ul class="dropdown">									
+									<ul class="dropdown">
 										<li><a href="<c:url value='/board/page' />"> 查看留言 </a></li>
-									<c:if test="${not empty contextUser}">
-										<li><a href="<c:url value='/board/add' />"> 增加留言 </a></li>
-									</c:if>
+										<c:if test="${not empty existing or not empty exis}">
+											<li><a href="<c:url value='/board/add' />"> 增加留言 </a></li>
+										</c:if>
 									</ul>
 								</div>
 							</li>
 
-							<li class="list"><a href="<c:url value='/wschat' />" class="list_a"> <span
+							<%-- <li class="list"><a href="<c:url value='/wschat' />" class="list_a"> <span
 										class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span> <span
 										class="text">聊天室</span>
-								</a></li>
+								</a>
+								</li>--%>
+								<li class="list" id="navChatRoom"><a class="list_a">
+										<span class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
+										<span class="text">聊天室</span>
+									</a>
+								</li>
 
-							<div class="indicator"></div>
+								<div class="indicator"></div>
 						</ul>
+					</div>
+
+					<!-- 				插入聊天室 -->
+					<div>
+						<%@ include file="../Tina/wsChat.jsp" %>
 					</div>
 
 
@@ -322,15 +335,7 @@
 
 
 
-
-
-
 					<script src="${contextRoot}/assets/js/jquery.min.js"></script>
-					<script src="${contextRoot}/assets/js/jquery.scrolly.min.js"></script>
-					<script src="${contextRoot}/assets/js/browser.min.js"></script>
-					<script src="${contextRoot}/assets/js/breakpoints.min.js"></script>
-					<script src="${contextRoot}/assets/js/util.js"></script>
-					<script src="${contextRoot}/assets/js/main.js"></script>
 					<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 					<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
@@ -340,7 +345,7 @@
 						let list = document.querySelectorAll(".list");
 						function activeLink() {
 							list.forEach((item) => {
-								console.log(`click`);
+								//console.log(`click`);
 								return item.classList.remove("active")
 							});
 							this.classList.add("active");
@@ -363,6 +368,12 @@
 							})
 						})
 
+						//顯示chatRoom
+						var navChatRoom = document.getElementById("navChatRoom");
+						var wholeChatroomDiv = document.getElementById("wholeChatroomDiv");
+						navChatRoom.addEventListener("click", function () {
+							wholeChatroomDiv.style.visibility = "visible";
+						})
 					</script>
 				</body>
 
