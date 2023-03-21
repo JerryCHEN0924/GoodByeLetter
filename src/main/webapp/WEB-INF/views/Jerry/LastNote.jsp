@@ -46,7 +46,7 @@
 				<h1 class="display-4 mb-5 fw-bold">GoodBye Letter</h1>
 				<!-- 	表單區	 -->
 				<div class="card">
-					<div class="card-header bg-light text-black fw-bold">GoodBye
+					<div class="card-header-center bg-light text-black fw-bold">GoodBye
 						Letter表單資料</div>
 					<div class="card-body">
 						<form:form id="lastNoteForm" modelAttribute="LastNote"
@@ -98,7 +98,6 @@
 		</div>
 
 	</article>
-
 	<script>
 	function save() {
 			const emailInputs = document.querySelectorAll('input[type="email"]');
