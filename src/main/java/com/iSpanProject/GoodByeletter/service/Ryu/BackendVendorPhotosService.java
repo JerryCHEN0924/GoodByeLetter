@@ -113,6 +113,12 @@ public class BackendVendorPhotosService {
 	
 	
 	
+//	####################### Ryuz divider #######################
+	
+//	####################### i am divider #######################
+	
+	
+	
 	// 查詢所有廠商文案資料ByEnabledTrue
 	public List<VendorPhotos> getAllVendorPhotosByEnabledTrue(){
 		
@@ -140,7 +146,9 @@ public class BackendVendorPhotosService {
 	
 	
 	
+//	####################### Ryuz divider #######################
 	
+//	####################### i am divider #######################
 	
 	
 	
