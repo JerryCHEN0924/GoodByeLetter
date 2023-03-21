@@ -40,11 +40,13 @@
 	<article id="myspace" class="wrapper style2">
 		<div class="container-fluid " id="register">
 			<div id="space">
-				<h1>您斗內的的金額為:${paymentSuccess.TradeAmt}</h1>
-				
+				<h1>謝謝您的慷慨捐贈！您支持GoodBye Letter的金額為:「${paymentSuccess.TradeAmt}元」</h1>
+				<br>
+				<h2>您的善舉將對我們的工作產生深遠的影響，並有助於實現我們的使命。GoodBye Letter開發團隊再次感謝您的慷慨和支持。</h2>
+				<br>
 				<h2>謝謝您的大力支持！！我們會繼續努力。</h2>
 				<br>
-				<a class="btn btn-outline-danger" href="${contextRoot}" role="button">請點我回到首頁</a>
+				<a class="btn btn-outline-danger btn-lg" href="${contextRoot}" role="button">請點我回到首頁</a>
 			</div>
 
 
