@@ -71,7 +71,10 @@
 <%-- 	<c:if test="${contextUser.name== commentId.register.account}"> --%>
 <%-- 	<c:if test="${existing.account == commentId.register.account}"> --%>
 	<form:hidden path="bId" class="form-control" placeholder="bId" value="${newboard.boardId}" /> 
+<%-- 	儲存建立時間 --%>
+	<form:input  path="createTime" value="${newcomment.createTime}"/>
 	<input type="hidden" name="boardId" value="${newboard.boardId}">
+	
 	<hr>
 	
 			<div class="messageContent">
@@ -89,6 +92,9 @@
 					</h5>
 					<p><form:textarea path="reply" value="${newcomment.reply}" placeholder="reply" class="form-control"/></p>
 					<%--編輯按鈕 --%>
+					
+						
+						<input type="hidden" name="commentId" value="${newcomment.commentId}">
 						<input type="hidden" name="boardId" value="${newboard.boardId}" />
 						<input type="submit" class="btn btn-outline-success" value="編輯" />			
 				</div>
