@@ -87,7 +87,7 @@
 								<button class="btn btn-outline-success btn-lg" id="saveButton"
 									onclick="save()" type="button">送出</button>
 								<button class="btn btn-outline-danger btn-lg"
-									id="resetButton1231" onclick="resetbutton()" type="submit">重置</button>
+									id="resetButton1231" onclick="resetbutton()" type="button">重置</button>
 							</div>
 						</form:form>
 
@@ -101,6 +101,40 @@
 
 	<script>
 	function save() {
+			const emailInputs = document.querySelectorAll('input[type="email"]');
+			const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
+			for (let i = 0; i < emailInputs.length; i++) {
+				var emailInput = emailInputs[i];
+				email = emailInput.value
+				if(email.trim() === ''){
+					Swal.fire({
+		      title: '欄位不可空白',
+		      icon: 'warning'
+		    });
+		    return;
+				}
+				if(!emailRegex.test(emailInput.value)){
+					Swal.fire({
+		      title: '欄位必須為Email格式',
+		      icon: 'warning'
+		    });
+		    return;
+				}
+				Swal.fire({
+	      title: '確定要儲存嗎？',
+	      icon: 'success',
+	      showCancelButton: true,
+	      confirmButtonText: '確定！',
+	      cancelButtonText: '取消',
+	      reverseButtons: true
+	    }).then((result) => {
+	      if (result.isConfirmed) {
+	        // 如果用戶確認要儲存，則提交表單
+	        document.getElementById('lastNoteForm').submit();
+	      }
+	    })
+			}
+			//以上test
 		  const recipientEmail = document.getElementById('recipientEmail').value;
 		  const verify1 = document.getElementById('verify1').value;
 		  const verify2 = document.getElementById('verify2').value;
