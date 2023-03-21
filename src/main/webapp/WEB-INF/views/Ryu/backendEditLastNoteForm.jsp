@@ -76,6 +76,10 @@
   		<form:input path="createTime" type="hidden" />
   		<form:input path="verifyTime" type="hidden" />
   		
+<%--   		<form:input path="enabled" type="hidden" /> --%>
+  		
+  		
+  		
   		<c:if test='${lastNote.noteId != null}'>
   		 <div class="mb-3 row">
 		    <label for="inputNoteId" class="col-sm-2 col-form-label">編號</label>
@@ -150,6 +154,16 @@
 		    <div class="col-sm-10">
 		    	<form:input path="verify2" class="form-control" id="inputVerify2" />
 		    	<form:errors path="verify2" class="form-control" id="inputVerify2" cssClass="error" />
+		    </div>
+		  </div>
+		  
+		  
+		  
+		  <div class="mb-3 row">
+		    <label for="inputEnabled" class="col-sm-2 col-form-label">啟用狀態</label>
+		    <div class="col-sm-10">
+		    	<form:input path="enabled" class="form-control" id="inputEnabled" />
+		    	<form:errors path="enabled" class="form-control" id="inputEnabled" cssClass="error" />
 		    </div>
 		  </div>
 		  

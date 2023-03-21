@@ -25,7 +25,7 @@
 <%@ include file="../layout/mynav.jsp"%>
 	
         <!--login  login_form_class-->
-    <article  class="wrapper style2" style="height:100vh">
+    <article class="wrapper style2" style="height:100vh">
         <div class="container-fluid">
 			<div class="container" id="form_container">
 				<div>廠商登入頁面</div>

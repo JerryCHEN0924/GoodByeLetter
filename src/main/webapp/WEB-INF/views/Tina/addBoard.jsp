@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
+<%-- <c:set var="contextUser" value="${pageContext.request.userPrincipal}"/> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +69,8 @@
 	</div>
 	
 	<hr>
-	<c:if test="${contextUser.name == newboard.register.account}">
+<%-- 	<c:if test="${contextUser.name == newboard.register.account}"> --%>
+		<c:if test="${not empty existing or not empty exis}"> 
 			<div class="messageContent">
 			<form:form action="${contextRoot}/board/post"
 				modelAttribute="newboard">

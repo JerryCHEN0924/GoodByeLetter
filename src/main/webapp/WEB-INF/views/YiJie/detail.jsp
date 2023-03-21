@@ -28,7 +28,7 @@
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
 
-	<article id="" class="wrapper style2">
+	<article id="" class="wrapper style2" style="height:100vh">
 		<div class="container-fluid " id="updataDetail">
 
 			<div class="container">

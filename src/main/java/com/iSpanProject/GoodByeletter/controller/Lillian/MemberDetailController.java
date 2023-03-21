@@ -137,10 +137,12 @@ public class MemberDetailController {
 		return "Lillian/forgetPwd";
 	}
 //1寄信
+	@ResponseBody
 	@PostMapping("/forgetpwd/sendEmail")
 	public String sendEmail(@RequestParam("email") String email) throws MessagingException {
 		sendMailService.sendEmail(email);
-		return "Lillian/CheckEmail";
+		return "success";
+		//return "Lillian/CheckEmail";
 	}
 	
 	@GetMapping("/forgetpwd/checkEmail")
