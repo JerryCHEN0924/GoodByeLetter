@@ -8,15 +8,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendLastNoteRepository;
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
+
+import net.bytebuddy.utility.RandomString;
 
 @Service
 @SessionAttributes({"authenticated","existing"})
@@ -58,6 +58,26 @@ public class BackendLastNoteService {
 //		Register lastNoteFK = optional.get();
 //		
 //		lastNote.setFK_memberId(lastNoteFK);
+		
+		
+//		####################### Ryuz divider #######################
+		
+//		======= 當遺囑儲存，存入一組驗證碼並將Enabled狀態轉為false =======
+		
+		String token = RandomString.make(64);
+		
+//		long tokenId = UUID.randomUUID().getLeastSignificantBits();
+//		lastNote.setVerificationCode(tokenId);
+		
+		lastNote.setVerificationCode(token);
+		
+//		lastNote.setEnabled(false);
+		
+//		======= 當遺囑儲存，存入一組驗證碼並將Enabled狀態轉為false =======
+		
+//		####################### i am divider #######################
+		
+		
 		
 		backendLastNoteRepository.save(lastNote);
 		
@@ -133,6 +153,28 @@ public class BackendLastNoteService {
 	
 	// 修改LastNote
 	public void updateLastNote(LastNote lastNote) {
+		
+		
+		
+//		####################### Ryuz divider #######################
+		
+//		======= 當遺囑儲存，存入一組驗證碼並將Enabled狀態轉為false =======
+		
+		String token = RandomString.make(64);
+		
+//		long tokenId = UUID.randomUUID().getLeastSignificantBits();
+//		lastNote.setVerificationCode(tokenId);
+		
+		lastNote.setVerificationCode(token);
+//		
+//		lastNote.setEnabled(false);
+		
+//		======= 當遺囑儲存，存入一組驗證碼並將Enabled狀態轉為false =======
+		
+//		####################### i am divider #######################
+		
+		
+		
 		
 		backendLastNoteRepository.save(lastNote);
 		
