@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iSpanProject.GoodByeletter.LoginInterceptor;
 import com.iSpanProject.GoodByeletter.model.Jerry.LastNote;
+import com.iSpanProject.GoodByeletter.model.Ryu.VendorDetails;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
 import com.iSpanProject.GoodByeletter.model.Tina.Comment;
 
@@ -62,12 +63,23 @@ public class Register {
 	@Transient
 	private Integer pId;
 	
+	@JsonManagedReference // 主要序列化方 雙向情況才需要使用
+	@OneToOne(mappedBy = "register", orphanRemoval = true)
+	private VendorDetails vendorDetails;
+	
 //	======================= Block =======================
+	
+	public VendorDetails getVendorDetails() {
+		return vendorDetails;
+	}
+	
+	public void setVendorDetails(VendorDetails vendorDetails) {
+		this.vendorDetails = vendorDetails;
+	}
 	
 	public Integer getpId() {
 		return pId;
 	}
-
 
 	public void setpId(Integer pId) {
 		this.pId = pId;
@@ -87,7 +99,7 @@ public class Register {
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
 	private Date registerTime;
 
-
+	// Jerry:雙向一對多
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "FK_memberId", orphanRemoval = true)
 	private List<LastNote> lastnote = new ArrayList<>();
@@ -207,21 +219,28 @@ public class Register {
 	public void setMemberDetail(MemberDetail memberDetail) {
 		this.memberDetail = memberDetail;
 	}
+	
+	
 
 
-	public Register(Integer memberId, String account, String password, Level fK_Plevel, Date registerTime,
-			List<LastNote> lastnote, Set<Board> boards, Set<Comment> comments, MemberDetail memberDetail) {
+	public Register(Integer memberId, String account, String password, Integer pId, VendorDetails vendorDetails,
+			Level fK_Plevel, Date registerTime, List<LastNote> lastnote, boolean enabled, Set<Board> boards,
+			Set<Comment> comments, MemberDetail memberDetail) {
 		super();
 		this.memberId = memberId;
 		this.account = account;
 		this.password = password;
+		this.pId = pId;
+		this.vendorDetails = vendorDetails;
 		FK_Plevel = fK_Plevel;
 		this.registerTime = registerTime;
 		this.lastnote = lastnote;
+		this.enabled = enabled;
 		this.boards = boards;
 		this.comments = comments;
 		this.memberDetail = memberDetail;
 	}
+
 
 	public Register() {
 		super();

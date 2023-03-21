@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>查看留言訊息 Page</title>
+<title>查看全部回覆留言 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
@@ -22,13 +22,31 @@
 
 
 
-<div class="container w-75 text-center">
+<div class="container text-center">
 
 
 
-<div class="row mt-3">
+
+
+
+<div class="row">
 
 <div class="offset-sm-3 col-sm-6">
+
+
+</div>
+</div>  
+
+
+
+
+
+
+<hr class="border border-dark border-3 opacity-75">
+
+
+
+
 
 
 
@@ -119,179 +137,111 @@
 
 
 
-</div>
-
-</div>
 
 
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
 
 
 
-<hr>
-
-
-
-
-
-
-<div class="row mt-3">
-
-<div class="offset-sm-1 col-sm-10 ">
-
-
-
-<div class="card">
-  <div class="card-header">
+  	<span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span>
+<!--   <div> -->
+<%--   <form class="d-flex mt-3" action="${contextRoot}/topGun/backendHome/getVendorPhotosByTitleQueryLikePageExecute" method="get" role="search"> --%>
+<!--     <input class="form-control  me-2" name="title" type="search" placeholder="請輸入文案標題" aria-label="Search"> -->
+<!--     <button class="btn btn-success" type="submit">Search</button> -->
+<%--   </form> --%>
+<!--   </div> -->
   
-  查看留言訊息
   
-  </div>
-  <div class="card-body">
-  	
-  	<c:forEach var="comment" items="${page.content}">
-  	
-  	<table class="table table-dark table-striped-columns table-hover">
-  	
-	  <thead>
-	  
-	  
-	    <tr class="table-secondary table-active">
-	      <th scope="col">commentId</th>
-	      <th scope="col">reply</th>
-	      <th scope="col">createTime</th>
-	      <th scope="col">updateTime</th>
-	      <th scope="col">FK_parentId</th>
-	      <th scope="col">FK_memberId</th>
-	      <th scope="col">Edit</th>
-	    </tr>
-	    
-	    
-	    
-	  </thead>
-	  
-	  
-	  
-	  <tbody>
-	  
-	  
-	  
-	    <tr>
-	      <td>${comment.commentId}</td>
-	      <td>${comment.reply}</td>
-	      <td>${comment.createTime}</td>
-	      <td>${comment.updateTime}</td>
-	      <td>${comment.board.boardId}</td>
-	      <td>${comment.register.memberId}</td>
-	      <td>
-	      	<div class="d-flex justify-content-center">
-	      		<div class="mx-1">
-		  	<form action="${contextRoot}/topGun/comment/edit" method="get" >
-				<input type="hidden" name="commentId" value="${comment.commentId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
-			</form>
-				</div>
-				<div>
-			<form action="${contextRoot}/topGun/comment/delete" method="post" >
-				<input type="hidden" name="_method" value="delete" />
-				<input type="hidden" name="commentId" value="${comment.commentId}" />
-				<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
-			</form>
-				</div>
+
+<table class="table table-striped table-hover table-bordered border-dark table-success caption-top align-middle">
+
+  <caption class="text-center fs-3 text-white">查看全部回覆留言</caption>
+  
+	
+
+  <thead class="table-dark">
+  
+    <tr class="table-active">
+      <th scope="col">編號</th>
+      <th scope="col">回覆內容</th>
+      <th scope="col">新增時間</th>
+      <th scope="col">更新時間</th>
+      <th scope="col">留言編號</th>
+      <th scope="col">會員編號</th>
+      <th scope="col">編輯</th>
+    </tr>
+    
+  </thead>
+  
+  
+  
+  <tbody class="table-group-divider">
+  
+  <c:forEach var="comment" items="${page.content}">
+    <tr>
+      <th scope="row">${comment.commentId}</th>
+      <td>${comment.reply}</td>
+      <td>${comment.createTime}</td>
+      <td>${comment.updateTime}</td>
+      <td>${comment.board.boardId}</td>
+      <td>${comment.register.memberId}</td>
+      <td>
+      
+      	<div class="d-flex justify-content-center">
+      	
+      		<div class="mx-1">
+      		
+<%--       			<a class="btn btn-outline-success" type="button" href="<c:url value='/topGun/vendorPhotos/put/${vendorPhotos.vendorPhotosId}' />">編輯</a> --%>
+      		
+				<form action="${contextRoot}/topGun/comment/edit" method="get" >
+					<input type="hidden" name="commentId" value="${comment.commentId}" />
+					<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
+				</form>
+				
 			</div>
-	      </td>
-	    </tr>
-	    
-	    
-	    
-	    
-	  </tbody>
-	</table>
-  	
-  	</c:forEach>
-  	
-  	
-  </div>
-</div>
-
-
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div>
-
-<hr>
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="row ">
-
-<div class="offset-sm-2 col-sm-8 ">
-
-
-
-<c:forEach var="comment" items="${page.content}">
-
-
-
-<div class="card mt-3">
-  <div class="card-header">
-    留言發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${comment.createTime}" /></span>
-    <hr>
-    主留言編號： <span>${comment.board.boardId}</span>
-  </div>
-  <div class="card-body">
-  	
-	${comment.reply}
-  	
-  </div>
-  
-  <div class="edit-place m-2" style="display:flex">
-  
-	<form action="${contextRoot}/topGun/comment/edit" method="get" >
-		<input type="hidden" name="commentId" value="${comment.commentId}" />
-		<input type="submit" class="btn btn-outline-info btn-sm" value="編輯" />
-	</form>
-	
-	<form action="${contextRoot}/topGun/comment/delete" method="post" >
-		<input type="hidden" name="_method" value="delete" />
-		<input type="hidden" name="commentId" value="${comment.commentId}" />
-		<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
-	</form>
-	
-  </div>
+			
+			<div class="mx-1">
+			
+<%-- 				<form:form action="${contextRoot}/topGun/vendorPhotos/delete/${vendorPhotos.vendorPhotosId}" method="post" > --%>
+<!-- 				<input type="hidden" name="_method" value="delete" /> -->
+<!-- 				<input type="submit" class="btn btn-outline-warning btn-sm" value="刪除" /> -->
+<%-- 				</form:form> --%>
+			
+				<form action="${contextRoot}/topGun/comment/delete" method="post" >
+				<input type="hidden" name="_method" value="delete" />
+					<input type="hidden" name="commentId" value="${comment.commentId}" />
+					<input type="submit" class="btn btn-outline-danger btn-sm ms-2" value="刪除" />
+				</form>
+			
+			</div>
+			
+		</div>
+      
+      </td>
+      
+      
+      
+      
+      
+    </tr>
+    
+  </c:forEach>
   
   
+    
+  </tbody>
+  
+  
+  
+  
+  
+</table>
+
+
 </div>
 
 
 
-</c:forEach>
-
-
-
-
-
-
-</div>
-
-</div>
 
 
 
@@ -301,6 +251,7 @@
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
 

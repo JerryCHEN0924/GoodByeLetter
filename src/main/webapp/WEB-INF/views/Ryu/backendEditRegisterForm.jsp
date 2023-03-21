@@ -14,39 +14,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>編輯會員 Page</title>
+<title>編輯會員註冊資料 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
 
-<div class="container w-75 text-center">
 
 
-<div class="row ">
 
-<div class="offset-sm-3 col-sm-6 my-3">
 
-<hr>
+
+<div class="container text-center">
+
+
+
+
+
+
+<div class="row">
+
+<div class="offset-sm-3 col-sm-6">
+
+
 
 </div>
 </div>
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
 
 
 
-<div class="row ">
 
-<div class="offset-sm-2 col-sm-8 ">
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
+
+<%-- <span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span> --%>
 
 
-<div class="card">
+
+<div class="row">
+
+<div class="offset-sm-2 col-sm-8">
+
+
+<div class="card text-dark mt-5">
+
   <div class="card-header">
-    審核會員Enabled狀態 Page
+   編輯會員註冊資料
   </div>
+  
   <div class="card-body">
   	
   	<form:form action="${contextRoot}/topGun/register/editPost" modelAttribute="register" method="put">
@@ -59,7 +78,7 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputMemberId" class="col-sm-2 col-form-label">MemberId</label>
+		    <label for="inputMemberId" class="col-sm-2 col-form-label">編號</label>
 		    <div class="col-sm-10">
 		    	<input name="memberId" class="form-control" id="inputMemberId" value="${register.memberId}" disabled />
 		    </div>
@@ -71,7 +90,7 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+		    <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
 		    <div class="col-sm-10">
 		    	<form:input path="account" class="form-control" id="inputAccount" />
 		    </div>
@@ -80,7 +99,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+		    <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
 		    <div class="col-sm-10">
 		    	<form:input path="password" class="form-control" id="inputPassword" />
 		    </div>
@@ -89,7 +108,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputEnabled" class="col-sm-2 col-form-label">Enabled</label>
+		    <label for="inputEnabled" class="col-sm-2 col-form-label">啟用狀態</label>
 		    <div class="col-sm-10">
 		    	<form:input path="enabled" class="form-control" id="inputEnabled" />
 		    </div>
@@ -97,14 +116,14 @@
 		  
 		  
 		  <div class="mb-3 row">
-		    <label for="inputRegisterTime" class="col-sm-2 col-form-label">RegisterTime</label>
+		    <label for="inputRegisterTime" class="col-sm-2 col-form-label">註冊時間</label>
 		    <div class="col-sm-10">
 		    	<input name="registerTime" class="form-control" id="inputRegisterTime" value="${register.registerTime}" disabled />
 		    </div>
 		  </div>
 		  
   		<div class="mb-3 row">
-		    <label for="inputFK_Plevel" class="col-sm-2 col-form-label">Level</label>
+		    <label for="inputFK_Plevel" class="col-sm-2 col-form-label">權限編號</label>
 		    <div class="col-sm-10">
 		    	<input name="FK_Plevel" class="form-control" id="inputFK_Plevel" value="${register.FK_Plevel.plevel}" disabled />
 		    </div>
@@ -128,6 +147,33 @@
 
 </div>
 </div>
+
+
+
+
+
+
+
+<div class="row my-5">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+  		</div>
+
+
+
+</div>
+
+<hr class="border border-dark border-3 opacity-75">
+
+
+
 
 
 

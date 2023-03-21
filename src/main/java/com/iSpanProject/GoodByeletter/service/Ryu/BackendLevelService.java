@@ -91,7 +91,8 @@ public class BackendLevelService {
 	// 分頁功能
 	public Page<Level> findLevelByPage(Integer pageNumber){
 		
-		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "plevel");
+//		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "plevel");
+		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "plevel");
 		
 		Page<Level> page = backendLevelRepository.findAll(pgb);
 		

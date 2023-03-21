@@ -14,31 +14,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新增等級 Page</title>
+<title>新增回覆留言 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
 
-<div class="container w-75 text-center">
+<div class="container text-center">
+
+
+
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 
 
 
-<div class="row ">
 
-<div class="offset-sm-3 col-sm-6 my-3">
-
-<hr>
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
 
 
+<div class="card text-dark mt-1">
 
-
-
-<div class="card mt-3">
   <div class="card-header">
+  
     留言發布時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${board.createTime}" /></span>
+  
   </div>
+  
   <div class="card-body">
   	
 	${board.boardMessage}
@@ -60,7 +63,7 @@
 	<div>
 			<form action="${contextRoot}/topGun/comment/add" method="get" >
 				<input type="hidden" name="boardId" value="${board.boardId}" />
-				<input type="submit" class="btn btn-outline-info btn-sm ms-2" value="回覆" />
+				<input type="submit" class="btn btn-outline-warning btn-sm ms-2" value="回覆" />
 			</form>
 	</div>
 	
@@ -75,14 +78,7 @@
 
 
 
-<hr>
-
-
-
-
-</div>
-
-</div>
+<hr class="border border-dark border-3 opacity-75">
 
 
 
@@ -90,16 +86,19 @@
 
 
 
-<div class="row ">
-
-<div class="offset-sm-2 col-sm-8 ">
 
 
 
-<div class="card">
+<div class="row">
+
+<div class="offset-sm-2 col-sm-8">
+
+<span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span>
+
+<div class="card text-dark mt-3">
 
   <div class="card-header">
-    新增留言
+    新增回覆留言
   </div>
   
   <div class="card-body">
@@ -126,7 +125,7 @@
 <!-- 		  </div> -->
 		  
   		<div class="mb-3 row">
-		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">ReplyMessage</label>
+		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">回覆留言</label>
 		    <div class="col-sm-10">
 		    	<form:textarea path="reply" class="form-control" id="inputBoardMessage" rows="" cols="" />
 		    </div>
@@ -156,16 +155,19 @@
 
 
 
-
-
-<div class="row ">
-
-<div class="offset-sm-2 col-sm-8 ">
+<hr class="border border-dark border-3 opacity-75">
 
 
 
 
-<div class="card mt-3">
+<div class="row">
+
+<div class="offset-sm-2 col-sm-8">
+
+
+
+
+<div class="card text-dark mt-3">
 
   <div class="card-header">
     貼文回覆時間： <span><fmt:formatDate pattern="yyyy-MM-dd , a hh:mm:ss EEEE" value="${latestComment.createTime}" /></span>
@@ -188,8 +190,27 @@
 
 
 
+<div class="row my-5">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+  		</div>
 
 
+
+
+
+
+
+</div>
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 

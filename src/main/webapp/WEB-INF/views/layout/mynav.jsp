@@ -3,6 +3,7 @@
 		<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 			<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 				<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
+				<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
 				<!DOCTYPE html>
 				<html>
 
@@ -228,7 +229,7 @@
 									<span class="text">首頁</span>
 								</a></li>
 
-							<li class="list"><a href="#" class="list_a"> <span class="icon"><ion-icon
+							<li class="list"><a href="<c:url value='/register/login1' />" class="list_a"> <span class="icon"><ion-icon
 											name="person-circle-outline"></ion-icon></span>
 									<span class="text">會員</span>
 								</a>
@@ -256,7 +257,7 @@
 								</div>
 							</li>
 
-							<li class="list"><a href="#" class="list_a"> <span class="icon"><ion-icon
+							<li class="list"><a href="<c:url value='/customer/login/page' />" class="list_a"> <span class="icon"><ion-icon
 											name="people-outline"></ion-icon></span> <span class="text">合作夥伴</span>
 								</a>
 								<div class="div_dropdown">
@@ -267,14 +268,14 @@
 												<li><a href="<c:url value='/customer/home/page'/>">${exis.account} Home</a></li>	
 											</c:when>
 											<c:otherwise>
-												<li><a href="<c:url value='/customer/add/page' />">廣告商註冊</a></li>
 												<li><a href="<c:url value='/customer/login/page' />">廣告商登入</a></li>
+												<li><a href="<c:url value='/customer/add/page' />">廣告商註冊</a></li>
 											</c:otherwise>
 										</c:choose>
 									</ul>
 								</div>
 							</li>
-							<li class="list"><a href="#" class="list_a"> <span class="icon"><ion-icon
+							<li class="list"><a href="<c:url value='/LastNote' />" class="list_a"> <span class="icon"><ion-icon
 											name="mail-open-outline"></ion-icon></span>
 									<span class="text">寫信</span>
 								</a>
@@ -282,18 +283,21 @@
 									<ul class="dropdown">
 										<li><a href="<c:url value='/LastNote' />">撰寫</a></li>
 										<li><a href="<c:url value='/LastNote/edit' />">編輯</a></li>
+										<li><a href="<c:url value='/ECPay' />">支持GoodBye Letter</a></li>
 									</ul>
 								</div>
 							</li>
 
-							<li class=" list "><a href=" #" class="list_a"> <span class="icon"><ion-icon
+							<li class=" list "><a href="<c:url value='/board/page' />" class="list_a"> <span class="icon"><ion-icon
 											name="chatbox-ellipses-outline"></ion-icon></span>
 									<span class="text">交流區</span>
 								</a>
 								<div class="div_dropdown " id="div_dropdown">
-									<ul class="dropdown">
+									<ul class="dropdown">									
 										<li><a href="<c:url value='/board/page' />"> 查看留言 </a></li>
+									<c:if test="${not empty contextUser}">
 										<li><a href="<c:url value='/board/add' />"> 增加留言 </a></li>
+									</c:if>
 									</ul>
 								</div>
 							</li>

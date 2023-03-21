@@ -16,8 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
@@ -54,9 +52,11 @@ public class YJCustomerDetail {
 	
 
 	//@JsonManagedReference //主要控管序列化方(由此方控管序列化註釋)
-	//@OneToMany(cascade = CascadeType.ALL, mappedBy = "picture", orphanRemoval = true)
+	//@OneToMany(cascade = CascadeType.ALL, mappedBy = "picture", orphanRemoval = true), mappedBy = "picture"
+	//0317
+	//@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "picture")
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name="fk_companydetail_id")//0311由fk_companydetail_id改名FK_ComDetailId-取消修改
+	@JoinColumn(name="fk_companydetail_id")//單向一對多的JoinColumn是寫在一方，雙向控管時寫在多方
 	private List<Picture> pictures = new ArrayList<>();
 	
 	public List<Picture> getPictures() {

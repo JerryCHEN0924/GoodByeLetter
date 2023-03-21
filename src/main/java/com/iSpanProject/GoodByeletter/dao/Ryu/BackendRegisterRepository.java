@@ -3,6 +3,8 @@ package com.iSpanProject.GoodByeletter.dao.Ryu;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -28,6 +30,10 @@ public interface BackendRegisterRepository extends JpaRepository<Register, Integ
 	
 	Optional<Register> findByAccount(String account);
 	
+	
+	// 後台首頁查詢會員專用
+	@Query(value="select * from member where account like concat('%',:a,'%')", nativeQuery = true)
+	public Page<Register> findAllByAccountQueryLikePage(@Param("a") String account, Pageable pageable);
 	
 
 }

@@ -14,43 +14,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>新增等級 Page</title>
+<title>編輯留言 Page</title>
 </head>
 <body>
 <jsp:include page="../layout/backendNavbar.jsp"></jsp:include>
 
-<div class="container w-75 text-center">
+<div class="container text-center">
 
 
 
 
 
-<div class="row ">
+<div class="row">
 
-<div class="offset-sm-3 col-sm-6 my-3">
+<div class="offset-sm-3 col-sm-6">
 
-<hr>
+
 
 </div>
-
 </div>
 
 
 
+<hr class="border border-dark border-3 opacity-75">
 
 
 
 
-<div class="row ">
-
-<div class="offset-sm-2 col-sm-8 ">
 
 
 
-<div class="card">
+<div class="table-responsive border border-4 rounded-3 bg-secondary text-white p-5">
+
+<%-- <span class="text-center fs-3 text-warning"> ${backendHomeMessages} </span> --%>
+
+
+
+
+
+
+
+
+
+<div class="row">
+
+<div class="offset-sm-2 col-sm-8">
+
+
+
+<div class="card text-dark mt-5">
 
   <div class="card-header">
-    新增留言
+    編輯留言
   </div>
   
   <div class="card-body">
@@ -63,14 +78,14 @@
   		<form:input path="register" type="hidden" />
   		
   		<div class="mb-3 row">
-		    <label for="inputTitleName" class="col-sm-2 col-form-label">Title</label>
+		    <label for="inputTitleName" class="col-sm-2 col-form-label">留言標題</label>
 		    <div class="col-sm-10">
 		    	<form:input path="title" class="form-control" id="inputTitleName" />
 		    </div>
 		  </div>
 		  
   		<div class="mb-3 row">
-		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">BoardMessage</label>
+		    <label for="inputBoardMessage" class="col-sm-2 col-form-label">留言內容</label>
 		    <div class="col-sm-10">
 		    	<form:textarea path="boardMessage" class="form-control" id="inputBoardMessage" rows="" cols="" />
 		    </div>
@@ -88,7 +103,6 @@
   	
   </div>
   
-  
 </div>
 
 
@@ -97,6 +111,31 @@
 
 </div>
 </div>
+
+
+
+
+
+
+
+
+<div class="row my-5">
+		
+			<div class="offset-sm-5 col-sm-2">
+		
+				<form action="${contextRoot}/topGun" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				</form>
+		
+			</div>
+			
+  		</div>
+
+
+
+</div>
+
+<hr class="border border-dark border-3 opacity-75">
 
 
 

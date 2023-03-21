@@ -16,6 +16,7 @@ import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 
 @Service
+@Transactional
 public class BackendMemberDetailService {
 	
 	
@@ -53,7 +54,8 @@ public class BackendMemberDetailService {
 	// 分頁功能
 	public Page<MemberDetail> findByPage(Integer pageNumber){
 				
-		Pageable pgb = PageRequest.of(pageNumber-1, 6, Sort.Direction.DESC, "id");
+//		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.DESC, "id");
+		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "id");
 				
 		Page<MemberDetail> page = backendMemberDetailRepository.findAll(pgb);
 				
@@ -97,14 +99,32 @@ public class BackendMemberDetailService {
 	
 	
 	// 查詢ID刪除註冊會員細項資料
-	@Transactional
+//	@Transactional
 	public void deleteMemberDetailById(Integer id) {
 		
 		Optional<MemberDetail> optional = backendMemberDetailRepository.findById(id);
 		
 		if(optional.isPresent()) {
 			
+			
+			System.out.println("=======================");
+			System.out.println("======確認 MemberDetail 為 "+ id + " ========");
+			System.out.println("=======================");
+			System.out.println("=======================");
+			System.out.println("======執行 Repo 刪除 MemberDetail========");
+			System.out.println("=======================");
+			
+//			backendMemberDetailRepository.deleteById(id);
+			
 			backendMemberDetailRepository.deleteById(id);
+			
+//			backendMemberDetailRepository.deleteAll();
+			
+		} else {
+			
+			System.out.println("=======================");
+			System.out.println("======執行 Repo 失敗========");
+			System.out.println("=======================");
 			
 		}
 		

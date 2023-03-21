@@ -5,58 +5,89 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/mymain.css" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
-	crossorigin="anonymous" />
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-	crossorigin="anonymous">	
-</script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js">	
-</script>
-
-<title>company login</title>
-<link rel="stylesheet" href="/index/assets/css/mymain.css" />
-<style>
-	a {
-		margin: 10px auto 0px auto;
-		font-size: 15px;
-	}
-</style>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="assets/css/mymain.css" />
+		<link rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+			integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+			crossorigin="anonymous" />
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+			crossorigin="anonymous">	
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+		
+		<title>company login</title>
+	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      
+	<style>
+		.a001 {
+			margin: 10px auto 0px auto;
+			font-size: 30px;
+		}
+		#banner{
+			width: 100%;
+			height: 110px;
+			background-color: aquamarine;
+			text-align: Right;
+		}
+		#user{
+			font-size:2em;
+		}
+	
+		#url001{
+			height:100vh;
+			width: 300px;
+			background-color: rgb(38, 236, 143);
+			font-size:2em;
+			text-align: left;
+		}
+	</style>
+	</head>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
-	<article id="portfolio" class="wrapper style3">
+	<div id="banner">
+		<span class="material-icons-outlined">logout</span>
+	</div>
+	<div id="url001">
+		<ul>
+			<li>
+				<a class="a001" href="<c:url value='/customer/picture/page1'/>">投放圖片</a>
+			</li>
+	
+			<li>
+				<a class="a001" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
+			</li>
+	
+			<li>
+				<a class="a001" href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>">圖片展示</a>
+			</li>
+	
+			<li>
+				<a class="a001" href="<c:url value='/customer/picture/page2?memberId=${exis.memberId}'/>">上傳圖片頁面2</a>
+			</li>
+	
+			<li>
+				<a class="" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
+			</li>
+	
+			<li>
+				<a class="" href="<c:url value='/customer/add'/>">檢視廣告</a><!-- 之後此連結移到首頁 -->
+			</li>
+		</ul>	
+	</div>
+	<article class="wrapper style2" style="height:100vh">
 		<div class="container">
 			<div>
-				<h3>歡迎登入</h3>
+				<h1>歡迎${exis.account}登入</h1>
+				<h3></h3>
 			</div>
-			<div>
-				<ul>
-					<li>
-						<a class="" href="<c:url value='/customer/picture/page2?memberId=${exis.memberId}'/>">上傳圖片頁面2</a>
-					</li>
-					<li>
-						<a class="" href="<c:url value='/customer/picture/page1'/>">廣告圖片投放區</a>
-					</li>
-					<li>
-						<a class="" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
-					</li>
-					<li>
-						<a class="" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
-					</li>
-				</ul>
-				
-				
-			</div>
+			
 		</div>	
 	</article>
 	

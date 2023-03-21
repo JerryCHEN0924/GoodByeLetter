@@ -47,7 +47,6 @@ public class LastNote implements Serializable {
 	private String recipientEmail;
 	
 	@Column(name="notedetail",columnDefinition = "nvarchar(MAX)", nullable = false)
-	@Size(min = 0, max=500, message = "字數必須在0到500之間")
 	private String notedetail;
 	
 	@Temporal(TemporalType.TIMESTAMP)

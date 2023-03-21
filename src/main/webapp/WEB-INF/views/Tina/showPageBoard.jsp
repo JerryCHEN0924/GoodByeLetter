@@ -85,7 +85,8 @@
 
 				<div class="messageContent" data-aos="fade-up"  onclick="submitForm(${like.boardId})">
 					<h4>
-						<strong>${like.register.memberDetail.name}</strong>
+<%-- 					${like.register.memberDetail.name} --%>
+						<strong>${like.register.account}</strong>
 					</h4>
 					<h5>
 						建立時間:
@@ -149,16 +150,6 @@
 
 
 
-
-
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/jquery-3.6.3.min.js"></script>
-	<script src="assets/js/main.js"></script>
 	<script type="module"
 		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule

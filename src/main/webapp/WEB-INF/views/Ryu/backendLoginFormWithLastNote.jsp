@@ -15,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>登入介面</title>
+<title>模擬會員登入介面(GoodBye Letter) Page</title>
 
 <link href="${contextRoot}/css/ryuzStyle01.css" rel="stylesheet" />
 
@@ -66,7 +66,7 @@
 <div class="card">
 
   <div class="card-header">
-    模擬LastNote會員登入介面
+    模擬會員登入介面(GoodBye Letter)
   </div>
   
   <div class="card-body">
@@ -75,7 +75,7 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputAccount" class="col-sm-2 col-form-label">Account</label>
+		    <label for="inputAccount" class="col-sm-2 col-form-label">帳號</label>
 		    <div class="col-sm-10">
 		    	<input name="account" class="form-control" id="inputAccount" />
 		    </div>
@@ -83,7 +83,7 @@
 		  
 		  
 		  <div class="mb-3 row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+		    <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
 		    <div class="col-sm-10">
 		    	<input name="password" class="form-control" id="inputPassword" />
 		    </div>

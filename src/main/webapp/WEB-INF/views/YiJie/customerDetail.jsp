@@ -49,7 +49,7 @@
 							<input type="text" class="form-control" id="name" name="name">
 						</div>
 					</div>
-
+					<!-- 
 					<div class="mb-3 row">
 						<label for="type" class="col-sm-2 col-form-label">公司種類</label>
 						<div class="col-sm-10">
@@ -75,7 +75,7 @@
 							</div>
 						</div>
 					</div>
-
+					 -->
 					<div class="mb-3 row">
 						<label for="email" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-10">
