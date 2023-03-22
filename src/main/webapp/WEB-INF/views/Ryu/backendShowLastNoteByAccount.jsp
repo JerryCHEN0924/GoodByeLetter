@@ -103,7 +103,7 @@
   
   <tbody class="table-group-divider">
   
-  <c:forEach var="register" items="${register}">
+  <c:forEach var="register" items="${registers}">
     <tr>
       <th scope="row">${register.memberId}</th>
       <td>${register.account}</td>

@@ -119,9 +119,11 @@ public class BackendLastNoteController {
 //		####################### Ryuz divider #######################
 		
 		// 加密 GoodBye Letter 開始
+		
 		String notedetail = lastNote.getNotedetail();
 		String encrypt = stringEncryptor.encrypt(notedetail);
 		lastNote.setNotedetail(encrypt);
+		
 		// 加密  GoodBye Letter 結束
 		
 //		####################### i am divider #######################
@@ -151,15 +153,17 @@ public class BackendLastNoteController {
 		
 //		####################### Ryuz divider #######################
 		
-		// 加密 GoodBye Letter 開始	
-		if (!page.isEmpty()) {
-			for (LastNote lastNote : page) {
-				String notedetail = lastNote.getNotedetail();
-				String decrypt = stringEncryptor.decrypt(notedetail);
-				lastNote.setNotedetail(decrypt);
-			}
-		}
-		// 加密  GoodBye Letter 結束
+		// 解密 GoodBye Letter 開始	
+		
+//		if (!page.isEmpty()) {
+//			for (LastNote lastNote : page) {
+//				String notedetail = lastNote.getNotedetail();
+//				String decrypt = stringEncryptor.decrypt(notedetail);
+//				lastNote.setNotedetail(decrypt);
+//			}
+//		}
+		
+		// 解密  GoodBye Letter 結束
 		
 //		####################### i am divider #######################
 		
@@ -183,6 +187,18 @@ public class BackendLastNoteController {
 		
 		LastNote lastNote = backendLastNoteService.findLastNoteById(noteId);
 		
+//		####################### Ryuz divider #######################
+		
+		// 解密 GoodBye Letter 開始	
+		
+		String notedetail = lastNote.getNotedetail();
+		String decrypt = stringEncryptor.decrypt(notedetail);
+		lastNote.setNotedetail(decrypt);
+		
+		// 解密  GoodBye Letter 結束
+		
+//		####################### i am divider #######################
+		
 		model.addAttribute("lastNote", lastNote);
 		
 		return "/Ryu/backendEditLastNoteForm";
@@ -204,9 +220,11 @@ public class BackendLastNoteController {
 //		####################### Ryuz divider #######################
 		
 		// 加密 GoodBye Letter 開始
+		
 		String notedetail = lastNote.getNotedetail();
 		String encrypt = stringEncryptor.encrypt(notedetail);
 		lastNote.setNotedetail(encrypt);
+		
 		// 加密  GoodBye Letter 結束
 		
 //		####################### i am divider #######################
@@ -244,8 +262,8 @@ public class BackendLastNoteController {
 	@GetMapping("/lastNote/queryLikeAccount")
 	public String getLastNoteByAccountForm(Model model) {
 		
-//		Register register = new Register();
-//		model.addAttribute("register", register);
+		Register register = new Register();
+		model.addAttribute("register", register);
 		
 		return "/Ryu/backendShowLastNoteByAccount";
 	}
@@ -255,19 +273,19 @@ public class BackendLastNoteController {
 	@GetMapping("/lastNote/queryLikeAccountPost")
 	public String getLastNoteByAccount(@RequestParam("account") String account, Model model) {
 		
-		List<Register> register = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
+		List<Register> registers = backendRegisterService.findRegisterByAccountNativeLikeQuery(account);
 		
 		
 		System.out.println("=====================");
 		System.out.println("=====================");
-		System.out.println(register);
+		System.out.println(registers);
 		System.out.println("=====================");
 		System.out.println("=====================");
 		
 		
 		
 		
-		model.addAttribute("register", register);
+		model.addAttribute("registers", registers);
 		
 		return "/Ryu/backendShowLastNoteByAccount";
 		
@@ -283,15 +301,17 @@ public class BackendLastNoteController {
 		
 //		####################### Ryuz divider #######################
 		
-		// 加密 GoodBye Letter 開始	
-		if (!lastNoteDetail.isEmpty()) {
-			for (LastNote lastNote : lastNoteDetail) {
-				String notedetail = lastNote.getNotedetail();
-				String decrypt = stringEncryptor.decrypt(notedetail);
-				lastNote.setNotedetail(decrypt);
-			}
-		}
-		// 加密  GoodBye Letter 結束
+		// 解密 GoodBye Letter 開始	
+		
+//		if (!lastNoteDetail.isEmpty()) {
+//			for (LastNote lastNote : lastNoteDetail) {
+//				String notedetail = lastNote.getNotedetail();
+//				String decrypt = stringEncryptor.decrypt(notedetail);
+//				lastNote.setNotedetail(decrypt);
+//			}
+//		}
+		
+		// 解密  GoodBye Letter 結束
 		
 //		####################### i am divider #######################
 		
@@ -313,6 +333,18 @@ public class BackendLastNoteController {
 	public String editLastNotePageByAccount(@RequestParam("noteId") Integer noteId, Model model) {
 		
 		LastNote lastNote = backendLastNoteService.findLastNoteById(noteId);
+		
+//		####################### Ryuz divider #######################
+		
+		// 解密 GoodBye Letter 開始	
+		
+		String notedetail = lastNote.getNotedetail();
+		String decrypt = stringEncryptor.decrypt(notedetail);
+		lastNote.setNotedetail(decrypt);
+		
+		// 解密  GoodBye Letter 結束
+		
+//		####################### i am divider #######################
 		
 		model.addAttribute("lastNote", lastNote);
 		
@@ -339,9 +371,11 @@ public class BackendLastNoteController {
 //		####################### Ryuz divider #######################
 		
 		// 加密 GoodBye Letter 開始
+		
 		String notedetail = lastNote.getNotedetail();
 		String encrypt = stringEncryptor.encrypt(notedetail);
 		lastNote.setNotedetail(encrypt);
+		
 		// 加密  GoodBye Letter 結束
 		
 //		####################### i am divider #######################
