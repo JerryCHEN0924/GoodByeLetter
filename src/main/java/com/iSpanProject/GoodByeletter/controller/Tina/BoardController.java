@@ -1,22 +1,28 @@
 package com.iSpanProject.GoodByeletter.controller.Tina;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.WebRequest;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.Tina.Board;
@@ -155,4 +161,13 @@ public class BoardController {
 		return "Tina/ajaxBoard";
 		
 	}
+	
+	//儲存創建時間//謝謝右昕!
+		@InitBinder
+		 public void initBinder(WebDataBinder binder, WebRequest request) {
+		  // java.util.Date
+		  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		  dateFormat.setLenient(false);
+		  CustomDateEditor ce = new CustomDateEditor(dateFormat, true); 
+		  binder.registerCustomEditor(Date.class, ce);}
 }

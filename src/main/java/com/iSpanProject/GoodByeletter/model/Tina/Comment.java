@@ -34,8 +34,8 @@ public class Comment {
 	private String reply;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE")
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS")
 	// @Column(name="createTime")
 	private Date createTime;
 

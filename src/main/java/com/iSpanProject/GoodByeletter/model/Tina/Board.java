@@ -48,8 +48,8 @@ public class Board {
 
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss")
-	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss EEEE", timezone = "GMT+8")
+	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss.SSS", timezone = "GMT+8")
 	// @Column(name="updateTime")
 	private Date updateTime;
 
