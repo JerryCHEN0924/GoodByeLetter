@@ -14,6 +14,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css">
+
+	#wholeChatroomDiv{
+		width:30%;
+		position: fixed; 
+		bottom:0px; 
+		right:0px;  
+		z-index:100;
+ 		display: flex; 
+ 		visibility:hidden;
+	}
   .card-bordered {
             border: 1px solid #ebebeb;
         }
@@ -338,16 +348,27 @@
 <body>
 
 
-<!-- 	<div style="width: 100vw; height: 100vh; background-color: #48b0f7;"> -->
+<!-- 	<div style="width: 100vw; height: 100vh;">  -->
 <!-- 	固定位置 -->
+<!-- style=" width:30%;position: fixed; bottom:0px; display: flex;right:0px;  z-index: 100; display:none;" -->
 		<div class="d-flex justify-content-end d-flex align-items-end"
-			style="height: 100vh; position: fixed">
-			<div class="card card-bordered">
-				<div class="card-header">
+			 id="wholeChatroomDiv">
+<!-- 			showChatNames -->
+			<div style="background:#f7e048; flex:20%" class="showChatNames" id="showChatNames">
+			<div class="card-header" id="">
+					<h4 class="card-title">
+						<button type="button" class="btn-close" aria-label="Close" id="closeButton"></button>
+					</h4>						
+			</div>		
+			</div>
+			
+<!-- 			chatArea -->
+			<div class="card card-bordered chatArea" style="flex:80%" >
+				<div class="card-header" id="card-header">
 					<h4 class="card-title">
 						<strong id="showToName">Chat</strong>
 					</h4>
-					<a class="btn btn-xs btn-secondary" href="#" data-abc="true">${existing.account}在線上</a>
+					
 				</div>
 
 				<!-- chat_content -->
@@ -389,17 +410,9 @@
 					<button class="publisher-btn" data-abc="true" id="btn_send">
 						<span class="material-icons"  style="color:#f7e048">send</span>
 					</button>
-					<!-- <span class="publisher-btn file-group">
-                        <i class="fa fa-paperclip file-browser"></i>
-                        <input type="file">
-                    </span> -->
-					<!-- <a class="publisher-btn" href="#" data-abc="true"><i class="fa fa-smile"></i></a>
-                    <a class="publisher-btn text-info" href="#" data-abc="true"><i class="fa fa-paper-plane"></i></a> -->
 				</div>
-
 			</div>
 		</div>
-<!-- 	</div> -->
 	
 	
 	<%-- 
@@ -438,8 +451,13 @@
 		var toName;
 
 		var userName;
-
+			
 		$(function() {
+			
+			//讓左邊區域與右邊同高
+			var chatArea = document.querySelector('.chatArea').offsetHeight;
+			document.querySelector('.showChatNames').style.height = chatArea + 'px';
+			console.log("chatArea: "+chatArea+"px");
 
 			//WebSocket连接对象
 
@@ -448,48 +466,68 @@
 				alert('Not support websocket');
 			}
 
-			// $('#btn_join').click(function () {
+		
 
-			//var userName = $('#user_name').val();
-			userName = "${existing}";
+			
+			//傳出去給ChatEndpoint的userName
+			userName = "${existing.account}";
 			//创建WebSocket连接对象
 			ws = new WebSocket(prefixUrl + userName);
 
 			//连接成功建立的回调方法
 			ws.onopen = function(event) {
-				console.log('建立连接:' + ws);
+				console.log('建立连接:' + ws);				
+				var str ='<a class="btn btn-xs btn-secondary" href="#" data-abc="true">'+userName+'在線上'+'</a>';
+				$('#card-header').append(str);				
 			}
 
+			
 			//接收到Server的消息後會觸發的事件 //event事件對象 //event.data獲取server發送過來的消息
 			ws.onmessage = function(event) {
 				 var dataStr = event.data;
+				 //將dataStr轉成json
 				 var dataJson = JSON.parse(event.data);
-				console.log(dataStr);
-				 <%--if(dataJson.isSystem){
+				console.log("dataJson: "+dataJson);
+				
+				
+				var toName;
+				//判斷是否為系統消息
+				 if(dataJson.system){
+					 console.log("dataJson");
 					 var names = dataJson.message;
-					 for (var names of name) {
-						 var str = '<div class="media media-chat">'
-								+'<img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">'
-								+'<div class="media-body">'
-								+'<p>'
-								+ name
-								+ '</p></div></div>';
-					}	 
+					 console.log("names: "+names);
+					 var chatListStr;
+					 names.forEach(function(name, index){
+						 console.log("name:"+name);
+						 //將在線名單放在右半部
+						 chatListStr  += `<h4><a class="chatListStrClass" value="">\${name}</a><h4><br>`;
+						 
+					 })
+					 $('#showChatNames').html(chatListStr);
+					
+					 //toNameEqualName
+					 //要在forEach()裡建立方法,不然方法會先被建立,之後生成的按鈕就沒辦法吃到這個方法
+					 $(".chatListStrClass").on("click",function(){
+							toName = $(this).html();
+							//暫時先設置按了傳送對象的<a>後,id="toName"的input裡的值也會改變
+						 	$("#toName").val(toName);
+							console.log("toName:"+toName);
+						})
 				 }
-				 else{--%>
+				 else{
+					 //將訊息印在左半部
 				 var str = '<div class="media media-chat">'
 					+'<img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">'
 					+'<div class="media-body">'
 					+'<p>'
-					+ dataJson.fromName + ":" + dataJson.message
+					+ dataJson.fromName+ ": " + dataJson.message
 					+ '</p></div></div>';
-			<%--}--%>
-
-				console.log('接收到内容(event.data)：' + event.data);
-				//$('#chat-content').append( event.data + '\n');
-				$('#chat-content').append(str);
+				 $('#chat-content').append(str);
+				}
+				console.log('接收到内容(event.data)：' + event.data);				
 			}
 
+						
 			//连接发生错误的回调方法
 			ws.onerror = function(event) {
 				console.log('发生错误');
@@ -500,7 +538,7 @@
 				console.log('关闭连接');
 			}
 
-			//})
+			
 
 			//指定發送對象
 			$('#btn_join').click(function() {
@@ -517,17 +555,20 @@
 			//发送消息
 			function sendMessage(message) {
 				ws.send(message);
+				
 
 			}
 
 			//关闭连接
 			function closeWebSocket() {
 				ws.close();
+				$("#showToName").html("連線有誤!");
 			}
 
 			//监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
 			window.onbeforeunload = function() {
 				wx.close();
+				$("#showToName").html("連線有誤!");
 			}
 
 			//发送消息
@@ -563,7 +604,14 @@
 								//傳給ws.send()方法
 								sendMessage(json_stringify);
 							})
-
+   
+			//關閉chatRoom
+			$("#closeButton").click(function(){
+				console.log("closeButton");
+				$("#wholeChatroomDiv").css("visibility","hidden");				
+			})
+			
+			
 			//点击退出聊天室
 			//$('#btn_exit').click(function () {
 			//closeWebSocket();

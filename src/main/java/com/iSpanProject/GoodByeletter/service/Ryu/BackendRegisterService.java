@@ -224,7 +224,16 @@ public class BackendRegisterService {
 	
 	
 	
-	
+	// 分頁功能，Account模糊查詢廣告商
+	public Page<Register> findAllVentorBackupsByAccountQueryLikePage(String account, Integer pageNumber){
+		
+		Pageable pgb = PageRequest.of(pageNumber-1, 10, Sort.Direction.ASC, "memberId");
+		
+		Page<Register> page = backendRegisterRepository.findAllVentorsBackupByAccountQueryLikePage(account, pgb);
+		
+		return page;
+		
+	}
 	
 	
 	

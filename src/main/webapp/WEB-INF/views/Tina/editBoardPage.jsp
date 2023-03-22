@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
+<%-- <c:set var="contextUser" value="${pageContext.request.userPrincipal}"/> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,18 +70,20 @@
 	
 	<hr>
 	
-	<c:if test="${contextUser.name == newboard.register.account}">
+	<c:if test="${existing.account == newboard.register.account}">
 			<div class="messageContent">
 				
 					<h4>
 						<strong>${newboard.register.memberId}</strong>
+						<h3><form:hidden path="createTime" value="${newboard.createTime}" placeholder="createTime" class="form-control" /></h3>
 					</h4>
 					<h5>
 						建立時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${newboard.createTime}" />
+							
 						更新時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${newboard.updateTime}" />
 					</h5>
 					<h3><form:input path="title" value="${newboard.title}" placeholder="title" class="form-control"/></h3>
@@ -99,14 +101,8 @@
 </article>
 
 
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+	
 	<script src="assets/js/jquery-3.6.3.min.js"></script>
-	<script src="assets/js/main.js"></script>
 	<script type="module"
 		src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule

@@ -89,6 +89,7 @@
       <th scope="col">第一驗證人信箱</th>
       <th scope="col">第二驗證人信箱</th>
       <th scope="col">驗證時間</th>
+      <th scope="col">啟用狀態</th>
       <th scope="col">新增時間</th>
       <th scope="col">信件內容</th>
       <th scope="col">會員編號</th>
@@ -108,6 +109,7 @@
       <td>${lastNote.verify1}</td>
       <td>${lastNote.verify2}</td>
       <td>${lastNote.verifyTime}</td>
+      <td>${lastNote.enabled}</td>
       <td>${lastNote.createTime}</td>
       <td>${lastNote.notedetail}</td>
       <td>${lastNote.FK_memberId.memberId}</td>

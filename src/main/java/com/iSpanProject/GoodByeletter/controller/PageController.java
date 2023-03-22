@@ -13,25 +13,9 @@ public class PageController {
 		return "index";
 	}
 
-	@GetMapping("/newnav")
+	@GetMapping("/mynav")
 	public String newnav() {
-		return "layout/newmynav";
+		return "layout/mynav";
 	}
-	
-	@GetMapping("/myregister")
-	public String myregister() {
-		return "example/myregister";
-	}
-
-	@GetMapping("/mycompany")
-	public String mycompany() {
-		return "example/mycompany";
-	}
-
-	@GetMapping("/myspace")
-	public String myspace() {
-		return "example/myspace";
-	}
-	
 
 }

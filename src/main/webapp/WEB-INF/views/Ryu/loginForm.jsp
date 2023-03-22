@@ -22,12 +22,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Security LoginForm</title>
+<title>Spring Security</title>
 
 
 <link href="<c:url value='/css/bootstrap.min.css' />" rel="stylesheet" />
 
 <script src="<c:url value='/js/bootstrap.bundle.min.js' />"></script>
+
+
+
+
+
+
+
+
+<style>
+
+	body{
+		
+		background-color: #3e3e3e;
+		color: white;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+</style>
+
+
+
+
 
 
 
@@ -85,10 +114,10 @@
 
 
 
-<div class="card">
+<div class="card text-dark mt-1 fs-5">
 
   <div class="card-header">
-    Security LoginForm
+    後臺管理登入介面
   </div>
   
   <div class="card-body">
@@ -99,17 +128,17 @@
   		
   		
   		<div class="mb-3 row">
-		    <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+		    <label for="inputUsername" class="col-sm-2 col-form-label">帳號</label>
 		    <div class="col-sm-10">
-		    	<input name="username" class="form-control" id="inputUsername" />
+		    	<input name="username" class="form-control" id="inputUsername" placeholder="請輸入超級管理員之帳號" />
 		    </div>
 		  </div>
 		  
 		  
 		  <div class="mb-3 row">
-		    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+		    <label for="inputPassword" class="col-sm-2 col-form-label">密碼</label>
 		    <div class="col-sm-10">
-		    	<input name="password" class="form-control" id="inputPassword" />
+		    	<input name="password" class="form-control" id="inputPassword" placeholder="請入超級管理員之密碼" />
 		    </div>
 		  </div>
 		  
@@ -155,14 +184,21 @@
 		  
   		
   		
+  		<div class="d-flex justify-content-center">
+      	
+      		<div class="mx-1">
   		
-  		
-  		<div class="mt-3">
+<!--   		<div class="mt-3"> -->
 	  		<button type="submit" class="btn btn-primary">登入</button>
+<!--   		</div> -->
+  		
+  			</div>
+  			
+  			
   		</div>
   		
   	</form>
-  	
+  		
   	
   </div>
   
