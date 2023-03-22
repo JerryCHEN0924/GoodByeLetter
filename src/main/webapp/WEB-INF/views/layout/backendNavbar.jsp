@@ -152,6 +152,10 @@
           </li>
           
           <li class="nav-item">
+            <a class="nav-link" href="<c:url value='/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute' />">審核廣告商投放啟用狀態</a>
+          </li>
+          
+          <li class="nav-item">
             <a class="nav-link" href="<c:url value='/topGun/board/queryLikeAccount' />">查詢及編輯會員留言</a>
           </li>
           
@@ -302,7 +306,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute' />">Nothing else here</a></li>
             </ul>
             
           </li>

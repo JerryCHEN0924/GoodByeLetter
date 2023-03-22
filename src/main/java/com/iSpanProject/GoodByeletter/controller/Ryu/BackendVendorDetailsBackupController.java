@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,6 +20,7 @@ import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.Picture;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
+import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendVendorDetailsBackupService;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendVendorPhotosBackupService;
 
@@ -38,8 +42,8 @@ public class BackendVendorDetailsBackupController {
 	@Autowired
 	private BackendVendorPhotosBackupService backendVendorPhotosBackupService;
 	
-	
-	
+	@Autowired
+	private BackendRegisterService backendRegisterService;
 	
 //	####################### Ryuz divider #######################
 	
@@ -138,15 +142,56 @@ public class BackendVendorDetailsBackupController {
 	
 	
 	
+	// 分頁查詢跳頁，查詢所有廣告商for enabled
+	@GetMapping("/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute")
+	public String showVendorDetailsBackupByPage(@RequestParam(name = "page", defaultValue = "1") Integer pageNumber, @RequestParam(name = "account", required = false) String account, Model model) {
+		
+		Page<Register> page = backendRegisterService.findAllVentorBackupsByAccountQueryLikePage(account, pageNumber);
+		
+		model.addAttribute("page", page);
+		
+		return "/Ryu/backendShowVentorsEnableBackup";
+		
+	}
 	
 	
 	
+	// 分頁查詢跳頁，查詢所有廣告商for enabled，審核啟用狀態
+	@GetMapping("/vendorDetailsBackup/enableEdit")
+	public String editvendorDetailsBackupPage(@RequestParam("memberId") Integer memberId, Model model) {
+//		public String editvendorDetailsBackupPage(Model model) {
+			
+		System.out.println("======================");
+		System.out.println("======================");
+		System.out.println("======================");
+		System.out.println(memberId);
+		System.out.println("======================");
+		System.out.println("======================");
+		System.out.println("======================");
+		
+		Register register = backendRegisterService.findRegisterById(memberId);
+		
+		model.addAttribute("register", register);
+		
+		return "/Ryu/backendEditVendorBackupEnabledForm";
+		
+	}
+
 	
-	
-	
-	
-	
-	
+	// 修改註冊會員Enabled資料
+	@PutMapping("/vendorDetailsBackup/enableEditPost")
+	public String editPostRegisterEnabled(@ModelAttribute("register") Register register,
+			RedirectAttributes redirectAttributes) {
+		
+		String account = register.getAccount();
+			
+		backendRegisterService.updateRegister(register);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告商 [ " + account + " ] 啟用狀態修改成功");
+			
+		return "redirect:/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute";
+			
+	}
 	
 	
 	
