@@ -25,78 +25,11 @@
 	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       
-	<style>
-		
-		body {
-			margin: 0;
-			padding: 0;
-		}
-		
-		.container {
-			display: flex;
-			flex-wrap: wrap;
-			margin: 0;
-			padding: 0;
-			height: 100vh;
-			width: 100vw;
-			box-sizing: border-box;
-		}
-		
-		.left {
-			flex-basis: 70%;
-			background-color: #f2f2f2;
-			padding: 20px;
-			height: 100%;
-			box-sizing: border-box;
-			text-align:center;
-		}
-		
-		.right {
-			flex-basis: 30%;
-			background-color: #e6e6e6;
-			padding: 20px;
-			height: 100%;
-			box-sizing: border-box;
-			text-align:center;
-		}
-		.banner {
-			display: flex;
-			justify-content: flex-end;
-			align-items: center;
-			height: 10%;
-			background-color: #28046a;
-			color: #fff;
-			position: fixed;
-			top: 0;
-			right: 0;
-			left: 0;
-			padding: 0 20px;
-		}
-		
-		.banner a {
-			color: #fff;
-			text-decoration: none;
-			margin-left: 10px;
-		}
-
-		@media (max-width: 768px) {
-			.container {
-				flex-direction: column;
-				height: auto;
-			}
-			
-			.left, .right {
-				flex-basis: 100%;
-				height: auto;
-			}
-		}
-	</style>
 	</head>
 <body>
-	<%@ include file="../layout/mynav.jsp"%>
+<%-- 	<%@ include file="../layout/mynav.jsp"%> --%>
 	
 		
-	</div>
 	<div class="container">
 		<div class="banner">
 			<span class="material-icons-outlined"><a class="a001" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a></span>
