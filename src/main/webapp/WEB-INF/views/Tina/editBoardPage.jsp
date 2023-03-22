@@ -79,11 +79,11 @@
 					</h4>
 					<h5>
 						建立時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${newboard.createTime}" />
 							
 						更新時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${newboard.updateTime}" />
 					</h5>
 					<h3><form:input path="title" value="${newboard.title}" placeholder="title" class="form-control"/></h3>
