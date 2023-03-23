@@ -63,14 +63,14 @@
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label fw-bold">第一驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify1"
-									value="aaa@gmail.com" id="verify1"
+									value="jk2455892@gmail.com" id="verify1"
 									placeholder="name@example.com" required="true" />
 								<form:errors path="verify1" cssClass="text-danger" />
 							</div>
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label fw-bold">第二驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify2"
-									value="CCC@gmail.com" id="verify2"
+									value="jk2455892@gmail.com" id="verify2"
 									placeholder="name@example.com" required="true" />
 								<form:errors path="verify2" cssClass="text-danger" />
 							</div>
@@ -78,7 +78,7 @@
 							<div class="mb-3">
 								<label for="notedetail" class="form-label fw-bold">信件內容</label>
 								<form:textarea class="form-control" id="notedetail"
-									maxlength="500" placeholder="想對那個人...說些什麼呢?" path="notedetail"
+									maxlength="500" placeholder="想對那個人...說些什麼呢?可以說說你是誰，為什麼對方會收到這封信，以及想對他說什麼。" path="notedetail"
 									rows="3" />
 								<form:errors path="notedetail" cssClass="text-danger" />
 							</div>
@@ -133,31 +133,6 @@
 	      }
 	    })
 			}
-			//以上test
-		  const recipientEmail = document.getElementById('recipientEmail').value;
-		  const verify1 = document.getElementById('verify1').value;
-		  const verify2 = document.getElementById('verify2').value;
-		  if (recipientEmail.trim() === '' || verify1.trim() === '' || verify2.trim() === '') {
-		    Swal.fire({
-		      title: '欄位不可空白',
-		      icon: 'warning'
-		    });
-		    return;
-		  }
-
-	    Swal.fire({
-	      title: '確定要儲存嗎？',
-	      icon: 'success',
-	      showCancelButton: true,
-	      confirmButtonText: '確定！',
-	      cancelButtonText: '取消',
-	      reverseButtons: true
-	    }).then((result) => {
-	      if (result.isConfirmed) {
-	        // 如果用戶確認要儲存，則提交表單
-	        document.getElementById('lastNoteForm').submit();
-	      }
-	    })
 	}
 	
 	function resetbutton() {
