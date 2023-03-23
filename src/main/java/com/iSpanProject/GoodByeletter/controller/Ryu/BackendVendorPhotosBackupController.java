@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendVendorPhotosBackupRepository;
+import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.YiJie.Picture;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
@@ -80,13 +81,44 @@ public class BackendVendorPhotosBackupController {
 		
 		String account = vendorPhotos.getAccount();
 		
+		System.out.println("======================");
+		System.out.println("======================");
+		System.out.println(account);
+		System.out.println("======================");
+		System.out.println("======================");
+		
+		
 		Register register = backendRegisterRepository.findRegisterByAccount(account);
 		
+		System.out.println("======================");
+		System.out.println("======================");
+		System.out.println(register);
+		System.out.println("======================");
+		System.out.println("======================");
+		
+		
 		YJCustomerDetail customerDetail = register.getCustomerDetail();
+		
+		
+		Level fk_Plevel = register.getFK_Plevel();
+		
+		
+		
+		System.out.println("======================");
+		System.out.println("======================");
+		System.out.println(fk_Plevel);
+		System.out.println(customerDetail);
+		System.out.println("======================");
+		System.out.println("======================");
 		
 		vendorPhotos.setCustomerDetail(customerDetail);
 		
 		MultipartFile image = vendorPhotos.getImage();
+		
+//		for(MultipartFile image : images) {
+//			
+//			
+//		}
 		
 		if (image != null && !image.isEmpty()) {
 			
@@ -223,11 +255,30 @@ public class BackendVendorPhotosBackupController {
 			 RedirectAttributes redirectAttributes) {
 		
 		
+		MultipartFile image = vendorPhotos.getImage();
+		
+		if (image != null && !image.isEmpty()) {
+			
+			try {
+				
+				byte[] b = image.getBytes();
+				vendorPhotos.setPhotoFile(b);
+				
+			}catch (Exception e) {
+				
+				e.printStackTrace();
+				
+				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+				
+			}
+			
+		}
+		
 		backendVendorPhotosBackupService.insertVendorPhotos(vendorPhotos);
 		
 		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告文案修改成功");
 		
-		return "redirect:/topGun";
+		return "redirect:/topGun/vendorPhotosBackup/page";
 		
 	}
 	

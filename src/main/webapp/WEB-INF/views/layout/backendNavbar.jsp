@@ -297,16 +297,17 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
+              廣告商文案(上機演示版)
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/add' />">Action</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">Another action</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/add' />">新增廣告圖片</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">查詢編輯廣告商圖片</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">查詢編輯廣告商圖片</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute' />">Nothing else here</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute' />">編輯廣告文案啟用狀態</a></li>
             </ul>
             
           </li>
@@ -316,12 +317,12 @@
           <li class="nav-item dropdown">
           
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
+              新增廣告商細項資料(上機演示版)
             </a>
             
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/add' />">Action</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">Another action</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/add' />">>新增廣告商細項資料</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">查詢編輯廣告商細項資料</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

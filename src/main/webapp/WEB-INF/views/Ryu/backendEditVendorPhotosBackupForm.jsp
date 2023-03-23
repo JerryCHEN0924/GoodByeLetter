@@ -131,6 +131,22 @@
 		  </div>
 		  
 		  
+		   <div class="mb-3 row">
+		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">文案圖片</label>
+		    <div class="col-sm-10">
+		    
+<%-- 		    	<form:input path="image" class="form-control" id="inputVendorDetailsImage" type='file' /> --%>
+		    	
+<%-- 		    	<input name="image" class="form-control" id="inputVendorDetailsImage" type='file' value="${vendorPhotos.photoFile}" multiple /> --%>
+		    	<form:input path="image" class="form-control" id="inputVendorDetailsImage" type='file'  />
+		    	
+<%-- 		    	<form:input path="productImage" type='file'/><br>&nbsp; --%>
+		    	
+<%-- 		    	<form:errors path="image" class="form-control" id="inputVendorDetailsImage" cssClass="error" /> --%>
+		    </div>
+		  </div>
+		  
+		  
 		  
 <!--   		 <div class="mb-3 row"> -->
 <!-- 		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">文案圖片</label> -->

@@ -129,13 +129,13 @@
 		  
 		  
 		  
-  		 <div class="mb-3 row">
-		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">圖片檔案</label>
-		    <div class="col-sm-10">
-		    	<form:input path="image" class="form-control" id="inputVendorDetailsImage" type='file' />
-		    	<form:errors path="image" class="form-control" id="inputVendorDetailsImage" cssClass="error" />
-		    </div>
-		  </div>
+<!--   		 <div class="mb-3 row"> -->
+<!-- 		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">圖片檔案</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="image" class="form-control" id="inputVendorDetailsImage" type='file' /> --%>
+<%-- 		    	<form:errors path="image" class="form-control" id="inputVendorDetailsImage" cssClass="error" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
 		  
 		  
 		  
