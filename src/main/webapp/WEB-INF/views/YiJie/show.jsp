@@ -25,7 +25,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<style>
         .happy{
-          width: 1300px;
+          width: 800px;
 		  background-color: aliceblue;
           margin: 50px auto;
           border:solid 1px gray;
@@ -50,17 +50,18 @@
 <body>
 
     <%@ include file="../layout/mynav.jsp"%>
-
+	
     <article id="" class="wrapper style2">
-		<div class="container-fluid " id="">
-			<div class="container">
-				<div><h1>律師</h1></div>
-				<!--<table>
+		<div class="container">
+			<div><h1>律師</h1></div>
+			<hr class="">
+				<table>
 					<c:forEach items="${listPicture}" var="picture">
-						<tr>-->
+						<tr>
 							<div class="happy">
 								<div class="bdcard">
-									<img src="${contextRoot}/customer/picture/lawyerimage" alt="Lawyer Image">
+									<img src="${contextRoot}/customer/picture/lawyerimage?pictureId=${picture.id}" 
+										width="150px" height="150px" alt="Lawyer Image">
 								</div>
 								<div class="bdtext">
 					  				<h1>給親愛的使用者</h1>
@@ -68,48 +69,14 @@
 					  				<p>為未來做準備，在之後的每一天，活的瀟灑不留遺憾!</p>
 								</div>
 							</div>
-				<!--		</tr>
+						</tr>
 					</c:forEach>
-				</table>-->
-				<div><h1>禮儀社</h1></div>
-				<div class="happy">
-					<div class="bdcard">
-					  <img src="${contextRoot}/customer/picture/morticianimage" alt="mortician image" />
-					</div>
-					<div class="bdtext">
-					  <h1>給親愛的使用者</h1>
-					  <p>專業律師事務所，如果你有需求，我們永遠都在。</p>
-					  <p>為未來做準備，在之後的每一天，活的瀟灑不留遺憾!</p>
-					</div>
-				</div>
-                <div><h1>諮商師</h1></div>
-				<div class="happy">
-					<div class="bdcard">
-					  	<img src="${contextRoot}/customer/picture/counselingimage" alt="counseling image" />
-					</div>
-					<div class="bdtext">
-					  	<h1>給親愛的使用者</h1>
-					  	<p>專業律師事務所，如果你有需求，我們永遠都在。</p>
-					  	<p>為未來做準備，在之後的每一天，活的瀟灑不留遺憾!</p>
-					</div>
-				</div>
-                <div><h1>其他</h1></div>
-				<div class="happy">
-					<div class="bdcard">
-					  	<img src="${contextRoot}/customer/picture/otherimage" alt="other image" />
-					</div>
-					<div class="bdtext">
-					  	<h1>給親愛的使用者</h1>
-					  	<p>專業律師事務所，如果你有需求，我們永遠都在。</p>
-					  	<p>為未來做準備，在之後的每一天，活的瀟灑不留遺憾!</p>
-					</div>
-				</div>
-		        
+				</table>
 			</div>
-		</div>
+			<br>
+			<a class="btn btn-outline-info" href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
 	</article>
 
-	</script>
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.scrolly.min.js"></script>

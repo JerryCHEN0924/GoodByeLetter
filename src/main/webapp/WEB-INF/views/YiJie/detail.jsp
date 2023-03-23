@@ -45,34 +45,6 @@
                                 value="${customerDetail.name}" path="name" />
 						</div>
 					</div>
-					<!--
-					<div class="mb-3 row">
-						<label for="type" class="col-sm-2 col-form-label">公司種類</label>
-						<div class="col-sm-10">
-							<div class="form-check form-check-inline ">
-								
-                                <form:radiobutton path="type" class="form-check-input" name="type"
- 									id="maleRadio" value="${customerDetail.type}" />
-								<label class="form-check-label" for="lawyerRadio"> 律師 </label>
-							</div>
-							<div class="form-check form-check-inline ">
-								<form:radiobutton path="type" class="form-check-input" name="type"
- 									id="morticianRadio" value="${customerDetail.type}" /> 
-                                <label class="form-check-label" for="morticianRadio"> 禮儀社 </label>									
-							</div>
-							<div class="form-check form-check-inline ">
-								<form:radiobutton path="type" class="form-check-input" name="type"
- 									id="counselingRadio" value="${customerDetail.type}" />                                  
-								<label class="form-check-label" for="counselingRadio"> 諮商師 </label>
-							</div>
-							<div class="form-check form-check-inline ">
-								<form:radiobutton path="type" class="form-check-input" name="type"
- 									id="otherRadio" value="${customerDetail.type}" />
-                                <label class="form-check-label" for="otherRadio"> 其他 </label>									
-							</div>
-						</div>
-					</div>
-					-->
 					<div class="mb-3 row">
 						<label for="email" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-10">
@@ -88,9 +60,10 @@
                                 value="${customerDetail.address}" path="address" placeholder="請填入地址" /> 
 						</div>
 					</div>
-					<button type="submit">送出</button>
-					<a href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
+					<button type="submit">送出</button><br>
 				</form:form>
+				<br>
+			<a class="btn btn-outline-info" href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
 			</div>
 		</div>
 	</article>
