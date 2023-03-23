@@ -139,21 +139,15 @@ article {
 	animation: animate 2s ease-in-out;
 }
 
-@
-keyframes animate { 0% {
+@keyframes animate { 
+0% {
 	width: 0px;
 	height: 0%;
 }
 
-100
-%
-{
-width
-:
-500px;
-height
-:
-500px;
+100%{
+width:500px;
+height:500px;
 }
 }
 /* 個別按鈕顏色 */

@@ -28,14 +28,13 @@
 
 	<style>
 		body{
-			
 			background-color: rgb(237, 167, 251);
 		}
 		div {
   			border: 1px solid black;
 		}
 		.container {
-			/*background-image: url("assets/css/images/bg.png");*/
+			background-image: url("/images/letters.jpg");
 			/*padding:8em 0;*/
 			/*background-image: url("${contextRoot}/");*/
 			display: flex;
@@ -76,15 +75,15 @@
 <body>
 
 	<div class="container">
-		<P>這裡是container</P>
+		<!--<P>這裡是container</P>-->
 		<div class="banana">我是標頭banana</div>
 		
-		<div class="left" style="width: 70%;">
+		<div class="left">
 			<p>這裡是左欄</p>
 			<h1>歡迎${exis.account}登入</h1>
 			<a class="btn btn-outline-info" href="<c:url value='/customer/logout'/>">${exis.account}登出</a>
 		</div>
-		<div class="right" style="width: 30%;">
+		<div class="right">
 			<p>這裡是右欄</p>
 			<div class="list-group">
 				<a href="<c:url value='/customer/picture/page1'/>" class="list-group-item list-group-item-action">投放圖片</a>
