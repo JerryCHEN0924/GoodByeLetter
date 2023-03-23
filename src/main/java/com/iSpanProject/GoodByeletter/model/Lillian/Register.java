@@ -53,6 +53,7 @@ public class Register {
 
 	@Column(name = "password",columnDefinition = "nvarchar(50)", nullable = false)
 	private String password;
+
 	
 	
 //	####################### Ryuz divider start #######################
