@@ -46,11 +46,16 @@ public class registerController {
 
 			if (register.getAccount() == "") {
 				errors.put("account", "請輸入您的帳號!");
+			}else if (register.getAccount().length() < 4 || register.getAccount().length() > 8) {
+			    errors.put("account", "帳號必需在4到8個數字或英文!");
 			}
 
 			if (register.getPassword() == "") {
 				errors.put("password", "請輸入您的密碼!");
-			}
+			}else if (register.getPassword().length() < 4 || register.getPassword().length() > 8) {
+				 errors.put("password", "密碼必需在4到8個數字或英文!");
+				}
+			
 			if (registerService.findByAcc(register.getAccount()) != null) {
 				errors.put("account1", "該帳號已被註冊!");
 			}

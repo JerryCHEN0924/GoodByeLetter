@@ -190,7 +190,7 @@ public class PictureController {
 		
 		detail.setPictures(photos);
 		if(photos==null) {
-			return "YiJie/upPicture2";
+			return "YiJie/updatePic";
 		}
 		cdDao.save(detail);
 			

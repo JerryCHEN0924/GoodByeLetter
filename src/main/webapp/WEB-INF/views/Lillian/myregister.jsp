@@ -50,7 +50,7 @@
 						<div class="col-sm-10">
 							<form:input type="text" path="account" onkeyup="value=value.replace(/[\W]/g,'') "
 								placeholder="account(請輸入4~8碼)" class="form-control"
-								maxlength="8" minlength="4" id="account" name="account" />
+								 id="account" name="account" />
 						</div>
 					</div>
 					<p id="pwd" style="color: red">${errors.password}</p>
@@ -59,7 +59,7 @@
 						<div class="col-sm-10">
 							<form:input type="password" path="password" onkeyup="value=value.replace(/[\W]/g,'') "
 								placeholder="password(請輸入4~8碼)" class="form-control"
-								maxlength="8" minlength="4" id="password" name="password" />
+								 id="password" name="password" />
 						</div>
 					</div>
 					<br>
