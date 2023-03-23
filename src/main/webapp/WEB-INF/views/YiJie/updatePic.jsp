@@ -34,15 +34,21 @@
                 <h1>上傳圖片頁面</h1>
                 <br>
                 <form id="picture-form" method="post" enctype="multipart/form-data">
-                    <div>
-                        <label for="picture-photos">上傳圖片</label>
-                        <input type="file" id="picture-photos" name="files" multiple>
+                    <div class="mb-3">
+                        <label for="picture-photos" class="form-label">上傳圖片</label>
+                        <input class="form-control" type="file" id="picture-photos" name="files" multiple>
                     </div>
                     <button type="submit">送出</button>
+                    <br>
+                    
                 </form>
                 <div id="upload_result"></div>
 
             </div>
+            <br>
+            <a class="btn btn-outline-info" href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
+            
+            
         </div>
     </article>
 <script>

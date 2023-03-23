@@ -25,37 +25,76 @@
 	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       
+
+	<style>
+		body{
+			
+			background-color: rgb(237, 167, 251);
+		}
+		div {
+  			border: 1px solid black;
+		}
+		.container {
+			/*background-image: url("assets/css/images/bg.png");*/
+			/*padding:8em 0;*/
+			/*background-image: url("${contextRoot}/");*/
+			display: flex;
+  			flex-wrap: wrap;
+			height:100vh;
+			background-color:azure;
+		}
+
+		.banana {
+  			flex-basis: 100%;
+  			padding: 20px;
+  			box-sizing: border-box;
+  			background-color: rgb(81, 169, 251);
+			height: 100px;
+		}
+
+		.left {
+  			flex-basis: 70%;
+  			padding: 20px;
+  			box-sizing: border-box;
+			background-color: antiquewhite;
+			height: 600px;
+		}
+
+		.right {
+  			flex-basis: 30%;
+  			padding: 20px;
+  			box-sizing: border-box;
+			background-color: aquamarine;
+			height: 600px;
+		}
+	</style>
 	</head>
 <body>
-<%-- 	<%@ include file="../layout/mynav.jsp"%> --%>
-	
-		
+	<%@ include file="../layout/mynav.jsp"%>
+
+	</head>
+<body>
+
 	<div class="container">
-		<div class="banner">
-			<span class="material-icons-outlined"><a class="a001" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a></span>
-		</div>
-		<div class="left">
+		<P>這裡是container</P>
+		<div class="banana">我是標頭banana</div>
+		
+		<div class="left" style="width: 70%;">
 			<p>這裡是左欄</p>
-			<h1>歡迎${exis.account}登入</h1><ul></ul>
+			<h1>歡迎${exis.account}登入</h1>
+			<a class="btn btn-outline-info" href="<c:url value='/customer/logout'/>">${exis.account}登出</a>
 		</div>
-		<div class="right">
+		<div class="right" style="width: 30%;">
 			<p>這裡是右欄</p>
-				<li>
-					<a class="a001" href="<c:url value='/customer/picture/page1'/>">投放圖片</a>
-				</li>
-				<li>
-					<a class="a001" href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>">更新廠商資料</a>
-				</li>
-				<li>
-					<a class="a001" href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>">圖片展示</a>
-				</li>
-				<li>
-					<a class="a001" href="<c:url value='/customer/logout?memberId=${exis.memberId}'/>">${exis.account}登出</a>
-				</li>
-				<li>
-					<a class="a001" href="<c:url value='/customer/add'/>">檢視廣告</a><!-- 之後此連結移到首頁 -->
-				</li>
-			</ul>
+			<div class="list-group">
+				<a href="<c:url value='/customer/picture/page1'/>" class="list-group-item list-group-item-action">投放圖片</a>
+				<a href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>" class="list-group-item list-group-item-action">更新廠商資料</a>
+				<a href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>" class="list-group-item list-group-item-action">圖片展示</a>
+				<a href="<c:url value='/customer/add'/>" class="list-group-item list-group-item-action">檢視律師廣告</a>
+				<a href="<c:url value='/customer/add2'/>" class="list-group-item list-group-item-action">檢視禮儀社廣告</a>
+				<a href="<c:url value='/customer/add3'/>" class="list-group-item list-group-item-action">檢視諮商師廣告</a>
+				<a href="<c:url value='/customer/add4'/>" class="list-group-item list-group-item-action">檢視其他廣告</a>
+			</div>
 		</div>
 	</div>
 	<script src="assets/js/jquery.min.js"></script>

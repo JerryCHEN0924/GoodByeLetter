@@ -90,10 +90,10 @@
 					</h4>
 					<h5>
 						建立時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${like.createTime}" />
 						更新時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${like.updateTime}" />
 					</h5>
 					<h3>${like.title}</h3>
@@ -116,10 +116,10 @@
 					</h4>
 					<h5>
 						建立時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${boardPage.createTime}" />
 						更新時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${boardPage.updateTime}" />
 					</h5>
 					<h3>${boardPage.title}</h3>

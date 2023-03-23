@@ -84,10 +84,10 @@
 					</h4>
 					<h5>
 						建立時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${newcomment.createTime}" />
 						更新時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${newcomment.updateTime}" />
 					</h5>
 					<p><form:textarea path="reply" value="${newcomment.reply}" placeholder="reply" class="form-control"/></p>

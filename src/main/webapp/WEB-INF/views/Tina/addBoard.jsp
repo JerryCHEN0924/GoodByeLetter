@@ -61,8 +61,8 @@
 <body>
 
 	<%@ include file="../layout/mynav.jsp"%>
-	
-	<article class="container-fluid wrapper" style="height:100vh">
+<!-- 	style="height:100vh" -->
+	<article class="container-fluid wrapper" >
 	<div class="container">
 	<div class="searchBoard">
 		<h3>新增留言板</h3>
@@ -91,14 +91,14 @@
 			<div class="messageContent" data-aos="fade-up">
 			<h4>最新留言:</h4>
 					<h4>
-						<strong>${lastestBoard.register.memberId}</strong>
+						<strong>${lastestBoard.register.account}</strong>
 					</h4>
 					<h5>
 						建立時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${lastestBoard.createTime}" />
 						更新時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${lastestBoard.updateTime}" />
 					</h5>
 					<h3>${lastestBoard.title}</h3>
