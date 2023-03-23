@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
+<c:set var="contextUser" value="${pageContext.request.userPrincipal}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +36,6 @@
 	box-sizing: border-box;
 	/* font-family: 'Patua One', cursive; */
 }
-
-
 
 /************article  *****************/
 article {
@@ -141,14 +139,21 @@ article {
 	animation: animate 2s ease-in-out;
 }
 
-@keyframes animate { 
-0% {
+@
+keyframes animate { 0% {
 	width: 0px;
 	height: 0%;
 }
- 100% {
-     width: 500px;
-     height: 500px;
+
+100
+%
+{
+width
+:
+500px;
+height
+:
+500px;
 }
 }
 /* 個別按鈕顏色 */
@@ -190,147 +195,155 @@ article {
 	justify-content: center;
 	margin: auto;
 }
-
 </style>
 
 </head>
 <body>
-	<%@ include file="layout/mynav.jsp"%>	
+	<%@ include file="layout/mynav.jsp"%>
 
-    <!-- letter animation  -->
-    <article id="">
-        <div class="mydesign">
-            <div class="leftside " style="background: #fafafa; ">
-                <div class="words">
-                    <ion-icon name="heart" id="heart" style="font-size: 4em; color: #f26d48;"></ion-icon>
-                    <h1>好好說再見</h1>
-                    <p>傳達來不及說、開不了口的文字給自己所愛的人</p>
-                    <div class="containbtn">
-                        <a href="<c:url value='/LastNote'/>"class="designbtn" id="designbtnLetter" data-delay="500">寫信</a>
-                    </div>
-                </div>
-            </div>
-            <div class="rightside" data-aos="fade-left"
-                style="display: flex; flex-direction: column;  background: rgba(239, 163, 138, 0.3); background-image: url('assets/css/images/bg.png');">
-                <h1  style=" color: rgba(189, 112, 108, 1); font-size: 5em; text-align: center;
-                font-family: 'Kaushan Script' , cursive;">
-                    For<br> Someone<br> Special</h1>
-                <div style="width:50%; height: auto;   margin:auto;  transform: rotate(-15deg);">
-                    <!-- border: 3px solid red; -->
-                    <img src="images/pixelEnvolop.png" class=" rightLetter" >
-                </div>
-            </div>
-        </div>
-    </article>
+	<!-- letter animation  -->
+	<article id="">
+		<div class="mydesign">
+			<div class="leftside " style="background: #fafafa;">
+				<div class="words">
+					<ion-icon name="heart" id="heart"
+						style="font-size: 4em; color: #f26d48;"></ion-icon>
+					<h1>GoodBye Letter</h1>
+<!-- 					<h4>傳達開不了口、來不及說的話語。</h4> -->
+					<div class="containbtn">
+						<a href="<c:url value='/LastNote'/>" class="designbtn"
+							id="designbtnLetter" data-delay="500">傳達開不了口、來不及說的話語。</a>
+					</div>
+				</div>
+			</div>
+			<div class="rightside" data-aos="fade-left"
+				style="display: flex; flex-direction: column; background: rgba(239, 163, 138, 0.3); background-image: url('assets/css/images/bg.png');">
+				<h1
+					style="color: rgba(189, 112, 108, 1); font-size: 5em; text-align: center; font-family: 'Kaushan Script', cursive;">
+					For<br> Someone<br> Special
+				</h1>
+				<div
+					style="width: 50%; height: auto; margin: auto; transform: rotate(-15deg);">
+					<!-- border: 3px solid red; -->
+					<img src="images/pixelEnvolop.png" class=" rightLetter">
+				</div>
+			</div>
+		</div>
+	</article>
 
-    <!-- shareIdea animation  -->
-    <article id="">
-        <div class="mydesign">
+	<!-- shareIdea animation  -->
+	<article id="">
+		<div class="mydesign">
 
-            <div class="rightside" data-aos="flip-up"
-                style="display: flex; flex-direction: column; background: rgba(249, 212, 35, 0.45 ); background-image: url('assets/css/images/bg.png');">
-                <h1 style=" color: rgba(126, 64, 196, 0.8); font-size: 5em; text-align: center;
-                font-family: 'Kaushan Script' , cursive;">
-                    Share<br> your<br> Thought</h1>
-                <div style="width:90%; height: auto;   margin:auto;">
-                    <!-- border: 3px solid red; -->
-                    <img src="images/everyidea.png" class="rightLetter">
-                </div>
-            </div>
-            <div class="leftside ">
-                <div class="words">
-                    <span class="material-icons"
-                        style="font-size: 4em; color:rgba(230, 161, 42, 0.85)">insert_comment</span>
-                    <h1>分享想法</h1>
-                    <p>傳達來不及說、開不了口的文字給自己所愛的人</p>
-                    <div class="containbtn">
-                        <a href="<c:url value='/board/page'/>" class="designbtn" id="designbtnChat" data-delay="500">交流區</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </article>
+			<div class="rightside" data-aos="flip-up"
+				style="display: flex; flex-direction: column; background: rgba(249, 212, 35, 0.45); background-image: url('assets/css/images/bg.png');">
+				<h1
+					style="color: rgba(126, 64, 196, 0.8); font-size: 5em; text-align: center; font-family: 'Kaushan Script', cursive;">
+					Share<br> your<br> Thought
+				</h1>
+				<div style="width: 90%; height: auto; margin: auto;">
+					<!-- border: 3px solid red; -->
+					<img src="images/everyidea.png" class="rightLetter">
+				</div>
+			</div>
+			<div class="leftside ">
+				<div class="words">
+					<span class="material-icons"
+						style="font-size: 4em; color: rgba(230, 161, 42, 0.85)">insert_comment</span>
+					<h1>分享想法</h1>
+<!-- 					<h4>你的故事是什麼?為什麼來到這裡，留下這封特別的信?</h4> -->
+					<div class="containbtn">
+						<a href="<c:url value='/board/page'/>" class="designbtn"
+							id="designbtnChat" data-delay="500">你的故事是什麼?為什麼來到這裡，留下這封特別的信?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
 
-    <!-- consult animation  -->
-    <article id="">
-        <div class="mydesign">
-            <div class="leftside">
-                <div class="words">
-                    <span class="material-icons" style="font-size: 4em; color:rgba(87, 92, 233, 0.748) ;">
-                        live_help
-                    </span>
-                    <h1>諮詢專業人士</h1>
-                    <p>傳達來不及說、開不了口的文字給自己所愛的人</p>
-                    <div class="containbtn">                    
-                        <a href="<c:url value='/customer/page' />" class="designbtn" id="designbtnConsult" data-delay="500" >諮詢</a>
-                    </div>
-                </div>
-            </div>
-            <div class="rightside" data-aos="zoom-out"
-                style="display: flex; flex-direction: column; background-color: rgba(61, 126, 170, 0.9); background-image: url('assets/css/images/bg.png');">
-                <h1 style=" color: rgb(255, 255, 255); font-size: 5em; text-align: center;
-                    font-family: 'Kaushan Script' , cursive;">
-                    For<br> Someone<br> Special</h1>
-                <div style="width:70%; height: auto;   margin:auto; ">
-                    <!-- border: 3px solid red; -->
-                    <img src="images/help-desk.png" class="rightLetter">
-                </div>
-            </div>
-        </div>
-    </article>
+	<!-- consult animation  -->
+	<article id="">
+		<div class="mydesign">
+			<div class="leftside">
+				<div class="words">
+					<span class="material-icons"
+						style="font-size: 4em; color: rgba(87, 92, 233, 0.748);">
+						live_help </span>
+					<h1>專業人士服務</h1>
+<!-- 					<h4>律師、諮商、禮儀社...等資訊。</h4> -->
+					<div class="containbtn">
+						<a href="<c:url value='/customer/page' />" class="designbtn"
+							id="designbtnConsult" data-delay="500">律師、諮商、禮儀社...等資訊。</a>
+					</div>
+				</div>
+			</div>
+			<div class="rightside" data-aos="zoom-out"
+				style="display: flex; flex-direction: column; background-color: rgba(61, 126, 170, 0.9); background-image: url('assets/css/images/bg.png');">
+				<h1
+					style="color: rgb(255, 255, 255); font-size: 5em; text-align: center; font-family: 'Kaushan Script', cursive;">
+					For<br> Someone<br> Special
+				</h1>
+				<div style="width: 70%; height: auto; margin: auto;">
+					<!-- border: 3px solid red; -->
+					<img src="images/help-desk.png" class="rightLetter">
+				</div>
+			</div>
+		</div>
+	</article>
 
-<!--work-->
-    <article id="">
-        <div class="container-fluid  wrapper style2">
-            <div class="container" style="margin: auto auto;">
-                <!-- border: 3px solid black; -->
-                <header>
-                    <h1 style=" font-size: 3em;font-weight: 700;letter-spacing: 5px;">關於我們/這個網站</h1>
-                    <p>這裡應該會寫這個網站的資訊/我們的創作理念之類</p>
-                </header>
-                <div class="row aln-center" style="margin: auto 0;">
-                    <div class=" col-4 col-6-medium col-12-small" data-aos="zoom-in">
-                        <section class="box style1">
-                            <span class="material-icons" style="font-size:1000%; color:rgb(220, 91, 27,0.8) ">
-                                diversity_1</span>
-                            <h2>留話給跟身邊的人</h2>
-                            <p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet
-                                consequat lorem
-                                dolore.</p>
-                        </section>
-                    </div>
-                    <div class="col-4 col-6-medium col-12-small" data-aos="zoom-in">
-                        <section class="box style1">
-                            <!-- color:rgba(216, 163, 238, 0.8) -->
-                            <span class="material-icons" style="font-size:1000%; color:rgba(249, 212, 35, 0.8)">
-                                auto_awesome </span>
-                            <h2>分享想法</h2>
-                            <p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet
-                                consequat lorem
-                                dolore.</p>
-                        </section>
-                    </div>
+	<!--work-->
+	<article id="">
+		<div class="container-fluid  wrapper style2">
+			<div class="container" style="margin: auto auto;">
+				<!-- border: 3px solid black; -->
+				<header>
+					<h1 style="font-size: 3em; font-weight: 700; letter-spacing: 5px;">GoodBye Letter
+						好好說再見</h1>
+					<p>沒有人知道，意外與明天，誰會先到來。 如果今天就是最後一天，你還有什麼未完成的事、來不及說出口的話?</p>
+						<p>人生總有遺憾，但在最後一刻到來前，準備好給親人、愛人、友人的最後一封信， 不多帶一個遺憾離開。</p>
+				</header>
+				<div class="row aln-center" style="margin: auto 0;">
+					<div class=" col-4 col-6-medium col-12-small" data-aos="zoom-in">
+						<section class="box style1">
+							<span class="material-icons"
+								style="font-size: 1000%; color: rgb(220, 91, 27, 0.8)">
+								diversity_1</span>
+							<h2>互動交流平台</h2>
+							<p>提供會員留言交流、線上聊天、諮商...等功能。</p>
+						</section>
+					</div>
+					<div class="col-4 col-6-medium col-12-small" data-aos="zoom-in">
+						<section class="box style1">
+							<!-- color:rgba(216, 163, 238, 0.8) -->
+							<span class="material-icons"
+								style="font-size: 1000%; color: rgba(249, 212, 35, 0.8)">
+								auto_awesome </span>
+							<h2>GoodBye Letter</h2>
+							<p>雙階段驗證降低風險。信件加密保護個人隱私。</p>
+						</section>
+					</div>
 
-                    <div class="col-4 col-6-medium col-12-small" data-aos="zoom-in">
-                        <section class="box style1">
-                            <span class="material-icons"
-                                style="font-size: 1000%; color: rgb(107, 141, 214, 0.8)">badge</span>
-                            <h2>諮詢專業人士</h2>
-                            <!-- <span class="material-icons"
+					<div class="col-4 col-6-medium col-12-small" data-aos="zoom-in">
+						<section class="box style1">
+							<span class="material-icons"
+								style="font-size: 1000%; color: rgb(107, 141, 214, 0.8)">badge</span>
+							<h2>專業服務</h2>
+							<!-- <span class="material-icons"
                                 style="font-size:1000%; color:rgb(107, 141, 214,0.8)">mark_as_unread</span>
                             <h2>說明後事處理形式</h2> -->
-                            <p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet
-                                consequat lorem
-                                dolore.</p>
-                        </section>
-                    </div>
-                </div>
-                <footer style="margin:50px 0;">
-                    <p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-                </footer>
-            </div>
-        </div>
-    </article>	
+							<p>即時提供專業諮詢。</p>
+						</section>
+					</div>
+				</div>
+				<footer style="margin: 50px 0;">
+					<p>這邊要放footer嗎? 可以放下面1.智慧財產權聲明 2.開發團隊聯絡方式</p>
+					<p>&copy; 2023 GoodBye Letter. All Rights Reserved.</p>
+					<a href="mailto:goodbyeletter.iii@gmail.com">聯繫GoodBye Letter開發團隊</a>
+
+				</footer>
+			</div>
+		</div>
+	</article>
 
 
 	<!-- Scripts -->
