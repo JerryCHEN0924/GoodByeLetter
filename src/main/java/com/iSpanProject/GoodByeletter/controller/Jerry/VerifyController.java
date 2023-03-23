@@ -39,7 +39,7 @@ public class VerifyController {
 	@GetMapping("/verify")
 	public String verifyToken(@RequestParam("code") String token, Model model) {
 		boolean verify = vs.checkToken(token);
-		// 如果Token驗證成功，導向編輯頁面(這邊可考慮做一個頁面告知驗證成功，驗證日已經往後推移6個月請登入確認，再跳轉到首頁。)
+		// 如果Token驗證成功，導向驗證成功頁面
 		if (verify) {
 			return "redirect:/LastNote/VerifySuccess";
 		} else {
@@ -47,12 +47,5 @@ public class VerifyController {
 			return "redirect:/LastNote/VerifyFail";
 		}
 	}
-
-//	// 跳頁，驗證信功能測試	
-//	@GetMapping("/LastNote/sendVerificationEmail")
-//	public String LastNoteTestSendMail() {
-//		lastnoteService.sendVerificationEmail();
-//		return "redirect:/LastNote/test";
-//	}
 
 }
