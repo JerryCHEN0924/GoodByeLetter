@@ -90,34 +90,39 @@ public class BackendVendorDetailsBackupController {
 		
 		
 		
-		MultipartFile image = vendorDetails.getImage();
+//		MultipartFile image = vendorDetails.getImage();
+//		
+//		List<Picture> photos = vendorDetails.getPictures();
+//		
+//		
+//		if (image != null && !image.isEmpty()) {
+//			
+//			try {
+//				
+//				Picture picture = new Picture();
+//				byte[] b = image.getBytes();
+//				picture.setPhotoFile(b);
+//				
+//			}catch (Exception e) {
+//				
+//				e.printStackTrace();
+//				
+//				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+//				
+//			}
+//			
+//		}
 		
-		Picture picture = new Picture();
 		
-		if (image != null && !image.isEmpty()) {
-			
-			try {
-				
-				byte[] b = image.getBytes();
-				picture.setPhotoFile(b);
-				
-			}catch (Exception e) {
-				
-				e.printStackTrace();
-				
-				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
-				
-			}
-			
-		}
+		
 		
 //		backendVendorPhotosBackupService.insertVendorPhotos(picture);
 		
-		List<Picture> currentPicture = new ArrayList<>();
+//		List<Picture> currentPicture = new ArrayList<>();
+//		
+//		currentPicture.add(picture);
 		
-		currentPicture.add(picture);
-		
-		vendorDetails.setPictures(currentPicture);
+//		vendorDetails.setPictures(currentPicture);
 		
 		
 //		======================= So weird =======================
@@ -125,6 +130,12 @@ public class BackendVendorDetailsBackupController {
 //		======================= So weird =======================
 //		####################### i am divider #######################
 		
+		
+		
+		
+		
+		
+//		vendorDetails.setPictures(photos);
 		
 		
 		

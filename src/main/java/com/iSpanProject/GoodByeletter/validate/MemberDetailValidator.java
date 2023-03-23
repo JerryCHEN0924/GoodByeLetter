@@ -9,7 +9,19 @@ import org.springframework.validation.Validator;
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 
 
+
+//@Service
+//@Configuration
+//@Component
 public class MemberDetailValidator implements Validator {
+	
+	
+	
+//	@Autowired
+//	private BackendRegisterService backendRegisterService;
+//	
+//	@Autowired
+//	private BackendRegisterRepository backendRegisterRepository;
 	
 	
 	private static final Pattern EMAIL_REGEX = Pattern.compile("^[\\w\\d._-]+@[\\w\\d.-]+\\.[\\w\\d]{2,6}$");
@@ -38,6 +50,7 @@ public class MemberDetailValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "", "性別欄位不正確");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "County", "", "County欄位不正確");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "", "地址欄位不正確");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthday", "", "生日欄位不正確");
 		
 		
 //		ValidationUtils.rejectIfEmpty(errors, "gender", "", "gender欄不能空白");
@@ -53,6 +66,41 @@ public class MemberDetailValidator implements Validator {
 //		}
 		
 		
+		
+		
+//		####################### Ryuz divider #######################
+		
+		
+//		String account = memberDetail.getAccount();
+//		
+//		System.out.println("==========================");
+//		System.out.println("==========================");
+//		System.out.println(account);
+//		System.out.println("==========================");
+//		System.out.println("==========================");
+		
+//		BackendRegisterService backendRegisterService = new BackendRegisterService();
+		
+//		boolean checkAccountExist = backendRegisterService.checkAccountExist(account);
+//		
+//		if(!checkAccountExist) {
+//			
+//			errors.rejectValue("account", "", "account 不存在");
+//		}
+		
+		
+//		Optional<Register> optional = backendRegisterRepository.findByAccount(account);
+//		
+//		
+//		if(optional.isEmpty()) {
+//			
+//			errors.rejectValue("account", "", "account 不存在");
+//			
+//		}
+		
+		
+		
+//		####################### i am divider #######################
 		
 		
 		

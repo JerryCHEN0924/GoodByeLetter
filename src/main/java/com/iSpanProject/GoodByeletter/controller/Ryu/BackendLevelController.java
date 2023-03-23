@@ -55,6 +55,17 @@ public class BackendLevelController {
 		
 		String levelName = level.getLevelName();
 		
+		boolean checkLevelExist = backendLevelService.checkLevelExist(levelName);
+		
+		if(checkLevelExist) {
+			
+			redirectAttributes.addFlashAttribute("backendHomeMessages", "權限名稱 [ " + levelName + " ] 已存在");
+			
+			return "redirect:/topGun/level/add";
+			
+		}
+		
+		
 		backendLevelService.insertLevel(level);
 		
 //		Level newlevel = new Level();

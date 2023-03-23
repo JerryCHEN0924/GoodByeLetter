@@ -237,6 +237,25 @@ public class BackendRegisterService {
 	
 	
 	
+	// check account exist
+	public boolean checkAccountExist(String account) {
+		
+		boolean checkAcc = false;
+		
+		Optional<Register> optional = backendRegisterRepository.findByAccount(account);
+		
+		if(optional.isPresent()) {
+			
+			checkAcc = true;
+			
+		}
+		
+		return checkAcc;
+		
+	}
+	
+	
+	
 	
 
 }

@@ -8,7 +8,7 @@ public interface BackendMemberDetailRepository extends JpaRepository<MemberDetai
 	
 	
 	
-	
+//	Optional<MemberDetail> findByAddress(String address);
 	
 	
 	

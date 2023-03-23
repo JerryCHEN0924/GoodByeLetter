@@ -507,18 +507,25 @@
                                             $("#toName").val(toName);
                                             $("#showToName").html("跟" + toName + "聊天");
                                             console.log("toName:" + toName);
+
+
                                             //get sessionStorage
                                             var chatData = sessionStorage.getItem(toName);
                                             console.log("chatData:" + chatData);
                                             if (chatData != null) {
-                                                //將聊天紀錄渲染到聊天區
+                                            //將聊天紀錄(chatData)渲染到聊天區
                                                 $("#chat-content").html(chatData);
-                                            } else {
+                                            }//如果沒有聊天紀錄(chatData),我就渲染""到聊天室~
+                                            else {
                                                 $("#chat-content").html("");
                                             }
                                         })
                                     }
                                     else {
+                                        //判斷toName 是否為"undefined",是則toName = dataJson.fromName
+                                        if (typeof toName === 'undefined') {
+                                            toName = dataJson.fromName;
+                                        }
                                         //將訊息印在左半部
                                         var str = '<div class="media media-chat">'
                                             + '<img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">'
@@ -526,17 +533,21 @@
                                             + '<p>'
                                             + dataJson.fromName + ": " + dataJson.message
                                             + '</p></div></div>';
+                                            
                                         //if dataJson.fromName是toName(目前聊天對象) 才顯示聊天內容在聊天區
-                                        if (dataJson.fromName == toName) {
+                                        if (toName == dataJson.fromName) {
                                             $('#chat-content').append(str);
                                         }
-                                        console.log("strtoName: " + toName)
+                                        
                                         //set sessionStorage
                                         var chatData = sessionStorage.getItem(toName);
                                         if (chatData != null) {
                                             str = chatData + str;
                                         }
+                                        
                                         sessionStorage.setItem(toName, str);
+
+
                                     }
                                     console.log('接收到内容(event.data)：' + event.data);
                                 }

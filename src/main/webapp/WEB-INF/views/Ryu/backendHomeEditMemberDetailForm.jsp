@@ -89,19 +89,128 @@
 		  
 		  
 		  
-  		 <div class="mb-3 row">
+<!--   		 <div class="mb-3 row"> -->
+<!-- 		    <label for="inputGender" class="col-sm-2 col-form-label">性別</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="gender" class="form-control" id="inputGender" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
+
+
+		<div class="mb-3 row">
 		    <label for="inputGender" class="col-sm-2 col-form-label">性別</label>
+		    <div class="col-sm-8">
+		    
+		    
+		    		<c:choose>
+		    		
+		    		
+		    		
+		    			<c:when test="${memberDetail.gender == 'male'}">
+		    				<input type="radio" class="btn-check" name="gender" id="inputGender01" autocomplete="off" value="male" checked>
+							<label class="btn btn-outline-primary" for="inputGender01">男性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender02" autocomplete="off" value="female">
+							<label class="btn btn-outline-danger" for="inputGender02">女性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender03" autocomplete="off" value="nonbinary">
+							<label class="btn btn-outline-success" for="inputGender03">中性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender04" autocomplete="off" value="secret">
+							<label class="btn btn-outline-secondary" for="inputGender04">保密</label>
+							
+		    			</c:when>
+		    			
+		    			
+		    			
+		    			<c:when test="${memberDetail.gender == 'female'}">
+		    				<input type="radio" class="btn-check" name="gender" id="inputGender01" autocomplete="off" value="male">
+							<label class="btn btn-outline-primary" for="inputGender01">男性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender02" autocomplete="off" value="female" checked>
+							<label class="btn btn-outline-danger" for="inputGender02">女性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender03" autocomplete="off" value="nonbinary">
+							<label class="btn btn-outline-success" for="inputGender03">中性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender04" autocomplete="off" value="secret">
+							<label class="btn btn-outline-secondary" for="inputGender04">保密</label>
+							
+		    			</c:when>
+		    			
+		    			
+		    			
+		    			<c:when test="${memberDetail.gender == 'nonbinary'}">
+		    				<input type="radio" class="btn-check" name="gender" id="inputGender01" autocomplete="off" value="male">
+							<label class="btn btn-outline-primary" for="inputGender01">男性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender02" autocomplete="off" value="female">
+							<label class="btn btn-outline-danger" for="inputGender02">女性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender03" autocomplete="off" value="nonbinary" checked>
+							<label class="btn btn-outline-success" for="inputGender03">中性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender04" autocomplete="off" value="secret">
+							<label class="btn btn-outline-secondary" for="inputGender04">保密</label>
+							
+		    			</c:when>
+		    			
+		    			
+		    			
+		    			
+		    			
+		    			
+		    			
+		    			<c:otherwise>
+		    			
+			    			<input type="radio" class="btn-check" name="gender" id="inputGender01" autocomplete="off" value="male">
+							<label class="btn btn-outline-primary" for="inputGender01">男性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender02" autocomplete="off" value="female">
+							<label class="btn btn-outline-danger" for="inputGender02">女性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender03" autocomplete="off" value="nonbinary">
+							<label class="btn btn-outline-success" for="inputGender03">中性</label>
+							
+							<input type="radio" class="btn-check" name="gender" id="inputGender04" autocomplete="off" value="secret" checked>
+							<label class="btn btn-outline-secondary" for="inputGender04">保密</label>
+							
+		    			</c:otherwise>
+		    			
+		    			
+		    			
+		    		</c:choose>
+		    	
+<%-- 		    	<form:errors path="gender" class="form-control" id="inputGender" cssClass="error" /> --%>
+		    	
+		    	
+		    	
+		    </div>
+		  </div>
+
+
+		  
+<!--   		 <div class="mb-3 row"> -->
+<!-- 		    <label for="inputBirthday" class="col-sm-2 col-form-label">生日</label> -->
+<!-- 		    <div class="col-sm-10"> -->
+<%-- 		    	<form:input path="birthday" class="form-control" id="inputBirthday" /> --%>
+<!-- 		    </div> -->
+<!-- 		  </div> -->
+		  
+		  
+		   <div class="mb-3 row">
+		    <label for="inputBirthday" class="col-sm-2 col-form-label">生日</label>
 		    <div class="col-sm-10">
-		    	<form:input path="gender" class="form-control" id="inputGender" />
+		    
+<%-- 		    	<form:input path="birthday" class="form-control" id="inputBirthday" placeholder="yyyy-MM-dd" /> --%>
+		    	
+		    	<input name="birthday" type="date" class="form-control" id="inputBirthday" placeholder="yyyy-MM-dd" value="${memberDetail.birthday}"/>
+<%-- 		    	<form:errors path="birthday" class="form-control" id="inputBirthday" cssClass="error" /> --%>
 		    </div>
 		  </div>
 		  
-  		 <div class="mb-3 row">
-		    <label for="inputBirthday" class="col-sm-2 col-form-label">生日</label>
-		    <div class="col-sm-10">
-		    	<form:input path="birthday" class="form-control" id="inputBirthday" />
-		    </div>
-		  </div>
+		  
+		  
 		  
   		 <div class="mb-3 row">
 		    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>

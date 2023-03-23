@@ -158,7 +158,7 @@
 
 <table class="table table-striped table-hover table-bordered border-dark table-success caption-top align-middle">
 
-  <caption class="text-center fs-3 text-white">審核廣告商投放權限</caption>
+  <caption class="text-center fs-3 text-white">審核廣告商權限</caption>
   
 	
 
@@ -167,7 +167,8 @@
     <tr class="table-active">
       <th scope="col">編號</th>
       <th scope="col">帳號</th>
-      <th scope="col">密碼</th>
+<!--       <th scope="col">密碼</th> -->
+      <th scope="col">廣告文案</th>
 <!--       <th scope="col">文案圖片</th> -->
       <th scope="col">編輯</th>
     </tr>
@@ -182,9 +183,42 @@
     <tr>
       <th scope="row">${register.memberId}</th>
       <td>${register.account}</td>
-      <td>${register.password}</td>
+<%--       <td>${register.password}</td> --%>
+      
+      
+      
+      <td>
+      
+      
+      	<div class="d-flex justify-content-center">
+      	
+      		<div class="mx-1">
+	  	    
+		      
+		      <c:choose>
+			    <c:when test="${not empty register.customerDetail.pictures}">
+			        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/vendorDetailsBackup/enableEdit?memberId=${register.memberId}'  />">有文案</a>
+			    </c:when>
+			    <c:otherwise>
+			        <a class="btn btn-secondary" type="button" href="<c:url value='/topGun/vendorDetailsBackup/enableEdit?memberId=${register.memberId}'  />">無文案</a>
+			    </c:otherwise>
+			</c:choose>
+	      
+			</div>
+			
+		</div>
+      
+       
+      
+      </td>
+
+
+
 <%--       <td><img width='200' height='200' src="<c:url value='/topGun/vendorPhotos/picture/${vendorPhotos.vendorPhotosId}' />" /></td> --%>
       <td>
+      
+      
+      
       
       
       	<div class="d-flex justify-content-center">
