@@ -522,7 +522,6 @@
                                         })
                                     }
                                     else {
-
                                         //判斷toName 是否為"undefined",是則toName = dataJson.fromName
                                         if (typeof toName === 'undefined') {
                                             toName = dataJson.fromName;
