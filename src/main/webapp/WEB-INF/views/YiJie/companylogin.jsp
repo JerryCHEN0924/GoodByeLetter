@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       
+
 	<style>
 		body{
 			background-color: rgb(237, 167, 251);
@@ -66,6 +67,10 @@
 	</head>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
+
+	</head>
+<body>
+
 	<div class="container">
 		<div class="banana">我是標頭banana</div>
 		

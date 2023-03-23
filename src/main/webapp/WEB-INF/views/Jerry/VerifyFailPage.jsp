@@ -40,7 +40,7 @@
 	<article id="myspace" class="wrapper style2">
 		<div class="container-fluid " id="register">
 			<div id="space">
-				<h1 class="display-1">驗證失敗！！請盡速聯絡管理員！！！</h1>
+				<h1 class="display-1">驗證失敗！請盡速聯絡管理員！！</h1>
 			</div>
 
 		</div>

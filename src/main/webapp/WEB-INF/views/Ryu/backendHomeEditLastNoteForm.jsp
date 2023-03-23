@@ -156,6 +156,19 @@
 		  
 		  
 		  <div class="mb-3 row">
+		    <label for="inputEnabled" class="col-sm-2 col-form-label">啟用狀態</label>
+		    <div class="col-sm-10">
+		    	<form:input path="enabled" class="form-control" id="inputEnabled" />
+		    	<form:errors path="enabled" class="form-control" id="inputEnabled" cssClass="error" />
+		    </div>
+		  </div>
+		  
+		  
+		  
+		  
+		  
+		  
+		  <div class="mb-3 row">
 		    <label for="inputCounty" class="col-sm-2 col-form-label">信箱內容</label>
 		    <div class="col-sm-10">
 		    	<form:textarea path="notedetail" class="form-control" id="inputNotedetail" rows="15" cols="" />

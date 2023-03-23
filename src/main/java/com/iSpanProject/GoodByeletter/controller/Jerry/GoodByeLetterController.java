@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.catalina.connector.Response;
 import org.jasypt.encryption.StringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,6 @@ public class GoodByeLetterController {
 	// 跳頁，進入撰寫遺囑頁面。
 	@GetMapping("")
 	public String addNote(Model model) {
-// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
 //		if (!model.containsAttribute("existing")) {
 //			return "redirect:/register/login1";
 //		}
@@ -45,7 +45,7 @@ public class GoodByeLetterController {
 		return "Jerry/LastNote";
 	}
 
-	// Post方法存入遺囑後，重新導向到遺囑編輯頁面。因為使用validation驗證資料，但不知道為什麼沒辦法捕捉錯誤並處理。
+	// Post方法存入遺囑後，重新導向到遺囑編輯頁面。使用validation做後端驗證，但不知道為什麼沒辦法捕捉錯誤並處理。
 	@PostMapping
 	public String addLastNote(@Valid @ModelAttribute("LastNote") LastNote lastNote, Model model,BindingResult result) {
 		if (result.hasErrors()) {
@@ -71,10 +71,7 @@ public class GoodByeLetterController {
 	// 跳頁，進入編輯遺囑頁面。
 	@GetMapping("/edit")
 	public String LastNoteEdit(Model model) {
-// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
-//		if (!model.containsAttribute("existing")) {
-//			return "redirect:/register/login1";
-//		}
+
 		Register memberid = (Register) model.getAttribute("existing");
 		List<LastNote> lastNotes = lastnoteService.findlastNoteBymember(memberid);
 		// 解密

@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-<c:set var="contextUser" value="${pageContext.request.userPrincipal}"/>
+<%-- <c:set var="contextUser" value="${pageContext.request.userPrincipal}"/> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,15 +61,16 @@
 <body>
 
 	<%@ include file="../layout/mynav.jsp"%>
-	
-	<article class="container-fluid wrapper" style="height:100vh">
+<!-- 	style="height:100vh" -->
+	<article class="container-fluid wrapper" >
 	<div class="container">
 	<div class="searchBoard">
 		<h3>新增留言板</h3>
 	</div>
 	
 	<hr>
-	<c:if test="${contextUser.name == newboard.register.account}">
+<%-- 	<c:if test="${contextUser.name == newboard.register.account}"> --%>
+		<c:if test="${not empty existing or not empty exis}"> 
 			<div class="messageContent">
 			<form:form action="${contextRoot}/board/post"
 				modelAttribute="newboard">
@@ -90,14 +91,14 @@
 			<div class="messageContent" data-aos="fade-up">
 			<h4>最新留言:</h4>
 					<h4>
-						<strong>${lastestBoard.register.memberId}</strong>
+						<strong>${lastestBoard.register.account}</strong>
 					</h4>
 					<h5>
 						建立時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${lastestBoard.createTime}" />
 						更新時間:
-						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm/ss EEEE"
+						<fmt:formatDate pattern="yyyy/MM/dd, HH:mm:ss EEEE"
 							value="${lastestBoard.updateTime}" />
 					</h5>
 					<h3>${lastestBoard.title}</h3>

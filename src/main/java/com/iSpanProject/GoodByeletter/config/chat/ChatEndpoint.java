@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iSpanProject.GoodByeletter.controller.Lillian.registerController;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.model.Tina.chat.Message;
 import com.iSpanProject.GoodByeletter.model.Tina.chat.utils.MessageUtils;
@@ -46,7 +45,6 @@ public class ChatEndpoint {
 	//private static Map<String, Session> livingSessions = new ConcurrentHashMap<>();
 	
 	
-	
 	//連接建立時使用
 	@OnOpen
 	public void onOpen(Session session, @PathParam("userName") String userName, EndpointConfig config) {
@@ -61,7 +59,9 @@ public class ChatEndpoint {
 		onlineUsers.put(userName, this);		
 		System.out.println(userName + " 加入聊天室;");
 		//livingSessions.put(userName, session);
-		sendMessageToAll(userName + " 加入聊天室");
+		
+		
+		//sendMessageToAll(userName + " 加入聊天室");
 	}
 
 	//接收到client端發送數據時使用
@@ -80,14 +80,16 @@ public class ChatEndpoint {
 			String messagetext = mess.getMessagetext();
 			System.out.println(messagetext);
 	
-			//透過toName找到對方的session,把訊息給對方
+			//發送訊息
+			//1.透過toName找到對方的session,把訊息給對方
 			String getResultMessageString =MessageUtils.getResultMessage(false ,userName, messagetext);
 			System.out.println("onMessage: "+userName);
+			
 			onlineUsers.get(toName).session.getAsyncRemote().sendText(getResultMessageString);
 			
-			//將當前在線用戶(系統消息)推給所有用戶
-//			String systemResultMessageString = MessageUtils.getResultMessage(true, null, getOnlineNames());
-//			sendMessageToAll(systemResultMessageString);
+			//2.將當前在線用戶(系統消息)推給所有用戶
+			String systemResultMessageString = MessageUtils.getResultMessage(true, null, getOnlineNames());
+			sendMessageToAll(systemResultMessageString);
 			
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
@@ -112,18 +114,24 @@ public class ChatEndpoint {
 	//連接關閉時使用
 	@OnClose
 	public void onClose(Session session, @PathParam("userName") String userName) {
-		onlineUsers.remove(userName);
+		//onlineUsers.remove(userName);
+		System.out.println(userName+"離開聊天室");
+		onlineUsers.remove(session, userName);
 		//livingSessions.remove(session.getId());
-		sendMessageToAll(userName + " 退出聊天室");
+		//sendMessageToAll(userName + " 退出聊天室");
 	}
 
 	// 群發
 	public void sendMessageToAll(String message) {
 		//透過onlineUsers取得endPoint集合,然後再取得對應的session
-		Set<String> names = onlineUsers.keySet();
-		for (String name : names) {
-		ChatEndpoint chatEndpoint = onlineUsers.get(name);
-		chatEndpoint.session.getAsyncRemote().sendText(message);
+		try {
+			Set<String> names = onlineUsers.keySet();
+			for (String name : names) {
+			ChatEndpoint chatEndpoint = onlineUsers.get(name);
+			chatEndpoint.session.getAsyncRemote().sendText(message);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 				
 		//透過livingSessions的session集合 取得要傳送的客戶端session

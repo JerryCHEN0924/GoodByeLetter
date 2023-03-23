@@ -9,6 +9,7 @@
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 			<script src="${contextRoot}/js/jquery-3.6.3.min.js"></script>
 			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+			
 		</head>
 		<style>
 			.container {
@@ -74,6 +75,8 @@
 
 		<body>
 			<%@ include file="../layout/mynav.jsp" %>
+			
+			
 				<!--login  login_form_class-->
 				<article class="wrapper style2" style="height: 100vh">
 					<div class="container" id="login_form">
@@ -93,12 +96,12 @@
 							<div class="g-recaptcha" data-sitekey="6LeOchQlAAAAAAMkF9gXcPSwvT3Sr_hhaDaExdN2"
 								data-callback="robotCheck">
 							</div>
-							<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-							<input type="hidden" name="ip" id="ip">
-							<input type="hidden" name="ip" id="a">
+<!-- 							<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response"> -->
+<!-- 							<input type="hidden" name="ip" id="ip"> -->
 							<label>
 								<input type="checkbox" name="rememberMe" value="1">記住我
 							</label>
+<!-- 							<div id="html_element"></div> -->
 							<button type="submit" id="login_submit">登入</button>
 						</form>
 						<div><a href="<c:url value='/forgetpwd' />">忘記密碼</a></div>
@@ -106,11 +109,21 @@
 					</div>
 				</article>
 
-
+				
+				
 				<script>
-					function robotCheck() {
-						document.getElementById('g-recaptcha-response').value = grecaptcha.getResponse();
-					}
+// 					function robotCheck() {
+// 						document.getElementById('g-recaptcha-response').value = grecaptcha.getResponse();
+// 					}
+// 					var xhr = new XMLHttpRequest();
+// 					xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify');
+// 					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// 					xhr.onload = function() {
+// 					  var response = JSON.parse(xhr.responseText);
+// 					  // 解析reCAPTCHA返回的JSON結果
+// 					};
+// 					xhr.send('secret=6LeOchQlAAAAAF3KDsU_wiFWAC9hKUSNQh69Gz_h&response=' + robotCheck);
+
 
 
 

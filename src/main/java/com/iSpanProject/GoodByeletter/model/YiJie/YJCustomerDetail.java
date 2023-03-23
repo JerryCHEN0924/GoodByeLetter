@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iSpanProject.GoodByeletter.model.Lillian.Level;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
@@ -28,7 +31,8 @@ public class YJCustomerDetail {
 	private Integer id;
 
 	
-	@OneToOne(cascade = { CascadeType.PERSIST })
+	// @OneToOne(cascade = { CascadeType.PERSIST })
+	@OneToOne
 	@JoinColumn(name = "FK_memberId", foreignKey=@ForeignKey(name = "FK_companydetail_member"))
 	private Register FK_memberId;
 
@@ -55,10 +59,63 @@ public class YJCustomerDetail {
 	//@OneToMany(cascade = CascadeType.ALL, mappedBy = "picture", orphanRemoval = true), mappedBy = "picture"
 	//0317
 	//@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "picture")
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name="fk_companydetail_id")//單向一對多的JoinColumn是寫在一方，雙向控管時寫在多方
+//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//	@JoinColumn(name="fk_companydetail_id")//單向一對多的JoinColumn是寫在一方，雙向控管時寫在多方
+//	private List<Picture> pictures = new ArrayList<>();
+	
+	
+	
+	// 改成雙向 => 後臺管控 => 修改 Picture
+	@OneToMany(mappedBy="customerDetail", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Picture> pictures = new ArrayList<>();
 	
+	
+	
+	
+	
+	
+	
+//	####################### Ryuz divider #######################
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+	
+	
+	@Transient
+	MultipartFile image;
+	
+	@Transient
+	private String account;
+	
+	
+	public MultipartFile getImage() {
+		return image;
+	}
+	
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+	
+	public String getAccount() {
+		return account;
+	}
+	
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	
+
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	===================== 後臺管控預留項目 勿刪 勿刪 勿刪 =====================
+//	####################### i am divider #######################
+	
+	
+	
+	
+	
+	
+
 	public List<Picture> getPictures() {
 		return pictures;
 	}
