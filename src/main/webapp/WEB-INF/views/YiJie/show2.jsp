@@ -51,17 +51,18 @@
 
     <%@ include file="../layout/mynav.jsp"%>
 	
-	<article id="" class="wrapper style2">
+    	
+    <article id="" class="wrapper style2">
 		<div class="container">
-			<div><h1>律師</h1></div>
+			<div><h1>禮儀社</h1></div>
 			<hr class="">
 				<table>
 					<c:forEach items="${listPicture}" var="picture">
 						<tr>
 							<div class="happy">
 								<div class="bdcard">
-									<img src="${contextRoot}/customer/picture/lawyerimage?pictureId=${picture.id}" 
-										width="150px" height="150px" alt="Lawyer Image">
+									<img src="${contextRoot}/customer/picture/mortimage?pictureId=${picture.id}" 
+										width="150px" height="150px" alt="mort image">
 								</div>
 								<div class="bdtext">
 					  				<h1>給親愛的使用者</h1>

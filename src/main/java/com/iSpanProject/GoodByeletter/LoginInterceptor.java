@@ -38,9 +38,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     	            cookieFound = true;
     	            break;
     	        }else {
-    	        	System.out.println("===============");;
-    	        	System.out.println("nonononononnonono cookie");;
-    	        	System.out.println("===============");;
+    	        	System.out.println("nonononononnonono cookie"); 	        	
     	        }
     	    }
     	}
@@ -51,16 +49,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     	    // 如果從Cookie中没有獲取到數據，則從session中獲取數據
     	    Register register = (Register) session.getAttribute("existing");
     	    if (register != null) {
-    	    	System.out.println("aaaaaaaaaaaaaaaaaaaaa");
     	        return true;
     	    } else {
     	    	if(!"/index/".equals(requestURI)){//如果沒有session或cookie，使用者點擊除了首頁以外 -> return false 就會到/register/login1
-    	    		
-    	    		System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbb");
     	    		response.sendRedirect(request.getContextPath()+"/register/login1");
     	    		return false;
     	    	}
-    	    	System.out.println("cccccccccccccccccccccccccccb");
     	        return true;//如果使用者想要進入index,-> return true 就可以進去
     	    }
     	}

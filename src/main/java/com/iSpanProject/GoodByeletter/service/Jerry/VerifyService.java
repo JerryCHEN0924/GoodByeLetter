@@ -89,7 +89,8 @@ public class VerifyService {
 						+ "---------------------------------------------------------------<br>"
 						+ "<span style='font-size:14px;'>謝謝您。好好說再見開發團隊敬上</span>";
 				String email = memberDetail.getEmail();
-
+				if (email.isEmpty())
+					return;
 
 				try {
 					sendMail.sendEmail(email, subject, mailContent);
@@ -128,12 +129,14 @@ public class VerifyService {
 							+ memberName + "」先生/小姐指定您為GoodBye Letter的第二驗證人，" + "若您確認「" + memberName + "」先生/小姐安然無恙，"
 							+ "請點擊連結以進行驗證:</span>" + "<a href='http://localhost:8080/index/LastNote/verify?code="
 							+ verificationCode + "'>" + "<span style='font-size:20px;color:green;'>驗證連結</span></a><br>"
-							+ "<br><span style='font-size:16px;;'>若您未於收到信後的48小時進行驗證，「" + memberName + "」先生/小姐存放的信件將會自動寄出。</span>"
-							+ "<br>---------------------<br>"
+							+ "<br><span style='font-size:16px;;'>若您未於收到信後的48小時進行驗證，「" + memberName
+							+ "」先生/小姐存放的信件將會自動寄出。</span>" + "<br>---------------------<br>"
 							+ "<span style='font-size:14px;'>謝謝。好好說再見開發團隊敬上</span>";
 
 					String email = lastNote.getVerify1();
 					String email2 = lastNote.getVerify2();
+					if (email.isEmpty() || email2.isEmpty())
+						return;
 
 					try {
 						sendMail.sendEmail(email, subject, mailContent);
@@ -163,9 +166,6 @@ public class VerifyService {
 				// 如果驗證日期比今天日期慢六天，就寄信
 				if (dbDate.isBefore(today.minusDays(verifyFailDay))) {
 					Integer memberId = lastNote.getFK_memberId().getMemberId();
-					System.out.println("==========");
-					System.out.println("memberId號碼是:" + memberId);
-					System.out.println("==========");
 					MemberDetail memberDetail = mds.findByMemberId(memberId);
 					String memberName = memberDetail.getName();
 					String notedetail = lastNote.getNotedetail();
@@ -176,12 +176,10 @@ public class VerifyService {
 					String recipientEmail = lastNote.getRecipientEmail();
 					String subject = "請是一封來自「" + memberName + "」的GoodBye Letter";
 					String body = "<span style='font-size:18px;'>" + decryptNoteDetail + "</span>";
-					body += "<br>---------------------<br>"
-						 +"<a href='http://localhost:8080/index/LastNote/'>"
-						 + "<span style='font-size:14px;color:blue;'>GoodBye Letter 好好說再見</span></a>";
-							
-							
-
+					body += "<br>---------------------<br>" + "<a href='http://localhost:8080/index/LastNote/'>"
+							+ "<span style='font-size:14px;color:blue;'>GoodBye Letter 好好說再見</span></a>";
+					if (recipientEmail.isEmpty())
+						return;
 
 					try {
 						sendMail.sendEmail(recipientEmail, subject, body);
@@ -189,7 +187,7 @@ public class VerifyService {
 						System.out.println("寄出GoodBye Letter");
 						System.out.println("========");
 					} catch (MessagingException e) {
-						System.out.println("寄出遺囑信件失敗。");
+						System.out.println("寄出信件失敗。");
 						e.printStackTrace();
 					}
 					lastNote.setEnabled(true);

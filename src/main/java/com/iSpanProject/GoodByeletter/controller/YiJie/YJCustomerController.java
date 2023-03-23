@@ -94,8 +94,13 @@ public class YJCustomerController {
 			HttpSession session,
 			Model model) {
 		
-		Register exis = customerService.findByAccAndPass(acc, pass);
-		if( exis != null ) {
+		Register exis1 = customerService.findByAcc(acc);
+		if( exis1 != null ) {
+			Register exis = customerService.findByAccAndPass(acc, pass);
+			if( exis == null) {
+				model.addAttribute("errorMessage", "密碼錯誤!");
+				return "YiJie/cuslogin";
+			}
 			model.addAttribute("register", exis);
 			
 			String acc1 = exis.getAccount();

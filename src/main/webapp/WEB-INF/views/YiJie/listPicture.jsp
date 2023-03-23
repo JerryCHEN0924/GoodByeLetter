@@ -20,6 +20,31 @@
 		integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 		crossorigin="anonymous">
 	</script>
+	
+	<style>
+		.picture-container {
+  			display: flex;
+  			flex-wrap: wrap;
+		}
+
+		.picture-item {
+  			display: flex;
+  			flex-direction: column;
+  			margin-right: 10px;
+  			margin-bottom: 20px;
+		}
+
+		.picture-btn {
+  			margin-right: 10px;
+		}
+
+		hr {
+  			margin-top: 10px;
+  			margin-bottom: 10px;
+		}
+		
+	</style>
+	
 </head>
 <body>
     <%@ include file="../layout/mynav.jsp"%>
@@ -27,17 +52,25 @@
     <article id="" class="wrapper style2" style="height:100vh">
 		<div class="container-fluid " id="picture-list">
 			<div class="container">
-				<div>查看圖片列</div>
-				
-				<table>
+				<div><h1>查看圖片列</h1></div>
+				<br>
+				<table class="picture-container">
 					<c:forEach items="${listPicture}" var="onePicture">
-						<tr>	
-							<div id="output-result"></div>
-							<td><button class="picture-btn" data-id="${onePicture.id}">查看圖片</button></td>
-							<button class="delete-btn" data-id="${onePicture.id}">刪除圖片</button>
-						</tr>
+						<div class="picture-ltem">	
+							<div>
+								<button class="picture-btn" data-id="${onePicture.id}">查看圖片</button>
+								<button class="delete-btn" data-id="${onePicture.id}">刪除圖片</button>
+							</div>
+							
+							<hr class="">
+							<div class="output-result" id="output-result"></div>
+							<br>
+						</div>
 					</c:forEach>
+					
 				</table>
+				<br>
+				<a class="btn btn-outline-info" href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
 			</div>
 		</div>
 	</article>
@@ -63,7 +96,7 @@
 		function htmlMaker(data){
 			let output = document.getElementById('output-result');
 			let htmlstring='';
-			htmlstring += "<img width='1000px' height='600px' src='${contextRoot}/customer/picture/image?photoId=" + onePicture + "' />"
+			htmlstring += "<img width='400px' height='300px' src='${contextRoot}/customer/picture/image?photoId=" + onePicture + "' />"
 				
 			output.innerHTML = htmlstring;
 		}

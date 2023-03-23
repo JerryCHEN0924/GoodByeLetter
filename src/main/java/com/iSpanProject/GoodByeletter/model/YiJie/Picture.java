@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.model.YiJie;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -61,7 +62,7 @@ public class Picture {
 	
 	
 	
-	@ManyToOne
+	@ManyToOne  // (cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_companydetail_id")
 	private YJCustomerDetail customerDetail;
 	

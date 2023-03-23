@@ -46,11 +46,16 @@ public class registerController {
 
 			if (register.getAccount() == "") {
 				errors.put("account", "請輸入您的帳號!");
+			}else if (register.getAccount().length() < 4 || register.getAccount().length() > 8) {
+			    errors.put("account", "帳號必需在4到8個數字或英文!");
 			}
 
 			if (register.getPassword() == "") {
 				errors.put("password", "請輸入您的密碼!");
-			}
+			}else if (register.getPassword().length() < 4 || register.getPassword().length() > 8) {
+				 errors.put("password", "密碼必需在4到8個數字或英文!");
+				}
+			
 			if (registerService.findByAcc(register.getAccount()) != null) {
 				errors.put("account1", "該帳號已被註冊!");
 			}
@@ -101,13 +106,9 @@ public class registerController {
 	public String login(@RequestParam(value = "account") String account,
 			@RequestParam(value = "password") String password,
 			@RequestParam(value = "rememberMe", required = false) String rememberMe,
-			@RequestParam("g-recaptcha-response") String response1, 
-			//@RequestParam(value="ip") String ip, 
+			@RequestParam("g-recaptcha-response") String response1,
 			HttpSession session,
 			Model model, HttpServletResponse response) {
-		System.out.println(response1);
-		System.out.println("dddddddddddddddddddddddddddddddddddd");
-		//System.out.println(ip);
 		Register existing = registerService.findByAccAndPwd(account, password);
 		model.addAttribute("register", existing);
 		String acc = existing.getAccount();
@@ -116,7 +117,6 @@ public class registerController {
 		if (account.equals(acc) && password.equals(pwd) && recaptchaService.verifyRecaptcha(response1)) {
 			session.setAttribute("existing", existing);// session讓existing狀態使用
 			System.out.println(acc);
-///////////////////////////////////////////////////
 			// 自動登入
 			System.out.println(rememberMe);
 			System.out.println("====================================");
@@ -129,12 +129,6 @@ public class registerController {
 				response.addCookie(cookie);
 			}
 			return "redirect:/";
-///////////////////////////////////////////////////////	
-			
-			
-//			if (session.getAttribute("existing") != null && recaptchaService.verifyRecaptcha(response1)) {
-//				System.out.println("登入成功！");
-//			}
 		}
 		// 登入失敗則導回登入頁面
 		return "redirect:/register/login1";
