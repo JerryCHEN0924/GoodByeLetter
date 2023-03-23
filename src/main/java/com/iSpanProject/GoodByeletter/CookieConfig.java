@@ -16,6 +16,7 @@ public class CookieConfig implements WebMvcConfigurer {
 		System.out.println("我是攔截器");
 		registry.addInterceptor(loginInterceptor).addPathPatterns("/*","/LastNote/**")
       .excludePathPatterns("YiJie/updatePic.jsp","/customer/picture/page1","/customer/picture/updata1","/logout","/user/login","/lastNoteLogin","/login","/board/**","/topGun/**","/register/**","/forgetpwd/**","/mynav.jsp");
+
 	}
 }
 ////addPathPatterns("/**") 表示攔截所有的請求
