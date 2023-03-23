@@ -37,11 +37,6 @@ public class GoodByeLetterController {
 	// 跳頁，進入撰寫遺囑頁面。
 	@GetMapping("")
 	public String addNote(Model model) {
-
-		// 如果不是會員，就導向去登入頁面
-
-// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
-
 //		if (!model.containsAttribute("existing")) {
 //			return "redirect:/register/login1";
 //		}
@@ -77,15 +72,6 @@ public class GoodByeLetterController {
 	@GetMapping("/edit")
 	public String LastNoteEdit(Model model) {
 
-		// 如果不是會員，就導向去登入頁面
-//		if (!model.containsAttribute("existing")) {
-//			return "redirect:/login1";
-
-// 		如果不是會員，就導向去登入頁面(等亮竹攔截器/過濾器做好要註解掉)
-//		if (!model.containsAttribute("existing")) {
-//			return "redirect:/register/login1";
-
-//		}
 		Register memberid = (Register) model.getAttribute("existing");
 		List<LastNote> lastNotes = lastnoteService.findlastNoteBymember(memberid);
 		// 解密

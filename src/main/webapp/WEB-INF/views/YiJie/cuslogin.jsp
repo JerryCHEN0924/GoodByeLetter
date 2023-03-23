@@ -33,13 +33,13 @@
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<input required class="form-control" id="account" type="text" placeholder="您的帳號" name="account">
+							<input required class="form-control" id="account" type="text" placeholder="請輸入您的帳號" name="account">
 						</div>	
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<input required class="form-control" id="password" type="text" placeholder="您的密碼" name="password">
+							<input required class="form-control" id="password" type="text" placeholder="請輸入您的密碼" name="password">
 						</div>
 					</div>
                 	<button type="submit" id="login_submit">登入</button>      

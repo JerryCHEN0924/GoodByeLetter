@@ -7,9 +7,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -57,92 +59,109 @@ public class PictureController {
 	public String picturePage2() {
 		return "YiJie/upPicture2";
 	}
-	//show.jsp的跳頁
-	
-	@GetMapping("/customer/add")
-	public String pictureAdd(Model model) {
-		
-		List<YJCustomerDetail> lawyers = cdDao.findByType("律師"); // 找到所有 type 為 "律師" 的用戶
-	    List<Picture> allLawyerPictures = new ArrayList<>(); // 建立一個空的 List 來保存所有律師的照片
-	    for (YJCustomerDetail lawyer : lawyers) {
-	        List<Picture> lawyerPictures = lawyer.getPictures();
-	        allLawyerPictures.addAll(lawyerPictures); // 把律師的照片加入到總列表中
-	    }
-	    model.addAttribute("listPicture", allLawyerPictures);
-		return "YiJie/show";
-	}
+	//綠
+		//show.jsp的跳頁
+		@GetMapping("/customer/add")
+		public String pictureAdd(Model model) {	
+			List<YJCustomerDetail> lawyers = cdDao.findByType("律師");
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail lawyer : lawyers) {
+		        List<Picture> pictures = lawyer.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show";
+		}
+		@ResponseBody
+		@GetMapping("/customer/picture/lawyerimage")
+		public ResponseEntity<byte[]> getlawyerImage(@RequestParam Integer pictureId) throws IOException {
+			Optional<Picture> op = pDao.findById(pictureId);
+			
+			if(op.isPresent()) {
+				Picture picture = op.get();
+				byte[] pictureFile = picture.getPhotoFile();
+				return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
+			}return null;
+		}////////////////////////////////////////////////////////
+	//禮
+	//show2.jsp的跳頁
+		@GetMapping("/customer/add2")
+		public String pictureAdd2(Model model) {	
+			List<YJCustomerDetail> morts = cdDao.findByType("禮儀社");	
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail mort : morts) {
+		        List<Picture> pictures = mort.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show2";
+		}
 	@ResponseBody
-	@GetMapping("/customer/picture/lawyerimage")
-	public byte[] getlawyerImage()throws IOException {
-		List<YJCustomerDetail> lawyers = cdDao.findByType("律師"); // 找到所有 type 為 "律師" 的用戶
-	    List<Picture> allLawyerPictures = new ArrayList<>(); // 建立一個空的 List 來保存所有律師的照片
-	    for (YJCustomerDetail lawyer : lawyers) {
-	        List<Picture> lawyerPictures = lawyer.getPictures();
-	        allLawyerPictures.addAll(lawyerPictures); // 把律師的照片加入到總列表中
-	    }
-	    if (allLawyerPictures.isEmpty()) {
-	        return null;
-	    } else {
-	        // 回傳第一張照片
-	        Picture picture = allLawyerPictures.get(0);
-	        return picture.getPhotoFile();
-	    }
+	@GetMapping("/customer/picture/mortimage")
+	public ResponseEntity<byte[]> getmortImage(@RequestParam Integer pictureId) throws IOException {
+		Optional<Picture> op = pDao.findById(pictureId);
 		
+		if(op.isPresent()) {
+			Picture picture = op.get();
+			byte[] pictureFile = picture.getPhotoFile();
+			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
+		}return null;
 	}
+	////////////////////////////////////////////////////////////
+	//諮
+	//show3.jsp的跳頁
+		@GetMapping("/customer/add3")
+		public String pictureAdd3(Model model) {	
+			List<YJCustomerDetail> counsels = cdDao.findByType("諮商師");
+			
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail counsel : counsels) {
+		        List<Picture> pictures = counsel.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show3";
+		}
 	@ResponseBody
-	@GetMapping("/customer/picture/morticianimage")
-	public byte[] getmorticianImage()throws IOException {
-		List<YJCustomerDetail> lawyers = cdDao.findByType("禮儀社"); // 找到所有 type 為 "律師" 的用戶
-	    List<Picture> allLawyerPictures = new ArrayList<>(); // 建立一個空的 List 來保存所有律師的照片
-	    for (YJCustomerDetail lawyer : lawyers) {
-	        List<Picture> lawyerPictures = lawyer.getPictures();
-	        allLawyerPictures.addAll(lawyerPictures); // 把律師的照片加入到總列表中
-	    }
-	    if (allLawyerPictures.isEmpty()) {
-	        return null;
-	    } else {
-	        // 回傳第一張照片
-	        Picture picture = allLawyerPictures.get(0);
-	        return picture.getPhotoFile();
-	    }
+	@GetMapping("/customer/picture/counselimage")
+	public ResponseEntity<byte[]> getcounselImage(@RequestParam Integer pictureId) throws IOException {
+		Optional<Picture> op = pDao.findById(pictureId);
 		
-	}
-	@ResponseBody
-	@GetMapping("/customer/picture/counselingimage")
-	public byte[] getcounselingImage()throws IOException {
-		List<YJCustomerDetail> lawyers = cdDao.findByType("諮商師"); // 找到所有 type 為 "律師" 的用戶
-	    List<Picture> allLawyerPictures = new ArrayList<>(); // 建立一個空的 List 來保存所有律師的照片
-	    for (YJCustomerDetail lawyer : lawyers) {
-	        List<Picture> lawyerPictures = lawyer.getPictures();
-	        allLawyerPictures.addAll(lawyerPictures); // 把律師的照片加入到總列表中
-	    }
-	    if (allLawyerPictures.isEmpty()) {
-	        return null;
-	    } else {
-	        // 回傳第一張照片
-	        Picture picture = allLawyerPictures.get(0);
-	        return picture.getPhotoFile();
-	    }
-		
-	}
+		if(op.isPresent()) {
+			Picture picture = op.get();
+			byte[] pictureFile = picture.getPhotoFile();
+			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
+		}return null;
+	}//////////////////////////////////
+	//其
+	//show4.jsp的跳頁
+		@GetMapping("/customer/add4")
+		public String pictureAdd4(Model model) {	
+			List<YJCustomerDetail> others = cdDao.findByType("其他");
+			
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail other : others) {
+		        List<Picture> pictures = other.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show4";
+		}
 	@ResponseBody
 	@GetMapping("/customer/picture/otherimage")
-	public byte[] getotherImage()throws IOException {
-		List<YJCustomerDetail> lawyers = cdDao.findByType("其他"); // 找到所有 type 為 "律師" 的用戶
-	    List<Picture> allLawyerPictures = new ArrayList<>(); // 建立一個空的 List 來保存所有律師的照片
-	    for (YJCustomerDetail lawyer : lawyers) {
-	        List<Picture> lawyerPictures = lawyer.getPictures();
-	        allLawyerPictures.addAll(lawyerPictures); // 把律師的照片加入到總列表中
-	    }
-	    if (allLawyerPictures.isEmpty()) {
-	        return null;
-	    } else {
-	        // 回傳第一張照片
-	        Picture picture = allLawyerPictures.get(0);
-	        return picture.getPhotoFile();
-	    }
+	public ResponseEntity<byte[]> getotherImage(@RequestParam Integer pictureId) throws IOException {
+		Optional<Picture> op = pDao.findById(pictureId);
 		
+		if(op.isPresent()) {
+			Picture picture = op.get();
+			byte[] pictureFile = picture.getPhotoFile();
+			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
+		}return null;
 	}
+	//#####################################################################//
 	//圖片上傳
 	@ResponseBody
 	@PostMapping("/customer/picture/updata1")
