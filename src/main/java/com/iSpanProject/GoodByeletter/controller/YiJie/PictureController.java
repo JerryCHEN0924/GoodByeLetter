@@ -60,45 +60,43 @@ public class PictureController {
 		return "YiJie/upPicture2";
 	}
 	//綠
-	//show.jsp的跳頁
-	@GetMapping("/customer/add")
-	public String pictureAdd(Model model) {	
-		List<YJCustomerDetail> lawyers = cdDao.findByType("律師");
-		List<YJCustomerDetail> morts = cdDao.findByType("禮儀社");
-		List<YJCustomerDetail> counsels = cdDao.findByType("諮商師");
-		List<YJCustomerDetail> others = cdDao.findByType("其他");
-	    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
-	    for (YJCustomerDetail lawyer : lawyers) {
-	        List<Picture> pictures = lawyer.getPictures();
-	        allPictures.addAll(pictures);
-	    }
-	    for (YJCustomerDetail mort : morts) {
-	        List<Picture> pictures = mort.getPictures();
-	        allPictures.addAll(pictures);
-	    }
-	    for (YJCustomerDetail counsel : counsels) {
-	        List<Picture> pictures = counsel.getPictures();
-	        allPictures.addAll(pictures);
-	    }
-	    for (YJCustomerDetail other : others) {
-	        List<Picture> pictures = other.getPictures();
-	        allPictures.addAll(pictures);
-	    }
-	    model.addAttribute("listPicture", allPictures);
-		return "YiJie/show";
-	}
-	@ResponseBody
-	@GetMapping("/customer/picture/lawyerimage")
-	public ResponseEntity<byte[]> getlawyerImage(@RequestParam Integer pictureId) throws IOException {
-		Optional<Picture> op = pDao.findById(pictureId);
-		
-		if(op.isPresent()) {
-			Picture picture = op.get();
-			byte[] pictureFile = picture.getPhotoFile();
-			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
-		}return null;
-	}////////////////////////////////////////////////////////
+		//show.jsp的跳頁
+		@GetMapping("/customer/add")
+		public String pictureAdd(Model model) {	
+			List<YJCustomerDetail> lawyers = cdDao.findByType("律師");
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail lawyer : lawyers) {
+		        List<Picture> pictures = lawyer.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show";
+		}
+		@ResponseBody
+		@GetMapping("/customer/picture/lawyerimage")
+		public ResponseEntity<byte[]> getlawyerImage(@RequestParam Integer pictureId) throws IOException {
+			Optional<Picture> op = pDao.findById(pictureId);
+			
+			if(op.isPresent()) {
+				Picture picture = op.get();
+				byte[] pictureFile = picture.getPhotoFile();
+				return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
+			}return null;
+		}////////////////////////////////////////////////////////
 	//禮
+	//show2.jsp的跳頁
+		@GetMapping("/customer/add2")
+		public String pictureAdd2(Model model) {	
+			List<YJCustomerDetail> morts = cdDao.findByType("禮儀社");	
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail mort : morts) {
+		        List<Picture> pictures = mort.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show2";
+		}
 	@ResponseBody
 	@GetMapping("/customer/picture/mortimage")
 	public ResponseEntity<byte[]> getmortImage(@RequestParam Integer pictureId) throws IOException {
@@ -112,9 +110,23 @@ public class PictureController {
 	}
 	////////////////////////////////////////////////////////////
 	//諮
+	//show3.jsp的跳頁
+		@GetMapping("/customer/add3")
+		public String pictureAdd3(Model model) {	
+			List<YJCustomerDetail> counsels = cdDao.findByType("諮商師");
+			
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail counsel : counsels) {
+		        List<Picture> pictures = counsel.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show3";
+		}
 	@ResponseBody
 	@GetMapping("/customer/picture/counselimage")
-	public ResponseEntity<byte[]> getcounselrImage(@RequestParam Integer pictureId) throws IOException {
+	public ResponseEntity<byte[]> getcounselImage(@RequestParam Integer pictureId) throws IOException {
 		Optional<Picture> op = pDao.findById(pictureId);
 		
 		if(op.isPresent()) {
@@ -124,6 +136,20 @@ public class PictureController {
 		}return null;
 	}//////////////////////////////////
 	//其
+	//show4.jsp的跳頁
+		@GetMapping("/customer/add4")
+		public String pictureAdd4(Model model) {	
+			List<YJCustomerDetail> others = cdDao.findByType("其他");
+			
+		    Set<Picture> allPictures = new HashSet<>();//用Set來避免重複取值
+		    for (YJCustomerDetail other : others) {
+		        List<Picture> pictures = other.getPictures();
+		        allPictures.addAll(pictures);
+		    }
+		    
+		    model.addAttribute("listPicture", allPictures);
+			return "YiJie/show4";
+		}
 	@ResponseBody
 	@GetMapping("/customer/picture/otherimage")
 	public ResponseEntity<byte[]> getotherImage(@RequestParam Integer pictureId) throws IOException {

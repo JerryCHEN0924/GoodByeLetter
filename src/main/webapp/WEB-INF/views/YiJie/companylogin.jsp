@@ -28,12 +28,16 @@
 
 	<style>
 		body{
+			
 			background-color: rgb(237, 167, 251);
 		}
 		div {
   			border: 1px solid black;
 		}
 		.container {
+			/*background-image: url("assets/css/images/bg.png");*/
+			/*padding:8em 0;*/
+			/*background-image: url("${contextRoot}/");*/
 			display: flex;
   			flex-wrap: wrap;
 			height:100vh;
@@ -72,6 +76,7 @@
 <body>
 
 	<div class="container">
+		<P>這裡是container</P>
 		<div class="banana">我是標頭banana</div>
 		
 		<div class="left" style="width: 70%;">
@@ -85,7 +90,10 @@
 				<a href="<c:url value='/customer/picture/page1'/>" class="list-group-item list-group-item-action">投放圖片</a>
 				<a href="<c:url value='/customer/detail/page?memberId=${exis.memberId}'/>" class="list-group-item list-group-item-action">更新廠商資料</a>
 				<a href="<c:url value='/customer/picture/list?memberId=${exis.memberId}'/>" class="list-group-item list-group-item-action">圖片展示</a>
-				<a href="<c:url value='/customer/add'/>" class="list-group-item list-group-item-action">檢視廣告</a>
+				<a href="<c:url value='/customer/add'/>" class="list-group-item list-group-item-action">檢視律師廣告</a>
+				<a href="<c:url value='/customer/add2'/>" class="list-group-item list-group-item-action">檢視禮儀社廣告</a>
+				<a href="<c:url value='/customer/add3'/>" class="list-group-item list-group-item-action">檢視諮商師廣告</a>
+				<a href="<c:url value='/customer/add4'/>" class="list-group-item list-group-item-action">檢視其他廣告</a>
 			</div>
 		</div>
 	</div>
