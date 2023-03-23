@@ -1,10 +1,8 @@
 package com.iSpanProject.GoodByeletter.controller.Jerry;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
