@@ -189,6 +189,9 @@ public class PictureController {
 		//detail.getPictures().clear();會導致整筆資料被覆蓋(包含picture的id
 		
 		detail.setPictures(photos);
+		if(photos==null) {
+			return "YiJie/upPicture2";
+		}
 		cdDao.save(detail);
 			
 		return "okok";
