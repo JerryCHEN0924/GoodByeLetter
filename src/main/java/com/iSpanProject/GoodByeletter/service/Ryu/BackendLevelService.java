@@ -117,7 +117,22 @@ public class BackendLevelService {
 	
 	
 	
-	
+	// check account levelName
+	public boolean checkLevelExist(String levelName) {
+		
+		boolean checLN = false;
+		
+		Optional<Level> optional = backendLevelRepository.findByLevelName(levelName);
+		
+		if(optional.isPresent()) {
+			
+			checLN = true;
+			
+		}
+		
+		return checLN;
+		
+	}
 	
 	
 	

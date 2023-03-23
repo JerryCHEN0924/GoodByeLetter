@@ -68,7 +68,7 @@
   
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/level/editPost" modelAttribute="level" method="put">
+  	<form:form action="${contextRoot}/topGun/level/editPost" modelAttribute="level" method="put" id="edit01Form">
 		
 		<form:input path="plevel" type="hidden" />
 		
@@ -96,7 +96,8 @@
   		
   		<div class="mt-3">
   		
-	  		<button type="submit" class="btn btn-primary">送出</button>
+<!-- 	  		<button type="submit" class="btn btn-primary">送出</button> -->
+	  		<button type="button" onclick="edit01()" class="btn btn-primary">送出</button>
 	  		
   		</div>
 		
@@ -143,7 +144,27 @@
 
 
 
+<script>
+function edit01() {
+	
+    Swal.fire({
+      title: '確定要修改嗎？',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: '確定！',
+      cancelButtonText: '取消',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // 如果用戶確認要儲存，則提交表單
+        document.getElementById('edit01Form').submit();
+      }
+    })
+    
+}
 
+
+</script>
 
 
 

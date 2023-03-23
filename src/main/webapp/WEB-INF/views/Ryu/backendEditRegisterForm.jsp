@@ -68,7 +68,7 @@
   
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/register/editPost" modelAttribute="register" method="put">
+  	<form:form action="${contextRoot}/topGun/register/editPost" modelAttribute="register" method="put" id="edit01Form">
   		
   		<form:input path="memberId" type="hidden" />
   		<form:input path="registerTime" type="hidden" />
@@ -132,7 +132,8 @@
   		
   		<div class="mt-3">
   		
-	  		<button type="submit" class="btn btn-primary">送出</button>
+<!-- 	  		<button type="submit" class="btn btn-primary">送出</button> -->
+	  		<button type="button" onclick="edit01()" class="btn btn-primary">送出</button>
 	  		
   		</div>
   		
@@ -176,6 +177,28 @@
 
 
 
+
+<script>
+function edit01() {
+	
+    Swal.fire({
+      title: '確定編輯嗎？',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: '確定！',
+      cancelButtonText: '取消',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // 如果用戶確認要儲存，則提交表單
+        document.getElementById('edit01Form').submit();
+      }
+    })
+    
+}
+
+
+</script>
 
 
 
