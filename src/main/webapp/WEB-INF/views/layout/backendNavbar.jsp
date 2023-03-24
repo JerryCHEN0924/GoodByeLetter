@@ -138,13 +138,145 @@
         
       </div>
       
+      
+      
+      
       <div class="offcanvas-body">
       
+      
+      
+      
+      
+      
+      
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
           <li class="nav-item">
             <a class="nav-link active fs-2 fw-bolder" aria-current="page" href="${contextRoot}/">Home</a>
           </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              會員管理
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+            
+              <li><a class="dropdown-item" href="<c:url value='/topGun/level/add' />">新增權限等級</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/level/page' />">查詢和編輯權限等級</a></li>
+            
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            
+              <li><a class="dropdown-item" href="<c:url value='/topGun/register/add' />">新增註冊會員</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/register/page' />">查詢和編輯會員資料</a></li>
+              
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              
+              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/add' />">新增一般會員細項資料</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/page' />">查詢和編輯一般會員細項資料</a></li>
+              
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/add' />">新增廣告商細項資料</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/page' />">查詢編輯廣告商細項資料</a></li>
+              
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/add' />">新增廣告圖片</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">查詢編輯廣告商圖片</a></li>
+              
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              GoodBye Letter
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/add' />">新增 GoodBye Letter</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/page' />">查詢和編輯 GoodBye Letter</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+          
+          <li class="nav-item dropdown">
+          
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              留言板管理
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">新增主留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯全部主留言、新增子留言</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯全部子留言</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+            
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           
           
           <li class="nav-item">
@@ -168,121 +300,153 @@
           
           
           
-          <li class="nav-item dropdown">
           
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              管理權限等級
-            </a>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+<!--           <li class="nav-item dropdown"> -->
+          
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               管理會員 -->
+<!--             </a> -->
             
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/level/add' />">新增權限等級</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/level/page' />">查詢和編輯權限等級</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
+<!--             <ul class="dropdown-menu dropdown-menu-dark"> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/level/add' />">新增權限等級</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/level/page' />">查詢和編輯權限等級</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/register/add' />">新增註冊會員</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/register/page' />">查詢和編輯會員資料</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/add' />">新增一般會員細項資料</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/page' />">查詢和編輯一般會員細項資料</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails/add' />">新增廣告商細項資料</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails/page' />">查詢和編輯廣告商細項資料</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos/add' />">新增廠商文案資料</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos/page' />">查看和編輯廠商文案資料</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<!--             </ul> -->
             
-          </li>
+<!--           </li> -->
           
           
           
-          <li class="nav-item dropdown">
+<!--           <li class="nav-item dropdown"> -->
           
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              管理會員註冊
-            </a>
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               廠商管理(新版) -->
+<!--             </a> -->
             
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/register/add' />">新增註冊會員</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/register/page' />">查詢和編輯會員資料</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/add' />">新增一般會員細項資料</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/memberDetail/page' />">查詢和編輯一般會員細項資料</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails/add' />">新增廣告商細項資料</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails/page' />">查詢和編輯廣告商細項資料</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
+<!--             <ul class="dropdown-menu dropdown-menu-dark"> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/backendHome/getVendorPhotosQuery' />">搜尋廣告文案(By Title)</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails' />">查詢全部廠商細項資料(新版)</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos' />">查詢全部廠商文案資料(新版)</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/backendHome/money' />">廣告文案預覽(For審核狀態True)</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<!--             </ul> -->
             
-          </li>
+<!--           </li> -->
           
-          <li class="nav-item dropdown">
           
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              廣告商文案管理
-            </a>
+          
+<!--            <li class="nav-item dropdown"> -->
+          
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               模擬新增LastNote(登入帳號) -->
+<!--             </a> -->
             
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos/add' />">新增廠商文案資料</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos/page' />">查看和編輯廠商文案資料</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
+<!--             <ul class="dropdown-menu dropdown-menu-dark"> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/add' />">新增 GoodBye Letter</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/page' />">查詢和編輯 GoodBye Letter</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<!--             </ul> -->
             
-          </li>
+<!--           </li> -->
           
           
           
-          <li class="nav-item dropdown">
+<!--           <li class="nav-item dropdown"> -->
           
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              模擬會員新增留言(登入帳號)
-            </a>
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               模擬會員新增留言(登入帳號) -->
+<!--             </a> -->
             
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">登入會員帳號後新增留言</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯留言、新增回覆留言</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯全部回復留言</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
+<!--             <ul class="dropdown-menu dropdown-menu-dark"> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/board/add' />">登入會員帳號後新增主留言</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/board/page' />">查詢和編輯全部主留言、新增子留言</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/comment/page' />">查詢和編輯全部子留言</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<!--             </ul> -->
             
-          </li>
+<!--           </li> -->
           
-          <li class="nav-item dropdown">
           
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              模擬新增LastNote(登入帳號)
-            </a>
+          
+<!--           <li class="nav-item dropdown"> -->
+          
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               廣告商文案(上機演示版) -->
+<!--             </a> -->
             
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/add' />">新增 GoodBye Letter</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/lastNote/page' />">查詢和編輯 GoodBye Letter</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
+<!--             <ul class="dropdown-menu dropdown-menu-dark"> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/add' />">新增廣告圖片</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">查詢編輯廣告商圖片</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute' />">審核廣告商投放啟用狀態</a></li> --%>
+<!--             </ul> -->
             
-          </li>
+<!--           </li> -->
           
           
           
+<!--           <li class="nav-item dropdown"> -->
           
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              廠商管理(新版)
-            </a>
+<!--             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
+<!--               新增廣告商細項資料(上機演示版) -->
+<!--             </a> -->
             
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/backendHome/getVendorPhotosQuery' />">搜尋廣告文案(By Title)</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetails' />">查詢全部廠商細項資料(新版)</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotos' />">查詢全部廠商文案資料(新版)</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/backendHome/money' />">廣告文案預覽(For審核狀態True)</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-            </ul>
+<!--             <ul class="dropdown-menu dropdown-menu-dark"> -->
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/add' />">新增廣告商細項資料</a></li> --%>
+<%--               <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/page' />">查詢編輯廣告商細項資料</a></li> --%>
+<!--               <li> -->
+<!--                 <hr class="dropdown-divider"> -->
+<!--               </li> -->
+<!--               <li><a class="dropdown-item" href="#">Nothing else here</a></li> -->
+<!--             </ul> -->
             
-          </li>
+<!--           </li> -->
           
           
           
@@ -291,44 +455,6 @@
           
           
           
-          
-          
-          
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/add' />">Action</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute' />">Nothing else here</a></li>
-            </ul>
-            
-          </li>
-          
-          
-          
-          <li class="nav-item dropdown">
-          
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorDetailsBackup/add' />">Action</a></li>
-              <li><a class="dropdown-item" href="<c:url value='/topGun/vendorPhotosBackup/page' />">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Nothing else here</a></li>
-            </ul>
-            
-          </li>
           
           
           
@@ -336,21 +462,31 @@
           
         </ul>
         
-        <hr>
         
-        <c:choose>
-		    <c:when test="${not empty existing}">
-		        <!-- member 物件存在，顯示登出按鈕 -->
-		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/register/LogoutProcessImitation">${existing.account} 會員登出(模擬)</a>
-		    </c:when>
-		    <c:otherwise>
-		        <!-- member 物件不存在，顯示登入按鈕 -->
-		        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun/register/addLoginFormImitation">${existing.account} 會員登入(模擬)</a>
-		    </c:otherwise>
-		</c:choose>
+        
+        
+        
+        
+        
+        
+<!--         <hr> -->
+        
+        
+        
+<%--         <c:choose> --%>
+<%-- 		    <c:when test="${not empty existing}"> --%>
+<!-- 		        member 物件存在，顯示登出按鈕 -->
+<%-- 		        <a class="btn btn-warning" type="button" href="${contextRoot}/topGun/register/LogoutProcessImitation">${existing.account} 會員登出(模擬)</a> --%>
+<%-- 		    </c:when> --%>
+<%-- 		    <c:otherwise> --%>
+<!-- 		        member 物件不存在，顯示登入按鈕 -->
+<%-- 		        <a class="btn btn-secondary" type="button" href="${contextRoot}/topGun/register/addLoginFormImitation">${existing.account} 會員登入(模擬)</a> --%>
+<%-- 		    </c:otherwise> --%>
+<%-- 		</c:choose> --%>
 		
         
         
+<!--          <hr> -->
         
         
         

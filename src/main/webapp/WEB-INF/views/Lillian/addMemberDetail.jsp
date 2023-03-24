@@ -124,7 +124,7 @@
 								</div>
 								<button type="submit">註冊會員</button>
 							</form>
-							<div id="msg2" style="color:red">${msg.success}</div>
+<%-- 							<div id="msg2" style="color:red">${msg.success}</div> --%>
 						</div>
 					</div>
 				</article>

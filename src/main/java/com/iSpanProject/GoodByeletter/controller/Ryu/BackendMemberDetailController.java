@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.iSpanProject.GoodByeletter.model.Lillian.MemberDetail;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendMemberDetailService;
+import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 import com.iSpanProject.GoodByeletter.validate.MemberDetailValidator;
 
 @Controller
@@ -35,8 +36,10 @@ public class BackendMemberDetailController {
 	@Autowired
 	private BackendMemberDetailService backendMemberDetailService;
 	
-//	@Autowired
-//	private BackendRegisterService backendRegisterService;
+	@Autowired
+	private BackendRegisterService backendRegisterService;
+	
+	
 	
 	
 	
@@ -86,6 +89,15 @@ public class BackendMemberDetailController {
 //		String account = register.getAccount();
 		
 		String account = memberDetail.getAccount();
+		
+		boolean checkAccountExist = backendRegisterService.checkAccountExist(account);
+		
+		if(!checkAccountExist) {
+			
+			redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 不存在");
+			return "redirect:/topGun/memberDetail/add";
+			
+		}
 		
 		backendMemberDetailService.insertMemberDetail(memberDetail);
 		

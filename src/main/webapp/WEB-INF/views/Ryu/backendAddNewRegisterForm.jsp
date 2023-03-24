@@ -64,7 +64,7 @@
   
   <div class="card-body">
   	
-  	<form:form action="${contextRoot}/topGun/register/post" modelAttribute="register" method='POST'>
+  	<form:form action="${contextRoot}/topGun/register/post" modelAttribute="register" method='POST' id="registerForm">
   		
   		
   		
@@ -110,7 +110,8 @@
   		
   		<div class="mt-3">
   		
-	  		<button type="submit" class="btn btn-primary">送出</button>
+<!-- 	  		<button type="submit" class="btn btn-primary">送出</button> -->
+	  		<button type="button" onclick="save()" class="btn btn-primary">送出</button>
 	  		
   		</div>
   		
@@ -166,7 +167,27 @@
 
 
 
+<script>
+function save() {
+	
+    Swal.fire({
+      title: '確定要儲存嗎？',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: '確定！',
+      cancelButtonText: '取消',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // 如果用戶確認要儲存，則提交表單
+        document.getElementById('registerForm').submit();
+      }
+    })
+    
+}
 
+
+</script>
 
 
 

@@ -70,7 +70,7 @@
   
   <div class="card-body">
   	
-  	<form:form enctype='multipart/form-data' action="${contextRoot}/topGun/vendorPhotosBackup/put/${vendorPhotos.id}" modelAttribute="vendorPhotos" method='POST'>
+  	<form:form enctype='multipart/form-data' action="${contextRoot}/topGun/vendorPhotosBackup/put2/${vendorPhotos.id}" modelAttribute="vendorPhotos" method='POST'>
   		
   		
   		<form:hidden path="id" class="form-control" id="inputVendorPhotosId" />
@@ -202,8 +202,8 @@
 		
 			<div class="offset-sm-5 col-sm-2">
 		
-				<form action="${contextRoot}/topGun" method="get" >
-					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				<form action="${contextRoot}/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="回審核廣告商權限頁面" />
 				</form>
 		
 			</div>

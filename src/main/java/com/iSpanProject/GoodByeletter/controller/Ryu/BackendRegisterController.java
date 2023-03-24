@@ -113,6 +113,16 @@ public class BackendRegisterController {
 		
 		String account = register.getAccount();
 		
+		boolean checkAccountExist = backendRegisterService.checkAccountExist(account);
+		
+		if(checkAccountExist) {
+			
+			redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 已存在");
+			
+			return "redirect:/topGun/register/add";
+			
+		}
+		
 		backendRegisterService.insertRegister(register);
 		
 //		Register newRegister = new Register();
@@ -120,6 +130,8 @@ public class BackendRegisterController {
 //		model.addAttribute("register", newRegister);
 //		
 //		return "/Ryu/backendAddNewRegisterForm";
+		
+		
 		
 		redirectAttributes.addFlashAttribute("backendHomeMessages", "會員帳號 [ " + account + " ] 新增成功");
 		

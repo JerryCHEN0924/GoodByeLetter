@@ -114,7 +114,7 @@ public class registerController {
 		String acc = existing.getAccount();
 		String pwd = existing.getPassword();
 
-		if (account.equals(acc) && password.equals(pwd) && recaptchaService.verifyRecaptcha(response1)) {
+		if (account.equals(acc) && password.equals(pwd) && recaptchaService.verifyRecaptcha(response1)) {//連第三方&& recaptchaService.verifyRecaptcha(response1)
 			session.setAttribute("existing", existing);// session讓existing狀態使用
 			System.out.println(acc);
 			// 自動登入

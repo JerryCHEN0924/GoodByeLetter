@@ -52,7 +52,6 @@ public class RecaptchaService {
 		if(apiResponse.isEmpty()) {
 			return false;
 		}
-		
 		Gson gson = new Gson();
 		RecaptchaResponse rRepo = gson.fromJson(apiResponse, RecaptchaResponse.class);
 		System.out.println(rRepo);
@@ -60,7 +59,8 @@ public class RecaptchaService {
 		if(success) {
 			// 驗證成功，繼續處理您的應用程式邏輯
 			return true;
-		} else {
+		} 
+		else {
 			// 驗證失敗，要求用戶重新進行驗證
 			return false;
 		}

@@ -1,24 +1,22 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iSpanProject.GoodByeletter.dao.Ryu.BackendRegisterRepository;
 import com.iSpanProject.GoodByeletter.model.Lillian.Register;
-import com.iSpanProject.GoodByeletter.model.YiJie.Picture;
+import com.iSpanProject.GoodByeletter.model.Ryu.VendorDetails;
 import com.iSpanProject.GoodByeletter.model.YiJie.YJCustomerDetail;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendRegisterService;
 import com.iSpanProject.GoodByeletter.service.Ryu.BackendVendorDetailsBackupService;
@@ -90,34 +88,39 @@ public class BackendVendorDetailsBackupController {
 		
 		
 		
-		MultipartFile image = vendorDetails.getImage();
+//		MultipartFile image = vendorDetails.getImage();
+//		
+//		List<Picture> photos = vendorDetails.getPictures();
+//		
+//		
+//		if (image != null && !image.isEmpty()) {
+//			
+//			try {
+//				
+//				Picture picture = new Picture();
+//				byte[] b = image.getBytes();
+//				picture.setPhotoFile(b);
+//				
+//			}catch (Exception e) {
+//				
+//				e.printStackTrace();
+//				
+//				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+//				
+//			}
+//			
+//		}
 		
-		Picture picture = new Picture();
 		
-		if (image != null && !image.isEmpty()) {
-			
-			try {
-				
-				byte[] b = image.getBytes();
-				picture.setPhotoFile(b);
-				
-			}catch (Exception e) {
-				
-				e.printStackTrace();
-				
-				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
-				
-			}
-			
-		}
+		
 		
 //		backendVendorPhotosBackupService.insertVendorPhotos(picture);
 		
-		List<Picture> currentPicture = new ArrayList<>();
+//		List<Picture> currentPicture = new ArrayList<>();
+//		
+//		currentPicture.add(picture);
 		
-		currentPicture.add(picture);
-		
-		vendorDetails.setPictures(currentPicture);
+//		vendorDetails.setPictures(currentPicture);
 		
 		
 //		======================= So weird =======================
@@ -130,11 +133,19 @@ public class BackendVendorDetailsBackupController {
 		
 		
 		
+//		vendorDetails.setPictures(photos);
+		
+		
+		
+		
+		
 		backendVendorDetailsBackupService.insertVendorDetailsBackup(vendorDetails);
 		
 		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告商 [ " + account + " ] 詳細資料新增成功");
 		
-		return "redirect:/topGun";
+//		return "redirect:/topGun";
+		
+		return "redirect:/topGun/vendorDetailsBackup/page";
 		
 		
 	}
@@ -197,14 +208,95 @@ public class BackendVendorDetailsBackupController {
 	
 	
 	
+	// 分頁查詢跳頁
+	@GetMapping("/vendorDetailsBackup/page")
+	public String showVendorDetailsBackupByPage(@RequestParam(name = "p", defaultValue = "1") Integer pageNumber, Model model) {
+		
+		Page<YJCustomerDetail> page = backendVendorDetailsBackupService.findByPage(pageNumber);
+		
+		model.addAttribute("page", page);
+		
+		return "/Ryu/backendShowVendorDetailsBackup";
+		
+	}
 	
 	
 	
 	
+	// 修改廣告商細項資料跳頁
+	@GetMapping(value = "/vendorDetailsBackup/put/{id}")
+	public String editVendorDetailsForm(@PathVariable("id") Integer id, Model model) {
+		
+		YJCustomerDetail vendorDetails = backendVendorDetailsBackupService.findById(id);
+		
+		model.addAttribute("vendorDetails", vendorDetails);
+		
+		return "Ryu/backendEditVendorDetailsBackupForm";
+		
+	}
 	
 	
+	@PostMapping(value = "/vendorDetailsBackup/put/{id}")
+	public String modify(@ModelAttribute("vendorDetails") YJCustomerDetail vendorDetails,
+			Model model,
+			@PathVariable Integer id, 
+			RedirectAttributes redirectAttributes) {
+		
+		YJCustomerDetail currentvendorDetails = backendVendorDetailsBackupService.findById(id);
+		
+		Register fk_memberId = currentvendorDetails.getFK_memberId();
+		
+		String account = fk_memberId.getAccount();
+		
+		
+		backendVendorDetailsBackupService.insertVendorDetailsBackup(vendorDetails);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告商 [ " + account + " ] 詳細資料修改成功");
+		
+		return "redirect:/topGun/vendorDetailsBackup/page";
+		
+	}
 	
 	
+	@DeleteMapping("/vendorDetailsBackup/delete/{id}")
+	public String delete(@PathVariable("id") Integer id,
+			 RedirectAttributes redirectAttributes) {
+		
+		
+		YJCustomerDetail currentvendorDetails = backendVendorDetailsBackupService.findById(id);
+		
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println(currentvendorDetails);
+		System.out.println("=============");
+		System.out.println("=============");
+		
+		Register fk_memberId = currentvendorDetails.getFK_memberId();
+		
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println(fk_memberId);
+		System.out.println("=============");
+		System.out.println("=============");
+		
+		String account = fk_memberId.getAccount();
+		
+		
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println(account);
+		System.out.println("=============");
+		System.out.println("=============");
+		
+		backendVendorDetailsBackupService.deleteById(id);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告商 [ " + account + " ] 詳細資料刪除成功");
+		
+//		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告商 詳細資料刪除成功");
+		
+		return "redirect:/topGun/vendorDetailsBackup/page";
+		
+	}
 	
 	
 	

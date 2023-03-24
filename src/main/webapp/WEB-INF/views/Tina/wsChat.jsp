@@ -248,7 +248,7 @@
                             /*             background-color: #48b0f7; */
                             /*             color: #fff; */
 
-                            background-color: #f7e048;
+                            background-color: #FFF2CC;
                             color: #4d5259;
                         }
 
@@ -353,7 +353,7 @@
                     <!-- style=" width:30%;position: fixed; bottom:0px; display: flex;right:0px;  z-index: 100; display:none;" -->
                     <div class="d-flex justify-content-end d-flex align-items-end" id="wholeChatroomDiv">
                         <!-- 			showChatNames -->
-                        <div style="background:#f7e048; flex:30%" class="showChatNames" id="showChatNames">
+                        <div style="background:#FFF2CC; flex:30%" class="showChatNames" id="showChatNames">
                             <div class="card-header" id="">
                                 <h4 class="card-title">
                                     <button type="button" class="btn-close" aria-label="Close"
@@ -447,6 +447,7 @@
 
                             var userName;
 
+                            var names;
                             $(function () {
 
                                 //讓左邊區域與右邊同高
@@ -485,16 +486,15 @@
                                     console.log("dataJson: " + dataJson);
 
 
-
                                     //判斷是否為系統消息
                                     if (dataJson.system) {
                                         console.log("dataJson");
-                                        var names = dataJson.message;
+                                        names = dataJson.message;
                                         console.log("names: " + names);
-                                        var chatListStr;
+                                        var chatListStr = '';
                                         names.forEach(function (name, index) {
                                             //將在線名單放在右半部
-                                            chatListStr += `<h4><a class="chatListStrClass" value="" style="color:blue; text-decoration:none; cursor: pointer; font-weight: bolder">\${name}</a><h4><br>`;
+                                            chatListStr += `<h4><a class="chatListStrClass" value="" style=" color:#DFA67B; text-decoration:none; cursor: pointer; font-weight: bolder; display:flex; justify-content:center;">` + name + `</a><h4><br>`;
 
                                         })
                                         $('#showChatNamesContent').html(chatListStr);
@@ -507,18 +507,25 @@
                                             $("#toName").val(toName);
                                             $("#showToName").html("跟" + toName + "聊天");
                                             console.log("toName:" + toName);
+
+
                                             //get sessionStorage
                                             var chatData = sessionStorage.getItem(toName);
                                             console.log("chatData:" + chatData);
                                             if (chatData != null) {
-                                                //將聊天紀錄渲染到聊天區
-                                                $("#chat-content").html(chatData);
-                                            } else {
+                                                //將聊天紀錄(chatData)渲染到聊天區
+                                                $("#chat-content").append(chatData);
+                                            }//如果沒有聊天紀錄(chatData),我就渲染""到聊天室~
+                                            else {
                                                 $("#chat-content").html("");
                                             }
                                         })
                                     }
                                     else {
+                                        //判斷toName 是否為"undefined",是則toName = dataJson.fromName
+                                        if (typeof toName === 'undefined') {
+                                            toName = dataJson.fromName;
+                                        }
                                         //將訊息印在左半部
                                         var str = '<div class="media media-chat">'
                                             + '<img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">'
@@ -526,17 +533,25 @@
                                             + '<p>'
                                             + dataJson.fromName + ": " + dataJson.message
                                             + '</p></div></div>';
+
                                         //if dataJson.fromName是toName(目前聊天對象) 才顯示聊天內容在聊天區
-                                        if (dataJson.fromName == toName) {
+                                        if (toName == dataJson.fromName) {
                                             $('#chat-content').append(str);
                                         }
-                                        console.log("strtoName: " + toName)
+
                                         //set sessionStorage
+                                        //let onlineUserResultArray[];
                                         var chatData = sessionStorage.getItem(toName);
                                         if (chatData != null) {
                                             str = chatData + str;
                                         }
+                                        //判斷toName是否在線上, 若沒這位用戶, 則把toName改成userName然後傳系統訊息回來
+                                        if (!names.includes(toName)) {
+                                            toName = userName;
+                                        }
                                         sessionStorage.setItem(toName, str);
+
+
                                     }
                                     console.log('接收到内容(event.data)：' + event.data);
                                 }

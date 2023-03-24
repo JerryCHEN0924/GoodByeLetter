@@ -151,8 +151,8 @@
 		
 			<div class="offset-sm-5 col-sm-2">
 		
-				<form action="${contextRoot}/topGun" method="get" >
-					<input type="submit" class="btn btn-outline-warning" value="回後台首頁" />
+				<form action="${contextRoot}/topGun/register/queryLikeAccount" method="get" >
+					<input type="submit" class="btn btn-outline-warning" value="返回審核會員頁面" />
 				</form>
 		
 			</div>

@@ -23,12 +23,18 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
 	crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="/index/assets/css/mymain.css" />
+<link rel="stylesheet" href="/index/assets/css/mymain.css" />
+<!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 <style>
 </style>
 
 </head>
-
+<style>
+.g-recaptcha {
+	margin: 0 auto; /*水平置中*/
+	display: block; /*將元素設為塊級元素*/
+}
+</style>
 <body>
 	<%@ include file="../layout/mynav.jsp"%>
 
@@ -42,35 +48,63 @@
 				<div id="registerTitle">註冊會員</div>
 				<form:form id="register_form" action="${contextRoot}/register/add"
 					modelAttribute="newRegister" method="post">
-					
+
 					<p id="acc1" style="color: red">${errors.account}</p>
 					<p id="acc2" style="color: red">${errors.account1}</p>
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
-							<form:input type="text" path="account" onkeyup="value=value.replace(/[\W]/g,'') "
-								placeholder="account(請輸入4~8碼)" class="form-control"
-								 id="account" name="account" />
+							<form:input type="text" path="account"
+								onkeyup="value=value.replace(/[\W]/g,'') "
+								placeholder="account(請輸入4~8碼)" class="form-control" id="account"
+								name="account" />
 						</div>
 					</div>
 					<p id="pwd" style="color: red">${errors.password}</p>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<form:input type="password" path="password" onkeyup="value=value.replace(/[\W]/g,'') "
+							<form:input type="password" path="password"
+								onkeyup="value=value.replace(/[\W]/g,'') "
 								placeholder="password(請輸入4~8碼)" class="form-control"
-								 id="password" name="password" />
+								id="password" name="password" />
+						</div>
+					</div>
+					<P></P>
+					<div class="mb-6 row">
+						<label for="confirmPassword" class="col-sm-2 col-form-label">確認密碼</label>
+						<div class="col-sm-10">
+							<input type="password" onkeyup="value=value.replace(/[\W]/g,'') "
+								placeholder="confirm password(請再輸入一次)" class="form-control"
+								id="confirmPassword" name="confirmPassword" />
 						</div>
 					</div>
 					<br>
+<!-- 					<div class="g-recaptcha" -->
+<!-- 						data-sitekey="6LeOchQlAAAAAAMkF9gXcPSwvT3Sr_hhaDaExdN2" -->
+<!-- 						data-callback="robotCheck"></div> -->
+					<div id="msg1" class="d-inline-block ms-3"></div>
 					<button type="submit">下一步</button>
 				</form:form>
 			</div>
 		</div>
 	</article>
 
-	<!-- Scripts -->
+
 	<script>
+		//     // 當表單提交時，檢查兩個密碼欄位是否相同
+		$('#register_form').submit(function() {
+			var password = $('#password').val();
+			var confirmPassword = $('#confirmPassword').val();
+			if (password != confirmPassword) {
+				$('#confirmPwd').text('兩次輸入的密碼不一致');
+				$("#msg1").html('<span class="text-danger">密碼與確認密碼不一致<span>')
+				return false;
+			}
+			return true;
+		});
+	</script>
+
 	</script>
 
 </body>
