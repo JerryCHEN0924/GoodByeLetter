@@ -68,7 +68,7 @@
   		
   		<c:if test='${vendorDetails.vendorDetailsId != null}'>
   		 <div class="mb-3 row">
-		    <label for="inputVendorDetailsId" class="col-sm-2 col-form-label">VendorDetailsId</label>
+		    <label for="inputVendorDetailsId" class="col-sm-2 col-form-label">編號</label>
 		    <div class="col-sm-10">
 		    	<input name="vendorDetailsId" value="${vendorDetails.vendorDetailsId}" class="form-control" id="inputVendorDetailsId" disabled />
 		    </div>
@@ -80,7 +80,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputCompanyName" class="col-sm-2 col-form-label">CompanyName</label>
+		    <label for="inputCompanyName" class="col-sm-2 col-form-label">公司名稱</label>
 		    <div class="col-sm-10">
 		    	<form:input path="companyName" class="form-control" id="inputCompanyName" />
 		    	<form:errors path="companyName" class="form-control" id="inputCompanyName" cssClass="error" />
@@ -89,7 +89,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputCompanyType" class="col-sm-2 col-form-label">CompanyType</label>
+		    <label for="inputCompanyType" class="col-sm-2 col-form-label">公司類別</label>
 		    <div class="col-sm-10">
 		    	<form:input path="companyType" class="form-control" id="inputCompanyType" />
 		    	<form:errors path="companyType" class="form-control" id="inputCompanyType" cssClass="error" />
@@ -110,7 +110,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputAddress" class="col-sm-2 col-form-label">Address</label>
+		    <label for="inputAddress" class="col-sm-2 col-form-label">地址</label>
 		    <div class="col-sm-10">
 		    	<form:input path="address" class="form-control" id="inputAddress" />
 		    	<form:errors path="address" class="form-control" id="inputAddress" cssClass="error" />
@@ -121,7 +121,7 @@
 		  
 		  
   		 <div class="mb-3 row">
-		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">VendorDetailsImage</label>
+		    <label for="inputVendorDetailsImage" class="col-sm-2 col-form-label">公司圖片</label>
 		    <div class="col-sm-10">
 		    	<form:input path="image" class="form-control" id="inputVendorDetailsImage" type='file' />
 		    	<form:errors path="image" class="form-control" id="inputVendorDetailsImage" cssClass="error" />
