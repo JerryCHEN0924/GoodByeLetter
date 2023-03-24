@@ -247,34 +247,6 @@
 						</div>
 					</div>
 				</article>
-
-<<<<<<< HEAD
-	<!-- consult animation  -->
-	<article id="">
-		<div class="mydesign">
-			<div class="leftside">
-				<div class="words">
-					<span class="material-icons"
-						style="font-size: 4em; color: rgba(87, 92, 233, 0.748);">
-						live_help </span>
-					<h1>專業人士服務</h1>
-<!-- 					<h4>律師、諮商、禮儀社...等資訊。</h4> -->
-					<div class="containbtn">
-						<a href="<c:url value='/customer/add' />" class="designbtn"
-							id="designbtnConsult" data-delay="500">律師</a>
-					</div>
-					<div class="containbtn">
-						<a href="<c:url value='/customer/add3' />" class="designbtn"
-							id="designbtnConsult" data-delay="500">諮商</a>
-					</div>
-					<div class="containbtn">
-						<a href="<c:url value='/customer/add2' />" class="designbtn"
-							id="designbtnConsult" data-delay="500">禮儀社</a>
-					</div>
-					<div class="containbtn">
-						<a href="<c:url value='customer/add4' />" class="designbtn"
-							id="designbtnConsult" data-delay="500">其他</a>
-=======
 				<!-- consult animation  -->
 				<article id="">
 					<div class="mydesign">
@@ -285,9 +257,18 @@
 								<h1>專業人士服務</h1>
 								<!-- 					<h4>律師、諮商、禮儀社...等資訊。</h4> -->
 								<div class="containbtn">
-									<a href="<c:url value='/customer/page' />" class="designbtn" id="designbtnConsult"
-										data-delay="500">律師、諮商、禮儀社...等資訊。</a>
-								</div>
+									<a href="<c:url value='/customer/add' />" class="designbtn"
+										id="designbtnConsult" data-delay="500">律師</a>
+									<br>
+									<a href="<c:url value='/customer/add3' />" class="designbtn"
+										id="designbtnConsult" data-delay="500">諮商</a>
+									<br>
+									<a href="<c:url value='/customer/add2' />" class="designbtn"
+										id="designbtnConsult" data-delay="500">禮儀社</a>
+									<br>
+									<a href="<c:url value='customer/add4' />" class="designbtn"
+										id="designbtnConsult" data-delay="500">其他</a>
+								</div>	
 							</div>
 						</div>
 						<div class="rightside" data-aos="zoom-out"
@@ -301,7 +282,6 @@
 								<img src="images/help-desk.png" class="rightLetter">
 							</div>
 						</div>
->>>>>>> 20c38369967a7eb399770d588b82199d1bc44447
 					</div>
 				</article>
 
