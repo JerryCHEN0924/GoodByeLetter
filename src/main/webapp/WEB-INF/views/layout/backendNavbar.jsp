@@ -182,6 +182,13 @@
             
             <ul class="dropdown-menu dropdown-menu-dark">
             
+              <li><a class="dropdown-item" href="<c:url value='/topGun/level/add' />">新增權限等級</a></li>
+              <li><a class="dropdown-item" href="<c:url value='/topGun/level/page' />">查詢和編輯權限等級</a></li>
+            
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            
               <li><a class="dropdown-item" href="<c:url value='/topGun/register/add' />">新增註冊會員</a></li>
               <li><a class="dropdown-item" href="<c:url value='/topGun/register/page' />">查詢和編輯會員資料</a></li>
               
