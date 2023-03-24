@@ -55,7 +55,7 @@
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label fw-bold">收件人信箱</label>
 								<form:input type="email" class="form-control"
-									value="jk2455892@gmail.com" path="recipientEmail"
+									 path="recipientEmail"
 									id="recipientEmail" placeholder="name@example.com" />
 								<form:errors path="recipientEmail" cssClass="text-danger" />
 							</div>
@@ -63,14 +63,14 @@
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label fw-bold">第一驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify1"
-									value="jk2455892@gmail.com" id="verify1"
+									 id="verify1"
 									placeholder="name@example.com" required="true" />
 								<form:errors path="verify1" cssClass="text-danger" />
 							</div>
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label fw-bold">第二驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify2"
-									value="jk2455892@gmail.com" id="verify2"
+									 id="verify2"
 									placeholder="name@example.com" required="true" />
 								<form:errors path="verify2" cssClass="text-danger" />
 							</div>
