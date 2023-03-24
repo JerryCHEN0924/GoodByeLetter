@@ -30,7 +30,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     	Cookie[] cookies = request.getCookies();//getcookie出來是陣列，所以要Cookie[]
     	if (cookies != null) {
     	    for (Cookie cookie : cookies) {//java不能直接用name抓到對應的cookie
-    	        if (cookie.getName().equals("memberId") && cookie.getValue().equals("1")) {
+    	        if (cookie.getName().equals("memberId") && !cookie.getValue().equals(null)) {
     	            // 根據用户 ID 查詢數據庫獲取用户信息
     	            Integer memberId = Integer.parseInt(cookie.getValue());//本來cookie裡面是字串所以要轉成數字
     	            Register register = registerService.findById(memberId);

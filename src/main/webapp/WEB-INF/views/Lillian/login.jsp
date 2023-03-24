@@ -9,14 +9,21 @@
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 			<script src="${contextRoot}/js/jquery-3.6.3.min.js"></script>
 			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-			
+
 		</head>
 		<style>
 			.container {
-				max-width: 400px;
+				width: 100px;
+				/* max-width: 60%; */
 				margin: 0 auto;
 				text-align: center;
+				/* background-color: aqua; */
+
 			}
+
+			/* #login {
+				display: flex;
+			} */
 
 			h1 {
 				font-size: 2.5rem;
@@ -25,12 +32,19 @@
 
 			.form-group {
 				margin-bottom: 1.5rem;
+				text-align: center;
 			}
 
 			label {
 				display: block;
 				margin-bottom: 0.5rem;
 				font-weight: bold;
+			}
+
+			.g-recaptcha {
+				/* border: 3px solid black; */
+				display: flex;
+				justify-content: center;
 			}
 
 			input[type="text"],
@@ -63,109 +77,116 @@
 				background-color: #e67e22;
 			}
 
-			a {
+			.forgetpwd {
 				color: #f39c12;
 				text-decoration: none;
 			}
 
-			a:hover {
+			.forgetpwd:hover {
 				text-decoration: underline;
 			}
 		</style>
 
 		<body>
 			<%@ include file="../layout/mynav.jsp" %>
-			
-			
+
+
 				<!--login  login_form_class-->
 				<article class="wrapper style2" style="height: 100vh">
 					<div class="container" id="login_form">
 
 						<h1>登入</h1>
 						<form id="login" action="${contextRoot}/register/login" method="post">
-							<div class="form-group">
-								<label for="account" name="acc" class="col-sm-2 col-form-label"><b>帳號</b></label>
-								<input type="text" required placeholder="您的帳號" maxlength="8" minlength="4"
-									name="account" id="account">
+							<!-- 							<div class="form-group"> -->
+							<div class="mb-4 row">
+								<label for="account" name="acc" class="col-sm-3 col-form-label"
+									style=" padding-right :30px ; text-align: right;"><b>帳號</b></label>
+								<div class="col-sm-6">
+									<input type="text" required placeholder="您的帳號" maxlength="8" minlength="4"
+										name="account" id="account">
+									<!-- 							</div> -->
+								</div>
 							</div>
+							<br>
 							<div class="form-group">
-								<label for="password" name="pwd" class="col-sm-2 col-form-label"><b>密碼</b></label>
-								<input type="password" required placeholder="您的密碼" maxlength="8" minlength="4"
-									name="password" id="password">
+								<div class="mb-4 row">
+									<label for="password" name="pwd" class="col-sm-3 col-form-label"
+										style=" padding-right :30px ; text-align: right;"><b>密碼</b></label>
+									<div class="col-sm-6">
+										<input type="password" required placeholder="您的密碼" maxlength="8" minlength="4"
+											name="password" id="password">
+									</div>
+								</div>
 							</div>
+							<!-- <div class="mb-6 row"> -->
 							<div class="g-recaptcha" data-sitekey="6LeOchQlAAAAAAMkF9gXcPSwvT3Sr_hhaDaExdN2"
-								data-callback="robotCheck">
-							</div>
-<!-- 							<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response"> -->
-<!-- 							<input type="hidden" name="ip" id="ip"> -->
-							<label>
-								<input type="checkbox" name="rememberMe" value="1">記住我
-							</label>
-<!-- 							<div id="html_element"></div> -->
+								data-callback="robotCheck"></div>
+							<!-- </div> -->
+							<!-- 							<input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response"> -->
+							<!-- 							<input type="hidden" name="ip" id="ip"> -->
+							<label> <input type="checkbox" name="rememberMe" value="1">記住我
+							</label><br />
+							<!-- 							<div id="html_element"></div> -->
 							<button type="submit" id="login_submit">登入</button>
 						</form>
-						<div><a href="<c:url value='/forgetpwd' />">忘記密碼</a></div>
+						<div>
+							<a href="<c:url value='/forgetpwd' />" class="forgetpwd">忘記密碼</a>
+						</div>
 						<div id="msg1" class="d-inline-block ms-3"></div>
 					</div>
 				</article>
 
-				
-				
+
+
 				<script>
-// 					function robotCheck() {
-// 						document.getElementById('g-recaptcha-response').value = grecaptcha.getResponse();
-// 					}
-// 					var xhr = new XMLHttpRequest();
-// 					xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify');
-// 					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-// 					xhr.onload = function() {
-// 					  var response = JSON.parse(xhr.responseText);
-// 					  // 解析reCAPTCHA返回的JSON結果
-// 					};
-// 					xhr.send('secret=6LeOchQlAAAAAF3KDsU_wiFWAC9hKUSNQh69Gz_h&response=' + robotCheck);
+		// 					function robotCheck() {
+		// 						document.getElementById('g-recaptcha-response').value = grecaptcha.getResponse();
+		// 					}
+		// 					var xhr = new XMLHttpRequest();
+		// 					xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify');
+		// 					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		// 					xhr.onload = function() {
+		// 					  var response = JSON.parse(xhr.responseText);
+		// 					  // 解析reCAPTCHA返回的JSON結果
+		// 					};
+		// 					xhr.send('secret=6LeOchQlAAAAAF3KDsU_wiFWAC9hKUSNQh69Gz_h&response=' + robotCheck);
 
+		// function robotCheck(token) {
+		// 	document.getElementById("g-recaptcha-response").value = token
+		// 	console.log(ip)
+		// 	document.getElementById("ip").value = ip
+		// 	console.log(token)
+		// 	console.log(a)
 
+		// }
 
+		// 					$('#login').submit(function (event) {
+		// 						event.preventDefault();
+		// 						let account = document.getElementById("account").value;
+		// 						let password = document.getElementById("password").value;
 
+		// 						$.ajax({
+		// 							async: true,
+		// 							method: 'post',
+		// 							url: '${contextRoot}/register/login',
+		// 							xhrFields: {withCredentials: true},
+		// 							data: { account: account, password: password },
+		// 							success: function () {
+		// 								$("#msg1").html('<span class="text-success">登入成功<span>');
+		// 								setTimeout(function () {
+		// 									window.location.href = "/index";
+		// 								}, 3000);
+		// 								console.log("ok")
+		// 							},
+		// 							error: function () {
+		// 								$("#msg1").html('<span class="text-danger">登入失敗<span>')
+		// 							},
+		// 							complete: function () {
+		// 								setTimeout(function () { $("#msg1").html(''); }, 5000);
+		// 							}
 
-					// function robotCheck(token) {
-					// 	document.getElementById("g-recaptcha-response").value = token
-					// 	console.log(ip)
-					// 	document.getElementById("ip").value = ip
-					// 	console.log(token)
-					// 	console.log(a)
-
-					// }
-
-
-// 					$('#login').submit(function (event) {
-// 						event.preventDefault();
-// 						let account = document.getElementById("account").value;
-// 						let password = document.getElementById("password").value;
-
-// 						$.ajax({
-// 							async: true,
-// 							method: 'post',
-// 							url: '${contextRoot}/register/login',
-// 							xhrFields: {withCredentials: true},
-// 							data: { account: account, password: password },
-// 							success: function () {
-// 								$("#msg1").html('<span class="text-success">登入成功<span>');
-// 								setTimeout(function () {
-// 									window.location.href = "/index";
-// 								}, 3000);
-// 								console.log("ok")
-// 							},
-// 							error: function () {
-// 								$("#msg1").html('<span class="text-danger">登入失敗<span>')
-// 							},
-// 							complete: function () {
-// 								setTimeout(function () { $("#msg1").html(''); }, 5000);
-// 							}
-
-// 						});
-// 					});
-
+		// 						});
+		// 					});
 				</script>
 
 				<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

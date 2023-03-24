@@ -104,6 +104,7 @@
 					<h3>${lastestBoard.title}</h3>
 					<p>${lastestBoard.boardMessage}</p>
 				</div>
+				<br>
 	</c:if>	
 	</div>	
 	</article>

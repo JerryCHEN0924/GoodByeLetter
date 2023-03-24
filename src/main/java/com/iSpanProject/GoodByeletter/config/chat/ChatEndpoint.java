@@ -84,8 +84,14 @@ public class ChatEndpoint {
 			//1.透過toName找到對方的session,把訊息給對方
 			String getResultMessageString =MessageUtils.getResultMessage(false ,userName, messagetext);
 			System.out.println("onMessage: "+userName);
-			
-			onlineUsers.get(toName).session.getAsyncRemote().sendText(getResultMessageString);
+			if(onlineUsers.get(toName)!=null) {
+				onlineUsers.get(toName).session.getAsyncRemote().sendText(getResultMessageString);
+			}else {
+				System.out.println("用戶不在線上");
+				String errorResultMessageString =MessageUtils.getResultMessage(false ,"系統訊息", "用戶不在線上");
+				onlineUsers.get(userName).session.getAsyncRemote().sendText(errorResultMessageString);
+				
+			}
 			
 			//2.將當前在線用戶(系統消息)推給所有用戶
 			String systemResultMessageString = MessageUtils.getResultMessage(true, null, getOnlineNames());
