@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>廠商註冊1</title>
+<title>廠商註冊</title>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,8 +26,10 @@
 	.error {
 	  color: red;
 	}
+	#phone{
+		bottom: 10px;
+	}
   </style>
-
 </head>
 
 <body>
@@ -39,27 +41,26 @@
 
 
 			<div class="container" id="form_container">
-				<div id="registerTitle">註冊會員</div><br>
+				<h3>註冊會員</h3><br>
+				
 				<form id="register_form" action="${contextRoot}/customer/add" method="post">
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
 						<div class="col-sm-10">
 							<input required type="text" class="form-control" id="account"
-							name="account">
+							name="account" placeholder="請輸入您的帳號">
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="password" class="col-sm-2 col-form-label">密碼</label>
 						<div class="col-sm-10">
-							<input required type="password" class="form-control" id="password"
-							name="password">
+							<input required type="password" class="form-control" id="password" name="password" placeholder="請輸入您的密碼">	
 						</div>
 					</div>
 					<div class="mb-6 row">
 						<label for="verificationCode" class="col-sm-2 col-form-label">驗證碼</label>
 						<div class="col-sm-10">
-							<input required type="text" class="form-control" id="rCode"
-							name="rCode">
+							<input required type="text" class="form-control" id="rCode" name="rCode"  placeholder="請輸入驗證碼">
 						</div>
 					</div>
 					
@@ -95,6 +96,13 @@
 				<c:if test="${not empty errorMessage}">
   					<div class="error">${errorMessage}</div>
 				</c:if>
+				<br>
+				<br>
+				<br>
+				<div class="" id="phone">
+					<p>與我們聯絡獲得驗證碼:  <a href="tel:+886-920-136-052">0920-136-052</a></p>
+					
+				</div>
 			</div>
 		</div>
 	</article>

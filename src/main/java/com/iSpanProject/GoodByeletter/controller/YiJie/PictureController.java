@@ -8,9 +8,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -70,30 +72,11 @@ public class PictureController {
 							@RequestParam("files") MultipartFile[] files,
 							Model model) throws IOException {
 		
-		Integer mId = exis.getMemberId();
-		
-		System.out.println("====================");
-		System.out.println("====================");
-		System.out.println(mId);
-		System.out.println("====================");
-		System.out.println("====================");
-		
-		
+		Integer mId = exis.getMemberId();	
 		YJCustomerDetail detail = cdDao.findDetailByMemberId(mId);//找到登入帳號對應的detail
-		if(mId == null) { return "YiJie/updatePic";}
-		System.out.println(mId.toString());
+		if(mId == null) { return "YiJie/updatePic";}	
 		
-		
-		System.out.println("====================");
-		System.out.println("====================");
-		System.out.println(detail);
-		System.out.println("====================");
-		System.out.println("====================");
-		
-		
-		
-		List<Picture> photos = detail.getPictures();
-		
+		List<Picture> photos = detail.getPictures();	
 		
 		for(MultipartFile file:files) {
 			Picture picture = new Picture();//1
@@ -103,8 +86,6 @@ public class PictureController {
 			picture.setCustomerDetail(detail);//改雙向控管後有@JoinColumn(name="fk_companydetail_id")，需要再picture幫他加他對應的detail名稱(加上名字)
 			Picture pic = pDao.save(picture);//2
 			
-			
-			
 			photos.add(pic);//2
 			photos.add(picture);//1
 		}
@@ -112,22 +93,15 @@ public class PictureController {
 		System.out.println(photos.get(0));
 		
 		detail.setPictures(photos);//把存入photos的pictureSET進找到的detail
-			
 		
-		
-//		if(photos==null) {
-//			return "YiJie/updatePic";
-//		}
 		//0323
 		int a=detail.getId();
-		System.out.println(a);
-		
+		System.out.println(a);	
 		
 		cdDao.save(detail);
 			
-		return "okok";
-	}
-	//////////////////////////////////
+		return "上傳成功";
+	}////////////////////////////////////////////////////////////////////////
 	/////######################################show四種公司類別################################################/////
 	//綠
 	//show.jsp的跳頁
@@ -152,7 +126,24 @@ public class PictureController {
 			byte[] pictureFile = picture.getPhotoFile();
 			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
 		}return null;
-	}////////////////////////////////////////////////////////
+	}
+	@ResponseBody
+	@GetMapping("/customer/picture/lawyerdetail")
+	public Map<String, String> getLawyerDetail(@RequestParam Integer pictureId) {
+	    Optional<Picture> op = pDao.findById(pictureId);
+	    if (op.isPresent()) {
+	        Picture picture = op.get();
+	        YJCustomerDetail detail = picture.getCustomerDetail();
+	        Map<String, String> result = new HashMap<>();
+	        result.put("name", detail.getName());
+	        result.put("type", detail.getType());
+	        result.put("email", detail.getEmail());
+	        result.put("address", detail.getAddress());
+	        return result;
+	    }
+	    return null;
+	}
+	////////////////////////////////////////////////////////
 	//禮
 	//show2.jsp的跳頁
 	@GetMapping("/customer/add2")
@@ -177,6 +168,22 @@ public class PictureController {
 			byte[] pictureFile = picture.getPhotoFile();
 			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
 		}return null;
+	}
+	@ResponseBody
+	@GetMapping("/customer/picture/mortdetail")
+	public Map<String, String> getmortDetail(@RequestParam Integer pictureId) {
+	    Optional<Picture> op = pDao.findById(pictureId);
+	    if (op.isPresent()) {
+	        Picture picture = op.get();
+	        YJCustomerDetail detail = picture.getCustomerDetail();
+	        Map<String, String> result = new HashMap<>();
+	        result.put("name", detail.getName());
+	        result.put("type", detail.getType());
+	        result.put("email", detail.getEmail());
+	        result.put("address", detail.getAddress());
+	        return result;
+	    }
+	    return null;
 	}
 	////////////////////////////////////////////////////////////
 	//諮
@@ -204,7 +211,24 @@ public class PictureController {
 			byte[] pictureFile = picture.getPhotoFile();
 			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
 		}return null;
-	}//////////////////////////////////
+	}
+	@ResponseBody
+	@GetMapping("/customer/picture/counseldetail")
+	public Map<String, String> counselDetail(@RequestParam Integer pictureId) {
+	    Optional<Picture> op = pDao.findById(pictureId);
+	    if (op.isPresent()) {
+	        Picture picture = op.get();
+	        YJCustomerDetail detail = picture.getCustomerDetail();
+	        Map<String, String> result = new HashMap<>();
+	        result.put("name", detail.getName());
+	        result.put("type", detail.getType());
+	        result.put("email", detail.getEmail());
+	        result.put("address", detail.getAddress());
+	        return result;
+	    }
+	    return null;
+	}
+	//////////////////////////////////
 	//其
 	//show4.jsp的跳頁
 	@GetMapping("/customer/add4")
@@ -230,6 +254,22 @@ public class PictureController {
 			byte[] pictureFile = picture.getPhotoFile();
 			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(pictureFile);
 		}return null;
+	}
+	@ResponseBody
+	@GetMapping("/customer/picture/otherdetail")
+	public Map<String, String> otherDetail(@RequestParam Integer pictureId) {
+	    Optional<Picture> op = pDao.findById(pictureId);
+	    if (op.isPresent()) {
+	        Picture picture = op.get();
+	        YJCustomerDetail detail = picture.getCustomerDetail();
+	        Map<String, String> result = new HashMap<>();
+	        result.put("name", detail.getName());
+	        result.put("type", detail.getType());
+	        result.put("email", detail.getEmail());
+	        result.put("address", detail.getAddress());
+	        return result;
+	    }
+	    return null;
 	}
 	//#############################show廠商結束########################################//
 	//圖片列表葉面

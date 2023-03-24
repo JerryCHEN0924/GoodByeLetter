@@ -272,8 +272,20 @@ height
 					<h1>專業人士服務</h1>
 <!-- 					<h4>律師、諮商、禮儀社...等資訊。</h4> -->
 					<div class="containbtn">
-						<a href="<c:url value='/customer/page' />" class="designbtn"
-							id="designbtnConsult" data-delay="500">律師、諮商、禮儀社...等資訊。</a>
+						<a href="<c:url value='/customer/add' />" class="designbtn"
+							id="designbtnConsult" data-delay="500">律師</a>
+					</div>
+					<div class="containbtn">
+						<a href="<c:url value='/customer/add3' />" class="designbtn"
+							id="designbtnConsult" data-delay="500">諮商</a>
+					</div>
+					<div class="containbtn">
+						<a href="<c:url value='/customer/add2' />" class="designbtn"
+							id="designbtnConsult" data-delay="500">禮儀社</a>
+					</div>
+					<div class="containbtn">
+						<a href="<c:url value='customer/add4' />" class="designbtn"
+							id="designbtnConsult" data-delay="500">其他</a>
 					</div>
 				</div>
 			</div>

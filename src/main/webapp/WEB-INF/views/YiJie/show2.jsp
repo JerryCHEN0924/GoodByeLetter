@@ -64,10 +64,11 @@
 									<img src="${contextRoot}/customer/picture/mortimage?pictureId=${picture.id}" 
 										width="150px" height="150px" alt="mort image">
 								</div>
-								<div class="bdtext">
-					  				<h1>給親愛的使用者</h1>
-					  				<p>專業律師事務所，如果你有需求，我們永遠都在。</p>
-					  				<p>為未來做準備，在之後的每一天，活的瀟灑不留遺憾!</p>
+								<div class="bdtext" id="lawyerDetail">
+									<p>公司名: ${picture.customerDetail.name}</p>
+									<p>公司類型: ${picture.customerDetail.type}</p>	
+									<p>電子信箱: ${picture.customerDetail.email}<a href="mailto: ${picture.customerDetail.email}">發送郵件給我</a></p>
+									<p>地址: ${picture.customerDetail.address}<a href="https://www.google.com.tw/maps/place/${picture.customerDetail.address}">查看地圖</a></p>
 								</div>
 							</div>
 						</tr>
@@ -75,8 +76,23 @@
 				</table>
 			</div>
 			<br>
-			<a class="btn btn-outline-info" href="<c:url value='/customer/home/page'/>">${exis.account}返回</a>
+			<a class="btn btn-outline-info" href="<c:url value='/'/>">返回</a>
 	</article>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+    		$("img.lawyer-image").click(function() {
+        		var pictureId = $(this).data("picture-id");
+        		$.get("/customer/picture/mortdetail", {pictureId: pictureId}, function(data) {
+            		var html = "";
+            		for (var key in data) {
+                		html += "<p>" + key + ": " + data[key] + "</p>";
+            		}
+            		$("#lawyerDetail").html(html);
+        		});
+    		});
+		});
+	</script>
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>

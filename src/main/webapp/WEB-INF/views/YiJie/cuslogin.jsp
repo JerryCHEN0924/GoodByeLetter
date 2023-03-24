@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>廠商登入頁面</title>
+<title>登入</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -28,7 +28,7 @@
     <article class="wrapper style2" style="height:100vh">
         <div class="container-fluid">
 			<div class="container" id="form_container">
-				<div>廠商登入頁面</div>
+				<h3>廠商登入頁面</h3><br>
             	<form id="login_form" action="${contextRoot}/customer/login" method="post">
 					<div class="mb-6 row">
 						<label for="account" class="col-sm-2 col-form-label">帳號</label>
@@ -41,7 +41,7 @@
 						<div class="col-sm-10">
 							<input required class="form-control" id="password" type="text" placeholder="請輸入您的密碼" name="password">
 						</div>
-					</div>
+					</div><br>
                 	<button type="submit" id="login_submit">登入</button>      
             	</form>
 				<c:if test="${not empty errorMessage}">

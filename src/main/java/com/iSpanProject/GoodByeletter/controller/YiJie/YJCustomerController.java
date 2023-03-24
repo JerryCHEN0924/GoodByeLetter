@@ -78,7 +78,7 @@ public class YJCustomerController {
 			detailService.insert(detail1);
 			return "redirect:/";
 		}else {
-			model.addAttribute("errorMessage", "驗證碼輸入錯誤");
+			model.addAttribute("errorMessage", "驗證碼輸入錯誤!若無驗證碼請撥打電話與我們聯絡");
 			return "YiJie/mycompany";
 		}
 	}
