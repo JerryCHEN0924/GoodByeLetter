@@ -66,10 +66,12 @@ public class Register {
 	private Integer pId;
 	
 	@JsonManagedReference // 主要序列化方 雙向情況才需要使用
-	@OneToOne(mappedBy = "register", orphanRemoval = true)
+//	@OneToOne(mappedBy = "register", orphanRemoval = true)
+	@OneToOne(mappedBy = "register")
 	private VendorDetails vendorDetails;
 	
-	@OneToOne(mappedBy = "FK_memberId", orphanRemoval = true)
+//	@OneToOne(mappedBy = "FK_memberId", orphanRemoval = true)
+	@OneToOne(mappedBy = "FK_memberId")
 	private YJCustomerDetail customerDetail;
 	
 //	======================= Block =======================
