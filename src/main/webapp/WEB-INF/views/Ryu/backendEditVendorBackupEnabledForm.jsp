@@ -159,7 +159,7 @@
 			<div class="offset-sm-5 col-sm-2">
 		
 				<form action="${contextRoot}/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute" method="get" >
-					<input type="submit" class="btn btn-outline-warning" value="回審核廣告商頁面" />
+					<input type="submit" class="btn btn-outline-warning" value="返回審核廣告商頁面" />
 				</form>
 		
 			</div>

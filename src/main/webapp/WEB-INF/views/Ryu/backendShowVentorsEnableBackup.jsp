@@ -170,7 +170,7 @@
 <!--       <th scope="col">密碼</th> -->
       <th scope="col">廣告文案</th>
 <!--       <th scope="col">文案圖片</th> -->
-      <th scope="col">編輯</th>
+      <th scope="col">帳號啟用權限</th>
     </tr>
     
   </thead>
@@ -197,10 +197,10 @@
 		      
 		      <c:choose>
 			    <c:when test="${not empty register.customerDetail.pictures}">
-			        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/vendorDetailsBackup/enableEdit?memberId=${register.memberId}'  />">有文案</a>
+			        <a class="btn btn-warning" type="button" href="<c:url value='/topGun/vendorPhotosBackup/getBypid?id=${register.memberId}'  />">有文案</a>
 			    </c:when>
 			    <c:otherwise>
-			        <a class="btn btn-secondary" type="button" href="<c:url value='/topGun/vendorDetailsBackup/enableEdit?memberId=${register.memberId}'  />">無文案</a>
+			        <a class="btn btn-secondary" type="button" href="#">無文案</a>
 			    </c:otherwise>
 			</c:choose>
 	      

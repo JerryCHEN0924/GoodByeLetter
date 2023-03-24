@@ -1,5 +1,6 @@
 package com.iSpanProject.GoodByeletter.controller.Ryu;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -142,7 +143,9 @@ public class BackendVendorPhotosBackupController {
 		
 		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告文案新增成功");
 		
-		return "redirect:/topGun";
+//		return "redirect:/topGun";
+		
+		return "redirect:/topGun/vendorPhotosBackup/page";
 		
 	}
 	
@@ -227,7 +230,7 @@ public class BackendVendorPhotosBackupController {
 		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告文案刪除成功");
 		
 		
-		return "redirect:/topGun";
+		return "redirect:/topGun/vendorPhotosBackup/page";
 		
 	}
 	
@@ -282,6 +285,125 @@ public class BackendVendorPhotosBackupController {
 		
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping(value = "/vendorPhotosBackup/getBypid")
+	public String getVendorPhotosBackupByPid(@RequestParam("id") Integer id, Model model,
+			 RedirectAttributes redirectAttributes) {
+		
+		
+		Optional<Register> optional = backendRegisterRepository.findById(id);
+		
+		if(optional.isEmpty()) {
+			
+			redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告文案不存在");
+			
+			return "redirect:/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute";
+		}
+		
+		
+		Register register = optional.get();
+		
+		Integer id2 = register.getCustomerDetail().getId();
+		
+		
+		List<Picture> vendorPhotos = backendVendorPhotosBackupService.getAllVendorPhotosByFkCompanydetailId(id2);
+		
+		System.out.println("==================");
+		System.out.println("==================");
+		System.out.println(vendorPhotos);
+		System.out.println("==================");
+		System.out.println("==================");
+		
+		
+		
+		model.addAttribute("vendorPhotos", vendorPhotos);
+		
+		return "Ryu/BackendgetVendorPhotosBackup";
+		
+//		return "Ryu/backendHome";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping(value = "/vendorPhotosBackup/put2/{id}")
+	public String editVendorPhotosForm2(@PathVariable("id") Integer id, Model model) {
+		
+		Picture vendorPhotos = backendVendorPhotosBackupService.findById(id);
+		
+		model.addAttribute("vendorPhotos", vendorPhotos);
+		
+		return "Ryu/backendEditVendorPhotosBackupForm2";
+		
+	}
+	
+	
+	
+	
+	
+
+	@PostMapping(value = "/vendorPhotosBackup/put2/{id}")
+	public String modify2(@ModelAttribute("vendorPhotos") Picture vendorPhotos, Model model,
+			 RedirectAttributes redirectAttributes) {
+		
+		
+		MultipartFile image = vendorPhotos.getImage();
+		
+		if (image != null && !image.isEmpty()) {
+			
+			try {
+				
+				byte[] b = image.getBytes();
+				vendorPhotos.setPhotoFile(b);
+				
+			}catch (Exception e) {
+				
+				e.printStackTrace();
+				
+				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+				
+			}
+			
+		}
+		
+		backendVendorPhotosBackupService.insertVendorPhotos(vendorPhotos);
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告文案修改成功");
+		
+		return "redirect:/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute";
+		
+	}
+	
+	
+	
+	
+	
+	
+	@DeleteMapping("/vendorPhotosBackup/delete2/{id}")
+	public String delete2(@PathVariable("id") Integer id,
+			 RedirectAttributes redirectAttributes) {
+		
+		
+		backendVendorPhotosBackupService.deleteById(id);
+		
+		
+		redirectAttributes.addFlashAttribute("backendHomeMessages", "廣告文案刪除成功");
+		
+		
+		return "redirect:/topGun/vendorDetailsBackup/getVendorEnableByAccountQueryLikePageExecute";
+		
+	}
 	
 	
 	

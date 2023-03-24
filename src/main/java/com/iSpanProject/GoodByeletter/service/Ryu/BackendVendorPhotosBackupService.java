@@ -104,7 +104,16 @@ public class BackendVendorPhotosBackupService {
 	}
 	
 	
-	
+	// 查詢所有廠商文案資料 By fk_companydetail_id
+	public List<Picture> getAllVendorPhotosByFkCompanydetailId(Integer pid){
+		
+		
+		List<Picture> currentPhotos = backendVendorPhotosBackupRepository.findAllByCDId(pid);
+		
+		return currentPhotos;
+		
+		
+	}
 	
 	
 	
