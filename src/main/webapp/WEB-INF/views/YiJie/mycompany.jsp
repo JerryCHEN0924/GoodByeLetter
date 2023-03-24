@@ -58,6 +58,12 @@
 						</div>
 					</div>
 					<div class="mb-6 row">
+  						<label for="confirmPassword" class="col-sm-2 col-form-label">確認密碼</label>
+  						<div class="col-sm-10">
+    						<input required type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="請再次輸入您的密碼">  
+  						</div>
+					</div>
+					<div class="mb-6 row">
 						<label for="verificationCode" class="col-sm-2 col-form-label">驗證碼</label>
 						<div class="col-sm-10">
 							<input required type="text" class="form-control" id="rCode" name="rCode"  placeholder="請輸入驗證碼">
@@ -106,6 +112,17 @@
 			</div>
 		</div>
 	</article>
+	<script>
+		document.getElementById("register_form").addEventListener("submit", function(event) {
+		  	var password = document.getElementById("password").value;
+		  	var confirmPassword = document.getElementById("confirmPassword").value;
+		  
+		  	if (password !== confirmPassword) {
+		    	event.preventDefault(); // 阻止表單送出
+		    	alert("兩次輸入的密碼不相同，請重新輸入。");
+		  	}
+		});
+	</script>
 
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -116,9 +133,7 @@
 	<script src="assets/js/jquery-3.6.3.min.js"></script>
 	<script src="assets/js/main.js"></script>
 
-	<script>
-		
-	</script>
+
 
 </body>
 </html>
