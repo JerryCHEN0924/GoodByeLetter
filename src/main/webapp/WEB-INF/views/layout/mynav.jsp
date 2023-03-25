@@ -247,8 +247,8 @@
 												</li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="<c:url value='/register/login1' />"> 登入 </a></li>
-												<li><a href="<c:url value='/register' />"> 註冊 </a></li>
+												<li><a href="<c:url value='/register/login1' />"> 會員登入 </a></li>
+												<li><a href="<c:url value='/register' />"> 會員註冊 </a></li>
 											</c:otherwise>
 										</c:choose>
 										<!-- 										<li><a href="mySpace.html"> 個人空間 </a></li> -->
@@ -270,8 +270,8 @@
 														Home</a></li>
 											</c:when>
 											<c:otherwise>
-												<li><a href="<c:url value='/customer/login/page' />">廣告商登入</a></li>
-												<li><a href="<c:url value='/customer/add/page' />">廣告商註冊</a></li>
+												<li><a href="<c:url value='/customer/login/page' />">夥伴登入</a></li>
+												<li><a href="<c:url value='/customer/add/page' />">夥伴註冊</a></li>
 											</c:otherwise>
 										</c:choose>
 									</ul>

@@ -43,12 +43,12 @@
 
 	<!-- myspace -->
 	<article id="myspace" class="wrapper style2">
-		<div class="container-fluid " id="register">
+		<div class="container-fluid " id="GoodByeLetter">
 			<div class="container">
-				<h1>GoodBye Letter</h1>
+				<h1 class="display-4 mb-5 fw-bold">GoodBye Letter</h1>
 				
 				<div class="card">
-					<div class="card-header">更新遺囑</div>
+					<div class="card-header-center bg-light text-black fw-bold">更新GoodBye Letter</div>
 					<div class="card-body">
 
 						<form:form action="${contextRoot}/LastNote/CRUD/put"
@@ -61,24 +61,24 @@
 								id="FK_memberId" value="${existing.memberId}" />
 
 							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label">收件人信箱</label>
+								<label for="exampleFormControlInput1" class="form-label fw-bold">收件人信箱</label>
 								<form:input type="email" class="form-control"
 									path="recipientEmail" id="recipientEmail"
 									placeholder="name@example.com" />
 							</div>
 							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label">第一驗證人信箱</label>
+								<label for="exampleFormControlInput1" class="form-label fw-bold">第一驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify1"
 									id="verify1" placeholder="name@example.com" />
 							</div>
 							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label">第二驗證人信箱</label>
+								<label for="exampleFormControlInput1" class="form-label fw-bold">第二驗證人信箱</label>
 								<form:input type="email" class="form-control" path="verify2"
 									id="verify2" placeholder="name@example.com" />
 							</div>
 							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label">信件內容</label>
-								<form:textarea class="form-control" id="notedetail"
+								<label for="exampleFormControlTextarea1" class="form-label fw-bold">信件內容</label>
+								<form:textarea class="form-control" id="notedetail" placeholder="想對那個人...說些什麼呢?可以說說你是誰，為什麼對方會收到這封信，以及想對他說什麼。"
 									path="notedetail" rows="3" />
 							</div>
 							<div class="justify-content-center">
@@ -98,6 +98,25 @@
 
 	<script>
 	function save() {
+		const emailInputs = document.querySelectorAll('input[type="email"]');
+		const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
+		for (let i = 0; i < emailInputs.length; i++) {
+			var emailInput = emailInputs[i];
+			email = emailInput.value
+			if(email.trim() === ''){
+				Swal.fire({
+	      title: '欄位不可空白',
+	      icon: 'warning'
+	    });
+	    return;
+			}
+			if(!emailRegex.test(emailInput.value)){
+				Swal.fire({
+	      title: '欄位必須為Email格式',
+	      icon: 'warning'
+	    });
+	    return;
+			}
 	    Swal.fire({
 	      title: '確定要儲存嗎？',
 	      icon: 'success',
@@ -112,6 +131,7 @@
 	      }
 	    })
 }
+	}
 	
 	function resetbutton() {
 	    Swal.fire({

@@ -21,7 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
  
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    	System.out.println("我是??????");
+//    	System.out.println("我是??????");
     	HttpSession session = request.getSession();
     	String requestURI = request.getRequestURI();//為了抓使用者要到的rui
     	 System.out.println(requestURI);
@@ -38,7 +38,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     	            cookieFound = true;
     	            break;
     	        }else {
-    	        	System.out.println("nonononononnonono cookie"); 	        	
+//    	        	System.out.println("nonononononnonono cookie"); 	        	
     	        }
     	    }
     	}

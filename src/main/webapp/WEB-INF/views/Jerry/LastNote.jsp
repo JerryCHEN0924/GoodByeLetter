@@ -41,7 +41,7 @@
 
 	<article id="myspace" class="wrapper style2">
 
-		<div class="container-fluid" id="lastNote">
+		<div class="container-fluid" id="GoodByeLetter">
 			<div class="container">
 				<h1 class="display-4 mb-5 fw-bold">GoodBye Letter</h1>
 				<!-- 	表單區	 -->

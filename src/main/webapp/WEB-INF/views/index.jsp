@@ -241,7 +241,7 @@
 								<!-- 					<h4>你的故事是什麼?為什麼來到這裡，留下這封特別的信?</h4> -->
 								<div class="containbtn">
 									<a href="<c:url value='/board/page'/>" class="designbtn" id="designbtnChat"
-										data-delay="500">你的故事是什麼?為什麼來到這裡，留下這封特別的信?</a>
+										data-delay="500">你的故事是什麼?為什麼要留下這封特別的信?</a>
 								</div>
 							</div>
 						</div>
@@ -298,8 +298,8 @@
 								如果今天就是最後一天，你還有什麼未完成的事、來不及說出口的話?<br /><br />
 								人生總有遺憾，但在最後一刻到來前，準備好給親人、愛人、友人的最後一封信， 不多帶一個遺憾離開。</h4>
 						</header>
-						</br>
-						</br>
+						<br>
+						<br>
 						<div class="row aln-center" style="margin: auto 0;">
 							<div class=" col-4 col-6-medium col-12-small" data-aos="zoom-in">
 								<section class="box style1">
