@@ -44,13 +44,13 @@ public class registerController {
 			Map<String, String> errors = new HashMap<String, String>();
 			model.addAttribute("errors", errors);
 
-			if (register.getAccount() == "") {
+			if (register.getAccount().isEmpty()) {
 				errors.put("account", "請輸入您的帳號!");
 			}else if (register.getAccount().length() < 4 || register.getAccount().length() > 8) {
 			    errors.put("account", "帳號必需在4到8個數字或英文!");
 			}
 
-			if (register.getPassword() == "") {
+			if (register.getPassword().isBlank()) {
 				errors.put("password", "請輸入您的密碼!");
 			}else if (register.getPassword().length() < 4 || register.getPassword().length() > 8) {
 				 errors.put("password", "密碼必需在4到8個數字或英文!");
@@ -111,6 +111,7 @@ public class registerController {
 			Model model, HttpServletResponse response) {
 		Register existing = registerService.findByAccAndPwd(account, password);
 		model.addAttribute("register", existing);
+		//TODO 這邊沒有處理nullPointerException
 		String acc = existing.getAccount();
 		String pwd = existing.getPassword();
 

@@ -21,16 +21,15 @@ public class LoginInterceptor implements HandlerInterceptor {
  
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//    	System.out.println("我是??????");
     	HttpSession session = request.getSession();
     	String requestURI = request.getRequestURI();//為了抓使用者要到的rui
-    	 System.out.println(requestURI);
+    	System.out.println("requestURI:"+requestURI);
     	boolean cookieFound = false;
     	// 獲取 Cookie 中的用户信息
     	Cookie[] cookies = request.getCookies();//getcookie出來是陣列，所以要Cookie[]
     	if (cookies != null) {
     	    for (Cookie cookie : cookies) {//java不能直接用name抓到對應的cookie
-    	        if (cookie.getName().equals("memberId") && !cookie.getValue().equals(null)) {
+    	        if (cookie.getName().equals("memberId") && cookie.getValue() != null) {
     	            // 根據用户 ID 查詢數據庫獲取用户信息
     	            Integer memberId = Integer.parseInt(cookie.getValue());//本來cookie裡面是字串所以要轉成數字
     	            Register register = registerService.findById(memberId);
@@ -47,13 +46,18 @@ public class LoginInterceptor implements HandlerInterceptor {
     	    return true;
     	} else {
     	    // 如果從Cookie中没有獲取到數據，則從session中獲取數據
+    		System.out.println("cookie NotFound,準備檢查session");
     	    Register register = (Register) session.getAttribute("existing");
     	    if (register != null) {
+    	    	System.out.println("session Found");
     	        return true;
     	    } else {
-    	    	if(!"/index/".equals(requestURI)){//如果沒有session或cookie，使用者點擊除了首頁以外 -> return false 就會到/register/login1
+    	    	System.out.println("session Not Found,準備要跳頁轉導");
+    	    	System.out.println("request.getContextPath():"+ request.getContextPath());
+    	    	if(request.getRequestURI().startsWith(request.getContextPath() + "/index")){//如果沒有session或cookie，使用者點擊除了首頁以外 -> return false 就會到/register/login1
     	    		response.sendRedirect(request.getContextPath()+"/register/login1");
-    	    		return false;
+    	    		response.flushBuffer();
+    	    		return false;//如果使用者想要進入index,-> return true 就可以進去
     	    	}
     	        return true;//如果使用者想要進入index,-> return true 就可以進去
     	    }
