@@ -1,4 +1,9 @@
 # GoodBye Letter好好說再見
+docker指令:
+`docker build -t goodbyeletter:v1.0.0 .` 將專案build成image
+`docker run -d -p 8080:8080 --name goodbyeletter-container goodbyeletter` 將image透過docker啟動
+進入網頁:http://localhost:8080/GoodByeLetter-1.0.0/
+
 ```
 沒有人知道，意外與明天，誰會先到來。
 如果今天就是最後一天，你還有什麼未完成的事、來不及說出口的話?
