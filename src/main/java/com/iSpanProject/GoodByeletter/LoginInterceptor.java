@@ -54,11 +54,14 @@ public class LoginInterceptor implements HandlerInterceptor {
     	    } else {
     	    	System.out.println("session Not Found,準備要跳頁轉導");
     	    	System.out.println("request.getContextPath():"+ request.getContextPath());
-    	    	if(request.getRequestURI().startsWith(request.getContextPath() + "/index")){//如果沒有session或cookie，使用者點擊除了首頁以外 -> return false 就會到/register/login1
+    	    	if(!"/index/".equals(requestURI)) {
     	    		response.sendRedirect(request.getContextPath()+"/register/login1");
-    	    		response.flushBuffer();
-    	    		return false;//如果使用者想要進入index,-> return true 就可以進去
+    	    		System.out.println("將要轉導的目標URL是:「"+request.getContextPath()+"/register/login1」");
+    	    		return false;
     	    	}
+    	    	//TODO 這邊應該有BUG,攔截器會在不正確的地方運作,且反覆重新導向。
+    	    	
+    	    	System.out.println("這段似乎永遠不會印出? 如果上面已return");
     	        return true;//如果使用者想要進入index,-> return true 就可以進去
     	    }
     	}
